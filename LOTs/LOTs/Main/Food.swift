@@ -12,21 +12,23 @@ struct Food {
     
     var title: String
     var image: UIImage
+    var profile: UIImage
 
-    init(title: String, image: UIImage) {
+    init(title: String, image: UIImage, profile: UIImage) {
         
         self.title = title
         self.image = image
+        self.profile = profile
     
     }
     
     init?(dictionary: [String: String]) {
         
-        guard let title = dictionary["Title"], let photo = dictionary["Photo"], let image = UIImage(named: photo) else {
+        guard let title = dictionary["Title"], let photo = dictionary["Photo"], let image = UIImage(named: photo), let author = dictionary["Author"], let profile = UIImage(named: author) else {
             return nil
         }
         
-        self.init(title: title, image: image)
+        self.init(title: title, image: image, profile: profile)
         
     }
     

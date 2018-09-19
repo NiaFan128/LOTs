@@ -3,66 +3,90 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>Author</key>
+		<string>profile_1</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>
 		<string>01</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_2</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>
 		<string>03</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_3</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>
 		<string>02</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_1</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>
 		<string>04</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_2</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>
 		<string>05</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_3</string>
 		<key>Title</key>
 		<string>12345</string>
+		<key>New item</key>
+		<string></string>
 		<key>Photo</key>
 		<string>06</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_1</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>
 		<string>01</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_2</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>
 		<string>02</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_3</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>
 		<string>03</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_1</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>
 		<string>04</string>
 	</dict>
 	<dict>
+		<key>Author</key>
+		<string>profile_2</string>
 		<key>Title</key>
 		<string>12345</string>
 		<key>Photo</key>

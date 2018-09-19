@@ -20,6 +20,8 @@ class MainFoodCell: UICollectionViewCell {
         super.awakeFromNib()
         containerView.layer.cornerRadius = 6
         containerView.layer.masksToBounds = true
+        
+        profileImageView.layer.cornerRadius = 15
     
     }
     
@@ -31,6 +33,7 @@ class MainFoodCell: UICollectionViewCell {
                 
                 imageView.image = food.image
                 titleLabel.text = food.title
+                profileImageView.image = food.profile
                 
             }
             
