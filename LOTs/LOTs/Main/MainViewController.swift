@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
-    
     var foods = Food.allFood()
     
     override func viewDidLoad() {
@@ -24,6 +23,11 @@ class MainViewController: UIViewController {
         
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
+        
+        // Set the PinterestLayout delegate
+        if let layout = mainCollectionView?.collectionViewLayout as? Layout {
+            layout.delegate = self
+        }
         
     }
     
@@ -42,6 +46,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFoodCell", for: indexPath as IndexPath) as! MainFoodCell
         
         cell.food = foods[indexPath.item]
+//        cell.backgroundColor = color[indexPath.item]
         
         return cell
         
@@ -49,15 +54,31 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
 }
 
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
-
-        return CGSize(width: itemSize, height: itemSize)
-
+extension MainViewController: LayoutDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+        
+        return foods[indexPath.item].image.size.height
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, widthForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+        
+        return foods[indexPath.item].image.size.width
+        
     }
 
+    
 }
 
+//extension MainViewController: UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
+//
+//        return CGSize(width: itemSize, height: itemSize)
+//
+//    }
+//
+//}

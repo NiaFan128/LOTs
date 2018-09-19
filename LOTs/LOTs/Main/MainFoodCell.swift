@@ -11,6 +11,7 @@ import UIKit
 class MainFoodCell: UICollectionViewCell {
     
     @IBOutlet fileprivate weak var containerView: UIView!
+    @IBOutlet fileprivate weak var profileImageView: UIImageView!
     @IBOutlet fileprivate weak var imageView: UIImageView!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     
