@@ -14,6 +14,10 @@
 		2B8303722151EEEA006E2522 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B8303702151EEEA006E2522 /* LaunchScreen.storyboard */; };
 		2B83037A2151F298006E2522 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303792151F298006E2522 /* NavigationController.swift */; };
 		2B83037C2152024D006E2522 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83037B2152024D006E2522 /* MainViewController.swift */; };
+		2B83037E21521A74006E2522 /* Food.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B83037D21521A74006E2522 /* Food.xcassets */; };
+		2B83038121521C7A006E2522 /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B83038021521C7A006E2522 /* Food.plist */; };
+		2B83038321521D41006E2522 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83038221521D41006E2522 /* Food.swift */; };
+		2B8303852152295F006E2522 /* MainFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303842152295F006E2522 /* MainFoodCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		2B8303732151EEEA006E2522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B8303792151F298006E2522 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		2B83037B2152024D006E2522 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2B83037D21521A74006E2522 /* Food.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Food.xcassets; sourceTree = "<group>"; };
+		2B83038021521C7A006E2522 /* Food.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
+		2B83038221521D41006E2522 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		2B8303842152295F006E2522 /* MainFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFoodCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,15 +67,27 @@
 			isa = PBXGroup;
 			children = (
 				2B8303672151EEE8006E2522 /* AppDelegate.swift */,
+				2B8303792151F298006E2522 /* NavigationController.swift */,
 				2B8303692151EEE8006E2522 /* ViewController.swift */,
 				2B83036B2151EEE8006E2522 /* Main.storyboard */,
-				2B83037B2152024D006E2522 /* MainViewController.swift */,
-				2B8303792151F298006E2522 /* NavigationController.swift */,
 				2B83036E2151EEEA006E2522 /* Assets.xcassets */,
+				2B83037F21521C51006E2522 /* Main */,
 				2B8303702151EEEA006E2522 /* LaunchScreen.storyboard */,
 				2B8303732151EEEA006E2522 /* Info.plist */,
 			);
 			path = LOTs;
+			sourceTree = "<group>";
+		};
+		2B83037F21521C51006E2522 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2B83038221521D41006E2522 /* Food.swift */,
+				2B8303842152295F006E2522 /* MainFoodCell.swift */,
+				2B83037B2152024D006E2522 /* MainViewController.swift */,
+				2B83038021521C7A006E2522 /* Food.plist */,
+				2B83037D21521A74006E2522 /* Food.xcassets */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,6 +149,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B8303722151EEEA006E2522 /* LaunchScreen.storyboard in Resources */,
+				2B83037E21521A74006E2522 /* Food.xcassets in Resources */,
+				2B83038121521C7A006E2522 /* Food.plist in Resources */,
 				2B83036F2151EEEA006E2522 /* Assets.xcassets in Resources */,
 				2B83036D2151EEE8006E2522 /* Main.storyboard in Resources */,
 			);
@@ -143,7 +165,9 @@
 			files = (
 				2B83036A2151EEE8006E2522 /* ViewController.swift in Sources */,
 				2B83037A2151F298006E2522 /* NavigationController.swift in Sources */,
+				2B83038321521D41006E2522 /* Food.swift in Sources */,
 				2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */,
+				2B8303852152295F006E2522 /* MainFoodCell.swift in Sources */,
 				2B83037C2152024D006E2522 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
