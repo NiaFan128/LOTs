@@ -23,6 +23,8 @@
 		2B83038321521D41006E2522 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83038221521D41006E2522 /* Food.swift */; };
 		2B8303852152295F006E2522 /* MainFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303842152295F006E2522 /* MainFoodCell.swift */; };
 		2B83038721524275006E2522 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83038621524275006E2522 /* Layout.swift */; };
+		2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */; };
+		2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */; };
 		3C0268B29424666F5C99C11F /* libPods-LOTs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BC4DA76762E154A33D235F /* libPods-LOTs.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,8 @@
 		2B83038221521D41006E2522 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		2B8303842152295F006E2522 /* MainFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFoodCell.swift; sourceTree = "<group>"; };
 		2B83038621524275006E2522 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		2DE5A7C64ED39736B7C8ECA7 /* Pods-LOTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOTs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LOTs/Pods-LOTs.debug.xcconfig"; sourceTree = "<group>"; };
 		79BC4DA76762E154A33D235F /* libPods-LOTs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LOTs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -76,6 +80,8 @@
 				2B02B91321534202004FC66E /* PostViewController.swift */,
 				2B02B9162153485B004FC66E /* PostTableViewCell.swift */,
 				2B02B9172153485B004FC66E /* PostTableViewCell.xib */,
+				2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */,
+				2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B8303722151EEEA006E2522 /* LaunchScreen.storyboard in Resources */,
+				2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */,
 				2B83037E21521A74006E2522 /* Food.xcassets in Resources */,
 				2B83038121521C7A006E2522 /* Food.plist in Resources */,
 				2B02B9192153485B004FC66E /* PostTableViewCell.xib in Resources */,
@@ -244,6 +251,7 @@
 				2B02B91421534202004FC66E /* PostViewController.swift in Sources */,
 				2B83036A2151EEE8006E2522 /* ViewController.swift in Sources */,
 				2B83037A2151F298006E2522 /* NavigationController.swift in Sources */,
+				2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */,
 				2B83038321521D41006E2522 /* Food.swift in Sources */,
 				2B02B91121533F46004FC66E /* LOTsColor.swift in Sources */,
 				2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */,

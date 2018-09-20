@@ -62,11 +62,11 @@
                             <constraint firstItem="KC3-RW-EyE" firstAttribute="top" secondItem="Wem-T0-DLQ" secondAttribute="bottom" constant="-45" id="6GP-he-jHL"/>
                             <constraint firstItem="jQd-Sg-nJb" firstAttribute="top" secondItem="Wem-T0-DLQ" secondAttribute="bottom" constant="20" id="AQ4-lB-UVT"/>
                             <constraint firstItem="WZM-Yv-hgc" firstAttribute="trailing" secondItem="jQd-Sg-nJb" secondAttribute="trailing" constant="30" id="Al3-Am-rj4"/>
-                            <constraint firstItem="WZM-Yv-hgc" firstAttribute="bottom" secondItem="jQd-Sg-nJb" secondAttribute="bottom" id="Dq2-Hq-ArV"/>
                             <constraint firstItem="jQd-Sg-nJb" firstAttribute="leading" secondItem="WZM-Yv-hgc" secondAttribute="leading" constant="30" id="Lzz-rS-6ea"/>
                             <constraint firstItem="WZM-Yv-hgc" firstAttribute="trailing" secondItem="Wem-T0-DLQ" secondAttribute="trailing" constant="30" id="dzQ-vc-4fX"/>
                             <constraint firstItem="Wem-T0-DLQ" firstAttribute="leading" secondItem="WZM-Yv-hgc" secondAttribute="leading" constant="30" id="hKl-4p-AWr"/>
                             <constraint firstItem="Wem-T0-DLQ" firstAttribute="top" secondItem="WZM-Yv-hgc" secondAttribute="top" constant="20" id="mGv-i8-J8b"/>
+                            <constraint firstItem="jQd-Sg-nJb" firstAttribute="bottom" secondItem="WZM-Yv-hgc" secondAttribute="bottom" id="p8A-rp-Wsx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WZM-Yv-hgc"/>
                     </view>

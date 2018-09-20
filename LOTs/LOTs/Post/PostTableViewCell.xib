@@ -11,13 +11,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostInfoCell" rowHeight="159" id="KGk-i7-Jjw" customClass="PostTableViewCell" customModule="LOTs" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostInfoCell" rowHeight="200" id="KGk-i7-Jjw" customClass="PostTableViewCell" customModule="LOTs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="144.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="183.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ML5-eq-1l5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="183.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_1" translatesAutoresizingMaskIntoConstraints="NO" id="vYz-eL-7vX">
                         <rect key="frame" x="10" y="15" width="35" height="35"/>
                         <constraints>
@@ -40,13 +44,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="authorLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiT-VF-vwU">
-                        <rect key="frame" x="60" y="22" width="92" height="21"/>
+                        <rect key="frame" x="60" y="22" width="92" height="31.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B48-1k-cgR">
-                        <rect key="frame" x="240" y="17" width="120" height="30"/>
+                        <rect key="frame" x="240" y="17" width="120" height="36.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="TeS-Cd-Ig8"/>
                         </constraints>
@@ -54,34 +58,50 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <pickerView tag="1" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3u-vr-xbe">
-                        <rect key="frame" x="53" y="20" width="118" height="124.5"/>
+                    <pickerView contentMode="scaleToFill" semanticContentAttribute="playback" translatesAutoresizingMaskIntoConstraints="NO" id="e3u-vr-xbe">
+                        <rect key="frame" x="52" y="63.5" width="120" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="120" id="KlE-PN-e7i"/>
+                            <constraint firstAttribute="width" constant="120" id="aAX-2D-FKg"/>
+                        </constraints>
                     </pickerView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="Kmn-dv-fNQ">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="Kmn-dv-fNQ">
                         <rect key="frame" x="200" y="65" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="Q33-H8-JT4"/>
                             <constraint firstAttribute="height" constant="25" id="tcI-vP-pZA"/>
                         </constraints>
                     </imageView>
-                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3K7-kF-Cgc">
-                        <rect key="frame" x="233" y="0.0" width="127" height="162"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <pickerView tag="2" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="3K7-kF-Cgc">
+                        <rect key="frame" x="240" y="63.5" width="120" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="3zv-SN-UV3"/>
+                            <constraint firstAttribute="height" constant="120" id="tyJ-Sb-yhe"/>
+                        </constraints>
                     </pickerView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="4ey-2z-vIb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="3Nf-od-XAp"/>
-                    <constraint firstItem="e3u-vr-xbe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="4cD-v0-Rkb"/>
+                    <constraint firstItem="ML5-eq-1l5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7Mr-Co-dar"/>
+                    <constraint firstItem="e3u-vr-xbe" firstAttribute="top" secondItem="hiT-VF-vwU" secondAttribute="bottom" constant="10" id="9Ax-oY-WCh"/>
                     <constraint firstItem="vYz-eL-7vX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Afm-nO-QBe"/>
+                    <constraint firstItem="3K7-kF-Cgc" firstAttribute="top" secondItem="B48-1k-cgR" secondAttribute="bottom" constant="10" id="Ahx-PB-qy6"/>
+                    <constraint firstAttribute="bottom" secondItem="ML5-eq-1l5" secondAttribute="bottom" id="CUg-4i-zA9"/>
                     <constraint firstItem="4ey-2z-vIb" firstAttribute="top" secondItem="vYz-eL-7vX" secondAttribute="bottom" constant="15" id="CZ7-X8-NVz"/>
                     <constraint firstAttribute="trailing" secondItem="B48-1k-cgR" secondAttribute="trailing" constant="15" id="K5K-Sw-4ff"/>
                     <constraint firstItem="vYz-eL-7vX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="OgG-qI-dbt"/>
+                    <constraint firstItem="3K7-kF-Cgc" firstAttribute="leading" secondItem="Kmn-dv-fNQ" secondAttribute="trailing" constant="15" id="dUA-S0-hGT"/>
+                    <constraint firstAttribute="bottom" secondItem="3K7-kF-Cgc" secondAttribute="bottom" id="dZs-KM-DOZ"/>
                     <constraint firstItem="hiT-VF-vwU" firstAttribute="leading" secondItem="vYz-eL-7vX" secondAttribute="trailing" constant="15" id="mAz-4k-sAg"/>
                     <constraint firstItem="Kmn-dv-fNQ" firstAttribute="top" secondItem="20Z-dC-Ntd" secondAttribute="bottom" constant="20" id="mDV-iQ-SNe"/>
-                    <constraint firstAttribute="bottom" secondItem="e3u-vr-xbe" secondAttribute="bottom" id="nkc-Uh-1Lc"/>
+                    <constraint firstAttribute="trailing" secondItem="3K7-kF-Cgc" secondAttribute="trailing" constant="15" id="nbU-ng-Mfh"/>
                     <constraint firstItem="B48-1k-cgR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="o4T-na-wet"/>
                     <constraint firstItem="20Z-dC-Ntd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="pvn-Go-XzK"/>
+                    <constraint firstAttribute="trailing" secondItem="ML5-eq-1l5" secondAttribute="trailing" id="saY-7C-fWc"/>
                     <constraint firstItem="B48-1k-cgR" firstAttribute="leading" secondItem="20Z-dC-Ntd" secondAttribute="trailing" constant="15" id="u8V-BR-MNz"/>
+                    <constraint firstAttribute="bottom" secondItem="e3u-vr-xbe" secondAttribute="bottom" id="ul4-GR-d3R"/>
+                    <constraint firstItem="ML5-eq-1l5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="x73-4G-iKV"/>
+                    <constraint firstItem="e3u-vr-xbe" firstAttribute="leading" secondItem="4ey-2z-vIb" secondAttribute="trailing" constant="12" id="yA0-eF-9r5"/>
                     <constraint firstItem="hiT-VF-vwU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="yqX-4m-Om4"/>
                 </constraints>
             </tableViewCellContentView>
@@ -90,9 +110,10 @@
                 <outlet property="authorImage" destination="vYz-eL-7vX" id="raE-yT-QaK"/>
                 <outlet property="authorNameLabel" destination="hiT-VF-vwU" id="AGj-sR-wYU"/>
                 <outlet property="cuisinePickerView" destination="3K7-kF-Cgc" id="HbR-D1-287"/>
+                <outlet property="infoView" destination="ML5-eq-1l5" id="HZX-il-qh1"/>
                 <outlet property="locationPickerView" destination="e3u-vr-xbe" id="2SB-Vx-JZx"/>
             </connections>
-            <point key="canvasLocation" x="234.40000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="234.40000000000001" y="151.12443778110946"/>
         </tableViewCell>
     </objects>
     <resources>

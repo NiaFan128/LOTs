@@ -21,10 +21,15 @@ class PostViewController: UIViewController {
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PostInfoCell")
         
+        let nib2 = UINib(nibName: "ContentTableViewCell", bundle: nil)
+        tableView.register(nib2, forCellReuseIdentifier: "ContentCell")
+        
         articleImage.layer.cornerRadius = 8
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.rowHeight = UITableView.automaticDimension
         
     }
 
@@ -34,7 +39,7 @@ extension PostViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 1
+        return 2
 
     }
 
@@ -58,6 +63,16 @@ extension PostViewController: UITableViewDataSource {
 
             return cell
 
+        } else if indexPath.section == 1 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContentCell", for: indexPath) as? ContentTableViewCell else {
+                
+                return UITableViewCell()
+                
+            }
+            
+            return cell
+            
         }
 
         return UITableViewCell()
@@ -68,5 +83,10 @@ extension PostViewController: UITableViewDataSource {
 
 extension PostViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
+        
+    }
 
 }
