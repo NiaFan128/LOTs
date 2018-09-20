@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B02B91121533F46004FC66E /* LOTsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B02B91021533F46004FC66E /* LOTsColor.swift */; };
+		2B02B91421534202004FC66E /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B02B91321534202004FC66E /* PostViewController.swift */; };
+		2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B02B9162153485B004FC66E /* PostTableViewCell.swift */; };
+		2B02B9192153485B004FC66E /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B02B9172153485B004FC66E /* PostTableViewCell.xib */; };
 		2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303672151EEE8006E2522 /* AppDelegate.swift */; };
 		2B83036A2151EEE8006E2522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303692151EEE8006E2522 /* ViewController.swift */; };
 		2B83036D2151EEE8006E2522 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B83036B2151EEE8006E2522 /* Main.storyboard */; };
@@ -22,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B02B91021533F46004FC66E /* LOTsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOTsColor.swift; sourceTree = "<group>"; };
+		2B02B91321534202004FC66E /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		2B02B9162153485B004FC66E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		2B02B9172153485B004FC66E /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		2B8303642151EEE8006E2522 /* LOTs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOTs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303672151EEE8006E2522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B8303692151EEE8006E2522 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +57,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B02B91221533FD0004FC66E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				2B02B91021533F46004FC66E /* LOTsColor.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		2B02B9152153420B004FC66E /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				2B02B91321534202004FC66E /* PostViewController.swift */,
+				2B02B9162153485B004FC66E /* PostTableViewCell.swift */,
+				2B02B9172153485B004FC66E /* PostTableViewCell.xib */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		2B83035B2151EEE8006E2522 = {
 			isa = PBXGroup;
 			children = (
@@ -70,10 +96,12 @@
 			children = (
 				2B8303672151EEE8006E2522 /* AppDelegate.swift */,
 				2B8303792151F298006E2522 /* NavigationController.swift */,
-				2B8303692151EEE8006E2522 /* ViewController.swift */,
 				2B83036B2151EEE8006E2522 /* Main.storyboard */,
-				2B83036E2151EEEA006E2522 /* Assets.xcassets */,
+				2B02B9152153420B004FC66E /* Post */,
 				2B83037F21521C51006E2522 /* Main */,
+				2B02B91221533FD0004FC66E /* Support */,
+				2B8303692151EEE8006E2522 /* ViewController.swift */,
+				2B83036E2151EEEA006E2522 /* Assets.xcassets */,
 				2B8303702151EEEA006E2522 /* LaunchScreen.storyboard */,
 				2B8303732151EEEA006E2522 /* Info.plist */,
 			);
@@ -154,6 +182,7 @@
 				2B8303722151EEEA006E2522 /* LaunchScreen.storyboard in Resources */,
 				2B83037E21521A74006E2522 /* Food.xcassets in Resources */,
 				2B83038121521C7A006E2522 /* Food.plist in Resources */,
+				2B02B9192153485B004FC66E /* PostTableViewCell.xib in Resources */,
 				2B83036F2151EEEA006E2522 /* Assets.xcassets in Resources */,
 				2B83036D2151EEE8006E2522 /* Main.storyboard in Resources */,
 			);
@@ -166,11 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B02B91421534202004FC66E /* PostViewController.swift in Sources */,
 				2B83036A2151EEE8006E2522 /* ViewController.swift in Sources */,
 				2B83037A2151F298006E2522 /* NavigationController.swift in Sources */,
 				2B83038321521D41006E2522 /* Food.swift in Sources */,
+				2B02B91121533F46004FC66E /* LOTsColor.swift in Sources */,
 				2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */,
 				2B83038721524275006E2522 /* Layout.swift in Sources */,
+				2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */,
 				2B8303852152295F006E2522 /* MainFoodCell.swift in Sources */,
 				2B83037C2152024D006E2522 /* MainViewController.swift in Sources */,
 			);
