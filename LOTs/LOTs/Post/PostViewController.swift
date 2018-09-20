@@ -10,12 +10,63 @@ import UIKit
 
 class PostViewController: UIViewController {
 
-    @IBOutlet weak var articleImage: UIImage!
+    @IBOutlet weak var articleImage: UIImageView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "PostInfoCell")
+        
+        articleImage.layer.cornerRadius = 8
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
     }
+
+}
+
+extension PostViewController: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+
+        return 1
+
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return 1
+
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        if indexPath.section == 0 {
+
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostInfoCell", for: indexPath) as? PostTableViewCell else {
+
+                return UITableViewCell()
+
+            }
+
+            cell.authorNameLabel.text = "Nia Fan"
+
+            return cell
+
+        }
+
+        return UITableViewCell()
+
+    }
+    
+}
+
+extension PostViewController: UITableViewDelegate {
+
 
 }
