@@ -10,8 +10,7 @@
 #endif
 #endif
 
-#import "RMPickerViewController.h"
 
-FOUNDATION_EXPORT double RMPickerViewControllerVersionNumber;
-FOUNDATION_EXPORT const unsigned char RMPickerViewControllerVersionString[];
+FOUNDATION_EXPORT double iOSDropDownVersionNumber;
+FOUNDATION_EXPORT const unsigned char iOSDropDownVersionString[];
 

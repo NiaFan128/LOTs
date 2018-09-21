@@ -59,8 +59,6 @@ extension PostViewController: UITableViewDataSource {
 
             }
 
-            cell.authorNameLabel.text = "Nia Fan"
-
             return cell
 
         } else if indexPath.section == 1 {

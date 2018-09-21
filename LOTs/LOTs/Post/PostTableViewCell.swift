@@ -7,36 +7,27 @@
 //
 
 import UIKit
+import iOSDropDown
 
 class PostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var infoView: UIView!
-    @IBOutlet weak var authorNameLabel: UILabel!
-    @IBOutlet weak var authorImage: UIImageView!
-    @IBOutlet weak var locationPickerView: UIPickerView!
-    @IBOutlet weak var cuisinePickerView: UIPickerView!
-    
-    let location = ["信義區", "大安區", "中山區", "松山區", "南港區", "內湖區", "中正區"]
-    let cuisine = ["日式料理", "中式料理", "韓式料理", "美式料理"]
-    
-//    let fullScreenSize = UIScreen.main.bounds
+    @IBOutlet weak var locationTextField: DropDown!
+    @IBOutlet weak var cuisineTextField: DropDown!
     
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
         self.infoBackgroundSet()
+        self.locationPick()
+        self.cuisinePick()
         
-        authorImage.layer.cornerRadius = 17.5
+        locationTextField.target(forAction: #selector(locationTextField.showList), withSender: self)
         
-        locationPickerView.delegate = self
-        locationPickerView.dataSource = self
+//        authorImage.layer.cornerRadius = 17.5
         
-        cuisinePickerView.dataSource = self
-        cuisinePickerView.delegate = self
 
-        print(locationPickerView.bounds)
-        print(locationPickerView.frame)
     }
 
     func infoBackgroundSet() {
@@ -50,90 +41,46 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
+    func locationPick() {
+        
+        locationTextField.selectedRowColor = .white
+
+        locationTextField.optionArray = ["大安區", "信義區", "中山區", "內湖區"]
+        locationTextField.optionIds = [1, 23, 54, 22]
+        
+        locationTextField.didSelect { (selectedText, index, id) in
+            
+            self.locationTextField.text = "\(selectedText)"
+            self.locationTextField.textColor = UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 25.0/255.0, alpha: 1.0)
+            
+            //            "Selected String: \(selectedText) \n index: \(index)"
+            
+        }
+        
+    }
+    
+    func cuisinePick() {
+        
+        cuisineTextField.selectedRowColor = .white
+        
+        cuisineTextField.optionArray = ["中式料理", "日式料理", "韓式料理", "美式料理"]
+        cuisineTextField.optionIds = [1, 23, 54, 22]
+        
+        cuisineTextField.didSelect { (selectedText, index, id) in
+            
+            self.cuisineTextField.text = "\(selectedText)"
+            self.cuisineTextField.textColor = UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 25.0/255.0, alpha: 1.0)
+            
+            //            "Selected String: \(selectedText) \n index: \(index)"
+            
+        }
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         
         super.setSelected(selected, animated: animated)
 
     }
     
-}
-
-extension PostTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
-
-
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-
-        return 1
-
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-
-        if pickerView.tag == 0 {
-
-            return location.count
-
-        } else {
-
-            return cuisine.count
-
-        }
-
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-
-        if pickerView.tag == 0 {
-
-            return location[row]
-
-        } else {
-
-            return cuisine[row]
-
-        }
-
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
-        pickerView.reloadAllComponents()
-
-    }
-
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-
-        let color = (row == pickerView.selectedRow(inComponent: component)) ? UIColor(red: 208.0/255.0, green: 42.0/255.0, blue: 62.0/255.0, alpha: 1.0) : UIColor.lightGray
-        
-        if pickerView.tag == 0 {
-            
-            return NSAttributedString(string: location[row],
-                                      attributes: [NSAttributedString.Key.foregroundColor: color])
-            
-        } else {
-            
-            return NSAttributedString(string: cuisine[row],
-                                      attributes: [NSAttributedString.Key.foregroundColor: color])
-            
-        }
-
-//        return NSAttributedString(string: location[row],
-//                                attributes: [NSAttributedString.Key.foregroundColor: color])
-
-    }
-
-    
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//
-//        let pickerLabel = UILabel()
-//
-//        pickerLabel.text = location[row]
-//        pickerLabel.textAlignment = .center
-//        pickerLabel.font = UIFont(name: "Helvetica Neue", size: 14.0)
-////        pickerLabel.textColor = UIColor(red: 208.0/255.0, green: 42.0/255.0, blue: 62.0/255.0, alpha: 1.0)
-//
-//        return pickerLabel
-//
-//    }
-
 }
