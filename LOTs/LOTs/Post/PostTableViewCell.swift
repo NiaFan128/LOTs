@@ -8,12 +8,16 @@
 
 import UIKit
 import iOSDropDown
+import DatePickerDialog
 
 class PostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var locationTextField: DropDown!
     @IBOutlet weak var cuisineTextField: DropDown!
+    
+
     
     override func awakeFromNib() {
         
@@ -22,14 +26,28 @@ class PostTableViewCell: UITableViewCell {
         self.infoBackgroundSet()
         self.locationPick()
         self.cuisinePick()
+        self.date()
         
         locationTextField.target(forAction: #selector(locationTextField.showList), withSender: self)
         
+        dateTextField.delegate = self
+
 //        authorImage.layer.cornerRadius = 17.5
         
 
     }
 
+    func date() {
+        
+        let now: Date = Date()
+        let dateFormat: DateFormatter = DateFormatter()
+        dateFormat.dateFormat = "yyyy 年 MM 月 dd 日"
+        
+        let dateString: String = dateFormat.string(from: now)
+    
+        dateTextField.text = dateString
+    }
+    
     func infoBackgroundSet() {
     
         infoView.layer.shadowColor = UIColor.black.cgColor
@@ -77,10 +95,53 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
+    func datePickerTapped() {
+        
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        dateComponents.month = -3
+        let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
+        
+        let datePicker = DatePickerDialog(textColor: UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 25.0/255.0, alpha: 1.0),
+                                          buttonColor: .lightGray,
+                                          font: UIFont.boldSystemFont(ofSize: 17),
+                                          showCancelButton: true)
+        
+        datePicker.show("Choose a Date",
+                        doneButtonTitle: "Done",
+                        cancelButtonTitle: "Cancel",
+                        minimumDate: threeMonthAgo,
+                        maximumDate: currentDate,
+                        datePickerMode: .date) { (date) in
+                            if let dt = date {
+                                let formatter = DateFormatter()
+                                formatter.dateFormat = "yyyy 年 MM 月 dd 日"
+                                self.dateTextField.text = formatter.string(from: dt)
+                            }
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         
         super.setSelected(selected, animated: animated)
 
+    }
+    
+}
+
+extension PostTableViewCell: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        if textField == self.dateTextField {
+            
+            datePickerTapped()
+            
+            return false
+        }
+        
+        return true
+    
     }
     
 }

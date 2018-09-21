@@ -1,20 +1,24 @@
 PODS:
+  - DatePickerDialog (2.0)
   - iOSDropDown (0.2.4)
   - SwiftLint (0.27.0)
 
 DEPENDENCIES:
+  - DatePickerDialog
   - iOSDropDown
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - DatePickerDialog
     - iOSDropDown
     - SwiftLint
 
 SPEC CHECKSUMS:
+  DatePickerDialog: 5e1c24d9fe6506cd45dbc573eed7b0a251b1c09d
   iOSDropDown: 6d928eddd336c7bc698ad0ba4b324ce3d2d43c59
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 52bbdfc486d5e5e49c9773ae1015b340fb4c6c41
+PODFILE CHECKSUM: 87a0082315a4545b0024d6d32ab50f30bfdffffa
 
 COCOAPODS: 1.5.3

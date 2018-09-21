@@ -7,5 +7,7 @@ target 'LOTs' do
   
   pod 'SwiftLint'
   pod 'iOSDropDown'
+  pod 'DatePickerDialog'
+
 
 end
