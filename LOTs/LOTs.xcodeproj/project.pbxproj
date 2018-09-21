@@ -25,7 +25,7 @@
 		2B83038721524275006E2522 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83038621524275006E2522 /* Layout.swift */; };
 		2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */; };
 		2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */; };
-		3C0268B29424666F5C99C11F /* libPods-LOTs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BC4DA76762E154A33D235F /* libPods-LOTs.a */; };
+		2CD5213A38080600EEA2E24B /* Pods_LOTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B4ADAFBD9FBB343B63DBD6 /* Pods_LOTs.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 		2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		2DE5A7C64ED39736B7C8ECA7 /* Pods-LOTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOTs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LOTs/Pods-LOTs.debug.xcconfig"; sourceTree = "<group>"; };
-		79BC4DA76762E154A33D235F /* libPods-LOTs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LOTs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46B4ADAFBD9FBB343B63DBD6 /* Pods_LOTs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LOTs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C0268B29424666F5C99C11F /* libPods-LOTs.a in Frameworks */,
+				2CD5213A38080600EEA2E24B /* Pods_LOTs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +137,7 @@
 		59487238377968153652FD2E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				79BC4DA76762E154A33D235F /* libPods-LOTs.a */,
+				46B4ADAFBD9FBB343B63DBD6 /* Pods_LOTs.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,6 +162,7 @@
 				2B8303602151EEE8006E2522 /* Sources */,
 				2B8303612151EEE8006E2522 /* Frameworks */,
 				2B8303622151EEE8006E2522 /* Resources */,
+				B04E04A07F211AA6A6297468 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,6 +224,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B04E04A07F211AA6A6297468 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LOTs/Pods-LOTs-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RMActionController/RMActionController.framework",
+				"${BUILT_PRODUCTS_DIR}/RMPickerViewController/RMPickerViewController.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RMActionController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RMPickerViewController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LOTs/Pods-LOTs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DAE3C0D0C273229A8602D0AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

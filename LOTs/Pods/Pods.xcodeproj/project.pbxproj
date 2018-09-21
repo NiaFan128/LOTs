@@ -7,48 +7,168 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		259A317EB6972E9BEA9563FB02C64876 /* Pods-LOTs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E995F71A523C912EDE667F665A315D4 /* Pods-LOTs-dummy.m */; };
+		07E8EF817F600D92C116E388CD4C08B4 /* NSProcessInfo+RMActionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F36BF821442D98B4243016EB79ED9CA /* NSProcessInfo+RMActionController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		080289CC9D4180C69F3AEAEAC4CEDB91 /* RMImageAction.h in Headers */ = {isa = PBXBuildFile; fileRef = E44B7051A3DC114D73C3727F7E9249AD /* RMImageAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09B9EEECE28A6F0F1850D354186B0F07 /* UIView+RMActionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2375934486E0D640991708BE08FF3552 /* UIView+RMActionController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		130FA7C0879BE8061DCBE3872F78E8CD /* RMGroupedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E88944AC9CEAD2D5D9E18B151126DCF3 /* RMGroupedAction.m */; };
+		18979BD16A8318AFAC952F869940560E /* RMPickerViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 778EAC2DF606C4D52A299289C035383D /* RMPickerViewController-dummy.m */; };
+		18F133FD0DEDA7F7A0C3D690AC7C426E /* RMAction.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4CCF538499E77CF4CE5C00671DEF98 /* RMAction.m */; };
+		33AB0D3C3A1C42747C0D8F58EBEE32F5 /* RMAction+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 15AE6FF99640D695719B56D758316FDD /* RMAction+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		38D8D000B07B06E28876DA34FAA679B3 /* RMPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954D4ECD341450EBB862FAFD18ECA8BA /* RMPickerViewController.m */; };
+		44BC6D0575EF406044F33044640F0732 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4B7E0938AEFE73C214C67AC119C6A8 /* Foundation.framework */; };
+		4E52134554BC1F9F3D6FFA6DC19DC4B1 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A131DA1009AD4EABDC1D7B18FF269E11 /* RMActionController.m */; };
+		56595DFDC704EED295064A3365785C8E /* RMActionController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D5DEB124ADFBE9D606C695F4803C78 /* RMActionController.framework */; };
+		6A87907DEB6AE9EF8DD40454335362BC /* RMGroupedAction.h in Headers */ = {isa = PBXBuildFile; fileRef = E01A001B6FBB2D7C6313980250AA9B01 /* RMGroupedAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D85D1A1CE7BB56B7F6B6AEA20D9DA6D /* NSProcessInfo+RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8078CD4BAD65179B0BC10EB553DDFDE /* NSProcessInfo+RMActionController.m */; };
+		7EA5F50896D4151B3EECD1ABC6CC334F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066159A7840FFC908F15356EF3EEC884 /* CoreGraphics.framework */; };
+		9420F77F78293F91CB9ADC350B2971B3 /* RMActionController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D7BDFEF285CF4A4130070C7CFC853 /* RMActionController-dummy.m */; };
+		9449663B1CAB1995A1394A586E3B8EEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4B7E0938AEFE73C214C67AC119C6A8 /* Foundation.framework */; };
+		94EAA0A54CDF897031A911CAE1419E0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4B7E0938AEFE73C214C67AC119C6A8 /* Foundation.framework */; };
+		9A84394FAE094F43CB43940E514FB254 /* RMImageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F634374CF0EC07E4C0E102A046E4683B /* RMImageAction.m */; };
+		A1A0D9F90F290B64FF9F03D4722382DA /* RMActionControllerTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CD974035269A1DA1515D30C25CACE5C /* RMActionControllerTransition.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		AA14BB6BAB13B15A0D913F5F42B0FD06 /* RMScrollableGroupedAction.h in Headers */ = {isa = PBXBuildFile; fileRef = F2DC952D8A59D8FEFEDC91012866C1F5 /* RMScrollableGroupedAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1E8ECEBDCA199EBF160352C1EBA3264 /* RMPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = CA47CA526A22917B40164A34AD08A08B /* RMPickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BBF70BC5509F2CF1829DC551B62AF630 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5570612E4744517DDAF0AC8798CCD80 /* QuartzCore.framework */; };
+		BF6948ABE8D85242CF9BF47D9C4CFE8F /* RMActionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EC593EE113FED7129284FDE5CE286C9 /* RMActionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C27C22F42B9D7B25A4A493EEDA25DA17 /* RMAction.h in Headers */ = {isa = PBXBuildFile; fileRef = E155733FAF939E78F70F1467C0F104C1 /* RMAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5200DD2ACD1A93CB571E2D09F0B4F3F /* RMActionControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A27393D1016225B7E92075E14FE22F3 /* RMActionControllerTransition.m */; };
+		C8C004992BAB0AF24926A9790D3E7EFA /* RMActionController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E8EA22A003F0158BAA9019EEFB6DBF /* RMActionController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFFC299BD8E294EEEFBBF3F94AF29168 /* Pods-LOTs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D4BABDC86E504415D75DE9BEDBED00B4 /* Pods-LOTs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6DB5858A4F11C6C3358C6202C76B19B /* RMScrollableGroupedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7206862E7235A51A65D24B6506E61E90 /* RMScrollableGroupedAction.m */; };
+		E75F059D3A644FAC72A68C8BF92A49EE /* Pods-LOTs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6433ACBEEF975B0A9968FD8C219D343F /* Pods-LOTs-dummy.m */; };
+		EE8272A980181728342F41210752753D /* RMPickerViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B859E992C172BAFCCC66901990FFA23B /* RMPickerViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB49E82103C01B9C5B3324A219EEC2BE /* RMActionController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D46CF6EA3EBC6AA93E2E630C026B074 /* RMActionController+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		FD00F3F9C5D64BF3E93F859DCDCDEAE2 /* UIView+RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46A04B65920252D5238CB425FCE6850 /* UIView+RMActionController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		835C11C8BF211BA58FF92A7E7308B640 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96106733C4C627C002A8FE237D52D3DE;
+			remoteInfo = RMPickerViewController;
+		};
+		D71ED670D5841274E46DB63082F712A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5499C19FC7642653ECE7ADF47BA27FC2;
+			remoteInfo = RMActionController;
+		};
+		F879417FFD41E40B7A45F8CA2971E4F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5499C19FC7642653ECE7ADF47BA27FC2;
+			remoteInfo = RMActionController;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		0E995F71A523C912EDE667F665A315D4 /* Pods-LOTs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LOTs-dummy.m"; sourceTree = "<group>"; };
-		107E66DF03BD869B00006E50ED8B982B /* Pods-LOTs-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LOTs-resources.sh"; sourceTree = "<group>"; };
-		31CC68047FF4C98C7E0048DCA45F52DF /* Pods-LOTs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LOTs.release.xcconfig"; sourceTree = "<group>"; };
-		74324F667253134525B4D3610BA59E98 /* libPods-LOTs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-LOTs.a"; path = "libPods-LOTs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		066159A7840FFC908F15356EF3EEC884 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		15AE6FF99640D695719B56D758316FDD /* RMAction+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RMAction+Private.h"; path = "RMActionController/Private/RMAction+Private.h"; sourceTree = "<group>"; };
+		1FEFD5C6E23FB9E847CF341472AB139E /* RMActionController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RMActionController.xcconfig; sourceTree = "<group>"; };
+		2375934486E0D640991708BE08FF3552 /* UIView+RMActionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+RMActionController.h"; path = "RMActionController/Categories/UIView+RMActionController.h"; sourceTree = "<group>"; };
+		254A9B0DE50D1342B47586F35814C353 /* RMPickerViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RMPickerViewController-prefix.pch"; sourceTree = "<group>"; };
+		312F6E45637F210CA85C6F11C2AADDD9 /* RMActionController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RMActionController.modulemap; sourceTree = "<group>"; };
+		3A27393D1016225B7E92075E14FE22F3 /* RMActionControllerTransition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMActionControllerTransition.m; path = RMActionController/Animations/RMActionControllerTransition.m; sourceTree = "<group>"; };
+		4BDE87B6F1E9257507881DF97B8123F5 /* RMActionController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RMActionController.framework; path = RMActionController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD974035269A1DA1515D30C25CACE5C /* RMActionControllerTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMActionControllerTransition.h; path = RMActionController/Animations/RMActionControllerTransition.h; sourceTree = "<group>"; };
+		526174807322E396CFFB89C8017CE13A /* Pods-LOTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LOTs.debug.xcconfig"; sourceTree = "<group>"; };
+		5B7BB70B87611E4F8270BD1D7924AFF2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633C7953A76F1D4C35F915588E184796 /* Pods-LOTs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LOTs.release.xcconfig"; sourceTree = "<group>"; };
+		6433ACBEEF975B0A9968FD8C219D343F /* Pods-LOTs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LOTs-dummy.m"; sourceTree = "<group>"; };
+		66E8EA22A003F0158BAA9019EEFB6DBF /* RMActionController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RMActionController-umbrella.h"; sourceTree = "<group>"; };
+		6A4B7E0938AEFE73C214C67AC119C6A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7206862E7235A51A65D24B6506E61E90 /* RMScrollableGroupedAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMScrollableGroupedAction.m; path = "RMActionController/Grouping Actions/RMScrollableGroupedAction.m"; sourceTree = "<group>"; };
+		760F6F7E6CD991F19D819FA9604359AF /* Pods-LOTs.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LOTs.modulemap"; sourceTree = "<group>"; };
+		778EAC2DF606C4D52A299289C035383D /* RMPickerViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RMPickerViewController-dummy.m"; sourceTree = "<group>"; };
+		7EC593EE113FED7129284FDE5CE286C9 /* RMActionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMActionController.h; path = RMActionController/RMActionController.h; sourceTree = "<group>"; };
+		7F36BF821442D98B4243016EB79ED9CA /* NSProcessInfo+RMActionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSProcessInfo+RMActionController.h"; path = "RMActionController/Categories/NSProcessInfo+RMActionController.h"; sourceTree = "<group>"; };
+		85D5DEB124ADFBE9D606C695F4803C78 /* RMActionController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RMActionController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		888B35C2DEF8C934CA08B592412DBF94 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91CC77AA43C2EA344B8F0C2BF552D82F /* RMActionController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RMActionController-prefix.pch"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0109CBDFEA4E6095E946B70037C237A /* Pods-LOTs-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LOTs-frameworks.sh"; sourceTree = "<group>"; };
-		ABE807F2E8F54222E99AE255A81DAC0F /* Pods-LOTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LOTs.debug.xcconfig"; sourceTree = "<group>"; };
-		D21D3FA88D75F7B2F9C5BE34787EFE33 /* Pods-LOTs-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LOTs-acknowledgements.plist"; sourceTree = "<group>"; };
-		FC3567C39001E39247D8978157C3E72C /* Pods-LOTs-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LOTs-acknowledgements.markdown"; sourceTree = "<group>"; };
+		954D4ECD341450EBB862FAFD18ECA8BA /* RMPickerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMPickerViewController.m; path = RMPickerViewController/RMPickerViewController.m; sourceTree = "<group>"; };
+		9D46CF6EA3EBC6AA93E2E630C026B074 /* RMActionController+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RMActionController+Private.h"; path = "RMActionController/Private/RMActionController+Private.h"; sourceTree = "<group>"; };
+		A131DA1009AD4EABDC1D7B18FF269E11 /* RMActionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMActionController.m; path = RMActionController/RMActionController.m; sourceTree = "<group>"; };
+		A2020184CD8CBB130661797DB6614C86 /* Pods-LOTs-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LOTs-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B5BAE339F37E047B191184CDBCC032A7 /* RMPickerViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RMPickerViewController.framework; path = RMPickerViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6230CA884F8BAA2D42EEA9428C2D15F /* Pods-LOTs-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LOTs-resources.sh"; sourceTree = "<group>"; };
+		B859E992C172BAFCCC66901990FFA23B /* RMPickerViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RMPickerViewController-umbrella.h"; sourceTree = "<group>"; };
+		C5570612E4744517DDAF0AC8798CCD80 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		C8BBD0F83F87CB4C59CA03CF7C6E90E4 /* Pods-LOTs-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LOTs-frameworks.sh"; sourceTree = "<group>"; };
+		CA47CA526A22917B40164A34AD08A08B /* RMPickerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMPickerViewController.h; path = RMPickerViewController/RMPickerViewController.h; sourceTree = "<group>"; };
+		D4B87993BD38691B5E0BCFEC077A7CF1 /* Pods_LOTs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LOTs.framework; path = "Pods-LOTs.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4BABDC86E504415D75DE9BEDBED00B4 /* Pods-LOTs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LOTs-umbrella.h"; sourceTree = "<group>"; };
+		D8078CD4BAD65179B0BC10EB553DDFDE /* NSProcessInfo+RMActionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSProcessInfo+RMActionController.m"; path = "RMActionController/Categories/NSProcessInfo+RMActionController.m"; sourceTree = "<group>"; };
+		DCF4C569FA8853170E7A5C799D18BE75 /* RMPickerViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RMPickerViewController.xcconfig; sourceTree = "<group>"; };
+		DD4CCF538499E77CF4CE5C00671DEF98 /* RMAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMAction.m; path = RMActionController/Actions/RMAction.m; sourceTree = "<group>"; };
+		DDC5CAE6B5403FA65CB56304ED7B57CC /* Pods-LOTs-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LOTs-acknowledgements.plist"; sourceTree = "<group>"; };
+		E01A001B6FBB2D7C6313980250AA9B01 /* RMGroupedAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMGroupedAction.h; path = "RMActionController/Grouping Actions/RMGroupedAction.h"; sourceTree = "<group>"; };
+		E155733FAF939E78F70F1467C0F104C1 /* RMAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMAction.h; path = RMActionController/Actions/RMAction.h; sourceTree = "<group>"; };
+		E44B7051A3DC114D73C3727F7E9249AD /* RMImageAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMImageAction.h; path = RMActionController/Actions/RMImageAction.h; sourceTree = "<group>"; };
+		E46A04B65920252D5238CB425FCE6850 /* UIView+RMActionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+RMActionController.m"; path = "RMActionController/Categories/UIView+RMActionController.m"; sourceTree = "<group>"; };
+		E88944AC9CEAD2D5D9E18B151126DCF3 /* RMGroupedAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMGroupedAction.m; path = "RMActionController/Grouping Actions/RMGroupedAction.m"; sourceTree = "<group>"; };
+		F2DC952D8A59D8FEFEDC91012866C1F5 /* RMScrollableGroupedAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RMScrollableGroupedAction.h; path = "RMActionController/Grouping Actions/RMScrollableGroupedAction.h"; sourceTree = "<group>"; };
+		F53D7BDFEF285CF4A4130070C7CFC853 /* RMActionController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RMActionController-dummy.m"; sourceTree = "<group>"; };
+		F634374CF0EC07E4C0E102A046E4683B /* RMImageAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RMImageAction.m; path = RMActionController/Actions/RMImageAction.m; sourceTree = "<group>"; };
+		FCFC81F58D21AF7ADFEDE461794513C1 /* RMPickerViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RMPickerViewController.modulemap; sourceTree = "<group>"; };
+		FED1596A197A7B94496EB413F735A40D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		DE62667D4FAD1A2E65D598ECF242E9A6 /* Frameworks */ = {
+		74AE3697BFE88897FB9BC355E1E63FBC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA5F50896D4151B3EECD1ABC6CC334F /* CoreGraphics.framework in Frameworks */,
+				9449663B1CAB1995A1394A586E3B8EEB /* Foundation.framework in Frameworks */,
+				BBF70BC5509F2CF1829DC551B62AF630 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A562D38DA25876BE6611B7FD729C127A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44BC6D0575EF406044F33044640F0732 /* Foundation.framework in Frameworks */,
+				56595DFDC704EED295064A3365785C8E /* RMActionController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B274F448E0B7A4502B0FD17D447205A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94EAA0A54CDF897031A911CAE1419E0D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
+		17E606E96DA642A8D157BA6E0EC2B8BE /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		136ECB7A0590E4DC8AFE1E6B5CBF9FDE /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				AF75B052CEA91E992CAA927238ABE54A /* Pods-LOTs */,
+				96C12762A2EC74072F1C3800BEF9419B /* Pods-LOTs */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		32A23E08346748F1793F899C5FF672C1 /* SwiftLint */ = {
+		18C06374E559AF8EEB8E77CD6DEABE18 /* RMPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CA47CA526A22917B40164A34AD08A08B /* RMPickerViewController.h */,
+				954D4ECD341450EBB862FAFD18ECA8BA /* RMPickerViewController.m */,
+				B27EE3088269E6D22A647B2982DE0FEF /* Support Files */,
+			);
+			name = RMPickerViewController;
+			path = RMPickerViewController;
+			sourceTree = "<group>";
+		};
+		1D8A210E38829706E107F4A8FC8B83BC /* SwiftLint */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -56,66 +176,223 @@
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
-		7DB346D0F39D3F0E887471402A8071AB = {
+		20B9C1A09D31FB727F31527265CE16A2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
-				9758CC519AE2C57A9659FFC01AAD26F9 /* Pods */,
-				BEA405FD44900EBC3BF06E0EBB0847FA /* Products */,
-				136ECB7A0590E4DC8AFE1E6B5CBF9FDE /* Targets Support Files */,
+				5B7BB70B87611E4F8270BD1D7924AFF2 /* Info.plist */,
+				312F6E45637F210CA85C6F11C2AADDD9 /* RMActionController.modulemap */,
+				1FEFD5C6E23FB9E847CF341472AB139E /* RMActionController.xcconfig */,
+				F53D7BDFEF285CF4A4130070C7CFC853 /* RMActionController-dummy.m */,
+				91CC77AA43C2EA344B8F0C2BF552D82F /* RMActionController-prefix.pch */,
+				66E8EA22A003F0158BAA9019EEFB6DBF /* RMActionController-umbrella.h */,
 			);
+			name = "Support Files";
+			path = "../Target Support Files/RMActionController";
 			sourceTree = "<group>";
 		};
-		9758CC519AE2C57A9659FFC01AAD26F9 /* Pods */ = {
+		4440C990B725BDB664BB8F07A40453FB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				32A23E08346748F1793F899C5FF672C1 /* SwiftLint */,
+				AACCF37EB33B226C50C732F80098852E /* RMActionController */,
+				18C06374E559AF8EEB8E77CD6DEABE18 /* RMPickerViewController */,
+				1D8A210E38829706E107F4A8FC8B83BC /* SwiftLint */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		AF75B052CEA91E992CAA927238ABE54A /* Pods-LOTs */ = {
+		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				FC3567C39001E39247D8978157C3E72C /* Pods-LOTs-acknowledgements.markdown */,
-				D21D3FA88D75F7B2F9C5BE34787EFE33 /* Pods-LOTs-acknowledgements.plist */,
-				0E995F71A523C912EDE667F665A315D4 /* Pods-LOTs-dummy.m */,
-				A0109CBDFEA4E6095E946B70037C237A /* Pods-LOTs-frameworks.sh */,
-				107E66DF03BD869B00006E50ED8B982B /* Pods-LOTs-resources.sh */,
-				ABE807F2E8F54222E99AE255A81DAC0F /* Pods-LOTs.debug.xcconfig */,
-				31CC68047FF4C98C7E0048DCA45F52DF /* Pods-LOTs.release.xcconfig */,
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				9049F92777A97F5DFBC82A4B8D5F1271 /* Frameworks */,
+				4440C990B725BDB664BB8F07A40453FB /* Pods */,
+				93B203D35D6E398D5C1F7899F68A4BEE /* Products */,
+				17E606E96DA642A8D157BA6E0EC2B8BE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		825BD67C1B417B254257ED02A9DC2FC0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				066159A7840FFC908F15356EF3EEC884 /* CoreGraphics.framework */,
+				6A4B7E0938AEFE73C214C67AC119C6A8 /* Foundation.framework */,
+				C5570612E4744517DDAF0AC8798CCD80 /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		9049F92777A97F5DFBC82A4B8D5F1271 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85D5DEB124ADFBE9D606C695F4803C78 /* RMActionController.framework */,
+				825BD67C1B417B254257ED02A9DC2FC0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93B203D35D6E398D5C1F7899F68A4BEE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4B87993BD38691B5E0BCFEC077A7CF1 /* Pods_LOTs.framework */,
+				4BDE87B6F1E9257507881DF97B8123F5 /* RMActionController.framework */,
+				B5BAE339F37E047B191184CDBCC032A7 /* RMPickerViewController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96C12762A2EC74072F1C3800BEF9419B /* Pods-LOTs */ = {
+			isa = PBXGroup;
+			children = (
+				FED1596A197A7B94496EB413F735A40D /* Info.plist */,
+				760F6F7E6CD991F19D819FA9604359AF /* Pods-LOTs.modulemap */,
+				A2020184CD8CBB130661797DB6614C86 /* Pods-LOTs-acknowledgements.markdown */,
+				DDC5CAE6B5403FA65CB56304ED7B57CC /* Pods-LOTs-acknowledgements.plist */,
+				6433ACBEEF975B0A9968FD8C219D343F /* Pods-LOTs-dummy.m */,
+				C8BBD0F83F87CB4C59CA03CF7C6E90E4 /* Pods-LOTs-frameworks.sh */,
+				B6230CA884F8BAA2D42EEA9428C2D15F /* Pods-LOTs-resources.sh */,
+				D4BABDC86E504415D75DE9BEDBED00B4 /* Pods-LOTs-umbrella.h */,
+				526174807322E396CFFB89C8017CE13A /* Pods-LOTs.debug.xcconfig */,
+				633C7953A76F1D4C35F915588E184796 /* Pods-LOTs.release.xcconfig */,
 			);
 			name = "Pods-LOTs";
 			path = "Target Support Files/Pods-LOTs";
 			sourceTree = "<group>";
 		};
-		BEA405FD44900EBC3BF06E0EBB0847FA /* Products */ = {
+		AACCF37EB33B226C50C732F80098852E /* RMActionController */ = {
 			isa = PBXGroup;
 			children = (
-				74324F667253134525B4D3610BA59E98 /* libPods-LOTs.a */,
+				7F36BF821442D98B4243016EB79ED9CA /* NSProcessInfo+RMActionController.h */,
+				D8078CD4BAD65179B0BC10EB553DDFDE /* NSProcessInfo+RMActionController.m */,
+				E155733FAF939E78F70F1467C0F104C1 /* RMAction.h */,
+				DD4CCF538499E77CF4CE5C00671DEF98 /* RMAction.m */,
+				15AE6FF99640D695719B56D758316FDD /* RMAction+Private.h */,
+				7EC593EE113FED7129284FDE5CE286C9 /* RMActionController.h */,
+				A131DA1009AD4EABDC1D7B18FF269E11 /* RMActionController.m */,
+				9D46CF6EA3EBC6AA93E2E630C026B074 /* RMActionController+Private.h */,
+				4CD974035269A1DA1515D30C25CACE5C /* RMActionControllerTransition.h */,
+				3A27393D1016225B7E92075E14FE22F3 /* RMActionControllerTransition.m */,
+				E01A001B6FBB2D7C6313980250AA9B01 /* RMGroupedAction.h */,
+				E88944AC9CEAD2D5D9E18B151126DCF3 /* RMGroupedAction.m */,
+				E44B7051A3DC114D73C3727F7E9249AD /* RMImageAction.h */,
+				F634374CF0EC07E4C0E102A046E4683B /* RMImageAction.m */,
+				F2DC952D8A59D8FEFEDC91012866C1F5 /* RMScrollableGroupedAction.h */,
+				7206862E7235A51A65D24B6506E61E90 /* RMScrollableGroupedAction.m */,
+				2375934486E0D640991708BE08FF3552 /* UIView+RMActionController.h */,
+				E46A04B65920252D5238CB425FCE6850 /* UIView+RMActionController.m */,
+				20B9C1A09D31FB727F31527265CE16A2 /* Support Files */,
 			);
-			name = Products;
+			name = RMActionController;
+			path = RMActionController;
+			sourceTree = "<group>";
+		};
+		B27EE3088269E6D22A647B2982DE0FEF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				888B35C2DEF8C934CA08B592412DBF94 /* Info.plist */,
+				FCFC81F58D21AF7ADFEDE461794513C1 /* RMPickerViewController.modulemap */,
+				DCF4C569FA8853170E7A5C799D18BE75 /* RMPickerViewController.xcconfig */,
+				778EAC2DF606C4D52A299289C035383D /* RMPickerViewController-dummy.m */,
+				254A9B0DE50D1342B47586F35814C353 /* RMPickerViewController-prefix.pch */,
+				B859E992C172BAFCCC66901990FFA23B /* RMPickerViewController-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RMPickerViewController";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		11B632690A34A6C34ABC3048BEDF4047 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07E8EF817F600D92C116E388CD4C08B4 /* NSProcessInfo+RMActionController.h in Headers */,
+				33AB0D3C3A1C42747C0D8F58EBEE32F5 /* RMAction+Private.h in Headers */,
+				C27C22F42B9D7B25A4A493EEDA25DA17 /* RMAction.h in Headers */,
+				FB49E82103C01B9C5B3324A219EEC2BE /* RMActionController+Private.h in Headers */,
+				C8C004992BAB0AF24926A9790D3E7EFA /* RMActionController-umbrella.h in Headers */,
+				BF6948ABE8D85242CF9BF47D9C4CFE8F /* RMActionController.h in Headers */,
+				A1A0D9F90F290B64FF9F03D4722382DA /* RMActionControllerTransition.h in Headers */,
+				6A87907DEB6AE9EF8DD40454335362BC /* RMGroupedAction.h in Headers */,
+				080289CC9D4180C69F3AEAEAC4CEDB91 /* RMImageAction.h in Headers */,
+				AA14BB6BAB13B15A0D913F5F42B0FD06 /* RMScrollableGroupedAction.h in Headers */,
+				09B9EEECE28A6F0F1850D354186B0F07 /* UIView+RMActionController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47C34F0A32EE8D575888B32360D4354D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFFC299BD8E294EEEFBBF3F94AF29168 /* Pods-LOTs-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CABF1DADB5B11A5E038C0A1C46E52352 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE8272A980181728342F41210752753D /* RMPickerViewController-umbrella.h in Headers */,
+				B1E8ECEBDCA199EBF160352C1EBA3264 /* RMPickerViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		D88808FD3FDB965C4259D3D5188447BF /* Pods-LOTs */ = {
+		5499C19FC7642653ECE7ADF47BA27FC2 /* RMActionController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00160E7895211D85FAEBB902E7E623EA /* Build configuration list for PBXNativeTarget "Pods-LOTs" */;
+			buildConfigurationList = D5527A1DF0C9240525C744CB35B1558E /* Build configuration list for PBXNativeTarget "RMActionController" */;
 			buildPhases = (
-				21A6B75B888AF5F971E15294A1784776 /* Sources */,
-				DE62667D4FAD1A2E65D598ECF242E9A6 /* Frameworks */,
+				ED53FE70A3E95735FC926F1640F03E0F /* Sources */,
+				74AE3697BFE88897FB9BC355E1E63FBC /* Frameworks */,
+				11B632690A34A6C34ABC3048BEDF4047 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = RMActionController;
+			productName = RMActionController;
+			productReference = 4BDE87B6F1E9257507881DF97B8123F5 /* RMActionController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		96106733C4C627C002A8FE237D52D3DE /* RMPickerViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A01058865428422AB92D22A53F128CE /* Build configuration list for PBXNativeTarget "RMPickerViewController" */;
+			buildPhases = (
+				71E005E5273D1A174C28A368A4B697AB /* Sources */,
+				A562D38DA25876BE6611B7FD729C127A /* Frameworks */,
+				CABF1DADB5B11A5E038C0A1C46E52352 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB2F08F014E926BE01678ACC50B3E50E /* PBXTargetDependency */,
+			);
+			name = RMPickerViewController;
+			productName = RMPickerViewController;
+			productReference = B5BAE339F37E047B191184CDBCC032A7 /* RMPickerViewController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FB728A3E621345FE65579802D00A28F3 /* Pods-LOTs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72A956096DDB3F1E14B5BF192349BADA /* Build configuration list for PBXNativeTarget "Pods-LOTs" */;
+			buildPhases = (
+				4F5968FEC1D5B117CC7C0A4113AA07D8 /* Sources */,
+				B274F448E0B7A4502B0FD17D447205A0 /* Frameworks */,
+				47C34F0A32EE8D575888B32360D4354D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBF991A2F44FB44AC32EF65AC149C94A /* PBXTargetDependency */,
+				203952588AD323C057797541C350897C /* PBXTargetDependency */,
+			);
 			name = "Pods-LOTs";
 			productName = "Pods-LOTs";
-			productReference = 74324F667253134525B4D3610BA59E98 /* libPods-LOTs.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = D4B87993BD38691B5E0BCFEC077A7CF1 /* Pods_LOTs.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -134,25 +411,73 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = BEA405FD44900EBC3BF06E0EBB0847FA /* Products */;
+			productRefGroup = 93B203D35D6E398D5C1F7899F68A4BEE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D88808FD3FDB965C4259D3D5188447BF /* Pods-LOTs */,
+				FB728A3E621345FE65579802D00A28F3 /* Pods-LOTs */,
+				5499C19FC7642653ECE7ADF47BA27FC2 /* RMActionController */,
+				96106733C4C627C002A8FE237D52D3DE /* RMPickerViewController */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		21A6B75B888AF5F971E15294A1784776 /* Sources */ = {
+		4F5968FEC1D5B117CC7C0A4113AA07D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				259A317EB6972E9BEA9563FB02C64876 /* Pods-LOTs-dummy.m in Sources */,
+				E75F059D3A644FAC72A68C8BF92A49EE /* Pods-LOTs-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		71E005E5273D1A174C28A368A4B697AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18979BD16A8318AFAC952F869940560E /* RMPickerViewController-dummy.m in Sources */,
+				38D8D000B07B06E28876DA34FAA679B3 /* RMPickerViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED53FE70A3E95735FC926F1640F03E0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D85D1A1CE7BB56B7F6B6AEA20D9DA6D /* NSProcessInfo+RMActionController.m in Sources */,
+				18F133FD0DEDA7F7A0C3D690AC7C426E /* RMAction.m in Sources */,
+				9420F77F78293F91CB9ADC350B2971B3 /* RMActionController-dummy.m in Sources */,
+				4E52134554BC1F9F3D6FFA6DC19DC4B1 /* RMActionController.m in Sources */,
+				C5200DD2ACD1A93CB571E2D09F0B4F3F /* RMActionControllerTransition.m in Sources */,
+				130FA7C0879BE8061DCBE3872F78E8CD /* RMGroupedAction.m in Sources */,
+				9A84394FAE094F43CB43940E514FB254 /* RMImageAction.m in Sources */,
+				E6DB5858A4F11C6C3358C6202C76B19B /* RMScrollableGroupedAction.m in Sources */,
+				FD00F3F9C5D64BF3E93F859DCDCDEAE2 /* UIView+RMActionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		203952588AD323C057797541C350897C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RMPickerViewController;
+			target = 96106733C4C627C002A8FE237D52D3DE /* RMPickerViewController */;
+			targetProxy = 835C11C8BF211BA58FF92A7E7308B640 /* PBXContainerItemProxy */;
+		};
+		CBF991A2F44FB44AC32EF65AC149C94A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RMActionController;
+			target = 5499C19FC7642653ECE7ADF47BA27FC2 /* RMActionController */;
+			targetProxy = D71ED670D5841274E46DB63082F712A6 /* PBXContainerItemProxy */;
+		};
+		FB2F08F014E926BE01678ACC50B3E50E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RMActionController;
+			target = 5499C19FC7642653ECE7ADF47BA27FC2 /* RMActionController */;
+			targetProxy = F879417FFD41E40B7A45F8CA2971E4F1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		08638A96A528B1EC32DE62F8A728389D /* Release */ = {
@@ -213,28 +538,76 @@
 			};
 			name = Release;
 		};
-		70D666C194F565F9ECBFE785D3647AAD /* Release */ = {
+		56C147CD3B0BDCBBC22F154AD7FD74BD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31CC68047FF4C98C7E0048DCA45F52DF /* Pods-LOTs.release.xcconfig */;
+			baseConfigurationReference = DCF4C569FA8853170E7A5C799D18BE75 /* RMPickerViewController.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RMPickerViewController/RMPickerViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RMPickerViewController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RMPickerViewController/RMPickerViewController.modulemap";
+				PRODUCT_MODULE_NAME = RMPickerViewController;
+				PRODUCT_NAME = RMPickerViewController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		8BED3C61C44BE80FB84B08E2B20761F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FEFD5C6E23FB9E847CF341472AB139E /* RMActionController.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RMActionController/RMActionController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RMActionController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RMActionController/RMActionController.modulemap";
+				PRODUCT_MODULE_NAME = RMActionController;
+				PRODUCT_NAME = RMActionController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		9DAE5233986C01ADB6E67169C53A3FD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -299,36 +672,162 @@
 			};
 			name = Debug;
 		};
-		B58C03754948407454AFADECA13C6FD7 /* Debug */ = {
+		A86054208346FE8324E86E8A453B097C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABE807F2E8F54222E99AE255A81DAC0F /* Pods-LOTs.debug.xcconfig */;
+			baseConfigurationReference = 633C7953A76F1D4C35F915588E184796 /* Pods-LOTs.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-LOTs/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LOTs/Pods-LOTs.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B18D38A6912E7DBE113B05CDAFB4D254 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCF4C569FA8853170E7A5C799D18BE75 /* RMPickerViewController.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RMPickerViewController/RMPickerViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RMPickerViewController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RMPickerViewController/RMPickerViewController.modulemap";
+				PRODUCT_MODULE_NAME = RMPickerViewController;
+				PRODUCT_NAME = RMPickerViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		D1E863A3AB4B4FC6D8C5D3C41ADFA26D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 526174807322E396CFFB89C8017CE13A /* Pods-LOTs.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-LOTs/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LOTs/Pods-LOTs.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E421FBFD5E26588D53EEABBDFA0E871E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FEFD5C6E23FB9E847CF341472AB139E /* RMActionController.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RMActionController/RMActionController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RMActionController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RMActionController/RMActionController.modulemap";
+				PRODUCT_MODULE_NAME = RMActionController;
+				PRODUCT_NAME = RMActionController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00160E7895211D85FAEBB902E7E623EA /* Build configuration list for PBXNativeTarget "Pods-LOTs" */ = {
+		2A01058865428422AB92D22A53F128CE /* Build configuration list for PBXNativeTarget "RMPickerViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B58C03754948407454AFADECA13C6FD7 /* Debug */,
-				70D666C194F565F9ECBFE785D3647AAD /* Release */,
+				B18D38A6912E7DBE113B05CDAFB4D254 /* Debug */,
+				56C147CD3B0BDCBBC22F154AD7FD74BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -338,6 +837,24 @@
 			buildConfigurations = (
 				9DAE5233986C01ADB6E67169C53A3FD2 /* Debug */,
 				08638A96A528B1EC32DE62F8A728389D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72A956096DDB3F1E14B5BF192349BADA /* Build configuration list for PBXNativeTarget "Pods-LOTs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1E863A3AB4B4FC6D8C5D3C41ADFA26D /* Debug */,
+				A86054208346FE8324E86E8A453B097C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5527A1DF0C9240525C744CB35B1558E /* Build configuration list for PBXNativeTarget "RMActionController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BED3C61C44BE80FB84B08E2B20761F7 /* Debug */,
+				E421FBFD5E26588D53EEABBDFA0E871E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

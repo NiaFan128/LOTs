@@ -19,6 +19,8 @@ class PostTableViewCell: UITableViewCell {
     let location = ["信義區", "大安區", "中山區", "松山區", "南港區", "內湖區", "中正區"]
     let cuisine = ["日式料理", "中式料理", "韓式料理", "美式料理"]
     
+//    let fullScreenSize = UIScreen.main.bounds
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -33,6 +35,8 @@ class PostTableViewCell: UITableViewCell {
         cuisinePickerView.dataSource = self
         cuisinePickerView.delegate = self
 
+        print(locationPickerView.bounds)
+        print(locationPickerView.frame)
     }
 
     func infoBackgroundSet() {

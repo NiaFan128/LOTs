@@ -6,5 +6,6 @@ target 'LOTs' do
   use_frameworks!
   
   pod 'SwiftLint'
+  pod "RMPickerViewController", "~> 2.3.1"
 
 end

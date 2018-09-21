@@ -11,22 +11,25 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContentCell" rowHeight="200" id="KGk-i7-Jjw" customClass="ContentTableViewCell" customModule="LOTs" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="202"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContentCell" id="KGk-i7-Jjw" customClass="ContentTableViewCell" customModule="LOTs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="201.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="239.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZ0-v3-GjG">
-                        <rect key="frame" x="0.0" y="10" width="320" height="191.5"/>
+                        <rect key="frame" x="0.0" y="10" width="320" height="212"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="212" id="Yok-eH-Njn"/>
+                        </constraints>
                     </view>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What do you think about this meal ?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ClF-Cf-rUg">
-                        <rect key="frame" x="25" y="20" width="270" height="181.5"/>
+                        <rect key="frame" x="25" y="20" width="270" height="200"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="181.5" id="Ct9-Ak-tvS"/>
+                            <constraint firstAttribute="height" constant="200" id="Ct9-Ak-tvS"/>
                         </constraints>
                         <color key="textColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="14"/>
@@ -34,15 +37,14 @@
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="eZ0-v3-GjG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="BV2-yO-CWy"/>
+                    <constraint firstAttribute="trailing" secondItem="eZ0-v3-GjG" secondAttribute="trailing" id="1Mb-hU-lO5"/>
+                    <constraint firstAttribute="bottom" secondItem="eZ0-v3-GjG" secondAttribute="bottom" id="2cu-RF-g19"/>
                     <constraint firstItem="ClF-Cf-rUg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="FZV-Cr-iYe"/>
-                    <constraint firstItem="eZ0-v3-GjG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QL4-OS-h96"/>
-                    <constraint firstItem="eZ0-v3-GjG" firstAttribute="bottom" secondItem="ClF-Cf-rUg" secondAttribute="bottom" id="RFw-6c-0my"/>
-                    <constraint firstAttribute="bottom" secondItem="eZ0-v3-GjG" secondAttribute="bottom" id="TXI-Y0-CMf"/>
+                    <constraint firstItem="eZ0-v3-GjG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="TT9-Yo-6ym"/>
                     <constraint firstItem="ClF-Cf-rUg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="ZDy-pm-9ZI"/>
                     <constraint firstAttribute="trailing" secondItem="ClF-Cf-rUg" secondAttribute="trailing" constant="25" id="mvA-Zk-5jp"/>
+                    <constraint firstItem="eZ0-v3-GjG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pmS-mV-lK3"/>
                     <constraint firstAttribute="bottom" secondItem="ClF-Cf-rUg" secondAttribute="bottom" constant="10" id="sXQ-aa-Fuf"/>
-                    <constraint firstAttribute="trailing" secondItem="eZ0-v3-GjG" secondAttribute="trailing" id="vha-G3-O7M"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -50,7 +52,7 @@
                 <outlet property="backView" destination="eZ0-v3-GjG" id="qRw-Dv-72E"/>
                 <outlet property="contentTextView" destination="ClF-Cf-rUg" id="2ik-RH-eW9"/>
             </connections>
-            <point key="canvasLocation" x="125" y="225"/>
+            <point key="canvasLocation" x="124.8" y="241.97901049475263"/>
         </tableViewCell>
     </objects>
 </document>
