@@ -6,12 +6,14 @@
 //  Copyright © 2018年 Nia. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 class Article {
     
     var articleTitle: String
     var articleImage: String?
+//    var articleImageHeight: CGFloat
     var createdTime: String
     var locationArea: String
     var cuisine: String
@@ -22,6 +24,7 @@ class Article {
         
         self.articleTitle = dictionary["articleTitle"] as? String ?? ""
         self.articleImage = dictionary["articleImage"] as? String ?? ""
+//        self.articleImageHeight = (dictionary["articleImageHeight"] as? CGFloat ?? nil)!
         self.createdTime = dictionary["createdTime"] as? String ?? ""
         self.locationArea = dictionary["locationArea"] as? String ?? ""
         self.cuisine = dictionary["cuisine"] as? String ?? ""

@@ -16,6 +16,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var locationTextField: DropDown!
     @IBOutlet weak var cuisineTextField: DropDown!
+    @IBOutlet weak var instagramSwitchButton: UIButton!
     
     var locationCompletion: ((_ data: String) -> Void)?
     var cuisineCompletion: ((_ data: String) -> Void)?
@@ -24,6 +25,8 @@ class PostTableViewCell: UITableViewCell {
     var selectLocation: String?
     var selectCuisine: String?
     var selectDate: String?
+    
+    var upload = true
     
     override func awakeFromNib() {
         
@@ -75,7 +78,7 @@ class PostTableViewCell: UITableViewCell {
             self.locationCompletion?(selectedText)
             
             self.locationTextField.text = "\(selectedText)"
-            self.locationTextField.textColor = UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 25.0/255.0, alpha: 1.0)
+            self.locationTextField.textColor = UIColor(red: 211.0/255.0, green: 90.0/255.0, blue: 102.0/255.0, alpha: 1.0)
             
         }
         
@@ -93,8 +96,28 @@ class PostTableViewCell: UITableViewCell {
             self.cuisineCompletion?(selectedText)
 
             self.cuisineTextField.text = "\(selectedText)"
-            self.cuisineTextField.textColor = UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 25.0/255.0, alpha: 1.0)
+            self.cuisineTextField.textColor = UIColor(red: 211.0/255.0, green: 90.0/255.0, blue: 102.0/255.0, alpha: 1.0)
                         
+        }
+        
+    }
+    
+    
+    @IBAction func instagramSelect(_ sender: Any) {
+        
+        let switchOn = !upload
+        upload = switchOn
+        
+        if upload {
+
+            instagramSwitchButton.setImage(#imageLiteral(resourceName: "switch_off").withRenderingMode(.alwaysTemplate), for: .normal)
+//            instagramSwitchButton.tintColor = UIColor.lightGray
+            
+        } else {
+
+            instagramSwitchButton.setImage(#imageLiteral(resourceName: "switch_on").withRenderingMode(.alwaysTemplate), for: .normal)
+            instagramSwitchButton.tintColor = UIColor.init(red: 211.0/255.0, green: 90.0/255.0, blue: 102.0/255.0, alpha: 1.0)
+            
         }
         
     }

@@ -84,10 +84,21 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5JZ-UD-hsE"/>
                                 </constraints>
-                                <color key="textColor" red="0.73725490199999999" green="0.0" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.82745098039999998" green="0.35294117650000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2Y-ee-plr">
+                                <rect key="frame" x="297" y="153.5" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="BeU-SC-mOG"/>
+                                    <constraint firstAttribute="width" constant="28" id="Oqv-UI-f6W"/>
+                                </constraints>
+                                <state key="normal" image="switch_off"/>
+                                <connections>
+                                    <action selector="instagramSelect:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9jg-NA-0Wp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -103,6 +114,7 @@
                             <constraint firstItem="Kmn-dv-fNQ" firstAttribute="top" secondItem="4ey-2z-vIb" secondAttribute="bottom" constant="20" id="GgN-UU-GyC"/>
                             <constraint firstItem="Kmn-dv-fNQ" firstAttribute="leading" secondItem="ML5-eq-1l5" secondAttribute="leading" constant="20" id="Iin-iq-Eb8"/>
                             <constraint firstItem="bYr-m1-oy1" firstAttribute="leading" secondItem="4ey-2z-vIb" secondAttribute="trailing" constant="30" id="IrV-db-xRO"/>
+                            <constraint firstItem="s2Y-ee-plr" firstAttribute="centerY" secondItem="wIc-5g-1zm" secondAttribute="centerY" id="JJq-En-M9F"/>
                             <constraint firstItem="2di-fB-A91" firstAttribute="top" secondItem="bYr-m1-oy1" secondAttribute="bottom" constant="15" id="KA0-SI-8gT"/>
                             <constraint firstItem="20Z-dC-Ntd" firstAttribute="leading" secondItem="ML5-eq-1l5" secondAttribute="leading" constant="20" id="KbC-2b-DOY"/>
                             <constraint firstAttribute="trailing" secondItem="B48-1k-cgR" secondAttribute="trailing" constant="50" id="Oh5-IA-DaX"/>
@@ -113,6 +125,7 @@
                             <constraint firstItem="wIc-5g-1zm" firstAttribute="leading" secondItem="lYX-e6-WkA" secondAttribute="trailing" constant="30" id="lxZ-57-BnN"/>
                             <constraint firstItem="20Z-dC-Ntd" firstAttribute="top" secondItem="ML5-eq-1l5" secondAttribute="top" constant="20" id="nKC-UM-bkn"/>
                             <constraint firstItem="2di-fB-A91" firstAttribute="leading" secondItem="Kmn-dv-fNQ" secondAttribute="trailing" constant="30" id="t8j-Kt-9FQ"/>
+                            <constraint firstAttribute="trailing" secondItem="s2Y-ee-plr" secondAttribute="trailing" constant="50" id="yVW-Hq-EgC"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -128,6 +141,7 @@
                 <outlet property="cuisineTextField" destination="2di-fB-A91" id="ZST-vH-6Ti"/>
                 <outlet property="dateTextField" destination="B48-1k-cgR" id="vlX-40-9AD"/>
                 <outlet property="infoView" destination="ML5-eq-1l5" id="HZX-il-qh1"/>
+                <outlet property="instagramSwitchButton" destination="s2Y-ee-plr" id="kMt-G6-a7G"/>
                 <outlet property="locationTextField" destination="iL2-Qj-bpt" id="m8Y-Ps-Fgf"/>
             </connections>
             <point key="canvasLocation" x="234.40000000000001" y="160.11994002998503"/>
@@ -138,5 +152,6 @@
         <image name="instagram" width="21" height="21"/>
         <image name="maps" width="21" height="21"/>
         <image name="restaurant" width="21" height="21"/>
+        <image name="switch_off" width="64" height="64"/>
     </resources>
 </document>

@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
     var articles = [Article]()
+    var height: CGFloat?
+    var width: CGFloat?
     
     override func viewDidLoad() {
         
@@ -77,6 +79,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let article = articles[indexPath.row]
         
         cell.titleLabel?.text = article.articleTitle
+        
         // Will change the profile image after login
         cell.profileImageView.image = UIImage(named: "profile_1")
         
@@ -96,8 +99,15 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
                 DispatchQueue.main.async {
                     
-                    cell.imageView?.image = UIImage(data: data!)
-
+                    guard let image: UIImage = UIImage(data: data!) else {
+                        return
+                    }
+                    
+//                    self.height = image.size.height
+//                    self.width = image.size.width
+                    
+                    cell.imageView?.image = image
+                    
                 }
                 
             }.resume()
@@ -115,7 +125,8 @@ extension MainViewController: LayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
 
         return 200
-//        return mains[indexPath.item].articleImage.size.height
+
+//        return articles[indexPath.item].articleImageHeight
 //        return foods[indexPath.item].image.size.height
         
         // need to update the size

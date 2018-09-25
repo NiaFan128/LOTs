@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zLg-fm-dfc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C2O-lF-NU2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -252,64 +252,64 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVV-7O-FZW">
-                                <rect key="frame" x="112.5" y="280" width="150" height="2"/>
+                                <rect key="frame" x="87.5" y="280" width="200" height="2"/>
                                 <color key="backgroundColor" red="0.99607843137254903" green="0.70196078431372544" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="h2P-co-F8Q"/>
+                                    <constraint firstAttribute="width" constant="200" id="h2P-co-F8Q"/>
                                     <constraint firstAttribute="height" constant="2" id="rwL-eO-Zsi"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXF-LB-9bO">
-                                <rect key="frame" x="112.5" y="462" width="150" height="2"/>
+                                <rect key="frame" x="87.5" y="462" width="200" height="2"/>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.70196078429999997" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="0wA-g0-tW7"/>
-                                    <constraint firstAttribute="width" constant="150" id="nc1-W8-tFa"/>
+                                    <constraint firstAttribute="width" constant="200" id="nc1-W8-tFa"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="Dbp-qG-cyF"/>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP9-Vo-wBH">
-                                <rect key="frame" x="112.5" y="307" width="150" height="30"/>
+                                <rect key="frame" x="87.5" y="307" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.9882352941176471" green="0.8784313725490196" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AYP-4T-OnB"/>
-                                    <constraint firstAttribute="width" constant="150" id="vWs-B2-pur"/>
+                                    <constraint firstAttribute="width" constant="200" id="vWs-B2-pur"/>
                                 </constraints>
-                                <state key="normal" title="   Facebook Login">
+                                <state key="normal" title="   Login with Facebook">
                                     <color key="titleColor" red="0.98039215686274506" green="0.56862745098039214" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyg-Nm-b86">
-                                <rect key="frame" x="112.5" y="357" width="150" height="30"/>
+                                <rect key="frame" x="87.5" y="357" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.98823529409999999" green="0.87843137250000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Xgo-vP-AX2"/>
-                                    <constraint firstAttribute="width" constant="150" id="z0T-33-9Ex"/>
+                                    <constraint firstAttribute="width" constant="200" id="z0T-33-9Ex"/>
                                 </constraints>
-                                <state key="normal" title="  Google Login">
+                                <state key="normal" title="  Login with Gmail">
                                     <color key="titleColor" red="0.98039215690000003" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYQ-TH-ekO">
-                                <rect key="frame" x="112.5" y="407" width="150" height="30"/>
-                                <color key="backgroundColor" red="0.98823529409999999" green="0.87843137250000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="87.5" y="407" width="200" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="829-eV-62c"/>
-                                    <constraint firstAttribute="width" constant="150" id="S0a-3H-nAq"/>
+                                    <constraint firstAttribute="width" constant="200" id="S0a-3H-nAq"/>
                                 </constraints>
-                                <state key="normal" title="Guest Mode">
-                                    <color key="titleColor" red="0.94509803921568625" green="0.31372549019607843" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Visitor">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-logo" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Wy-gPN">
-                                <rect key="frame" x="119.5" y="314" width="16" height="16"/>
+                                <rect key="frame" x="94.5" y="314" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="IHT-ew-x7j"/>
                                     <constraint firstAttribute="height" constant="16" id="JNs-CQ-tvB"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google-plus" translatesAutoresizingMaskIntoConstraints="NO" id="5tG-PU-mF6">
-                                <rect key="frame" x="122.5" y="364" width="16" height="16"/>
+                                <rect key="frame" x="97.5" y="364" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="HOX-3c-o7N"/>
                                     <constraint firstAttribute="width" constant="16" id="hD5-cc-s7v"/>
