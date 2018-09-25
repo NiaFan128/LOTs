@@ -12,6 +12,7 @@
 		2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B02B9162153485B004FC66E /* PostTableViewCell.swift */; };
 		2B02B9192153485B004FC66E /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B02B9172153485B004FC66E /* PostTableViewCell.xib */; };
 		2B191DA5215644BA006A2AC1 /* PostViewController+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B191DA4215644BA006A2AC1 /* PostViewController+handler.swift */; };
+		2B191DA7215A36F9006A2AC1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B191DA6215A36F9006A2AC1 /* LoginViewController.swift */; };
 		2B5699CD2154C04900D122B4 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5699CC2154C04900D122B4 /* iOSDropDown.framework */; };
 		2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303672151EEE8006E2522 /* AppDelegate.swift */; };
 		2B83036A2151EEE8006E2522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303692151EEE8006E2522 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		2B02B9162153485B004FC66E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		2B02B9172153485B004FC66E /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		2B191DA4215644BA006A2AC1 /* PostViewController+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostViewController+handler.swift"; sourceTree = "<group>"; };
+		2B191DA6215A36F9006A2AC1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2B5699CC2154C04900D122B4 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303642151EEE8006E2522 /* LOTs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOTs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303672151EEE8006E2522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 			path = Post;
 			sourceTree = "<group>";
 		};
+		2B191DA8215A36FE006A2AC1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2B191DA6215A36F9006A2AC1 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		2B83035B2151EEE8006E2522 = {
 			isa = PBXGroup;
 			children = (
@@ -115,8 +125,9 @@
 				2B8303672151EEE8006E2522 /* AppDelegate.swift */,
 				2B8303792151F298006E2522 /* NavigationController.swift */,
 				2B83036B2151EEE8006E2522 /* Main.storyboard */,
-				2B02B9152153420B004FC66E /* Post */,
+				2B191DA8215A36FE006A2AC1 /* Login */,
 				2B83037F21521C51006E2522 /* Main */,
+				2B02B9152153420B004FC66E /* Post */,
 				2B02B91221533FD0004FC66E /* Support */,
 				2B8303692151EEE8006E2522 /* ViewController.swift */,
 				2B83036E2151EEEA006E2522 /* Assets.xcassets */,
@@ -291,6 +302,7 @@
 				2B83038721524275006E2522 /* Layout.swift in Sources */,
 				2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */,
 				2B8303852152295F006E2522 /* MainCell.swift in Sources */,
+				2B191DA7215A36F9006A2AC1 /* LoginViewController.swift in Sources */,
 				2B83037C2152024D006E2522 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

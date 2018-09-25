@@ -42,7 +42,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="料理種類" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2di-fB-A91" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="75" y="107" width="250" height="29.5"/>
+                                <rect key="frame" x="75" y="107" width="66" height="29.5"/>
                                 <color key="textColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -57,7 +57,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="地區" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iL2-Qj-bpt" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="205" y="62" width="120" height="30"/>
+                                <rect key="frame" x="205" y="62" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CgS-ui-qHa"/>
                                 </constraints>
@@ -85,7 +85,7 @@
                                     <constraint firstAttribute="width" constant="100" id="5JZ-UD-hsE"/>
                                 </constraints>
                                 <color key="textColor" red="0.73725490199999999" green="0.0" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -98,10 +98,9 @@
                             <constraint firstItem="B48-1k-cgR" firstAttribute="top" secondItem="ML5-eq-1l5" secondAttribute="top" constant="17" id="6yu-9D-LGx"/>
                             <constraint firstItem="iL2-Qj-bpt" firstAttribute="top" secondItem="B48-1k-cgR" secondAttribute="bottom" constant="15" id="8dm-LT-zRr"/>
                             <constraint firstItem="2di-fB-A91" firstAttribute="top" secondItem="iL2-Qj-bpt" secondAttribute="bottom" constant="15" id="D84-Wl-5nx"/>
-                            <constraint firstItem="iL2-Qj-bpt" firstAttribute="leading" relation="lessThanOrEqual" secondItem="bYr-m1-oy1" secondAttribute="trailing" constant="30" id="FiB-BM-01y"/>
+                            <constraint firstItem="iL2-Qj-bpt" firstAttribute="leading" secondItem="bYr-m1-oy1" secondAttribute="trailing" constant="30" id="FiB-BM-01y"/>
                             <constraint firstItem="4ey-2z-vIb" firstAttribute="top" secondItem="20Z-dC-Ntd" secondAttribute="bottom" constant="20" id="GFn-Mc-h9Z"/>
                             <constraint firstItem="Kmn-dv-fNQ" firstAttribute="top" secondItem="4ey-2z-vIb" secondAttribute="bottom" constant="20" id="GgN-UU-GyC"/>
-                            <constraint firstAttribute="trailing" secondItem="2di-fB-A91" secondAttribute="trailing" constant="50" id="Iie-uQ-HQD"/>
                             <constraint firstItem="Kmn-dv-fNQ" firstAttribute="leading" secondItem="ML5-eq-1l5" secondAttribute="leading" constant="20" id="Iin-iq-Eb8"/>
                             <constraint firstItem="bYr-m1-oy1" firstAttribute="leading" secondItem="4ey-2z-vIb" secondAttribute="trailing" constant="30" id="IrV-db-xRO"/>
                             <constraint firstItem="2di-fB-A91" firstAttribute="top" secondItem="bYr-m1-oy1" secondAttribute="bottom" constant="15" id="KA0-SI-8gT"/>
@@ -114,7 +113,6 @@
                             <constraint firstItem="wIc-5g-1zm" firstAttribute="leading" secondItem="lYX-e6-WkA" secondAttribute="trailing" constant="30" id="lxZ-57-BnN"/>
                             <constraint firstItem="20Z-dC-Ntd" firstAttribute="top" secondItem="ML5-eq-1l5" secondAttribute="top" constant="20" id="nKC-UM-bkn"/>
                             <constraint firstItem="2di-fB-A91" firstAttribute="leading" secondItem="Kmn-dv-fNQ" secondAttribute="trailing" constant="30" id="t8j-Kt-9FQ"/>
-                            <constraint firstAttribute="trailing" secondItem="iL2-Qj-bpt" secondAttribute="trailing" constant="50" id="wU1-gN-iLk"/>
                         </constraints>
                     </view>
                 </subviews>

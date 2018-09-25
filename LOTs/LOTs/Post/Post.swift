@@ -22,7 +22,7 @@ class Article {
         
         self.articleTitle = dictionary["articleTitle"] as? String ?? ""
         self.articleImage = dictionary["articleImage"] as? String ?? ""
-        self.createdTime = dictionary["articleImage"] as? String ?? ""
+        self.createdTime = dictionary["createdTime"] as? String ?? ""
         self.locationArea = dictionary["locationArea"] as? String ?? ""
         self.cuisine = dictionary["cuisine"] as? String ?? ""
         self.content = dictionary["content"] as? String ?? ""

@@ -64,15 +64,14 @@ class PostViewController: UIViewController {
     
     @IBAction func cancelAction(_ sender: Any) {
                 
-        self.tableView.reloadData()
+        titleTextField.text = ""
         
     }
-    
     
     // Will update after completing the login function
     func uploadPicture() {
         
-        articleImage.image = UIImage(named: "08")
+        articleImage.image = UIImage(named: "imageDefault")
         articleImage.translatesAutoresizingMaskIntoConstraints = false
         articleImage.contentMode = .scaleAspectFill
 //        articleImage.layer.cornerRadius = 17.5

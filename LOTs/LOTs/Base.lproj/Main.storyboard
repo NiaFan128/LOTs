@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C2O-lF-NU2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zLg-fm-dfc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -235,6 +235,120 @@
             </objects>
             <point key="canvasLocation" x="711.20000000000005" y="-1043.0284857571214"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Fs9-br-0xd">
+            <objects>
+                <viewController id="zLg-fm-dfc" customClass="LoginViewController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BZp-op-TYb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KeyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="UmD-a2-d8q">
+                                <rect key="frame" x="87.5" y="100" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="IUd-S3-uXk"/>
+                                    <constraint firstAttribute="width" secondItem="UmD-a2-d8q" secondAttribute="height" multiplier="1:1" id="Xac-7I-oqb"/>
+                                    <constraint firstAttribute="width" constant="200" id="mSk-sn-sNH"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVV-7O-FZW">
+                                <rect key="frame" x="112.5" y="280" width="150" height="2"/>
+                                <color key="backgroundColor" red="0.99607843137254903" green="0.70196078431372544" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="h2P-co-F8Q"/>
+                                    <constraint firstAttribute="height" constant="2" id="rwL-eO-Zsi"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXF-LB-9bO">
+                                <rect key="frame" x="112.5" y="462" width="150" height="2"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.70196078429999997" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="0wA-g0-tW7"/>
+                                    <constraint firstAttribute="width" constant="150" id="nc1-W8-tFa"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="Dbp-qG-cyF"/>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP9-Vo-wBH">
+                                <rect key="frame" x="112.5" y="307" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.9882352941176471" green="0.8784313725490196" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="AYP-4T-OnB"/>
+                                    <constraint firstAttribute="width" constant="150" id="vWs-B2-pur"/>
+                                </constraints>
+                                <state key="normal" title="   Facebook Login">
+                                    <color key="titleColor" red="0.98039215686274506" green="0.56862745098039214" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyg-Nm-b86">
+                                <rect key="frame" x="112.5" y="357" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.87843137250000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Xgo-vP-AX2"/>
+                                    <constraint firstAttribute="width" constant="150" id="z0T-33-9Ex"/>
+                                </constraints>
+                                <state key="normal" title="  Google Login">
+                                    <color key="titleColor" red="0.98039215690000003" green="0.56862745100000001" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYQ-TH-ekO">
+                                <rect key="frame" x="112.5" y="407" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.87843137250000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="829-eV-62c"/>
+                                    <constraint firstAttribute="width" constant="150" id="S0a-3H-nAq"/>
+                                </constraints>
+                                <state key="normal" title="Guest Mode">
+                                    <color key="titleColor" red="0.94509803921568625" green="0.31372549019607843" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-logo" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Wy-gPN">
+                                <rect key="frame" x="119.5" y="314" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="IHT-ew-x7j"/>
+                                    <constraint firstAttribute="height" constant="16" id="JNs-CQ-tvB"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google-plus" translatesAutoresizingMaskIntoConstraints="NO" id="5tG-PU-mF6">
+                                <rect key="frame" x="122.5" y="364" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="HOX-3c-o7N"/>
+                                    <constraint firstAttribute="width" constant="16" id="hD5-cc-s7v"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82745098039215681" green="0.35294117647058826" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bXF-LB-9bO" firstAttribute="top" secondItem="rYQ-TH-ekO" secondAttribute="bottom" constant="25" id="1Ma-o7-uZM"/>
+                            <constraint firstItem="UmD-a2-d8q" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="4IN-JP-qmv"/>
+                            <constraint firstItem="jVV-7O-FZW" firstAttribute="top" secondItem="UmD-a2-d8q" secondAttribute="bottom" constant="-20" id="8mI-LR-AMj"/>
+                            <constraint firstItem="Nyg-Nm-b86" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="Bed-4t-yDj"/>
+                            <constraint firstItem="Nyg-Nm-b86" firstAttribute="leading" secondItem="5tG-PU-mF6" secondAttribute="trailing" constant="-26" id="Ebm-dR-AC3"/>
+                            <constraint firstItem="UmD-a2-d8q" firstAttribute="top" secondItem="ah9-3z-YcF" secondAttribute="top" constant="80" id="LN0-m0-faj"/>
+                            <constraint firstItem="rYQ-TH-ekO" firstAttribute="top" secondItem="Nyg-Nm-b86" secondAttribute="bottom" constant="20" id="NSy-kx-Iuq"/>
+                            <constraint firstItem="KnL-Wy-gPN" firstAttribute="centerY" secondItem="MP9-Vo-wBH" secondAttribute="centerY" id="VjT-Hs-jPw"/>
+                            <constraint firstItem="bXF-LB-9bO" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="WnC-YK-Itu"/>
+                            <constraint firstItem="rYQ-TH-ekO" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="bto-wl-YGW"/>
+                            <constraint firstItem="MP9-Vo-wBH" firstAttribute="leading" secondItem="KnL-Wy-gPN" secondAttribute="trailing" constant="-23" id="ck5-Mm-kQc"/>
+                            <constraint firstItem="jVV-7O-FZW" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="ejf-Gf-u1k"/>
+                            <constraint firstItem="MP9-Vo-wBH" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="fKn-fL-pdO"/>
+                            <constraint firstItem="5tG-PU-mF6" firstAttribute="centerY" secondItem="Nyg-Nm-b86" secondAttribute="centerY" id="lzQ-MP-QEx"/>
+                            <constraint firstItem="Nyg-Nm-b86" firstAttribute="top" secondItem="MP9-Vo-wBH" secondAttribute="bottom" constant="20" id="vux-EU-12U"/>
+                            <constraint firstItem="MP9-Vo-wBH" firstAttribute="top" secondItem="jVV-7O-FZW" secondAttribute="bottom" constant="25" id="z2b-kk-BkN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ah9-3z-YcF"/>
+                    </view>
+                    <connections>
+                        <outlet property="GuestModeButton" destination="rYQ-TH-ekO" id="2ON-8W-ZBj"/>
+                        <outlet property="facebookImage" destination="KnL-Wy-gPN" id="TeJ-hJ-OAO"/>
+                        <outlet property="facebookLoginButton" destination="MP9-Vo-wBH" id="Mq3-2G-Pyb"/>
+                        <outlet property="googleImage" destination="5tG-PU-mF6" id="v0e-zf-XLM"/>
+                        <outlet property="googleLoginButton" destination="Nyg-Nm-b86" id="gax-rt-OIR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f35-Ku-rHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2060" y="-375.56221889055473"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3bw-dp-vTT">
             <objects>
@@ -299,9 +413,26 @@
             </objects>
             <point key="canvasLocation" x="-1196" y="734.48275862068976"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="df2-qo-oU7">
+            <objects>
+                <viewController id="iEH-RJ-RqI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dLY-g5-mAA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="W69-f6-tfe"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DVP-iG-aEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
+        <image name="KeyIcon" width="450" height="450"/>
+        <image name="facebook-logo" width="16" height="16"/>
         <image name="finding" width="21" height="21"/>
+        <image name="google-plus" width="16" height="16"/>
         <image name="like" width="21" height="21"/>
         <image name="main" width="21" height="21"/>
         <image name="post" width="32" height="32"/>
