@@ -8,20 +8,24 @@
 
 import Foundation
 
-struct Post {
+class Article {
     
-    var image: String
-    
-    var title: String
-    
-    var createdTime: Int
-    
+    var articleTitle: String
+    var articleImage: String?
+    var createdTime: String
     var locationArea: String
-    
     var cuisine: String
-    
+    var content: String
     var instagramPost: Bool?
-    
-    var comment: String
-    
+ 
+    init(dictionary: [String: AnyObject]) {
+        
+        self.articleTitle = dictionary["articleTitle"] as? String ?? ""
+        self.articleImage = dictionary["articleImage"] as? String ?? ""
+        self.createdTime = dictionary["articleImage"] as? String ?? ""
+        self.locationArea = dictionary["locationArea"] as? String ?? ""
+        self.cuisine = dictionary["cuisine"] as? String ?? ""
+        self.content = dictionary["content"] as? String ?? ""
+        
+    }
 }

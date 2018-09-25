@@ -60,21 +60,6 @@ class PostViewController: UIViewController {
         handleRegister()
         saveContent()
         
-//        let post = self.ref.child("post").childByAutoId().key
-//
-//        let data = ["articleTitle": titleTextField.text!,
-//                    "articleImage": pictureURL,
-//                    "createdTime": createdTime,
-//                    "cruisine": cuisine,
-//                    "location": location,
-//                    "content": content] as [String : Any]
-//
-//        print(data)
-//        
-//        let postUpdate = ["/post/\(post)": data]
-//
-//        ref.updateChildValues(postUpdate)
-        
     }
     
     @IBAction func cancelAction(_ sender: Any) {

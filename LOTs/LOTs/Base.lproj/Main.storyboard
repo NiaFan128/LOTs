@@ -155,7 +155,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="jWV-L7-wNn" customClass="Layout" customModule="LOTs" customModuleProvider="target"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainFoodCell" id="Iaa-2M-BsB" customClass="MainFoodCell" customModule="LOTs" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainFoodCell" id="Iaa-2M-BsB" customClass="MainCell" customModule="LOTs" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -182,6 +182,7 @@
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="Hus-uL-U52" firstAttribute="top" secondItem="zNM-yo-Id2" secondAttribute="top" id="2Aw-7h-kwv"/>
                                                         <constraint firstItem="COp-c5-fwE" firstAttribute="leading" secondItem="zNM-yo-Id2" secondAttribute="leading" constant="15" id="3hl-Sa-MOc"/>
