@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
 
         window?.tintColor = UIColor.init(red: 231.0/255.0, green: 47.0/255.0, blue: 69.0/255.0, alpha: 1.0)
+        
+        FirebaseApp.configure()
         
         return true
         

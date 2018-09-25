@@ -11,6 +11,7 @@
 		2B02B91421534202004FC66E /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B02B91321534202004FC66E /* PostViewController.swift */; };
 		2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B02B9162153485B004FC66E /* PostTableViewCell.swift */; };
 		2B02B9192153485B004FC66E /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B02B9172153485B004FC66E /* PostTableViewCell.xib */; };
+		2B191DA5215644BA006A2AC1 /* PostViewController+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B191DA4215644BA006A2AC1 /* PostViewController+handler.swift */; };
 		2B5699CD2154C04900D122B4 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5699CC2154C04900D122B4 /* iOSDropDown.framework */; };
 		2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303672151EEE8006E2522 /* AppDelegate.swift */; };
 		2B83036A2151EEE8006E2522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303692151EEE8006E2522 /* ViewController.swift */; };
@@ -24,6 +25,8 @@
 		2B83038321521D41006E2522 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83038221521D41006E2522 /* Food.swift */; };
 		2B8303852152295F006E2522 /* MainFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303842152295F006E2522 /* MainFoodCell.swift */; };
 		2B83038721524275006E2522 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83038621524275006E2522 /* Layout.swift */; };
+		2BDD665D2155079700E3C74A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BDD665C2155079700E3C74A /* GoogleService-Info.plist */; };
+		2BDD665F2155173400E3C74A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDD665E2155173400E3C74A /* Post.swift */; };
 		2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */; };
 		2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */; };
 		2CD5213A38080600EEA2E24B /* Pods_LOTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B4ADAFBD9FBB343B63DBD6 /* Pods_LOTs.framework */; };
@@ -35,6 +38,7 @@
 		2B02B91321534202004FC66E /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		2B02B9162153485B004FC66E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		2B02B9172153485B004FC66E /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		2B191DA4215644BA006A2AC1 /* PostViewController+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostViewController+handler.swift"; sourceTree = "<group>"; };
 		2B5699CC2154C04900D122B4 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303642151EEE8006E2522 /* LOTs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOTs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303672151EEE8006E2522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +54,8 @@
 		2B83038221521D41006E2522 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		2B8303842152295F006E2522 /* MainFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFoodCell.swift; sourceTree = "<group>"; };
 		2B83038621524275006E2522 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		2BDD665C2155079700E3C74A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2BDD665E2155173400E3C74A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		2DE5A7C64ED39736B7C8ECA7 /* Pods-LOTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOTs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LOTs/Pods-LOTs.debug.xcconfig"; sourceTree = "<group>"; };
@@ -80,7 +86,9 @@
 		2B02B9152153420B004FC66E /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				2BDD665E2155173400E3C74A /* Post.swift */,
 				2B02B91321534202004FC66E /* PostViewController.swift */,
+				2B191DA4215644BA006A2AC1 /* PostViewController+handler.swift */,
 				2B02B9162153485B004FC66E /* PostTableViewCell.swift */,
 				2B02B9172153485B004FC66E /* PostTableViewCell.xib */,
 				2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */,
@@ -120,6 +128,7 @@
 				2B83036E2151EEEA006E2522 /* Assets.xcassets */,
 				2B8303702151EEEA006E2522 /* LaunchScreen.storyboard */,
 				2B8303732151EEEA006E2522 /* Info.plist */,
+				2BDD665C2155079700E3C74A /* GoogleService-Info.plist */,
 			);
 			path = LOTs;
 			sourceTree = "<group>";
@@ -216,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B8303722151EEEA006E2522 /* LaunchScreen.storyboard in Resources */,
+				2BDD665D2155079700E3C74A /* GoogleService-Info.plist in Resources */,
 				2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */,
 				2B83037E21521A74006E2522 /* Food.xcassets in Resources */,
 				2B83038121521C7A006E2522 /* Food.plist in Resources */,
@@ -236,12 +246,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LOTs/Pods-LOTs-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DatePickerDialog/DatePickerDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DatePickerDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -276,10 +294,12 @@
 				2B02B91421534202004FC66E /* PostViewController.swift in Sources */,
 				2B83036A2151EEE8006E2522 /* ViewController.swift in Sources */,
 				2B83037A2151F298006E2522 /* NavigationController.swift in Sources */,
+				2BDD665F2155173400E3C74A /* Post.swift in Sources */,
 				2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */,
 				2B83038321521D41006E2522 /* Food.swift in Sources */,
 				2B02B91121533F46004FC66E /* LOTsColor.swift in Sources */,
 				2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */,
+				2B191DA5215644BA006A2AC1 /* PostViewController+handler.swift in Sources */,
 				2B83038721524275006E2522 /* Layout.swift in Sources */,
 				2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */,
 				2B8303852152295F006E2522 /* MainFoodCell.swift in Sources */,
@@ -431,6 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JKG9QZ9M65;
 				INFOPLIST_FILE = LOTs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JKG9QZ9M65;
 				INFOPLIST_FILE = LOTs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

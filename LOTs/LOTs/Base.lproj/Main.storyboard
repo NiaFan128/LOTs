@@ -31,12 +31,12 @@
         <!--Post-->
         <scene sceneID="16b-YO-zPX">
             <objects>
-                <viewController id="8KU-Oq-TkW" customClass="PostViewController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectPage" id="8KU-Oq-TkW" customClass="PostViewController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RF1-nH-dJL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="08" translatesAutoresizingMaskIntoConstraints="NO" id="Wem-T0-DLQ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wem-T0-DLQ">
                                 <rect key="frame" x="30" y="20" width="315" height="177"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Wem-T0-DLQ" secondAttribute="height" multiplier="16:9" id="f0X-ME-spi"/>
@@ -55,6 +55,13 @@
                                 <rect key="frame" x="30" y="217" width="315" height="337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2GQ-M2-b3H">
+                                <rect key="frame" x="300" y="149.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Gjw-9k-NkW"/>
+                                    <constraint firstAttribute="height" constant="35" id="NpZ-Ns-vo7"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -63,7 +70,9 @@
                             <constraint firstItem="jQd-Sg-nJb" firstAttribute="top" secondItem="Wem-T0-DLQ" secondAttribute="bottom" constant="20" id="AQ4-lB-UVT"/>
                             <constraint firstItem="WZM-Yv-hgc" firstAttribute="trailing" secondItem="jQd-Sg-nJb" secondAttribute="trailing" constant="30" id="Al3-Am-rj4"/>
                             <constraint firstItem="jQd-Sg-nJb" firstAttribute="leading" secondItem="WZM-Yv-hgc" secondAttribute="leading" constant="30" id="Lzz-rS-6ea"/>
+                            <constraint firstItem="Wem-T0-DLQ" firstAttribute="trailing" secondItem="2GQ-M2-b3H" secondAttribute="trailing" constant="10" id="boT-Og-qkm"/>
                             <constraint firstItem="WZM-Yv-hgc" firstAttribute="trailing" secondItem="Wem-T0-DLQ" secondAttribute="trailing" constant="30" id="dzQ-vc-4fX"/>
+                            <constraint firstItem="2GQ-M2-b3H" firstAttribute="centerY" secondItem="KC3-RW-EyE" secondAttribute="centerY" id="gaE-k5-6MQ"/>
                             <constraint firstItem="Wem-T0-DLQ" firstAttribute="leading" secondItem="WZM-Yv-hgc" secondAttribute="leading" constant="30" id="hKl-4p-AWr"/>
                             <constraint firstItem="Wem-T0-DLQ" firstAttribute="top" secondItem="WZM-Yv-hgc" secondAttribute="top" constant="20" id="mGv-i8-J8b"/>
                             <constraint firstItem="jQd-Sg-nJb" firstAttribute="bottom" secondItem="WZM-Yv-hgc" secondAttribute="bottom" id="p8A-rp-Wsx"/>
@@ -71,11 +80,20 @@
                         <viewLayoutGuide key="safeArea" id="WZM-Yv-hgc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Post" id="qyd-x9-Z6b">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WaW-5g-bhn"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="tbI-vD-dA8"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WaW-5g-bhn">
+                            <connections>
+                                <action selector="cancelAction:" destination="8KU-Oq-TkW" id="ugI-tF-5BU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="tbI-vD-dA8">
+                            <connections>
+                                <action selector="postAction:" destination="8KU-Oq-TkW" id="oPQ-CF-0so"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="articleImage" destination="Wem-T0-DLQ" id="PdF-o1-NlK"/>
+                        <outlet property="profileImage" destination="2GQ-M2-b3H" id="waB-Fa-Pxf"/>
                         <outlet property="tableView" destination="jQd-Sg-nJb" id="WjW-GS-1vq"/>
                         <outlet property="titleTextField" destination="KC3-RW-EyE" id="htv-24-b4w"/>
                     </connections>
@@ -282,7 +300,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="08" width="2000" height="1333"/>
         <image name="finding" width="21" height="21"/>
         <image name="like" width="21" height="21"/>
         <image name="main" width="21" height="21"/>

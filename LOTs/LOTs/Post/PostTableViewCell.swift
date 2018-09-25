@@ -17,7 +17,13 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var locationTextField: DropDown!
     @IBOutlet weak var cuisineTextField: DropDown!
     
+    var locationCompletion: ((_ data: String) -> Void)?
+    var cuisineCompletion: ((_ data: String) -> Void)?
+    var dateCompletion: ((_ data: String) -> Void)?
 
+    var selectLocation: String?
+    var selectCuisine: String?
+    var selectDate: String?
     
     override func awakeFromNib() {
         
@@ -31,9 +37,6 @@ class PostTableViewCell: UITableViewCell {
         locationTextField.target(forAction: #selector(locationTextField.showList), withSender: self)
         
         dateTextField.delegate = self
-
-//        authorImage.layer.cornerRadius = 17.5
-        
 
     }
 
@@ -59,7 +62,8 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
-    func locationPick() {
+    func locationPick(){
+        
         
         locationTextField.selectedRowColor = .white
 
@@ -68,10 +72,10 @@ class PostTableViewCell: UITableViewCell {
         
         locationTextField.didSelect { (selectedText, index, id) in
             
+            self.locationCompletion?(selectedText)
+            
             self.locationTextField.text = "\(selectedText)"
             self.locationTextField.textColor = UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 25.0/255.0, alpha: 1.0)
-            
-            //            "Selected String: \(selectedText) \n index: \(index)"
             
         }
         
@@ -86,11 +90,11 @@ class PostTableViewCell: UITableViewCell {
         
         cuisineTextField.didSelect { (selectedText, index, id) in
             
+            self.cuisineCompletion?(selectedText)
+
             self.cuisineTextField.text = "\(selectedText)"
             self.cuisineTextField.textColor = UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 25.0/255.0, alpha: 1.0)
-            
-            //            "Selected String: \(selectedText) \n index: \(index)"
-            
+                        
         }
         
     }
@@ -113,12 +117,21 @@ class PostTableViewCell: UITableViewCell {
                         minimumDate: threeMonthAgo,
                         maximumDate: currentDate,
                         datePickerMode: .date) { (date) in
-                            if let dt = date {
+                            
+                            if let date = date {
+                                
                                 let formatter = DateFormatter()
                                 formatter.dateFormat = "yyyy 年 MM 月 dd 日"
-                                self.dateTextField.text = formatter.string(from: dt)
+                                
+                                self.selectDate = formatter.string(from: date)
+                                
+                                self.dateTextField.text = self.selectDate
+                                self.dateCompletion?(self.selectDate ?? "")
+                                
                             }
+                            
         }
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

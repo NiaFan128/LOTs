@@ -8,16 +8,19 @@
 
 import UIKit
 
-class ContentTableViewCell: UITableViewCell {
+class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var contentTextView: UITextView!
+    
+//    fileprivate var didSelectCompletion: (String) -> () = {selectedText  in }
     
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
         self.backgroundSet()
+//        contentTextView.delegate = self
 
     }
 
@@ -32,8 +35,20 @@ class ContentTableViewCell: UITableViewCell {
         
     }
 
+//    public func didSelect(completion: @escaping (_ selectedText: String) -> ()) {
+//
+//        didSelectCompletion = completion
+//
+//    }
     
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//
+//        print(textView.text)
+//
+//    }
+//
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

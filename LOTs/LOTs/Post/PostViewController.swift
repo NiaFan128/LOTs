@@ -7,17 +7,34 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
+import FirebaseDatabase
 
 class PostViewController: UIViewController {
 
     @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var profileImage: UIImageView!
+    
+    var ref: DatabaseReference!
+    var location: String = ""
+    var cuisine: String = ""
+    var createdTime: String = ""
+    var instagrame: Bool?
+    var content: String = ""
+    var picture: UIImage?
+    var pictureURL: String?
+
+    var writeResults = [[String: Any]]()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
+        ref = Database.database().reference()
+        
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PostInfoCell")
         
@@ -25,11 +42,66 @@ class PostViewController: UIViewController {
         tableView.register(nib2, forCellReuseIdentifier: "ContentCell")
         
         articleImage.layer.cornerRadius = 8
-        
+        profileImage.layer.cornerRadius = 17.5
+        profileImage.image = UIImage(named: "profile_1")
+
         tableView.dataSource = self
         tableView.delegate = self
         
+        uploadPicture()
+        
         tableView.rowHeight = UITableView.automaticDimension
+        
+    }
+    
+    // Post Action
+    @IBAction func postAction(_ sender: Any) {
+        
+        handleRegister()
+        saveContent()
+        
+//        let post = self.ref.child("post").childByAutoId().key
+//
+//        let data = ["articleTitle": titleTextField.text!,
+//                    "articleImage": pictureURL,
+//                    "createdTime": createdTime,
+//                    "cruisine": cuisine,
+//                    "location": location,
+//                    "content": content] as [String : Any]
+//
+//        print(data)
+//        
+//        let postUpdate = ["/post/\(post)": data]
+//
+//        ref.updateChildValues(postUpdate)
+        
+    }
+    
+    @IBAction func cancelAction(_ sender: Any) {
+                
+        self.tableView.reloadData()
+        
+    }
+    
+    
+    // Will update after completing the login function
+    func uploadPicture() {
+        
+        articleImage.image = UIImage(named: "08")
+        articleImage.translatesAutoresizingMaskIntoConstraints = false
+        articleImage.contentMode = .scaleAspectFill
+//        articleImage.layer.cornerRadius = 17.5
+
+        articleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        articleImage.isUserInteractionEnabled = true
+            
+    }
+    
+    func saveContent() {
+        
+        let tabController = self.view.window!.rootViewController as? UITabBarController
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        tabController?.selectedIndex = 0
         
     }
 
@@ -58,7 +130,29 @@ extension PostViewController: UITableViewDataSource {
                 return UITableViewCell()
 
             }
-
+            
+            cell.dateCompletion = { (data : String) -> Void in
+                
+                self.createdTime = data
+                
+                print("createdTime: \(data)")
+                
+            }
+            
+            cell.locationCompletion = { (data : String) -> Void in
+                
+                self.location = data
+                
+                print("location: \(data)")
+            }
+            
+            cell.cuisineCompletion = { (data : String) -> Void in
+                
+                self.cuisine = data
+                
+                print("cuisine: \(data)")
+            }
+            
             return cell
 
         } else if indexPath.section == 1 {
@@ -66,8 +160,10 @@ extension PostViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContentCell", for: indexPath) as? ContentTableViewCell else {
                 
                 return UITableViewCell()
-                
+
             }
+            
+            cell.contentTextView.delegate = self
             
             return cell
             
@@ -90,6 +186,24 @@ extension PostViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return UITableView.automaticDimension
+        
+    }
+
+}
+
+extension PostViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        textView.text = ""
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        print(textView.text)
+        
+        content = textView.text
         
     }
 
