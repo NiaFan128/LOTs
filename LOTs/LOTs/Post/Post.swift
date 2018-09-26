@@ -13,9 +13,10 @@ class Article {
     
     var articleTitle: String
     var articleImage: String?
-//    var articleImageHeight: CGFloat
+    var height: CGFloat
+    var width: CGFloat
     var createdTime: String
-    var locationArea: String
+    var location: String
     var cuisine: String
     var content: String
     var instagramPost: Bool?
@@ -24,9 +25,10 @@ class Article {
         
         self.articleTitle = dictionary["articleTitle"] as? String ?? ""
         self.articleImage = dictionary["articleImage"] as? String ?? ""
-//        self.articleImageHeight = (dictionary["articleImageHeight"] as? CGFloat ?? nil)!
+        self.height = dictionary["height"] as? CGFloat ?? 0
+        self.width = dictionary["width"] as? CGFloat ?? 0
         self.createdTime = dictionary["createdTime"] as? String ?? ""
-        self.locationArea = dictionary["locationArea"] as? String ?? ""
+        self.location = dictionary["location"] as? String ?? ""
         self.cuisine = dictionary["cuisine"] as? String ?? ""
         self.content = dictionary["content"] as? String ?? ""
         

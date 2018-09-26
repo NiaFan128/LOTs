@@ -27,10 +27,13 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         // Storage
         let storageRef = Storage.storage().reference().child("articel_images").child("my.jpg")
-
-//        if let articleImage = articleImage.image?.jpegData(compressionQuality: 0.5) {
-
+        
         if let articleImage = self.articleImage.image, let uploadData = self.articleImage.image?.jpegData(compressionQuality: 0.5) {
+            
+            print(uploadData)
+            
+            height = articleImage.size.height
+            width = articleImage.size.width
             
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 
@@ -40,7 +43,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                 }
                 
                 print(metadata)
-             
+                
                 storageRef.downloadURL(completion: { (url, error) in
 
                     guard let downloadURL = url else {
@@ -54,8 +57,10 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     self.ref.child("posts/\(postID)").setValue([
                         "articleTitle": self.titleTextField.text!,
                         "articleImage": self.pictureURL,
+                        "height": self.height,
+                        "width": self.width,
                         "createdTime": self.createdTime,
-                        "cruisine": self.cuisine,
+                        "cuisine": self.cuisine,
                         "location": self.location,
                         "content": self.content] as [String: Any])
                     

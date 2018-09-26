@@ -16,8 +16,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
     var articles = [Article]()
-    var height: CGFloat?
-    var width: CGFloat?
     
     override func viewDidLoad() {
         
@@ -48,9 +46,10 @@ class MainViewController: UIViewController {
                 print(dictionary)
                 
                 let article = Article(dictionary: dictionary)
-                print(article)
 
                 self.articles.append(article)
+
+                print(article)
 
                 DispatchQueue.main.async(execute: {
                     self.mainCollectionView.reloadData()
@@ -78,6 +77,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         let article = articles[indexPath.row]
         
+        print(article)
+        
         cell.titleLabel?.text = article.articleTitle
         
         // Will change the profile image after login
@@ -103,9 +104,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                         return
                     }
                     
-//                    self.height = image.size.height
-//                    self.width = image.size.width
-                    
                     cell.imageView?.image = image
                     
                 }
@@ -123,23 +121,24 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController: LayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-
-        return 200
-
-//        return articles[indexPath.item].articleImageHeight
-//        return foods[indexPath.item].image.size.height
         
-        // need to update the size
+        return articles[indexPath.item].height
+        
+//        if indexPath.item % 3 == 0 {
+//
+//            return 200
+//
+//        } else {
+//
+//            return 300
+//        }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, widthForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
 
-        return 200
-//        return mains[indexPath.item].articleImage.size.width
-//        return foods[indexPath.item].image.size.width
-        
-        // need to update the size
+        return articles[indexPath.item].width
+//        return 200
         
     }
 

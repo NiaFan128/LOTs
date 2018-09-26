@@ -25,6 +25,8 @@ class PostViewController: UIViewController {
     var instagrame: Bool?
     var content: String = ""
     var picture: UIImage?
+    var height: CGFloat?
+    var width: CGFloat?
     var pictureURL: String?
 
     var writeResults = [[String: Any]]()
