@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import AVFoundation
+//import AVFoundation
 
 class MainViewController: UIViewController {
 
@@ -122,23 +122,23 @@ extension MainViewController: LayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
         
-        return articles[indexPath.item].height
+//        return articles[indexPath.item].height
         
-//        if indexPath.item % 3 == 0 {
-//
-//            return 200
-//
-//        } else {
-//
-//            return 300
-//        }
+        if indexPath.item % 3 == 0 {
+
+            return 200
+
+        } else {
+
+            return 300
+        }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, widthForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
 
-        return articles[indexPath.item].width
-//        return 200
+//        return articles[indexPath.item].width
+        return 200
         
     }
 
