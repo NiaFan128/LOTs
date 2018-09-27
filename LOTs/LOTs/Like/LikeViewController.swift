@@ -26,9 +26,9 @@ class LikeViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         
         layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        layout.minimumLineSpacing = 5
+        layout.minimumLineSpacing = 7.5
         layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: CGFloat((fullScreenSize.width) - 16) / 2, height: CGFloat((fullScreenSize.width) - 16) / 2)
+        layout.itemSize = CGSize(width: CGFloat((fullScreenSize.width) - 20) / 2, height: CGFloat((fullScreenSize.width) - 20) / 2)
 //        layout.itemSize = CGSize(width: CGFloat((fullScreenSize.width) / 2 - 2.5), height: CGFloat((fullScreenSize.width) / 2 - 2.5))
         
         likeCollectionView.collectionViewLayout = layout
@@ -47,6 +47,9 @@ class LikeViewController: UIViewController {
 
         likeCollectionView.delegate = self
         likeCollectionView.dataSource = self
+
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
 
     }
 
@@ -73,6 +76,24 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.areaLabel.text = areaLabel[indexPath.item]
         
         return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let row = indexPath.row
+        
+        if row == 0 {
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let likeDetailViewController = storyboard.instantiateViewController(withIdentifier: "LikeDetail")
+
+//            self.present(likeDetailViewController, animated: true, completion: nil)
+//            self.navigationController?.pushViewController(likeDetailViewController, animated: true)
+            show(likeDetailViewController, sender: nil)
+            
+        }
         
     }
     

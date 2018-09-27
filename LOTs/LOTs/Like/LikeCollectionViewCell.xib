@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="181" height="181"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_3" translatesAutoresizingMaskIntoConstraints="NO" id="end-rl-d7e">
-                                <rect key="frame" x="10" y="10" width="161" height="161"/>
+                                <rect key="frame" x="0.0" y="0.0" width="181" height="181"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="areaLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eha-Fr-iTt">
                                 <rect key="frame" x="24" y="138" width="75" height="21"/>
@@ -33,11 +33,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="end-rl-d7e" secondAttribute="bottom" constant="10" id="6Yn-b8-JBJ"/>
-                            <constraint firstItem="end-rl-d7e" firstAttribute="top" secondItem="SOq-ii-joR" secondAttribute="top" constant="10" id="Wqg-5r-EWf"/>
+                            <constraint firstAttribute="bottom" secondItem="end-rl-d7e" secondAttribute="bottom" id="6Yn-b8-JBJ"/>
+                            <constraint firstItem="end-rl-d7e" firstAttribute="top" secondItem="SOq-ii-joR" secondAttribute="top" id="Wqg-5r-EWf"/>
                             <constraint firstItem="Eha-Fr-iTt" firstAttribute="leading" secondItem="SOq-ii-joR" secondAttribute="leading" constant="24" id="X76-7K-yib"/>
-                            <constraint firstAttribute="trailing" secondItem="end-rl-d7e" secondAttribute="trailing" constant="10" id="pUp-Hz-KAP"/>
-                            <constraint firstItem="end-rl-d7e" firstAttribute="leading" secondItem="SOq-ii-joR" secondAttribute="leading" constant="10" id="xi4-53-mom"/>
+                            <constraint firstAttribute="trailing" secondItem="end-rl-d7e" secondAttribute="trailing" id="pUp-Hz-KAP"/>
+                            <constraint firstItem="end-rl-d7e" firstAttribute="leading" secondItem="SOq-ii-joR" secondAttribute="leading" id="xi4-53-mom"/>
                             <constraint firstAttribute="bottom" secondItem="Eha-Fr-iTt" secondAttribute="bottom" constant="22" id="zS3-Q9-RW2"/>
                         </constraints>
                     </view>

@@ -10,9 +10,18 @@ import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var authorLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        profileImage.layer.cornerRadius = 35
+        editButton.layer.cornerRadius = 6
+        editButton.layer.borderColor = UIColor.lightGray.cgColor
+        editButton.layer.borderWidth = 1
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

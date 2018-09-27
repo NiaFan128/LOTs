@@ -12,6 +12,9 @@ class LikeDetailViewController: UIViewController {
 
     @IBOutlet weak var likeDetailTableView: UITableView!
     
+//    static let storyboardName = "Main"
+//    static let viewControllerIdentifier = "LikeDetailViewController"
+    
     var author: [String] = ["Nia"]
     var articleTitle: [String] = []
     var cuisine: [String] = []
@@ -35,6 +38,20 @@ class LikeDetailViewController: UIViewController {
                      UIImage(named: "05")] as! [UIImage]
         
     }
+    
+//    class func likeDetailViewControllerForLike() -> LikeDetailViewController {
+//        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        
+//        guard let viewController = storyboard.instantiateViewController(withIdentifier: "LikeViewController") as? LikeDetailViewController else {
+//            
+//            return LikeDetailViewController()
+//            
+//        }
+//        
+//        return viewController
+//        
+//    }
     
 
 }
