@@ -28,19 +28,31 @@ class DetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+//        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    class func detailViewControllerForArticle() -> DetailViewController {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+            
+            return DetailViewController()
+            
+        }
+        
+        return viewController
+        
     }
-    */
+    
+    @IBAction func backAction(_ sender: UIButton) {
+    
+        _ = self.navigationController?.popViewController(animated: true)
+        
+    }
+    
 
 }
 
@@ -103,7 +115,6 @@ extension DetailViewController: UITableViewDataSource {
         return UITableViewCell()
         
     }
-    
     
 }
 

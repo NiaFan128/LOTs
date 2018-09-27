@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="364" height="206.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e4p-bb-Yiq">
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e4p-bb-Yiq">
                         <rect key="frame" x="20.5" y="12" width="323" height="161.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="e4p-bb-Yiq" secondAttribute="height" multiplier="18:9" id="KBb-SS-4GT"/>
@@ -59,6 +59,7 @@
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="e4p-bb-Yiq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4.5" id="3UX-fz-uiW"/>
                     <constraint firstItem="HaP-Fa-INn" firstAttribute="centerY" secondItem="B4k-0I-4TM" secondAttribute="centerY" id="9z5-sA-TGV"/>
                     <constraint firstItem="ngb-hh-hSu" firstAttribute="top" secondItem="e4p-bb-Yiq" secondAttribute="bottom" constant="10" id="Ccg-Wo-TeG"/>
                     <constraint firstItem="e4p-bb-Yiq" firstAttribute="top" secondItem="B4k-0I-4TM" secondAttribute="top" constant="-20" id="EmL-XR-HQi"/>
@@ -71,6 +72,7 @@
                     <constraint firstItem="e4p-bb-Yiq" firstAttribute="leading" secondItem="je2-PD-Zxn" secondAttribute="leading" constant="-15" id="bJZ-uL-c2Q"/>
                     <constraint firstItem="HaP-Fa-INn" firstAttribute="leading" secondItem="B4k-0I-4TM" secondAttribute="trailing" constant="12" id="efQ-Bp-JIb"/>
                     <constraint firstItem="je2-PD-Zxn" firstAttribute="bottom" secondItem="e4p-bb-Yiq" secondAttribute="bottom" constant="-15" id="huS-Kl-fbj"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="e4p-bb-Yiq" secondAttribute="trailing" constant="4.5" id="lrw-bx-kbX"/>
                     <constraint firstAttribute="bottom" secondItem="ngb-hh-hSu" secondAttribute="bottom" id="nr0-VP-vXn"/>
                     <constraint firstItem="XZb-aS-CfW" firstAttribute="leading" secondItem="je2-PD-Zxn" secondAttribute="leading" id="z4P-zd-jSU"/>
                 </constraints>

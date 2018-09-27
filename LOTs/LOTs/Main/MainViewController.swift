@@ -39,17 +39,17 @@ class MainViewController: UIViewController {
         
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
 
-            print(snapshot)
+//            print(snapshot)
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
 
-                print(dictionary)
+//                print(dictionary)
                 
                 let article = Article(dictionary: dictionary)
 
                 self.articles.append(article)
 
-                print(article)
+//                print(article)
 
                 DispatchQueue.main.async(execute: {
                     self.mainCollectionView.reloadData()
@@ -76,8 +76,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFoodCell", for: indexPath as IndexPath) as! MainCell
 
         let article = articles[indexPath.row]
-        
-        print(article)
         
         cell.titleLabel?.text = article.articleTitle
         

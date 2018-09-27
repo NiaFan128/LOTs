@@ -84,8 +84,7 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let row = indexPath.row
         
         if row == 0 {
-            
-            
+        
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let likeDetailViewController = storyboard.instantiateViewController(withIdentifier: "LikeDetail")
 

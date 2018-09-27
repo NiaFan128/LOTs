@@ -12,9 +12,6 @@ class LikeDetailViewController: UIViewController {
 
     @IBOutlet weak var likeDetailTableView: UITableView!
     
-//    static let storyboardName = "Main"
-//    static let viewControllerIdentifier = "LikeDetailViewController"
-    
     var author: [String] = ["Nia"]
     var articleTitle: [String] = []
     var cuisine: [String] = []
@@ -30,13 +27,26 @@ class LikeDetailViewController: UIViewController {
         likeDetailTableView.delegate = self
         likeDetailTableView.dataSource = self
         
-//        author = "Nia"
         articleTitle = ["大推蝦味超濃日式沾麵", "黑死人不償命 Q 彈墨魚麵", "要減肥了低脂少油餐", "廣西螺師粉", "半筋半肉牛肉麵"]
         cuisine = ["日式料理", "義式料理", "英式料理", "中式料理", "中式料理"]
         likeImage = [UIImage(named: "01"), UIImage(named: "02"),
                      UIImage(named: "03"), UIImage(named: "04"),
                      UIImage(named: "05")] as! [UIImage]
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(true)
+        
+        print(123)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
+
     }
     
 //    class func likeDetailViewControllerForLike() -> LikeDetailViewController {
@@ -67,18 +77,18 @@ extension LikeDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "LikeDetailCell", for: indexPath) as? LikeDetailTableViewCell else {
-            
+
             return UITableViewCell()
-            
+
         }
-        
+
         cell.authorLabel.text = "Nia"
         cell.articleImage.image = likeImage[indexPath.item]
         cell.articleTitleLabel.text = articleTitle[indexPath.item]
         cell.cuisineLabel.text = cuisine[indexPath.item]
-        
+
         return cell
-        
+
     }
     
 }
@@ -91,4 +101,24 @@ extension LikeDetailViewController: UITableViewDelegate {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let row = indexPath.row
+
+        if row == 0 {
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+            let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
+
+//            let detailViewController = DetailViewController.detailViewControllerForArticle()
+//            navigationController?.pushViewController(detailViewController, animated: true)
+            
+            show(detailViewController, sender: nil)
+
+        }
+
+    }
+
+
 }
