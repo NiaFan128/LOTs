@@ -16,6 +16,7 @@
 		2B42E712215CDCF500BB0F86 /* SuggestViewController copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E711215CDCF500BB0F86 /* SuggestViewController copy.swift */; };
 		2B42E715215CDF3500BB0F86 /* TypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E713215CDF3500BB0F86 /* TypeCollectionViewCell.swift */; };
 		2B42E716215CDF3500BB0F86 /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */; };
+		2B42E718215E4CAB00BB0F86 /* SuggestCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E717215E4CAB00BB0F86 /* SuggestCollectionViewLayout.swift */; };
 		2B5699CD2154C04900D122B4 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5699CC2154C04900D122B4 /* iOSDropDown.framework */; };
 		2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303672151EEE8006E2522 /* AppDelegate.swift */; };
 		2B83036D2151EEE8006E2522 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B83036B2151EEE8006E2522 /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		2B42E711215CDCF500BB0F86 /* SuggestViewController copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SuggestViewController copy.swift"; sourceTree = "<group>"; };
 		2B42E713215CDF3500BB0F86 /* TypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TypeCollectionViewCell.swift; path = LOTs/Suggest/TypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TypeCollectionViewCell.xib; path = LOTs/Suggest/TypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		2B42E717215E4CAB00BB0F86 /* SuggestCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2B5699CC2154C04900D122B4 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303642151EEE8006E2522 /* LOTs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOTs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303672151EEE8006E2522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				2B42E711215CDCF500BB0F86 /* SuggestViewController copy.swift */,
+				2B42E717215E4CAB00BB0F86 /* SuggestCollectionViewLayout.swift */,
 				2B42E713215CDF3500BB0F86 /* TypeCollectionViewCell.swift */,
 				2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */,
 			);
@@ -396,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B42E718215E4CAB00BB0F86 /* SuggestCollectionViewLayout.swift in Sources */,
 				2B02B91421534202004FC66E /* PostViewController.swift in Sources */,
 				2B83037A2151F298006E2522 /* NavigationController.swift in Sources */,
 				2BE27EFB215BC1EB005387A4 /* ProfileTableViewCell.swift in Sources */,
