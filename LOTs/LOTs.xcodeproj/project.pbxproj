@@ -13,9 +13,11 @@
 		2B02B9192153485B004FC66E /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B02B9172153485B004FC66E /* PostTableViewCell.xib */; };
 		2B191DA5215644BA006A2AC1 /* PostViewController+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B191DA4215644BA006A2AC1 /* PostViewController+handler.swift */; };
 		2B191DA7215A36F9006A2AC1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B191DA6215A36F9006A2AC1 /* LoginViewController.swift */; };
+		2B42E712215CDCF500BB0F86 /* SuggestViewController copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E711215CDCF500BB0F86 /* SuggestViewController copy.swift */; };
+		2B42E715215CDF3500BB0F86 /* TypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E713215CDF3500BB0F86 /* TypeCollectionViewCell.swift */; };
+		2B42E716215CDF3500BB0F86 /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */; };
 		2B5699CD2154C04900D122B4 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5699CC2154C04900D122B4 /* iOSDropDown.framework */; };
 		2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303672151EEE8006E2522 /* AppDelegate.swift */; };
-		2B83036A2151EEE8006E2522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303692151EEE8006E2522 /* ViewController.swift */; };
 		2B83036D2151EEE8006E2522 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B83036B2151EEE8006E2522 /* Main.storyboard */; };
 		2B83036F2151EEEA006E2522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B83036E2151EEEA006E2522 /* Assets.xcassets */; };
 		2B8303722151EEEA006E2522 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B8303702151EEEA006E2522 /* LaunchScreen.storyboard */; };
@@ -57,10 +59,12 @@
 		2B02B9172153485B004FC66E /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		2B191DA4215644BA006A2AC1 /* PostViewController+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostViewController+handler.swift"; sourceTree = "<group>"; };
 		2B191DA6215A36F9006A2AC1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2B42E711215CDCF500BB0F86 /* SuggestViewController copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SuggestViewController copy.swift"; sourceTree = "<group>"; };
+		2B42E713215CDF3500BB0F86 /* TypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TypeCollectionViewCell.swift; path = LOTs/Suggest/TypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TypeCollectionViewCell.xib; path = LOTs/Suggest/TypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		2B5699CC2154C04900D122B4 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303642151EEE8006E2522 /* LOTs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOTs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303672151EEE8006E2522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2B8303692151EEE8006E2522 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2B83036C2151EEE8006E2522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B83036E2151EEEA006E2522 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B8303712151EEEA006E2522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -139,6 +143,17 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		2B42E710215CDCD000BB0F86 /* Suggest */ = {
+			isa = PBXGroup;
+			children = (
+				2B42E711215CDCF500BB0F86 /* SuggestViewController copy.swift */,
+				2B42E713215CDF3500BB0F86 /* TypeCollectionViewCell.swift */,
+				2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */,
+			);
+			name = Suggest;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		2B83035B2151EEE8006E2522 = {
 			isa = PBXGroup;
 			children = (
@@ -163,13 +178,13 @@
 				2B8303672151EEE8006E2522 /* AppDelegate.swift */,
 				2B8303792151F298006E2522 /* NavigationController.swift */,
 				2B83036B2151EEE8006E2522 /* Main.storyboard */,
+				2B42E710215CDCD000BB0F86 /* Suggest */,
 				2B191DA8215A36FE006A2AC1 /* Login */,
 				2B83037F21521C51006E2522 /* Main */,
 				2B02B9152153420B004FC66E /* Post */,
 				2BE27EEE215B76B9005387A4 /* Like */,
 				2BE27EFD215BC1F0005387A4 /* Profile */,
 				2BE27F12215C837E005387A4 /* Detail */,
-				2B8303692151EEE8006E2522 /* ViewController.swift */,
 				2B02B91221533FD0004FC66E /* Support */,
 				2B83036E2151EEEA006E2522 /* Assets.xcassets */,
 				2BE27EF1215B844D005387A4 /* Food.xcassets */,
@@ -311,6 +326,7 @@
 				2BE27F03215BD475005387A4 /* ProfileCollectionViewCell.xib in Resources */,
 				2BE27EF2215B844E005387A4 /* Food.xcassets in Resources */,
 				2BDD665D2155079700E3C74A /* GoogleService-Info.plist in Resources */,
+				2B42E716215CDF3500BB0F86 /* TypeCollectionViewCell.xib in Resources */,
 				2BE27F11215C8378005387A4 /* DetailCTableViewCell.xib in Resources */,
 				2BE27F09215C8357005387A4 /* DetailATableViewCell.xib in Resources */,
 				2BE27EF6215B9B87005387A4 /* LikeDetailTableViewCell.xib in Resources */,
@@ -381,11 +397,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B02B91421534202004FC66E /* PostViewController.swift in Sources */,
-				2B83036A2151EEE8006E2522 /* ViewController.swift in Sources */,
 				2B83037A2151F298006E2522 /* NavigationController.swift in Sources */,
 				2BE27EFB215BC1EB005387A4 /* ProfileTableViewCell.swift in Sources */,
 				2BE27EF5215B9B87005387A4 /* LikeDetailTableViewCell.swift in Sources */,
 				2BDD665F2155173400E3C74A /* Post.swift in Sources */,
+				2B42E715215CDF3500BB0F86 /* TypeCollectionViewCell.swift in Sources */,
 				2BE27F10215C8378005387A4 /* DetailCTableViewCell.swift in Sources */,
 				2BE27F05215C8339005387A4 /* DetailViewController.swift in Sources */,
 				2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */,
@@ -395,6 +411,7 @@
 				2BE27EEC215B76B3005387A4 /* LikeCollectionViewCell.swift in Sources */,
 				2B191DA5215644BA006A2AC1 /* PostViewController+handler.swift in Sources */,
 				2B83038721524275006E2522 /* Layout.swift in Sources */,
+				2B42E712215CDCF500BB0F86 /* SuggestViewController copy.swift in Sources */,
 				2BE27F0C215C8369005387A4 /* DetailBTableViewCell.swift in Sources */,
 				2BE27EF8215BAC5A005387A4 /* LikeDetailViewController.swift in Sources */,
 				2BE27F02215BD475005387A4 /* ProfileCollectionViewCell.swift in Sources */,
@@ -553,6 +570,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JKG9QZ9M65;
 				INFOPLIST_FILE = LOTs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -572,6 +590,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JKG9QZ9M65;
 				INFOPLIST_FILE = LOTs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
