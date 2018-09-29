@@ -289,6 +289,36 @@
             </objects>
             <point key="canvasLocation" x="258" y="1164"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="EUB-4u-ReC">
+            <objects>
+                <viewController id="qgk-I1-HxL" customClass="ViewController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gXq-Y8-PRW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ffffffffffffffff" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-3f-WPc" customClass="McTextField" customModule="McPicker">
+                                <rect key="frame" x="157" y="433" width="100" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gCe-3f-WPc" firstAttribute="centerY" secondItem="gXq-Y8-PRW" secondAttribute="centerY" id="6Ke-1x-Vwc"/>
+                            <constraint firstItem="gCe-3f-WPc" firstAttribute="centerX" secondItem="gXq-Y8-PRW" secondAttribute="centerX" id="lL4-gc-JEa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="f33-al-LEQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="mcTextField" destination="gCe-3f-WPc" id="CCv-hZ-dQe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OKa-uM-DDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4907" y="1164"/>
+        </scene>
         <!--LOTs-->
         <scene sceneID="hTm-bv-6oY">
             <objects>

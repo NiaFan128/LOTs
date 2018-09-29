@@ -58,6 +58,7 @@ PODS:
   - GTMSessionFetcher/Core (1.2.0)
   - iOSDropDown (0.2.4)
   - leveldb-library (1.20)
+  - McPicker (2.0.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -71,6 +72,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - iOSDropDown
+  - McPicker (~> 2.0.0)
   - SwiftLint
 
 SPEC REPOS:
@@ -88,6 +90,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - iOSDropDown
     - leveldb-library
+    - McPicker
     - nanopb
     - SwiftLint
 
@@ -105,9 +108,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   iOSDropDown: 6d928eddd336c7bc698ad0ba4b324ce3d2d43c59
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  McPicker: 1d11ad8c07c337a16dd9397e45f321125304cbb0
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: ca6a369f0a7a5e83a16e972e08bb3e0e2b64f349
+PODFILE CHECKSUM: 0b8038bc01ccb7e620a993019b64dc25ffde8ef4
 
 COCOAPODS: 1.5.3
