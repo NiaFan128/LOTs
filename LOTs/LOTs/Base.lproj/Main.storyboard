@@ -417,6 +417,9 @@
                                 <state key="normal" title="   Login with Facebook">
                                     <color key="titleColor" red="0.98039215686274506" green="0.56862745098039214" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="facebookLogin:" destination="zLg-fm-dfc" eventType="touchUpInside" id="dEb-X8-CXa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyg-Nm-b86">
                                 <rect key="frame" x="107" y="381" width="200" height="30"/>

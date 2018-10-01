@@ -28,8 +28,8 @@ class PostViewController: UIViewController {
     var height: CGFloat?
     var width: CGFloat?
     var pictureURL: String?
-
     var writeResults = [[String: Any]]()
+    
     
     override func viewDidLoad() {
         

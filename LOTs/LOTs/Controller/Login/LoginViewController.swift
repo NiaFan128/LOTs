@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 class LoginViewController: UIViewController {
 
@@ -17,6 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var googleImage: UIImageView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         facebookLoginButton.layer.cornerRadius = 7
@@ -29,6 +33,35 @@ class LoginViewController: UIViewController {
         googleImage.image = googleImage.image?.withRenderingMode(.alwaysTemplate)
         googleImage.tintColor = UIColor.init(red: 250.0/255.0, green: 145.0/255.0, blue: 150.0/255.0, alpha: 1.0)
         
+        
     }
-
+    
+    @IBAction func facebookLogin(_ sender: Any) {
+        
+        let fbLoginManager = FBSDKLoginManager()
+        
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            
+            guard result != nil else {
+                print(result.debugDescription)
+                return
+            }
+            
+            guard let tokenString = result?.token.tokenString else {
+                return
+            }
+            
+            print("ID:\(String(describing: result?.token.appID)), Token:\(String(describing: tokenString))")
+//            print(Auth.auth().currentUser?.displayName)
+//            print(Auth.auth().currentUser?.photoURL?.absoluteString)
+            
+        }
+        
+    }
+    
 }
