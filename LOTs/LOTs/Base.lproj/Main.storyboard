@@ -442,9 +442,6 @@
                                 <state key="normal" title="Visitor">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <segue destination="C2O-lF-NU2" kind="show" id="BWd-JR-kSX"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-logo" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Wy-gPN">
                                 <rect key="frame" x="114" y="338" width="16" height="16"/>
@@ -483,11 +480,11 @@
                         <viewLayoutGuide key="safeArea" id="ah9-3z-YcF"/>
                     </view>
                     <connections>
-                        <outlet property="GuestModeButton" destination="rYQ-TH-ekO" id="2ON-8W-ZBj"/>
                         <outlet property="facebookImage" destination="KnL-Wy-gPN" id="TeJ-hJ-OAO"/>
                         <outlet property="facebookLoginButton" destination="MP9-Vo-wBH" id="Mq3-2G-Pyb"/>
                         <outlet property="googleImage" destination="5tG-PU-mF6" id="v0e-zf-XLM"/>
                         <outlet property="googleLoginButton" destination="Nyg-Nm-b86" id="gax-rt-OIR"/>
+                        <outlet property="guestModeButton" destination="rYQ-TH-ekO" id="2ON-8W-ZBj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f35-Ku-rHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -497,7 +494,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="3bw-dp-vTT">
             <objects>
-                <tabBarController id="C2O-lF-NU2" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainPage" id="C2O-lF-NU2" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Glt-Sl-8cX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
