@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C2O-lF-NU2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zLg-fm-dfc">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -93,21 +93,12 @@
                                     <constraint firstAttribute="width" secondItem="Wem-T0-DLQ" secondAttribute="height" multiplier="16:9" id="f0X-ME-spi"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KC3-RW-EyE">
-                                <rect key="frame" x="25" y="174" width="180" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="Dfv-60-eUP"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jQd-Sg-nJb">
                                 <rect key="frame" x="30" y="239" width="354" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2GQ-M2-b3H">
-                                <rect key="frame" x="339" y="171.5" width="35" height="35"/>
+                                <rect key="frame" x="339" y="169" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="Gjw-9k-NkW"/>
                                     <constraint firstAttribute="height" constant="35" id="NpZ-Ns-vo7"/>
@@ -116,17 +107,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="KC3-RW-EyE" firstAttribute="leading" secondItem="WZM-Yv-hgc" secondAttribute="leading" constant="25" id="1IH-yr-Xrf"/>
-                            <constraint firstItem="KC3-RW-EyE" firstAttribute="top" secondItem="Wem-T0-DLQ" secondAttribute="bottom" constant="-45" id="6GP-he-jHL"/>
                             <constraint firstItem="jQd-Sg-nJb" firstAttribute="top" secondItem="Wem-T0-DLQ" secondAttribute="bottom" constant="20" id="AQ4-lB-UVT"/>
                             <constraint firstItem="WZM-Yv-hgc" firstAttribute="trailing" secondItem="jQd-Sg-nJb" secondAttribute="trailing" constant="30" id="Al3-Am-rj4"/>
                             <constraint firstItem="jQd-Sg-nJb" firstAttribute="leading" secondItem="WZM-Yv-hgc" secondAttribute="leading" constant="30" id="Lzz-rS-6ea"/>
                             <constraint firstItem="Wem-T0-DLQ" firstAttribute="trailing" secondItem="2GQ-M2-b3H" secondAttribute="trailing" constant="10" id="boT-Og-qkm"/>
                             <constraint firstItem="WZM-Yv-hgc" firstAttribute="trailing" secondItem="Wem-T0-DLQ" secondAttribute="trailing" constant="30" id="dzQ-vc-4fX"/>
-                            <constraint firstItem="2GQ-M2-b3H" firstAttribute="centerY" secondItem="KC3-RW-EyE" secondAttribute="centerY" id="gaE-k5-6MQ"/>
                             <constraint firstItem="Wem-T0-DLQ" firstAttribute="leading" secondItem="WZM-Yv-hgc" secondAttribute="leading" constant="30" id="hKl-4p-AWr"/>
                             <constraint firstItem="Wem-T0-DLQ" firstAttribute="top" secondItem="WZM-Yv-hgc" secondAttribute="top" constant="20" id="mGv-i8-J8b"/>
                             <constraint firstItem="jQd-Sg-nJb" firstAttribute="bottom" secondItem="WZM-Yv-hgc" secondAttribute="bottom" id="p8A-rp-Wsx"/>
+                            <constraint firstItem="2GQ-M2-b3H" firstAttribute="bottom" secondItem="Wem-T0-DLQ" secondAttribute="bottom" constant="-15" id="qR5-se-lwY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WZM-Yv-hgc"/>
                     </view>
@@ -146,7 +135,6 @@
                         <outlet property="articleImage" destination="Wem-T0-DLQ" id="PdF-o1-NlK"/>
                         <outlet property="profileImage" destination="2GQ-M2-b3H" id="waB-Fa-Pxf"/>
                         <outlet property="tableView" destination="jQd-Sg-nJb" id="WjW-GS-1vq"/>
-                        <outlet property="titleTextField" destination="KC3-RW-EyE" id="htv-24-b4w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p6m-7k-MP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -288,36 +276,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1GU-5u-eAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="258" y="1164"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="EUB-4u-ReC">
-            <objects>
-                <viewController id="qgk-I1-HxL" customClass="ViewController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gXq-Y8-PRW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ffffffffffffffff" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-3f-WPc" customClass="McTextField" customModule="McPicker">
-                                <rect key="frame" x="157" y="433" width="100" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="gCe-3f-WPc" firstAttribute="centerY" secondItem="gXq-Y8-PRW" secondAttribute="centerY" id="6Ke-1x-Vwc"/>
-                            <constraint firstItem="gCe-3f-WPc" firstAttribute="centerX" secondItem="gXq-Y8-PRW" secondAttribute="centerX" id="lL4-gc-JEa"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="f33-al-LEQ"/>
-                    </view>
-                    <connections>
-                        <outlet property="mcTextField" destination="gCe-3f-WPc" id="CCv-hZ-dQe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OKa-uM-DDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4907" y="1164"/>
         </scene>
         <!--LOTs-->
         <scene sceneID="hTm-bv-6oY">
@@ -481,6 +439,9 @@
                                 <state key="normal" title="Visitor">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="C2O-lF-NU2" kind="show" id="BWd-JR-kSX"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-logo" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Wy-gPN">
                                 <rect key="frame" x="114" y="338" width="16" height="16"/>

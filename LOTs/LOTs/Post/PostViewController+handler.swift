@@ -55,7 +55,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     let postID = self.ref.child("post").childByAutoId().key
                     
                     self.ref.child("posts/\(postID)").setValue([
-                        "articleTitle": self.titleTextField.text!,
+                        "articleTitle": self.articleTitle,
                         "articleImage": self.pictureURL,
                         "height": self.height,
                         "width": self.width,

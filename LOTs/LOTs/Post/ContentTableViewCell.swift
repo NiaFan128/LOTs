@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
+class ContentTableViewCell: UITableViewCell, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
 //    fileprivate var didSelectCompletion: (String) -> () = {selectedText  in }
@@ -19,11 +20,25 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
         
         super.awakeFromNib()
         
-        self.backgroundSet()
+        self.contentSet()
+        
+//        titleTextField.keyboardType = .default
+//        titleTextField.returnKeyType = .done
 //        contentTextView.delegate = self
 
     }
 
+    func contentSet() {
+        
+        contentTextView.layer.shadowColor = UIColor.black.cgColor
+        contentTextView.layer.shadowOffset = CGSize.zero
+        contentTextView.layer.shadowRadius = 15
+        contentTextView.layer.shadowOpacity = 1
+        contentTextView.layer.shouldRasterize = true
+        contentTextView.layer.cornerRadius = 10
+        
+    }
+    
     func backgroundSet() {
         
         backView.layer.shadowColor = UIColor.black.cgColor

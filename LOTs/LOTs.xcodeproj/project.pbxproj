@@ -47,7 +47,6 @@
 		2BE27F0D215C8369005387A4 /* DetailBTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE27F0B215C8369005387A4 /* DetailBTableViewCell.xib */; };
 		2BE27F10215C8378005387A4 /* DetailCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27F0E215C8378005387A4 /* DetailCTableViewCell.swift */; };
 		2BE27F11215C8378005387A4 /* DetailCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE27F0F215C8378005387A4 /* DetailCTableViewCell.xib */; };
-		2BE47653215F164B006EC58B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE47652215F164B006EC58B /* ViewController.swift */; };
 		2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */; };
 		2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */; };
 		2CD5213A38080600EEA2E24B /* Pods_LOTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B4ADAFBD9FBB343B63DBD6 /* Pods_LOTs.framework */; };
@@ -97,7 +96,6 @@
 		2BE27F0B215C8369005387A4 /* DetailBTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBTableViewCell.xib; sourceTree = "<group>"; };
 		2BE27F0E215C8378005387A4 /* DetailCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCTableViewCell.swift; sourceTree = "<group>"; };
 		2BE27F0F215C8378005387A4 /* DetailCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCTableViewCell.xib; sourceTree = "<group>"; };
-		2BE47652215F164B006EC58B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		2DE5A7C64ED39736B7C8ECA7 /* Pods-LOTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOTs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LOTs/Pods-LOTs.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 				2B8303672151EEE8006E2522 /* AppDelegate.swift */,
 				2B8303792151F298006E2522 /* NavigationController.swift */,
 				2B83036B2151EEE8006E2522 /* Main.storyboard */,
-				2BE47652215F164B006EC58B /* ViewController.swift */,
 				2B191DA8215A36FE006A2AC1 /* Login */,
 				2B83037F21521C51006E2522 /* Main */,
 				2B42E710215CDCD000BB0F86 /* Suggest */,
@@ -425,7 +422,6 @@
 				2BE27EF8215BAC5A005387A4 /* LikeDetailViewController.swift in Sources */,
 				2BE27F02215BD475005387A4 /* ProfileCollectionViewCell.swift in Sources */,
 				2BE27F08215C8357005387A4 /* DetailATableViewCell.swift in Sources */,
-				2BE47653215F164B006EC58B /* ViewController.swift in Sources */,
 				2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */,
 				2B8303852152295F006E2522 /* MainCell.swift in Sources */,
 				2B191DA7215A36F9006A2AC1 /* LoginViewController.swift in Sources */,

@@ -14,7 +14,7 @@ import FirebaseDatabase
 class PostViewController: UIViewController {
 
     @IBOutlet weak var articleImage: UIImageView!
-    @IBOutlet weak var titleTextField: UITextField!
+//    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -23,6 +23,8 @@ class PostViewController: UIViewController {
     var cuisine: String = ""
     var createdTime: String = ""
     var instagrame: Bool?
+//    var title: String = ""
+    var articleTitle: String = ""
     var content: String = ""
     var picture: UIImage?
     var height: CGFloat?
@@ -66,7 +68,7 @@ class PostViewController: UIViewController {
     
     @IBAction func cancelAction(_ sender: Any) {
                 
-        titleTextField.text = ""
+//        titleTextField.text = ""
         
     }
     
@@ -150,6 +152,7 @@ extension PostViewController: UITableViewDataSource {
             }
             
             cell.contentTextView.delegate = self
+            cell.titleTextField.delegate = self
             
             return cell
             
@@ -179,18 +182,35 @@ extension PostViewController: UITableViewDelegate {
 
 extension PostViewController: UITextViewDelegate {
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        content = textView.text
+        print("content: \(content)")
+        
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         
         textView.text = ""
         
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+}
+
+extension PostViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
-        print(textView.text)
-        
-        content = textView.text
+        articleTitle = textField.text ?? ""
+        //        title = textField.text
+        print("article: \(articleTitle)")
         
     }
-
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        textField.text = ""
+        
+    }
+    
 }

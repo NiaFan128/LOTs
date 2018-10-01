@@ -47,7 +47,7 @@ class PostTableViewCell: UITableViewCell {
         
         let now: Date = Date()
         let dateFormat: DateFormatter = DateFormatter()
-        dateFormat.dateFormat = "yyyy 年 MM 月 dd 日"
+        dateFormat.dateFormat = "MMMM / dd / yyyy"
         
         let dateString: String = dateFormat.string(from: now)
     

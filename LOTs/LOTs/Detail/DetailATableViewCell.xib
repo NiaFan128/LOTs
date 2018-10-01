@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,6 +51,13 @@
                             <constraint firstAttribute="height" constant="1" id="SaD-YN-PPi"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more-1" translatesAutoresizingMaskIntoConstraints="NO" id="xCY-AH-X9I">
+                        <rect key="frame" x="309" y="45" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="kEM-qS-m3B"/>
+                            <constraint firstAttribute="width" constant="20" id="o7t-gf-fqS"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="yUB-5x-d82" firstAttribute="top" secondItem="aRt-rG-a09" secondAttribute="bottom" constant="8" id="0wA-1R-pIl"/>
@@ -62,8 +70,10 @@
                     <constraint firstItem="bx4-pe-lu8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="XHk-wv-nfc"/>
                     <constraint firstItem="aRt-rG-a09" firstAttribute="top" secondItem="VyV-Eu-KD6" secondAttribute="bottom" constant="7" id="b7V-6F-rOH"/>
                     <constraint firstAttribute="trailing" secondItem="yUB-5x-d82" secondAttribute="trailing" constant="30" id="bIp-XT-6QE"/>
+                    <constraint firstAttribute="trailing" secondItem="xCY-AH-X9I" secondAttribute="trailing" constant="30" id="kBw-Yy-POT"/>
                     <constraint firstItem="RNe-Ff-982" firstAttribute="leading" secondItem="bx4-pe-lu8" secondAttribute="trailing" constant="15" id="oOV-fg-S6c"/>
                     <constraint firstItem="VyV-Eu-KD6" firstAttribute="top" secondItem="bx4-pe-lu8" secondAttribute="bottom" constant="8" id="sdt-NM-JgV"/>
+                    <constraint firstItem="xCY-AH-X9I" firstAttribute="centerY" secondItem="RNe-Ff-982" secondAttribute="centerY" id="uls-wc-H6P"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -77,6 +87,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="more-1" width="64" height="64"/>
         <image name="profile_2" width="480" height="480"/>
     </resources>
 </document>

@@ -16,6 +16,8 @@ class SuggestViewController: UIViewController {
     var articleImage = [UIImage]()
     var photoWidth: CGFloat!
     
+    var cuisine = [String]()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -44,6 +46,9 @@ class SuggestViewController: UIViewController {
                         UIImage(named: "03"), UIImage(named: "04"),
                         UIImage(named: "05"), UIImage(named: "06"),
                         UIImage(named: "07"), UIImage(named: "08")] as! [UIImage]
+        
+        cuisine = ["中式料理","日式料理","美式料理","義式料理","韓式料理",
+                   "中式料理","日式料理","美式料理","義式料理","韓式料理"]
         
         showCollectionView.delegate = self
         showCollectionView.dataSource = self
@@ -98,6 +103,9 @@ extension SuggestViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
                 
             }
+            
+            cell.typeLabel.text = cuisine[indexPath.item]
+            cell.typeImage.image = articleImage[indexPath.item]
             
             return cell
             
