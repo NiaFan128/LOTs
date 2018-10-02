@@ -204,9 +204,9 @@
 		2B86434D2162104800D39812 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2BDD665E2155173400E3C74A /* Article.swift */,
 				2BBFA63B216310B500A31D58 /* User.swift */,
 				2B86435E216263AD00D39812 /* UserManager.swift */,
+				2BDD665E2155173400E3C74A /* Article.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

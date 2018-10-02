@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import Kingfisher
 import Firebase
+import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 
@@ -30,7 +32,6 @@ class PostViewController: UIViewController {
     var pictureURL: String?
     var writeResults = [[String: Any]]()
     
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -45,7 +46,9 @@ class PostViewController: UIViewController {
 
         articleImage.layer.cornerRadius = 8
         profileImage.cornerBorder()
-        profileImage.image = UIImage(named: "profile_1")
+//        profileImage.image = UIImage(named: "profile_1")
+        let profileUrl = URL(string: Auth.auth().currentUser?.photoURL?.absoluteString ?? "")
+        profileImage.kf.setImage(with: profileUrl)
 
         tableView.dataSource = self
         tableView.delegate = self

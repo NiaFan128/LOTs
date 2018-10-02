@@ -12,7 +12,6 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 import FBSDKLoginKit
-import FBSDKCoreKit
 
 class LoginViewController: UIViewController {
 
@@ -23,6 +22,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var googleImage: UIImageView!
     
     let photoSize: String = "?width=400&height=400"
+
+//    let userId = UserManager.shared.getUserId()
+//    let userName = UserManager.shared.getUserName()
+//    let userEmail = UserManager.shared.getUserEmail()
+//    let userProfile = UserManager.shared.getUserProfileImage()
     
     override func viewDidLoad() {
         
@@ -91,6 +95,12 @@ class LoginViewController: UIViewController {
                     let profileImageUrl = currentUser.photoURL?.absoluteString else {
                     return
                 }
+                
+                // Save the User Default
+                UserDefaults.standard.set(profileImageUrl + self.photoSize, forKey: "userProfile")
+                UserDefaults.standard.set(name, forKey: "userName")
+                UserDefaults.standard.set(email, forKey: "userEmail")
+                UserDefaults.standard.set(uid, forKey: "userId")
                 
                 let values = ["name": name,
                               "email": email,
