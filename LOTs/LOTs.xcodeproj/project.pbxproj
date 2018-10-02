@@ -29,12 +29,12 @@
 		2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86435C2162252900D39812 /* UIKit+Effect.swift */; };
 		2B86435F216263AD00D39812 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86435E216263AD00D39812 /* UserManager.swift */; };
 		2BBFA63C216310B500A31D58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBFA63B216310B500A31D58 /* User.swift */; };
+		2BBFA63E2163724A00A31D58 /* Food.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBFA63D2163724A00A31D58 /* Food.xcassets */; };
 		2BDD665D2155079700E3C74A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BDD665C2155079700E3C74A /* GoogleService-Info.plist */; };
 		2BDD665F2155173400E3C74A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDD665E2155173400E3C74A /* Article.swift */; };
 		2BE27EEC215B76B3005387A4 /* LikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27EEA215B76B3005387A4 /* LikeCollectionViewCell.swift */; };
 		2BE27EED215B76B3005387A4 /* LikeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE27EEB215B76B3005387A4 /* LikeCollectionViewCell.xib */; };
 		2BE27EF0215B788C005387A4 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27EEF215B788C005387A4 /* LikeViewController.swift */; };
-		2BE27EF2215B844E005387A4 /* Food.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE27EF1215B844D005387A4 /* Food.xcassets */; };
 		2BE27EF5215B9B87005387A4 /* LikeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27EF3215B9B87005387A4 /* LikeDetailTableViewCell.swift */; };
 		2BE27EF6215B9B87005387A4 /* LikeDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE27EF4215B9B87005387A4 /* LikeDetailTableViewCell.xib */; };
 		2BE27EF8215BAC5A005387A4 /* LikeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27EF7215BAC5A005387A4 /* LikeDetailViewController.swift */; };
@@ -81,12 +81,12 @@
 		2B86435C2162252900D39812 /* UIKit+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Effect.swift"; sourceTree = "<group>"; };
 		2B86435E216263AD00D39812 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		2BBFA63B216310B500A31D58 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2BBFA63D2163724A00A31D58 /* Food.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Food.xcassets; sourceTree = "<group>"; };
 		2BDD665C2155079700E3C74A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2BDD665E2155173400E3C74A /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		2BE27EEA215B76B3005387A4 /* LikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionViewCell.swift; sourceTree = "<group>"; };
 		2BE27EEB215B76B3005387A4 /* LikeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeCollectionViewCell.xib; sourceTree = "<group>"; };
 		2BE27EEF215B788C005387A4 /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
-		2BE27EF1215B844D005387A4 /* Food.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Food.xcassets; path = LOTs/Food.xcassets; sourceTree = SOURCE_ROOT; };
 		2BE27EF3215B9B87005387A4 /* LikeDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDetailTableViewCell.swift; sourceTree = "<group>"; };
 		2BE27EF4215B9B87005387A4 /* LikeDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeDetailTableViewCell.xib; sourceTree = "<group>"; };
 		2BE27EF7215BAC5A005387A4 /* LikeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDetailViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 				2B02B91221533FD0004FC66E /* Support */,
 				2B8643592162160D00D39812 /* Extension */,
 				2B83036E2151EEEA006E2522 /* Assets.xcassets */,
-				2BE27EF1215B844D005387A4 /* Food.xcassets */,
+				2BBFA63D2163724A00A31D58 /* Food.xcassets */,
 				2B8303702151EEEA006E2522 /* LaunchScreen.storyboard */,
 				2B8303732151EEEA006E2522 /* Info.plist */,
 				2BDD665C2155079700E3C74A /* GoogleService-Info.plist */,
@@ -440,9 +440,9 @@
 			files = (
 				2B8303722151EEEA006E2522 /* LaunchScreen.storyboard in Resources */,
 				2BE27F03215BD475005387A4 /* ProfileCollectionViewCell.xib in Resources */,
-				2BE27EF2215B844E005387A4 /* Food.xcassets in Resources */,
 				2BDD665D2155079700E3C74A /* GoogleService-Info.plist in Resources */,
 				2B42E716215CDF3500BB0F86 /* TypeCollectionViewCell.xib in Resources */,
+				2BBFA63E2163724A00A31D58 /* Food.xcassets in Resources */,
 				2BE27F11215C8378005387A4 /* DetailCTableViewCell.xib in Resources */,
 				2BE27F09215C8357005387A4 /* DetailATableViewCell.xib in Resources */,
 				2BE27EF6215B9B87005387A4 /* LikeDetailTableViewCell.xib in Resources */,

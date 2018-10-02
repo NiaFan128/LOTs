@@ -22,10 +22,36 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         // E-mail control
         
+        
         // Auth
         
-        // UUID
+        // Error Handler
+        guard location != nil else {
+            alertRemind(status: "location")
+            return
+        }
         
+        guard cuisine != nil else {
+            alertRemind(status: "cuisine")
+            return
+        }
+
+        guard createdTime != nil else {
+            alertRemind(status: "time")
+            return
+        }
+
+        guard articleTitle != nil else {
+            alertRemind(status: "article title")
+            return
+        }
+
+        guard content != nil else {
+            alertRemind(status: "content")
+            return
+        }
+        
+        // UUID
         let fileName = UUID().uuidString
         
         // Storage
@@ -75,8 +101,19 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                 })
             }
             
+            backToMainPage()
+
         }
                 
+    }
+    
+    func alertRemind(status: String) {
+        
+        let alertController = UIAlertController(title: "Error", message: "Please complete \(status) part!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     @objc func handleSelectProfileImageView() {

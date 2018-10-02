@@ -20,22 +20,27 @@ class PostViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var ref: DatabaseReference!
-    var location: String = ""
-    var cuisine: String = ""
-    var createdTime: String = ""
+    var location: String?
+    var cuisine: String?
+    var createdTime: String?
     var instagram: Bool?
-    var articleTitle: String = ""
-    var content: String = ""
+    var articleTitle: String?
+    var content: String?
     var picture: UIImage?
     var height: CGFloat?
     var width: CGFloat?
     var pictureURL: String?
-    var writeResults = [[String: Any]]()
+//    var writeResults = [[String: Any]]()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
+        articleImage.image = UIImage(named: "imageDefault")
+        articleImage.translatesAutoresizingMaskIntoConstraints = false
+        articleImage.contentMode = .scaleAspectFill
+        articleImage.corner(corner: 17.5)
+        
         ref = Database.database().reference()
         
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
@@ -46,7 +51,7 @@ class PostViewController: UIViewController {
 
         articleImage.layer.cornerRadius = 8
         profileImage.cornerBorder()
-//        profileImage.image = UIImage(named: "profile_1")
+
         let profileUrl = URL(string: Auth.auth().currentUser?.photoURL?.absoluteString ?? "")
         profileImage.kf.setImage(with: profileUrl)
 
@@ -54,6 +59,7 @@ class PostViewController: UIViewController {
         tableView.delegate = self
         
         uploadPicture()
+//        self.alertRemind(status: "test")
         
         tableView.rowHeight = UITableView.automaticDimension
         
@@ -63,30 +69,24 @@ class PostViewController: UIViewController {
     @IBAction func postAction(_ sender: Any) {
         
         handleRegister()
-        saveContent()
-        
+//        backToMainPage()
+
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-                
-        self.tableView.reloadData()
         
+//        dismiss(animated: true, completion: nil)
+    
     }
     
-    // Will update after completing the login function
     func uploadPicture() {
         
-        articleImage.image = UIImage(named: "imageDefault")
-        articleImage.translatesAutoresizingMaskIntoConstraints = false
-        articleImage.contentMode = .scaleAspectFill
-//        articleImage.layer.cornerRadius = 17.5
-
         articleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
         articleImage.isUserInteractionEnabled = true
             
     }
     
-    func saveContent() {
+    func backToMainPage() {
         
         let tabController = self.view.window!.rootViewController as? UITabBarController
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)

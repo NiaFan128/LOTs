@@ -81,28 +81,30 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if let articleImageUrl = article.articleImage {
             
-            let url = URL(string: articleImageUrl)
-            
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            if let url = URL(string: articleImageUrl) {
                 
-                // download hit an error so lets return out
-                if error != nil {
-                    print(error)
-                    return
-                }
-                
-                DispatchQueue.main.async {
+                URLSession.shared.dataTask(with: url) { (data, response, error) in
                     
-                    guard let image: UIImage = UIImage(data: data!) else {
+                    // download hit an error so lets return out
+                    if error != nil {
+                        print(error)
                         return
                     }
                     
-                    cell.imageView?.image = image
+                    DispatchQueue.main.async {
+                        
+                        guard let image: UIImage = UIImage(data: data!) else {
+                            return
+                        }
+                        
+                        cell.imageView?.image = image
+                        
+                    }
                     
-                }
+                    }.resume()
                 
-            }.resume()
-            
+            }
+        
         }
         
         return cell
