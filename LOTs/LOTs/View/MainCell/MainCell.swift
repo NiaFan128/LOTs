@@ -20,7 +20,6 @@ class MainCell: UICollectionViewCell {
         super.awakeFromNib()
         
         containerView.corner()
-        
         profileImageView.cornerBorder()
         titleLabel.titleShadow()
     

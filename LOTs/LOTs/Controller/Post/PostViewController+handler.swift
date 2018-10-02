@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import Firebase
+import FirebaseAuth
 import FirebaseStorage
 
 // Image Upload
@@ -25,8 +26,10 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         // UUID
         
+        let fileName = UUID().uuidString
+        
         // Storage
-        let storageRef = Storage.storage().reference().child("articel_images").child("my.jpg")
+        let storageRef = Storage.storage().reference().child("article_images").child("\(fileName).jpg")
         
         if let articleImage = self.articleImage.image, let uploadData = self.articleImage.image?.jpegData(compressionQuality: 0.5) {
             
@@ -62,8 +65,13 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                         "createdTime": self.createdTime,
                         "cuisine": self.cuisine,
                         "location": self.location,
-                        "content": self.content] as [String: Any])
-                    
+                        "content": self.content,
+                        "user":
+                            [
+                                "name": Auth.auth().currentUser?.displayName,
+                                "image": Auth.auth().currentUser?.photoURL?.absoluteString
+                            ]
+                        ])
                 })
             }
             

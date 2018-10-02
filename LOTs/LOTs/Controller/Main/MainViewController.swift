@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class MainViewController: UIViewController {
 
@@ -72,8 +73,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.titleLabel?.text = article.articleTitle
         
-        // Will change the profile image after login
-        cell.profileImageView.image = UIImage(named: "profile_1")
+        cell.profileImageView?.contentMode = .scaleAspectFill
+        let url = URL(string: article.userImage)
+        cell.profileImageView.kf.setImage(with: url)
         
         cell.imageView?.contentMode = .scaleAspectFill
         

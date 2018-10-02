@@ -5,16 +5,17 @@ target 'LOTs' do
 
   use_frameworks!
   
+  pod 'Bolts'
   pod 'SwiftLint'
   pod 'iOSDropDown'
-  pod 'DatePickerDialog'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
-  pod 'McPicker', '~> 2.0.0'
+  pod 'DatePickerDialog'
   pod 'FBSDKLoginKit'
   pod 'FBSDKCoreKit'
-  pod 'Bolts'
+  pod 'McPicker', '~> 2.0.0'
+  pod 'Kingfisher', '~> 4.0'
 
 end

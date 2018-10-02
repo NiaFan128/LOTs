@@ -19,6 +19,8 @@ class Article {
     var location: String
     var cuisine: String
     var content: String
+    var userImage: String
+    var userName: String
     var instagramPost: Bool?
  
     init(dictionary: [String: AnyObject]) {
@@ -31,6 +33,10 @@ class Article {
         self.location = dictionary["location"] as? String ?? ""
         self.cuisine = dictionary["cuisine"] as? String ?? ""
         self.content = dictionary["content"] as? String ?? ""
+        
+        let user = dictionary["user"] as? [String: AnyObject] ?? ["": AnyObject.self as AnyObject]
+        self.userName = user["name"] as? String ?? ""
+        self.userImage = user["image"] as? String ?? ""
         
     }
 }

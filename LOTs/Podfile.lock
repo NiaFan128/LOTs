@@ -75,6 +75,7 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.0)
   - iOSDropDown (0.2.4)
+  - Kingfisher (4.10.0)
   - leveldb-library (1.20)
   - McPicker (2.0.0)
   - nanopb (0.3.8):
@@ -94,6 +95,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - iOSDropDown
+  - Kingfisher (~> 4.0)
   - McPicker (~> 2.0.0)
   - SwiftLint
 
@@ -115,6 +117,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - iOSDropDown
+    - Kingfisher
     - leveldb-library
     - McPicker
     - nanopb
@@ -137,11 +140,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 760ccb53b7c7f40f9c02d8c241f76f841a7a6162
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   iOSDropDown: 6d928eddd336c7bc698ad0ba4b324ce3d2d43c59
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   McPicker: 1d11ad8c07c337a16dd9397e45f321125304cbb0
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 098fc150056faac5a9b10f645d97ee271eac8a4a
+PODFILE CHECKSUM: 76e8d022cc80cdc4e56adeb7f404b462613ff2c5
 
 COCOAPODS: 1.5.3

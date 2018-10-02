@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
@@ -20,6 +21,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var guestModeButton: UIButton!
     @IBOutlet weak var facebookImage: UIImageView!
     @IBOutlet weak var googleImage: UIImageView!
+    
+    let photoSize: String = "?width=400&height=400"
     
     override func viewDidLoad() {
         
@@ -46,7 +49,7 @@ class LoginViewController: UIViewController {
         fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             
             guard error == nil else {
-                print("Failed to login: \(error?.localizedDescription)")
+                print("Failed to login: \(String(describing: error?.localizedDescription))")
                 return
             }
             
@@ -55,17 +58,19 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            guard let accessToken = result?.token.tokenString else {
+            guard let fbAccessToken = result?.token.tokenString else {
                 print("Failed to get access token")
                 return
             }
             
 //            print("ID:\(String(describing: result?.token.appID)), Token:\(String(describing: accessToken))")
             
-            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
+            // Firebase Auth Login Set up
+            let credential = FacebookAuthProvider.credential(withAccessToken: fbAccessToken)
             
             Auth.auth().signInAndRetrieveData(with: credential, completion: { (result, error) in
                 
+                // Error Handler
                 if let error = error {
                     
                     print("Login error: \(error.localizedDescription)")
@@ -76,6 +81,28 @@ class LoginViewController: UIViewController {
                     
                 }
                 
+                // Successfully Authenticated User
+                guard let currentUser = Auth.auth().currentUser, let uid = Auth.auth().currentUser?.uid else {
+                    return
+                }
+                
+                guard let name = currentUser.displayName,
+                    let email = currentUser.email,
+                    let profileImageUrl = currentUser.photoURL?.absoluteString else {
+                    return
+                }
+                
+                let values = ["name": name,
+                              "email": email,
+                              "profileImageUrl": profileImageUrl + self.photoSize] as [String: AnyObject]
+                
+                let ref = Database.database().reference()
+                
+                let usersReference = ref.child("users").child(uid)
+                
+                usersReference.updateChildValues(values)
+                
+                // Switch the page
                 if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") {
                     
                     UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -84,12 +111,20 @@ class LoginViewController: UIViewController {
                 }
                 
             })
-
-//            print(Auth.auth().currentUser?.displayName)
-//            print(Auth.auth().currentUser?.photoURL?.absoluteString)
             
         }
         
     }
-    
+        
 }
+
+//                if let currentUser = Auth.auth().currentUser {
+//
+//                    self.user.name = currentUser.displayName
+//                    self.user.email = currentUser.email
+//                    self.user.profileImageUrl = String(currentUser.photoURL?.absoluteString ?? "") + self.photoSize
+////
+//                }
+
+//                print(Auth.auth().currentUser?.displayName)
+//                print(String(Auth.auth().currentUser?.photoURL?.absoluteString ?? "") + self.photoSize)
