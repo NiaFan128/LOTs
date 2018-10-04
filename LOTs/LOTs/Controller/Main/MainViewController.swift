@@ -99,7 +99,6 @@ class MainViewController: UIViewController {
     
     func databaseUpdate() {
         
-        
         // Use the observation, however, can't update
         Database.database().reference().child("posts").queryOrdered(byChild: "createdTime").observeSingleEvent(of: .childAdded, with: { (snapshot) in
 
@@ -127,7 +126,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        print(articles.count)
         return articles.count
         
     }

@@ -7,21 +7,27 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class LikeViewController: UIViewController {
 
     @IBOutlet weak var likeCollectionView: UICollectionView!
     
     var fullScreenSize: CGSize!
-    
+    var ref: DatabaseReference!
     var articleImage = [UIImage]()
     var areaLabel = [String]()
+    var locations = [Location]()
+    let decoder = JSONDecoder()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         fullScreenSize = UIScreen.main.bounds.size
+        
+        ref = Database.database().reference()
         
         let layout = UICollectionViewFlowLayout()
         
@@ -33,14 +39,14 @@ class LikeViewController: UIViewController {
         
         likeCollectionView.collectionViewLayout = layout
         
-        articleImage = [UIImage(named: "01"), UIImage(named: "02"),
-                        UIImage(named: "03"), UIImage(named: "04"),
-                        UIImage(named: "05"), UIImage(named: "06"),
-                        UIImage(named: "07"), UIImage(named: "08"),
-                        UIImage(named: "09"), UIImage(named: "10")] as! [UIImage]
-        
-        areaLabel = ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區",
-                     "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"]
+//        articleImage = [UIImage(named: "01"), UIImage(named: "02"),
+//                        UIImage(named: "03"), UIImage(named: "04"),
+//                        UIImage(named: "05"), UIImage(named: "06"),
+//                        UIImage(named: "07"), UIImage(named: "08"),
+//                        UIImage(named: "09"), UIImage(named: "10")] as! [UIImage]
+//
+//        areaLabel = ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區",
+//                     "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"]
         
         let nib = UINib(nibName: "LikeCollectionViewCell", bundle: nil)
         likeCollectionView.register(nib, forCellWithReuseIdentifier: "LikeCell")
@@ -51,6 +57,36 @@ class LikeViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
 
+        self.readData()
+    }
+
+    
+    func readData() {
+        
+        ref.child("locations").observe(.childAdded) { (snapshot) in
+            
+            guard let value = snapshot.value as? NSDictionary else { return }
+            
+            guard let locationJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
+            
+            do {
+                
+                let locationData = try self.decoder.decode(Location.self, from: locationJSONData)
+                print(locationData)
+                self.locations.append(locationData)
+                print(self.locations)
+
+                
+            } catch {
+                
+                print(error)
+                
+            }
+            
+            self.likeCollectionView.reloadData()
+
+        }
+        
     }
 
 }
@@ -59,7 +95,7 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        return locations.count
         
     }
     
@@ -70,10 +106,15 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionViewCell()
             
         }
+
+        let location = locations[indexPath.row]
         
-        cell.articleImage?.contentMode = .scaleAspectFill
-        cell.articleImage.image = articleImage[indexPath.item]
-        cell.areaLabel.text = areaLabel[indexPath.item]
+        let url = URL(string: location.image)
+        cell.articleImage.kf.setImage(with: url)
+        cell.areaLabel.text = location.name
+        
+//        cell.articleImage.image = articleImage[indexPath.item]
+//        cell.areaLabel.text = areaLabel[indexPath.item]
         
         return cell
         

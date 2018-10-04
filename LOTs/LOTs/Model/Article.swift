@@ -31,6 +31,15 @@ struct User {
     
 }
 
+struct Location: Codable {
+    
+    var name: String
+    var image: String
+    
+}
+
+//////////////
+
 class oldArticle {
     
     var articleTitle: String
