@@ -22,7 +22,7 @@ class PostViewController: UIViewController {
     var ref: DatabaseReference!
     var location: String?
     var cuisine: String?
-    var createdTime: String?
+    var createdTime: Int?
     var instagram: Bool?
     var articleTitle: String?
     var content: String?
@@ -59,7 +59,6 @@ class PostViewController: UIViewController {
         tableView.delegate = self
         
         uploadPicture()
-//        self.alertRemind(status: "test")
         
         tableView.rowHeight = UITableView.automaticDimension
         
@@ -75,8 +74,15 @@ class PostViewController: UIViewController {
     
     @IBAction func cancelAction(_ sender: Any) {
         
+        emptyData()
 //        dismiss(animated: true, completion: nil)
     
+    }
+    
+    func emptyData() {
+        
+        
+        
     }
     
     func uploadPicture() {
@@ -120,7 +126,7 @@ extension PostViewController: UITableViewDataSource {
 
             }
             
-            cell.dateCompletion = { (data : String) -> Void in
+            cell.dateCompletion = { (data : Int) -> Void in
                 
                 self.createdTime = data
                 

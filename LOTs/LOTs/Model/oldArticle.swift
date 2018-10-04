@@ -9,13 +9,35 @@
 import UIKit
 import Foundation
 
-class Article {
+struct Article {
+    
+    var articleTitle: String
+    var articleImage: String
+    var height: CGFloat?
+    var width: CGFloat?
+    var createdTime: Int?
+    var location: String?
+    var cuisine: String?
+    var content: String?
+    var user: User
+    var instagramPost: Bool?
+
+}
+
+struct User {
+    
+    var name: String
+    var image: String
+    
+}
+
+class oldArticle {
     
     var articleTitle: String
     var articleImage: String?
     var height: CGFloat
     var width: CGFloat
-    var createdTime: String
+    var createdTime: Int
     var location: String
     var cuisine: String
     var content: String
@@ -29,7 +51,7 @@ class Article {
         self.articleImage = dictionary["articleImage"] as? String ?? ""
         self.height = dictionary["height"] as? CGFloat ?? 0
         self.width = dictionary["width"] as? CGFloat ?? 0
-        self.createdTime = dictionary["createdTime"] as? String ?? ""
+        self.createdTime = dictionary["createdTime"] as? Int ?? 0
         self.location = dictionary["location"] as? String ?? ""
         self.cuisine = dictionary["cuisine"] as? String ?? ""
         self.content = dictionary["content"] as? String ?? ""

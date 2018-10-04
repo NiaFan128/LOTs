@@ -31,7 +31,7 @@
 		2BBFA63C216310B500A31D58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBFA63B216310B500A31D58 /* User.swift */; };
 		2BBFA63E2163724A00A31D58 /* Food.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBFA63D2163724A00A31D58 /* Food.xcassets */; };
 		2BDD665D2155079700E3C74A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BDD665C2155079700E3C74A /* GoogleService-Info.plist */; };
-		2BDD665F2155173400E3C74A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDD665E2155173400E3C74A /* Article.swift */; };
+		2BDD665F2155173400E3C74A /* oldArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDD665E2155173400E3C74A /* oldArticle.swift */; };
 		2BE27EEC215B76B3005387A4 /* LikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27EEA215B76B3005387A4 /* LikeCollectionViewCell.swift */; };
 		2BE27EED215B76B3005387A4 /* LikeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE27EEB215B76B3005387A4 /* LikeCollectionViewCell.xib */; };
 		2BE27EF0215B788C005387A4 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27EEF215B788C005387A4 /* LikeViewController.swift */; };
@@ -83,7 +83,7 @@
 		2BBFA63B216310B500A31D58 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2BBFA63D2163724A00A31D58 /* Food.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Food.xcassets; sourceTree = "<group>"; };
 		2BDD665C2155079700E3C74A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2BDD665E2155173400E3C74A /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		2BDD665E2155173400E3C74A /* oldArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oldArticle.swift; sourceTree = "<group>"; };
 		2BE27EEA215B76B3005387A4 /* LikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionViewCell.swift; sourceTree = "<group>"; };
 		2BE27EEB215B76B3005387A4 /* LikeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeCollectionViewCell.xib; sourceTree = "<group>"; };
 		2BE27EEF215B788C005387A4 /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
@@ -205,8 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				2BBFA63B216310B500A31D58 /* User.swift */,
+				2BDD665E2155173400E3C74A /* oldArticle.swift */,
 				2B86435E216263AD00D39812 /* UserManager.swift */,
-				2BDD665E2155173400E3C74A /* Article.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -527,7 +527,7 @@
 				2B83037A2151F298006E2522 /* NavigationController.swift in Sources */,
 				2BE27EFB215BC1EB005387A4 /* ProfileTableViewCell.swift in Sources */,
 				2BE27EF5215B9B87005387A4 /* LikeDetailTableViewCell.swift in Sources */,
-				2BDD665F2155173400E3C74A /* Article.swift in Sources */,
+				2BDD665F2155173400E3C74A /* oldArticle.swift in Sources */,
 				2B42E715215CDF3500BB0F86 /* TypeCollectionViewCell.swift in Sources */,
 				2B86435F216263AD00D39812 /* UserManager.swift in Sources */,
 				2BBFA63C216310B500A31D58 /* User.swift in Sources */,

@@ -15,7 +15,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
+    var oldArticles = [oldArticle]()
+    
     var articles = [Article]()
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         
@@ -26,7 +29,12 @@ class MainViewController: UIViewController {
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         
+        refreshControl = UIRefreshControl()
+        mainCollectionView.addSubview(refreshControl)
+        
         readData()
+        
+        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
         
         // Set the PinterestLayout delegate
         if let layout = mainCollectionView?.collectionViewLayout as? MainLayout {
@@ -35,23 +43,81 @@ class MainViewController: UIViewController {
         
     }
     
-    func readData(){
+    @objc func loadData() {
         
-        Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
+        // Animation to simulate the Internet fetching data
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             
-            if let dictionary = snapshot.value as? [String: AnyObject] {
+            // Stop animation
+            self.refreshControl.endRefreshing()
+            
+            // Loading more data
+            self.readData()
+            
+            
+            // Scroll to the latest
+            self.mainCollectionView.scrollToItem(at: [0, 0], at: UICollectionView.ScrollPosition.top, animated: true)
+            
+        }
+        
+    }
+   
+    func readData() {
+        
+        articles = []
+        
+        Database.database().reference().child("posts").queryOrdered(byChild: "createdTime").observeSingleEvent(of: .value) { (snapshot) in
+            
+            guard let value = snapshot.value as? NSDictionary else {
+                return
+            }
+        
+            print(value)
+            
+            for key in value.allKeys {
+             
+                print(key)
                 
-                let article = Article(dictionary: dictionary)
-
+                guard let data = value[key] as? NSDictionary else { return }
+                guard let user = data["user"] as? NSDictionary else { return }
+                guard let articleTitle = data["articleTitle"] as? String else { return }
+                guard let articleImage = data["articleImage"] as? String else { return }
+                guard let userName = user["name"] as? String else { return }
+                guard let userImage = user["image"] as? String else { return }
+                
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: 0, location: "", cuisine: "", content: "", user: User(name: userName, image: userImage), instagramPost: false)
+                
                 self.articles.append(article)
+                
+            }
+            
+            self.mainCollectionView.reloadData()
+
+        }
+        
+    }
+    
+    func databaseUpdate() {
+        
+        
+        // Use the observation, however, can't update
+        Database.database().reference().child("posts").queryOrdered(byChild: "createdTime").observeSingleEvent(of: .childAdded, with: { (snapshot) in
+
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+
+                let article = oldArticle(dictionary: dictionary)
 
                 DispatchQueue.main.async(execute: {
-                    self.mainCollectionView.reloadData()
+
+                    // why always update the first article
+                    self.oldArticles.insert(article, at: 0)
+//                    self.mainCollectionView.reloadData()
+
                 })
 
             }
-            
-        }
+
+        })
         
     }
     
@@ -61,6 +127,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        print(articles.count)
         return articles.count
         
     }
@@ -73,15 +140,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.titleLabel?.text = article.articleTitle
         
-        cell.profileImageView?.contentMode = .scaleAspectFill
-        let url = URL(string: article.userImage)
+        let url = URL(string: article.user.image)
         cell.profileImageView.kf.setImage(with: url)
         
-        cell.imageView?.contentMode = .scaleAspectFill
-        
-        if let articleImageUrl = article.articleImage {
+        let articleImageUrl = article.articleImage
             
-            if let url = URL(string: articleImageUrl) {
+        if let url = URL(string: articleImageUrl) {
                 
                 URLSession.shared.dataTask(with: url) { (data, response, error) in
                     
@@ -104,8 +168,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     }.resume()
                 
             }
-        
-        }
         
         return cell
         
@@ -139,15 +201,3 @@ extension MainViewController: LayoutDelegate {
 
     
 }
-
-//extension MainViewController: UICollectionViewDelegateFlowLayout {
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
-//
-//        return CGSize(width: itemSize, height: itemSize)
-//
-//    }
-//
-//}

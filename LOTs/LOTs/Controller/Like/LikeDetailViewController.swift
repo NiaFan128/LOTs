@@ -38,9 +38,7 @@ class LikeDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(true)
-        
-        print(123)
-        
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {

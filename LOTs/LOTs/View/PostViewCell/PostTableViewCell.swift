@@ -20,7 +20,7 @@ class PostTableViewCell: UITableViewCell {
     
     var locationCompletion: ((_ data: String) -> Void)?
     var cuisineCompletion: ((_ data: String) -> Void)?
-    var dateCompletion: ((_ data: String) -> Void)?
+    var dateCompletion: ((_ data: Int) -> Void)?
 
     var selectLocation: String?
     var selectCuisine: String?
@@ -51,6 +51,39 @@ class PostTableViewCell: UITableViewCell {
         let dateString: String = dateFormat.string(from: now)
     
         dateTextField.text = dateString
+    }
+    
+    func datePickerTapped() {
+        
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        dateComponents.month = -3
+        let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
+        
+        let datePicker = DatePickerDialog(textColor: UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 25.0/255.0, alpha: 1.0),
+                                          buttonColor: .lightGray,
+                                          font: UIFont.boldSystemFont(ofSize: 17),
+                                          showCancelButton: true)
+        
+        datePicker.show("Choose a Date",
+                        doneButtonTitle: "Done",
+                        cancelButtonTitle: "Cancel",
+                        minimumDate: threeMonthAgo,
+                        maximumDate: currentDate,
+                        datePickerMode: .date) { (date) in
+                            
+                            if let date = date {
+                                print(date)
+                                let dateFormat: DateFormatter = DateFormatter()
+                                dateFormat.dateFormat = "MMMM / dd / yyyy"
+                                self.selectDate = dateFormat.string(from: date)
+                                self.dateTextField.text = self.selectDate
+                                self.dateCompletion?(Int(date.timeIntervalSince1970))
+                                
+                            }
+                            
+        }
+        
     }
     
     func locationPicker(){
@@ -155,50 +188,15 @@ class PostTableViewCell: UITableViewCell {
         upload = switchOn
         
         if upload {
-
+            
             instagramSwitchButton.setImage(#imageLiteral(resourceName: "switch_off").withRenderingMode(.alwaysTemplate), for: .normal)
-//            instagramSwitchButton.tintColor = UIColor.lightGray
+            //            instagramSwitchButton.tintColor = UIColor.lightGray
             
         } else {
-
+            
             instagramSwitchButton.setImage(#imageLiteral(resourceName: "switch_on").withRenderingMode(.alwaysTemplate), for: .normal)
             instagramSwitchButton.tintColor = UIColor.init(red: 211.0/255.0, green: 90.0/255.0, blue: 102.0/255.0, alpha: 1.0)
             
-        }
-        
-    }
-    
-    func datePickerTapped() {
-        
-        let currentDate = Date()
-        var dateComponents = DateComponents()
-        dateComponents.month = -3
-        let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
-        
-        let datePicker = DatePickerDialog(textColor: UIColor(red: 188.0/255.0, green: 0.0/255.0, blue: 25.0/255.0, alpha: 1.0),
-                                          buttonColor: .lightGray,
-                                          font: UIFont.boldSystemFont(ofSize: 17),
-                                          showCancelButton: true)
-        
-        datePicker.show("Choose a Date",
-                        doneButtonTitle: "Done",
-                        cancelButtonTitle: "Cancel",
-                        minimumDate: threeMonthAgo,
-                        maximumDate: currentDate,
-                        datePickerMode: .date) { (date) in
-                            
-                            if let date = date {
-                                
-                                let formatter = DateFormatter()
-                                formatter.dateFormat = "yyyy 年 MM 月 dd 日"
-                                
-                                self.selectDate = formatter.string(from: date)
-                                
-                                self.dateTextField.text = self.selectDate
-                                self.dateCompletion?(self.selectDate ?? "")
-                                
-                            }
-                            
         }
         
     }

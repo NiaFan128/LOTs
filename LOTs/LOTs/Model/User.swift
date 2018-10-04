@@ -8,14 +8,14 @@
 
 import UIKit
 
-struct User {
-    
-    let name: String
-    
-    let email: String
-    
-    let image: String
-    
-    let id: String
-    
-}
+//struct User {
+//    
+//    let name: String
+//    
+//    let email: String
+//    
+//    let image: String
+//    
+//    let id: String
+//    
+//}
