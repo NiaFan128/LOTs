@@ -19,12 +19,15 @@ class MainViewController: UIViewController {
     
     var articles = [Article]()
     var refreshControl: UIRefreshControl!
+    var ref: DatabaseReference!
+    let decoder = JSONDecoder()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         searchBar.backgroundImage = UIImage()
+        ref = Database.database().reference()
         
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
@@ -62,39 +65,62 @@ class MainViewController: UIViewController {
         
     }
    
+//    func readData() {
+//
+//        articles = []
+//
+//        ref.child("posts").queryOrdered(byChild: "createdTime").observe(.childAdded) { (snapshot) in
+//
+//            guard let value = snapshot.value as? NSDictionary else { return }
+//
+//            guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
+//
+//            do {
+//
+//                let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
+//                self.articles.append(articleData)
+//
+//            } catch {
+//
+//              print(error)
+//
+//            }
+//
+//            self.mainCollectionView.reloadData()
+//
+//        }
+//
+//    }
+
     func readData() {
-        
+
         articles = []
-        
+
         Database.database().reference().child("posts").queryOrdered(byChild: "createdTime").observeSingleEvent(of: .value) { (snapshot) in
-            
+
             guard let value = snapshot.value as? NSDictionary else {
                 return
             }
-        
-            print(value)
-            
+            //            print(value)
             for key in value.allKeys {
-             
-                print(key)
-                
+
                 guard let data = value[key] as? NSDictionary else { return }
                 guard let user = data["user"] as? NSDictionary else { return }
                 guard let articleTitle = data["articleTitle"] as? String else { return }
                 guard let articleImage = data["articleImage"] as? String else { return }
                 guard let userName = user["name"] as? String else { return }
                 guard let userImage = user["image"] as? String else { return }
-                
+
                 let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: 0, location: "", cuisine: "", content: "", user: User(name: userName, image: userImage), instagramPost: false)
-                
+
                 self.articles.append(article)
-                
+
             }
-            
+
             self.mainCollectionView.reloadData()
 
         }
-        
+
     }
     
     func databaseUpdate() {

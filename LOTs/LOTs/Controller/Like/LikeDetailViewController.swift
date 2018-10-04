@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class LikeDetailViewController: UIViewController {
 
     @IBOutlet weak var likeDetailTableView: UITableView!
     
-    var author: [String] = ["Nia"]
-    var articleTitle: [String] = []
-    var cuisine: [String] = []
-    var likeImage: [UIImage] = []
+    var articles = [Article]()
+    var ref: DatabaseReference!
+    let decoder = JSONDecoder()
     
     override func viewDidLoad() {
 
@@ -26,14 +27,67 @@ class LikeDetailViewController: UIViewController {
 
         likeDetailTableView.delegate = self
         likeDetailTableView.dataSource = self
+        ref = Database.database().reference()
         
-        articleTitle = ["大推蝦味超濃日式沾麵", "黑死人不償命 Q 彈墨魚麵", "要減肥了低脂少油餐", "廣西螺師粉", "半筋半肉牛肉麵"]
-        cuisine = ["日式料理", "義式料理", "英式料理", "中式料理", "中式料理"]
-        likeImage = [UIImage(named: "01"), UIImage(named: "02"),
-                     UIImage(named: "03"), UIImage(named: "04"),
-                     UIImage(named: "05")] as! [UIImage]
+        self.readLocation()
         
     }
+
+    func readLocation() {
+        
+        ref.child("posts").queryOrdered(byChild: "location").queryEqual(toValue: "中正區").observeSingleEvent(of: .value) { (snapshot) in
+            
+            guard let value = snapshot.value as? NSDictionary else { return }
+            
+            for key in value.allKeys {
+                
+                guard let data = value[key] as? NSDictionary else { return }
+                guard let user = data["user"] as? NSDictionary else { return }
+                guard let articleTitle = data["articleTitle"] as? String else { return }
+                guard let articleImage = data["articleImage"] as? String else { return }
+                guard let cuisine = data["cuisine"] as? String else { return }
+                guard let userName = user["name"] as? String else { return }
+                guard let userImage = user["image"] as? String else { return }
+                guard let location = data["location"] as? String else { return }
+                guard let createdTime = data["createdTime"] as? Int else { return }
+                guard let content = data["content"] as? String else { return }
+
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage), instagramPost: false)
+                
+                self.articles.append(article)
+                
+            }
+
+            self.likeDetailTableView.reloadData()
+            
+        }
+        
+    }
+    
+    // Codable QQ
+    //    func readLocation() {
+    //
+    //        ref.child("posts").queryOrdered(byChild: "location").queryEqual(toValue: "中正區").observeSingleEvent(of: .childAdded) { (snapshot) in
+    //
+    //            guard let value = snapshot.value as? NSDictionary else { return }
+    //
+    //            guard let locationJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
+    //
+    //            do {
+    //
+    //                let locationData = try self.decoder.decode(Article.self, from: locationJSONData)
+    //                self.articles.append(locationData)
+    //                print(self.articles)
+    //
+    //            } catch {
+    //
+    //                print(error)
+    //
+    //            }
+    //
+    //        }
+    //
+    //    }
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -47,28 +101,27 @@ class LikeDetailViewController: UIViewController {
 
     }
     
-//    class func likeDetailViewControllerForLike() -> LikeDetailViewController {
-//        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        
-//        guard let viewController = storyboard.instantiateViewController(withIdentifier: "LikeViewController") as? LikeDetailViewController else {
-//            
-//            return LikeDetailViewController()
-//            
-//        }
-//        
-//        return viewController
-//        
-//    }
+    class func likeDetailViewControllerForLike() -> LikeDetailViewController {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "LikeDetail") as? LikeDetailViewController else {
+            
+            return LikeDetailViewController()
+            
+        }
+        
+        return viewController
+        
+    }
     
-
 }
 
 extension LikeDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return articles.count
         
     }
     
@@ -80,10 +133,18 @@ extension LikeDetailViewController: UITableViewDataSource {
 
         }
 
-        cell.authorLabel.text = "Nia"
-        cell.articleImage.image = likeImage[indexPath.item]
-        cell.articleTitleLabel.text = articleTitle[indexPath.item]
-        cell.cuisineLabel.text = cuisine[indexPath.item]
+        let article = articles[indexPath.row]
+        
+        cell.authorLabel.text = article.user.name
+        
+        let userUrl = URL(string: article.user.image)
+        cell.authorImage.kf.setImage(with: userUrl)
+        
+        let articleUrl = URL(string: article.articleImage)
+        cell.articleImage.kf.setImage(with: articleUrl)
+        
+        cell.articleTitleLabel.text = article.articleTitle
+        cell.cuisineLabel.text = article.cuisine
 
         return cell
 
