@@ -102,7 +102,8 @@ class LoginViewController: UIViewController {
                 UserDefaults.standard.set(email, forKey: "userEmail")
                 UserDefaults.standard.set(uid, forKey: "userId")
                 
-                let values = ["name": name,
+                let values = ["uid": uid,
+                              "name": name,
                               "email": email,
                               "profileImageUrl": profileImageUrl + self.photoSize] as [String: AnyObject]
                 

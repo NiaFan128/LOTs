@@ -16,11 +16,11 @@ class LikeViewController: UIViewController {
     
     var fullScreenSize: CGSize!
     var ref: DatabaseReference!
-    var articleImage = [UIImage]()
-    var areaLabel = [String]()
     var locations = [Location]()
     let decoder = JSONDecoder()
     
+    var articles = [Article]()
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -110,7 +110,7 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let select: Location = locations[indexPath.row]
+//        let select: Location = locations[indexPath.row]
         
         let detailViewController = LikeDetailViewController.likeDetailViewControllerForLike()
         

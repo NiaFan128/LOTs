@@ -14,6 +14,7 @@ class LikeDetailViewController: UIViewController {
 
     @IBOutlet weak var likeDetailTableView: UITableView!
     
+    var article: Article!
     var articles = [Article]()
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
@@ -64,30 +65,30 @@ class LikeDetailViewController: UIViewController {
         
     }
     
-    // Codable QQ
-    //    func readLocation() {
-    //
-    //        ref.child("posts").queryOrdered(byChild: "location").queryEqual(toValue: "中正區").observeSingleEvent(of: .childAdded) { (snapshot) in
-    //
-    //            guard let value = snapshot.value as? NSDictionary else { return }
-    //
-    //            guard let locationJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-    //
-    //            do {
-    //
-    //                let locationData = try self.decoder.decode(Article.self, from: locationJSONData)
-    //                self.articles.append(locationData)
-    //                print(self.articles)
-    //
-    //            } catch {
-    //
-    //                print(error)
-    //
-    //            }
-    //
-    //        }
-    //
-    //    }
+//     Codable QQ
+//        func readLocation() {
+//    
+//            ref.child("posts").queryOrdered(byChild: "location").queryEqual(toValue: "中正區").observeSingleEvent(of: .childAdded) { (snapshot) in
+//    
+//                guard let value = snapshot.value as? NSDictionary else { return }
+//    
+//                guard let locationJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
+//    
+//                do {
+//    
+//                    let locationData = try self.decoder.decode(Article.self, from: locationJSONData)
+//                    self.articles.append(locationData)
+//                    print(self.articles)
+//    
+//                } catch {
+//    
+//                    print(error)
+//    
+//                }
+//    
+//            }
+//    
+//        }
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -110,6 +111,8 @@ class LikeDetailViewController: UIViewController {
             return LikeDetailViewController()
             
         }
+        
+//        viewController.article = article
         
         return viewController
         

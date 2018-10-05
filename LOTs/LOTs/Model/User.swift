@@ -16,6 +16,6 @@ import UIKit
 //    
 //    let image: String
 //    
-//    let id: String
+//    let uid: String
 //    
 //}

@@ -53,10 +53,4 @@ class UserManager {
         
     }
     
-    
-    //    private var user: User?
-    
-    //    func currentUser() -> User? {
-    //        return user
-    //    }
 }

@@ -17,5 +17,6 @@ target 'LOTs' do
   pod 'FBSDKCoreKit'
   pod 'McPicker', '~> 2.0.0'
   pod 'Kingfisher', '~> 4.0'
+  pod 'KeychainAccess'
 
 end
