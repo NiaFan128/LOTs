@@ -124,8 +124,6 @@ class MainLayout: UICollectionViewLayout {
     // Not sure what stands for
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         
-        print(cache.count)
-        print(indexPath)
         return cache[indexPath.item]
         
     }

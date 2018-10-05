@@ -23,34 +23,4 @@ class UserManager {
         
     }
     
-    func getUserName() -> String? {
-        
-        guard let userName = UserDefaults.standard.string(forKey: "userName") else {
-            return nil
-        }
-        
-        return userName
-        
-    }
-
-    func getUserEmail() -> String? {
-        
-        guard let userName = UserDefaults.standard.string(forKey: "userEmail") else {
-            return nil
-        }
-        
-        return userName
-        
-    }
-    
-    func getUserProfileImage() -> String? {
-        
-        guard let userProfileImage = UserDefaults.standard.string(forKey: "userProfile") else {
-            return nil
-        }
-        
-        return userProfileImage
-        
-    }
-    
 }

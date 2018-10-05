@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
+import KeychainSwift
 
 class ProfileViewController: UIViewController {
 
@@ -16,6 +19,14 @@ class ProfileViewController: UIViewController {
     
     var fullScreenSize: CGSize!
     var articleImage = [UIImage]()
+    
+//    var article: Article!
+    var articles = [Article]()
+    var ref: DatabaseReference!
+    let keychain = KeychainSwift()
+    var uid: String = ""
+    var userName: String = ""
+    var imageUrl: String = ""
     
     override func viewDidLoad() {
         
@@ -34,28 +45,60 @@ class ProfileViewController: UIViewController {
         
         collectionView.collectionViewLayout = layout
         
-        articleImage = [UIImage(named: "01"), UIImage(named: "02"),
-                        UIImage(named: "03"), UIImage(named: "04"),
-                        UIImage(named: "05"), UIImage(named: "06"),
-                        UIImage(named: "07"), UIImage(named: "08"),
-                        UIImage(named: "09"), UIImage(named: "10"),
-                        UIImage(named: "01"), UIImage(named: "02"),
-                        UIImage(named: "03"), UIImage(named: "04"),
-                        UIImage(named: "05"), UIImage(named: "06"),
-                        UIImage(named: "07"), UIImage(named: "08")] as! [UIImage]
-        
         let nib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ProfileACell")
         
         let nib2 = UINib(nibName: "ProfileCollectionViewCell", bundle: nil)
         collectionView.register(nib2, forCellWithReuseIdentifier: "ProfileBCell")
+
+        ref = Database.database().reference()
+        uid = self.keychain.get("uid") ?? ""
+        userName = self.keychain.get("name") ?? ""
+        imageUrl = self.keychain.get("imageUrl") ?? ""
+        
+        self.likeArticle()
         
         tableView.delegate = self
         tableView.dataSource = self
         
         collectionView.delegate = self
         collectionView.dataSource = self
-
+        
+    }
+    
+    func likeArticle() {
+        
+        ref.child("posts").queryOrdered(byChild: "user/uid").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
+            
+            guard let value = snapshot.value as? NSDictionary else { return }
+            
+            print(value)
+            
+            for key in value.allKeys {
+                
+                guard let data = value[key] as? NSDictionary else { return }
+                guard let user = data["user"] as? NSDictionary else { return }
+                guard let articleTitle = data["articleTitle"] as? String else { return }
+                guard let articleImage = data["articleImage"] as? String else { return }
+                guard let cuisine = data["cuisine"] as? String else { return }
+                guard let userName = user["name"] as? String else { return }
+                guard let userImage = user["image"] as? String else { return }
+                guard let uid = user["uid"] as? String else { return }
+                guard let location = data["location"] as? String else { return }
+                guard let createdTime = data["createdTime"] as? Int else { return }
+                guard let content = data["content"] as? String else { return }
+                
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false)
+                
+                self.articles.append(article)
+                
+                print(article)
+                
+            }
+            
+            self.collectionView.reloadData()
+            
+        }
         
     }
     
@@ -77,7 +120,15 @@ extension ProfileViewController: UITableViewDataSource {
             
         }
         
-        cell.authorLabel.text = "Nia"
+        cell.authorLabel.text = userName
+        let userUrl = URL(string: imageUrl)
+        cell.profileImage.kf.setImage(with: userUrl)
+        
+        DispatchQueue.main.async {
+            
+            cell.postsAmountLabel.text = String(self.articles.count)
+        
+        }
         
         return cell
         
@@ -106,7 +157,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 18
+        return articles.count
         
     }
     
@@ -118,12 +169,13 @@ extension ProfileViewController: UICollectionViewDataSource {
             
         }
         
-        cell.articleImage.image = articleImage[indexPath.item]
+        let article = articles[indexPath.row]
+        
+        let articleUrl = URL(string: article.articleImage)
+        cell.articleImage.kf.setImage(with: articleUrl)
         
         return cell
         
     }
-    
-    
-    
+
 }

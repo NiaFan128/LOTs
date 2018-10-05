@@ -9,18 +9,18 @@
 import UIKit
 import Firebase
 import Kingfisher
+import KeychainSwift
 
 class MainViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
-
-    var oldArticles = [oldArticle]()
     
     var articles = [Article]()
     var refreshControl: UIRefreshControl!
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
+    let keychain = KeychainSwift()
     
     override func viewDidLoad() {
         
@@ -108,10 +108,12 @@ class MainViewController: UIViewController {
                 guard let user = data["user"] as? NSDictionary else { return }
                 guard let articleTitle = data["articleTitle"] as? String else { return }
                 guard let articleImage = data["articleImage"] as? String else { return }
+                guard let createdTime = data["createdTime"] as? Int else { return }
                 guard let userName = user["name"] as? String else { return }
                 guard let userImage = user["image"] as? String else { return }
+                guard let uid = user["uid"] as? String else { return }
 
-                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: 0, location: "", cuisine: "", content: "", user: User(name: userName, image: userImage), instagramPost: false)
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: "", cuisine: "", content: "", user: User(name: userName, image: userImage, uid: uid), instagramPost: false)
 
                 self.articles.append(article)
 
@@ -123,36 +125,12 @@ class MainViewController: UIViewController {
 
     }
     
-    func databaseUpdate() {
-        
-        // Use the observation, however, can't update
-        Database.database().reference().child("posts").queryOrdered(byChild: "createdTime").observeSingleEvent(of: .childAdded, with: { (snapshot) in
-
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-
-                let article = oldArticle(dictionary: dictionary)
-
-                DispatchQueue.main.async(execute: {
-
-                    // why always update the first article
-                    self.oldArticles.insert(article, at: 0)
-//                    self.mainCollectionView.reloadData()
-
-                })
-
-            }
-
-        })
-        
-    }
-    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        print(articles.count)
         return articles.count
         
         

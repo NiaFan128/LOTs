@@ -63,10 +63,7 @@ class LikeViewController: UIViewController {
             do {
                 
                 let locationData = try self.decoder.decode(Location.self, from: locationJSONData)
-                print(locationData)
                 self.locations.append(locationData)
-                print(self.locations)
-
                 
             } catch {
                 

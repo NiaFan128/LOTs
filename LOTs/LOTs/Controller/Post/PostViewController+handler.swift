@@ -11,6 +11,7 @@ import Photos
 import Firebase
 import FirebaseAuth
 import FirebaseStorage
+import KeychainSwift
 
 // Image Upload
 
@@ -78,15 +79,12 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                 
                 storageRef.downloadURL(completion: { (url, error) in
 
-                    guard let downloadURL = url else {
-                        return
-                    }
+                    guard let downloadURL = url else { return }
                     
                     self.pictureURL = downloadURL.absoluteString
                     
-                    guard let postID = self.ref.child("post").childByAutoId().key else {
-                        return
-                    }
+                    guard let postID = self.ref.child("post").childByAutoId().key else { return }
+                    guard let uid = self.keychain.get("uid") else { return }
                     
                     self.ref.child("posts/\(postID)").setValue([
                         "articleTitle": self.articleTitle,
@@ -100,7 +98,8 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                         "user":
                             [
                                 "name": Auth.auth().currentUser?.displayName,
-                                "image": Auth.auth().currentUser?.photoURL?.absoluteString
+                                "image": Auth.auth().currentUser?.photoURL?.absoluteString,
+                                "uid": uid
                             ]
                         ])
                 })
@@ -140,12 +139,12 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
             
             selectImageFromPicker = editedImage
             
-            print(editedImage)
+//            print(editedImage)
             
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             
             selectImageFromPicker = originalImage
-            print(originalImage)
+//            print(originalImage)
 
         }
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import KeychainSwift
 import Firebase
 import FirebaseAuth
 import FirebaseStorage
@@ -30,8 +31,8 @@ class PostViewController: UIViewController {
     var height: CGFloat?
     var width: CGFloat?
     var pictureURL: String?
-//    var writeResults = [[String: Any]]()
-    
+    let keychain = KeychainSwift()
+
     override func viewDidLoad() {
         
         super.viewDidLoad()

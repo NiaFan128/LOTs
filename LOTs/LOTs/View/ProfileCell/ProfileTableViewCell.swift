@@ -13,6 +13,7 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var postsAmountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

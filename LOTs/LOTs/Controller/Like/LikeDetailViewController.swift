@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Kingfisher
+import KeychainSwift
 
 class LikeDetailViewController: UIViewController {
 
@@ -17,7 +18,9 @@ class LikeDetailViewController: UIViewController {
     var article: Article!
     var articles = [Article]()
     var ref: DatabaseReference!
+    let keychain = KeychainSwift()
     let decoder = JSONDecoder()
+    var uid: String = ""
     
     override func viewDidLoad() {
 
@@ -29,8 +32,46 @@ class LikeDetailViewController: UIViewController {
         likeDetailTableView.delegate = self
         likeDetailTableView.dataSource = self
         ref = Database.database().reference()
+        uid = self.keychain.get("uid") ?? ""
+
+        self.likeArticle()
+//        self.readLocation()
         
-        self.readLocation()
+    }
+    
+    func likeArticle() {
+
+        ref.child("posts").queryOrdered(byChild: "user/uid").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
+            
+            guard let value = snapshot.value as? NSDictionary else { return }
+            
+            print(value)
+            
+            for key in value.allKeys {
+                
+                guard let data = value[key] as? NSDictionary else { return }
+                guard let user = data["user"] as? NSDictionary else { return }
+                guard let articleTitle = data["articleTitle"] as? String else { return }
+                guard let articleImage = data["articleImage"] as? String else { return }
+                guard let cuisine = data["cuisine"] as? String else { return }
+                guard let userName = user["name"] as? String else { return }
+                guard let userImage = user["image"] as? String else { return }
+                guard let uid = user["uid"] as? String else { return }
+                guard let location = data["location"] as? String else { return }
+                guard let createdTime = data["createdTime"] as? Int else { return }
+                guard let content = data["content"] as? String else { return }
+                
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false)
+                
+                self.articles.append(article)
+                
+                print(article)
+                
+            }
+
+            self.likeDetailTableView.reloadData()
+
+        }
         
     }
 
@@ -49,11 +90,13 @@ class LikeDetailViewController: UIViewController {
                 guard let cuisine = data["cuisine"] as? String else { return }
                 guard let userName = user["name"] as? String else { return }
                 guard let userImage = user["image"] as? String else { return }
+                guard let uid = user["uid"] as? String else { return }
                 guard let location = data["location"] as? String else { return }
                 guard let createdTime = data["createdTime"] as? Int else { return }
                 guard let content = data["content"] as? String else { return }
+                
 
-                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage), instagramPost: false)
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false)
                 
                 self.articles.append(article)
                 

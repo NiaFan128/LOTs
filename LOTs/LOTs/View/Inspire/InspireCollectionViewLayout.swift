@@ -8,6 +8,16 @@
 
 import UIKit
 
+struct InspireSize {
+    
+    var x: CGFloat
+    var y: CGFloat
+    var width: CGFloat
+    var height: CGFloat
+    
+}
+
+
 class InspireCollectionViewLayout: UICollectionViewLayout {
     
     var itemSize = CGSize(width: 200, height: 150)
@@ -21,49 +31,167 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
         let length = (collectionView!.frame.width - 40) / 3
         
         itemSize = CGSize(width: length, height: length)
+        print("itemSize: \(itemSize)")
         
-        attributesList = (0 ..< itemNo).map { (i) -> UICollectionViewLayoutAttributes in
-            let attributes = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: i, section: 0))
+        var dictionary: [Int: InspireSize] = [:]
+        
+        for index in 0 ... 5 {
             
-            attributes.size = self.itemSize
-            
-            var x = CGFloat(i % 3) * (itemSize.width + 10) + 10
-            var y = CGFloat(i / 3) * (itemSize.width + 10) + 10
-            
-            if i % 6 == 0 {
-                
-                attributes.frame = CGRect(x: x, y: y, width: itemSize.width * 2 + 10, height: itemSize.height * 2 + 10)
+            var x = CGFloat(index % 3) * (itemSize.width + 10) + 10
+            var y = CGFloat(index / 3) * (itemSize.width + 10) + 10
 
-            } else if i % 6 == 1 {
+            switch index {
+                
+            case 0:
+                
+                let inspireSize = InspireSize(x: x,
+                                              y: y,
+                                              width: itemSize.width * 2 + 10,
+                                              height: itemSize.height * 2 + 10)
+                
+                dictionary[0] = inspireSize
+
+            case 1:
                 
                 x = itemSize.width * 2 + 30
-                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
+                let inspireSize = InspireSize(x: x,
+                                              y: y,
+                                              width: itemSize.width,
+                                              height: itemSize.height)
                 
-            } else if i % 6 == 2 {
+                dictionary[1] = inspireSize
+                
+            case 2:
                 
                 x = itemSize.width * 2 + 30
                 y += itemSize.height + 10
-                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
+                let inspireSize = InspireSize(x: x,
+                                              y: y,
+                                              width: itemSize.width,
+                                              height: itemSize.height)
                 
-            } else if i % 6 == 3 {
+                dictionary[2] = inspireSize
                 
-                y += (itemSize.width + 10)
-                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-                
-            } else if i % 6 == 4 {
-                
-                y += (itemSize.width + 10)
-                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-                
-            } else if i % 6 == 5 {
+            case 3:
                 
                 y += (itemSize.width + 10)
-                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
+                                
+                let inspireSize = InspireSize(x: x,
+                                              y: y,
+                                              width: itemSize.width,
+                                              height: itemSize.height)
                 
+                dictionary[3] = inspireSize
+                
+            case 4:
+                
+                y += (itemSize.width + 10)
+                
+                let inspireSize = InspireSize(x: x,
+                                              y: y,
+                                              width: itemSize.width,
+                                              height: itemSize.height)
+                
+                dictionary[4] = inspireSize
+                
+            case 5:
+                
+                y += (itemSize.width + 10)
+                
+                let inspireSize = InspireSize(x: x,
+                                              y: y,
+                                              width: itemSize.width,
+                                              height: itemSize.height)
+                
+                dictionary[5] = inspireSize
+
+            default: break
+            
+            }
+            
+        }
+        
+        
+        
+        attributesList = (0 ..< itemNo).map { (i) -> UICollectionViewLayoutAttributes in
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: i, section: 0))
+            print("你是誰？？？\(i) 說出來")
+            
+            attributes.size = self.itemSize
+            
+            var inspireSize: InspireSize?
+            
+            switch i % 6 {
+                
+            case 0:
+                inspireSize = dictionary[0]
+                
+            case 1:
+                inspireSize = dictionary[1]
+
+            case 2:
+                inspireSize = dictionary[2]
+                
+            case 3:
+                inspireSize = dictionary[3]
+                
+            case 4:
+                inspireSize = dictionary[4]
+                
+            case 5:
+                inspireSize = dictionary[5]
+                
+            default:
+                break
             }
 
+            if let size = inspireSize {
+                
+                attributes.frame = CGRect(x: size.x, y: size.y + (3 * self.itemSize.width + 30) * CGFloat(i / 6), width: size.width, height: size.height)
+                
+            }
+            
+            print(attributes.frame)
             return attributes
-        
+
+//            var x = CGFloat(i % 3) * (itemSize.width + 10) + 10
+//            var y = CGFloat(i / 3) * (itemSize.width + 10) + 10
+//
+//            print(x, y)
+//
+//            switch i % 6 {
+//
+//            case 0:
+//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width * 2 + 10, height: itemSize.height * 2 + 10)
+//
+//            case 1:
+//                x = itemSize.width * 2 + 30
+//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
+//
+//
+//            case 2:
+//                x = itemSize.width * 2 + 30
+//                y += itemSize.height + 10
+//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
+//
+//            case 3:
+//                y += (itemSize.width + 10)
+//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
+//
+//            case 4:
+//                y += (itemSize.width + 10)
+//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
+//
+//            case 5:
+//                y += (itemSize.width + 10)
+//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
+//
+//            default: break
+//
+//            }
+//            print(attributes.frame)
+//            return attributes
+            
         }
         
     }

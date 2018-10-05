@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 import FBSDKLoginKit
+import KeychainSwift
 
 class LoginViewController: UIViewController {
 
@@ -22,11 +23,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var googleImage: UIImageView!
     
     let photoSize: String = "?width=400&height=400"
-
-//    let userId = UserManager.shared.getUserId()
-//    let userName = UserManager.shared.getUserName()
-//    let userEmail = UserManager.shared.getUserEmail()
-//    let userProfile = UserManager.shared.getUserProfileImage()
+    let keychain = KeychainSwift()
     
     override func viewDidLoad() {
         
@@ -96,11 +93,14 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                // Save the User Default
-                UserDefaults.standard.set(profileImageUrl + self.photoSize, forKey: "userProfile")
-                UserDefaults.standard.set(name, forKey: "userName")
-                UserDefaults.standard.set(email, forKey: "userEmail")
-                UserDefaults.standard.set(uid, forKey: "userId")
+                // Keychain Set Up
+                guard self.keychain.set(uid, forKey: "uid") else { return }
+                guard self.keychain.set(name, forKey: "name") else { return }
+                guard self.keychain.set(profileImageUrl + self.photoSize, forKey: "imageUrl") else { return }
+                
+                // Get Keychain
+                guard let uuid = self.keychain.get("uid") else { return }
+//                print(uuid)
                 
                 let values = ["uid": uid,
                               "name": name,
@@ -128,14 +128,3 @@ class LoginViewController: UIViewController {
     }
         
 }
-
-//                if let currentUser = Auth.auth().currentUser {
-//
-//                    self.user.name = currentUser.displayName
-//                    self.user.email = currentUser.email
-//                    self.user.profileImageUrl = String(currentUser.photoURL?.absoluteString ?? "") + self.photoSize
-////
-//                }
-
-//                print(Auth.auth().currentUser?.displayName)
-//                print(String(Auth.auth().currentUser?.photoURL?.absoluteString ?? "") + self.photoSize)

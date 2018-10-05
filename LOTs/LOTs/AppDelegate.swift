@@ -10,12 +10,13 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import FBSDKCoreKit
+import IQKeyboardManagerSwift
+import KeychainSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -27,6 +28,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         FBSDKSettings.setAppID("475484662946492")
+        
+        IQKeyboardManager.shared.enable = true
+        
+        let keychain: KeychainSwift = KeychainSwift()
+        
+        if keychain.get("uid") as? String == nil {
+            
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let navo = storyboard.instantiateViewController(withIdentifier: "Login")
+            
+            self.window?.rootViewController = navo
+            
+        } else {
+            
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let navo = storyboard.instantiateViewController(withIdentifier: "MainPage")
+
+            self.window?.rootViewController = navo
+
+        }
         
         return true
         
