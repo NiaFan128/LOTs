@@ -60,6 +60,7 @@ class ProfileViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isScrollEnabled = false
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -91,12 +92,11 @@ class ProfileViewController: UIViewController {
                 let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false)
                 
                 self.articles.append(article)
-                
-                print(article)
-                
+                                
             }
             
             self.collectionView.reloadData()
+            self.tableView.reloadData()
             
         }
         

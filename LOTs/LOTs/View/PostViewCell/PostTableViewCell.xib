@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="height" constant="25" id="cEg-KV-kxO"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="料理種類" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2di-fB-A91" customClass="McTextField" customModule="McPicker">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="料理種類" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2di-fB-A91" customClass="McTextField" customModule="McPicker">
                                 <rect key="frame" x="75" y="107" width="70" height="29.5"/>
                                 <color key="textColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -57,7 +57,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="地區" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iL2-Qj-bpt" customClass="McTextField" customModule="McPicker">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="地區" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iL2-Qj-bpt" customClass="McTextField" customModule="McPicker">
                                 <rect key="frame" x="205" y="62" width="37" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CgS-ui-qHa"/>
@@ -80,7 +80,7 @@
                                     <constraint firstAttribute="height" constant="25" id="tcI-vP-pZA"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="台北市" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYr-m1-oy1">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="台北市" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYr-m1-oy1">
                                 <rect key="frame" x="75" y="62" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5JZ-UD-hsE"/>

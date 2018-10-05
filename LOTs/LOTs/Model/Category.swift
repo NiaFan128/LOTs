@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  Category.swift
 //  LOTs
 //
 //  Created by 乃方 on 2018/10/2.
@@ -7,6 +7,21 @@
 //
 
 import UIKit
+
+struct Location: Codable {
+    
+    var name: String
+    var image: String
+    
+}
+
+struct Cuisine: Codable {
+    
+    var name: String
+    var image: String
+    
+}
+
 
 //struct User {
 //    

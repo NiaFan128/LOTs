@@ -37,7 +37,7 @@ class PostTableViewCell: UITableViewCell {
         self.locationPicker()
         self.cuisinePicker()
         self.date()
-    
+            
         dateTextField.delegate = self
 
     }
@@ -137,7 +137,7 @@ class PostTableViewCell: UITableViewCell {
     func cuisinePicker(){
         
         let data: [[String]] = [
-            ["日式料理", "中式料理", "韓式料理", "台式料理", "美式料理", "義式料理"]
+            ["台式料理","日式料理", "中式料理","義式料理", "韓式料理", "西式料理","美式料理", "泰式料理"]
         ]
         
         let mcInputView = McPicker(data: data)

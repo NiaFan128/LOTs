@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class InspireViewController: UIViewController {
 
@@ -15,6 +17,10 @@ class InspireViewController: UIViewController {
     var fullScreenSize: CGSize!
     var articleImage = [UIImage]()
     var photoWidth: CGFloat!
+    
+    var ref: DatabaseReference!
+    let decoder = JSONDecoder()
+    var cuisines = [Cuisine]()
     
     var cuisine = [String]()
     
@@ -27,16 +33,7 @@ class InspireViewController: UIViewController {
         
         let nib2 = UINib(nibName: "ProfileCollectionViewCell", bundle: nil)
         showCollectionView.register(nib2, forCellWithReuseIdentifier: "ProfileBCell")
-        
-//        let layout2 = UICollectionViewFlowLayout()
-//        layout2.sectionInset = UIEdgeInsets(top: 7.5, left: 5, bottom: 7.5, right: 5)
-//        layout2.minimumInteritemSpacing = 7.5
-//        layout2.minimumLineSpacing = 7.5
-        
-//        photoWidth = CGFloat(fullScreenSize.width) / 3 - 10
-//        layout2.itemSize = CGSize(width: photoWidth, height: photoWidth)
-//        showCollectionView.collectionViewLayout = layout2
-        
+    
         articleImage = [UIImage(named: "01"), UIImage(named: "02"),
                         UIImage(named: "03"), UIImage(named: "04"),
                         UIImage(named: "05"), UIImage(named: "06"),
@@ -46,15 +43,16 @@ class InspireViewController: UIViewController {
                         UIImage(named: "03"), UIImage(named: "04"),
                         UIImage(named: "05"), UIImage(named: "06"),
                         UIImage(named: "07"), UIImage(named: "08")] as! [UIImage]
+//
+//        cuisine = ["中式料理","日式料理","美式料理","義式料理","韓式料理",
+//                   "中式料理","日式料理","美式料理","義式料理","韓式料理"]
         
-        cuisine = ["中式料理","日式料理","美式料理","義式料理","韓式料理",
-                   "中式料理","日式料理","美式料理","義式料理","韓式料理"]
+        ref = Database.database().reference()
+        
+        self.readTypeData()
         
         showCollectionView.delegate = self
         showCollectionView.dataSource = self
-        
-//        self.showCollectionView!.collectionViewLayout = circularLayoutObject
-
         
     }
     
@@ -76,6 +74,32 @@ class InspireViewController: UIViewController {
         typeCollectionView.delegate = self
     }
     
+    func readTypeData() {
+        
+        ref.child("inspires").observe(.childAdded) { (snapshot) in
+            
+            guard let value = snapshot.value as? NSDictionary else { return }
+            
+            guard let cuisineJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
+            
+            do {
+                
+                let cuisineData = try self.decoder.decode(Cuisine.self, from: cuisineJSONData)
+                self.cuisines.append(cuisineData)
+                
+            } catch {
+                
+                print(error)
+                
+            }
+            
+            self.typeCollectionView.reloadData()
+            
+        }
+        
+    }
+    
+    
 }
 
 extension InspireViewController: UICollectionViewDataSource {
@@ -84,7 +108,7 @@ extension InspireViewController: UICollectionViewDataSource {
         
         if collectionView == self.typeCollectionView {
             
-            return 10
+            return cuisines.count
             
         } else {
             
@@ -104,8 +128,14 @@ extension InspireViewController: UICollectionViewDataSource {
                 
             }
             
-            cell.typeLabel.text = cuisine[indexPath.item]
-            cell.typeImage.image = articleImage[indexPath.item]
+            let cuisine = cuisines[indexPath.row]
+            
+            let url = URL(string: cuisine.image)
+            cell.typeImage.kf.setImage(with: url)
+            cell.typeLabel.text = cuisine.name
+            
+//            cell.typeLabel.text = cuisine[indexPath.item]
+//            cell.typeImage.image = articleImage[indexPath.item]
             
             return cell
             
@@ -138,49 +168,11 @@ extension InspireViewController: UICollectionViewDelegate, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-
         if collectionView == self.showCollectionView {
 
-            if indexPath.item % 6 == 0 {
+            let cellWidth = (fullScreenSize.width / 3) - 7.5
 
-//                let cellWidth = (fullScreenSize.width / 3) - 7.5
-//
-//                print(cellWidth)
-//
-//                return CGSize(width: cellWidth, height: cellWidth)
-//
-//            } else if indexPath.item % 6 == 1 {
-//
-//                let cellWidth = (fullScreenSize.width / 3) - 7.5
-//
-//                return CGSize(width: cellWidth, height: cellWidth)
-//
-//            } else if indexPath.item % 6 == 2 {
-//
-//                let cellWidth = (fullScreenSize.width / 3) - 7.5
-//
-//                return CGSize(width: cellWidth, height: cellWidth)
-//
-//            } else if indexPath.item % 6 == 3 {
-//
-//                let cellWidth = ((fullScreenSize.width / 3) - 10) * 2 + 15
-//
-//                return CGSize(width: cellWidth, height: cellWidth)
-//
-//            } else if indexPath.item % 6 == 4 {
-//
-//                let cellWidth = (fullScreenSize.width / 3) - 7.5
-//
-//                return CGSize(width: cellWidth, height: cellWidth)
-//
-//            } else if indexPath.item % 6 == 5 {
-//
-                let cellWidth = (fullScreenSize.width / 3) - 7.5
-
-                return CGSize(width: cellWidth, height: cellWidth)
-
-            }
+            return CGSize(width: cellWidth, height: cellWidth)
             
         }
 
@@ -188,12 +180,3 @@ extension InspireViewController: UICollectionViewDelegate, UICollectionViewDeleg
     }
 
 }
-
-//    let cellWidth = (collectionView.bounds.width - (flowLayout.sectionInset.left + flowLayout.sectionInset.right) - flowLayout.minimumInteritemSpacing * CGFloat(numberOfCellsPerLine - 1)) / CGFloat(numberOfCellsPerLine)
-//
-//    return CGSize(width: cellWidth, height: cellWidth)
-//
-//}
-//
-//// layout.itemSize = CGSize(width: (self.view.frame.size.width - 30) / 2, height: 80)
-//return CGSize(width: (self.view.frame.size.width - 30) / 2, height: 80)

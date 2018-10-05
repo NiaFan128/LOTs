@@ -17,7 +17,6 @@ struct InspireSize {
     
 }
 
-
 class InspireCollectionViewLayout: UICollectionViewLayout {
     
     var itemSize = CGSize(width: 200, height: 150)
@@ -31,7 +30,6 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
         let length = (collectionView!.frame.width - 40) / 3
         
         itemSize = CGSize(width: length, height: length)
-        print("itemSize: \(itemSize)")
         
         var dictionary: [Int: InspireSize] = [:]
         
@@ -111,11 +109,8 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
             
         }
         
-        
-        
         attributesList = (0 ..< itemNo).map { (i) -> UICollectionViewLayoutAttributes in
             let attributes = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: i, section: 0))
-            print("你是誰？？？\(i) 說出來")
             
             attributes.size = self.itemSize
             
@@ -123,26 +118,20 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
             
             switch i % 6 {
                 
-            case 0:
-                inspireSize = dictionary[0]
+            case 0: inspireSize = dictionary[0]
                 
-            case 1:
-                inspireSize = dictionary[1]
+            case 1: inspireSize = dictionary[1]
 
-            case 2:
-                inspireSize = dictionary[2]
+            case 2: inspireSize = dictionary[2]
                 
-            case 3:
-                inspireSize = dictionary[3]
+            case 3: inspireSize = dictionary[3]
                 
-            case 4:
-                inspireSize = dictionary[4]
+            case 4: inspireSize = dictionary[4]
                 
-            case 5:
-                inspireSize = dictionary[5]
+            case 5: inspireSize = dictionary[5]
                 
-            default:
-                break
+            default: break
+                
             }
 
             if let size = inspireSize {
@@ -151,80 +140,17 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
                 
             }
             
-            print(attributes.frame)
             return attributes
-
-//            var x = CGFloat(i % 3) * (itemSize.width + 10) + 10
-//            var y = CGFloat(i / 3) * (itemSize.width + 10) + 10
-//
-//            print(x, y)
-//
-//            switch i % 6 {
-//
-//            case 0:
-//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width * 2 + 10, height: itemSize.height * 2 + 10)
-//
-//            case 1:
-//                x = itemSize.width * 2 + 30
-//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-//
-//
-//            case 2:
-//                x = itemSize.width * 2 + 30
-//                y += itemSize.height + 10
-//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-//
-//            case 3:
-//                y += (itemSize.width + 10)
-//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-//
-//            case 4:
-//                y += (itemSize.width + 10)
-//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-//
-//            case 5:
-//                y += (itemSize.width + 10)
-//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-//
-//            default: break
-//
-//            }
-//            print(attributes.frame)
-//            return attributes
             
         }
         
     }
-                        
-/*
-            if i > 2 {
-                
-                y += (itemSize.width + 10)
-                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-                
-            } else if i == 0 {
-                
-//                attributes.frame = CGRect(x: x, y: y, width: itemSize.width * 2 + 10, height: itemSize.height * 2 + 10)
-                
-            } else {
-                
-                x = itemSize.width * 2 + 30
-                
-                if i == 2 {
-                    
-                    y += itemSize.height + 10
-                    
-                }
-                
-                attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-                
-            }
-  */
-
     
     override var collectionViewContentSize : CGSize {
         
-        return CGSize(width: collectionView!.bounds.width, height: (itemSize.height + 10) * CGFloat(ceil(Double(collectionView!.numberOfItems(inSection: 0)) / 3)) + (itemSize.height + 20))
+//        return CGSize(width: collectionView!.bounds.width, height: (itemSize.height + 10) * CGFloat(ceil(Double(collectionView!.numberOfItems(inSection: 0)) / 3)) + (itemSize.height + 20))
+
+        return CGSize(width: collectionView!.bounds.width, height: (itemSize.height + 10) * CGFloat(ceil(Double(collectionView!.numberOfItems(inSection: 0)) / 2)) + 10)
         
     }
     
