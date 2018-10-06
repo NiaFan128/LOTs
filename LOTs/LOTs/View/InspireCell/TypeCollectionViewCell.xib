@@ -54,6 +54,7 @@
             <connections>
                 <outlet property="typeImage" destination="vzR-0R-72s" id="khF-v7-R7v"/>
                 <outlet property="typeLabel" destination="sUF-5V-uhh" id="L5a-g2-keC"/>
+                <outlet property="underlineView" destination="xec-fj-uxL" id="MDJ-Fo-mTe"/>
             </connections>
             <point key="canvasLocation" x="247.19999999999999" y="179.46026986506749"/>
         </collectionViewCell>

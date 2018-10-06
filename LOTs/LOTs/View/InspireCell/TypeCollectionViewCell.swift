@@ -12,6 +12,7 @@ class TypeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var typeImage: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var underlineView: UIView!
     
     override func awakeFromNib() {
         
@@ -21,5 +22,5 @@ class TypeCollectionViewCell: UICollectionViewCell {
         typeLabel.titleShadow()
         
     }
-
+    
 }

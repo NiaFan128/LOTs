@@ -65,7 +65,7 @@ class LikeDetailViewController: UIViewController {
                 
                 self.articles.append(article)
                 
-                print(article)
+//                print(article)
                 
             }
 

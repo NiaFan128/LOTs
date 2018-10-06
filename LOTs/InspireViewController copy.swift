@@ -15,14 +15,14 @@ class InspireViewController: UIViewController {
     @IBOutlet weak var showCollectionView: UICollectionView!
     
     var fullScreenSize: CGSize!
-    var articleImage = [UIImage]()
     var photoWidth: CGFloat!
     
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
-    var cuisines = [Cuisine]()
     
-    var cuisine = [String]()
+    var cuisines = [Cuisine]()
+    var articles = [Article]()
+    var hidingLine: Bool = true
     
     override func viewDidLoad() {
         
@@ -33,23 +33,11 @@ class InspireViewController: UIViewController {
         
         let nib2 = UINib(nibName: "ProfileCollectionViewCell", bundle: nil)
         showCollectionView.register(nib2, forCellWithReuseIdentifier: "ProfileBCell")
-    
-        articleImage = [UIImage(named: "01"), UIImage(named: "02"),
-                        UIImage(named: "03"), UIImage(named: "04"),
-                        UIImage(named: "05"), UIImage(named: "06"),
-                        UIImage(named: "07"), UIImage(named: "08"),
-                        UIImage(named: "09"), UIImage(named: "10"),
-                        UIImage(named: "01"), UIImage(named: "02"),
-                        UIImage(named: "03"), UIImage(named: "04"),
-                        UIImage(named: "05"), UIImage(named: "06"),
-                        UIImage(named: "07"), UIImage(named: "08")] as! [UIImage]
-//
-//        cuisine = ["中式料理","日式料理","美式料理","義式料理","韓式料理",
-//                   "中式料理","日式料理","美式料理","義式料理","韓式料理"]
         
         ref = Database.database().reference()
         
         self.readTypeData()
+        self.readEachTypeData(cuisine: "美式料理")
         
         showCollectionView.delegate = self
         showCollectionView.dataSource = self
@@ -93,12 +81,49 @@ class InspireViewController: UIViewController {
                 
             }
             
-            self.typeCollectionView.reloadData()
+            DispatchQueue.main.async {
+
+                self.typeCollectionView.reloadData()
+            
+            }
             
         }
         
     }
     
+    func readEachTypeData(cuisine: String) {
+        
+        articles = []
+        
+        ref.child("posts").queryOrdered(byChild: "cuisine").queryEqual(toValue: cuisine).observeSingleEvent(of: .value) { (snapshot) in
+            
+            guard let value = snapshot.value as? NSDictionary else { return }
+            
+            for key in value.allKeys {
+                
+                guard let data = value[key] as? NSDictionary else { return }
+                guard let user = data["user"] as? NSDictionary else { return }
+                guard let articleTitle = data["articleTitle"] as? String else { return }
+                guard let articleImage = data["articleImage"] as? String else { return }
+                guard let cuisine = data["cuisine"] as? String else { return }
+                guard let userName = user["name"] as? String else { return }
+                guard let userImage = user["image"] as? String else { return }
+                guard let uid = user["uid"] as? String else { return }
+                guard let location = data["location"] as? String else { return }
+                guard let createdTime = data["createdTime"] as? Int else { return }
+                guard let content = data["content"] as? String else { return }
+                
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: true)
+                
+                self.articles.append(article)
+                
+            }
+            
+            self.showCollectionView.reloadData()
+            
+        }
+        
+    }
     
 }
 
@@ -112,7 +137,7 @@ extension InspireViewController: UICollectionViewDataSource {
             
         } else {
             
-            return 18
+            return articles.count
             
         }
         
@@ -133,10 +158,8 @@ extension InspireViewController: UICollectionViewDataSource {
             let url = URL(string: cuisine.image)
             cell.typeImage.kf.setImage(with: url)
             cell.typeLabel.text = cuisine.name
-            
-//            cell.typeLabel.text = cuisine[indexPath.item]
-//            cell.typeImage.image = articleImage[indexPath.item]
-            
+//            cell.underlineView.isHidden = hidingLine
+
             return cell
             
         } else {
@@ -147,7 +170,10 @@ extension InspireViewController: UICollectionViewDataSource {
                 
             }
             
-            cell.articleImage.image = articleImage[indexPath.item]
+            let article = articles[indexPath.row]
+            
+            let url = URL(string: article.articleImage)
+            cell.articleImage.kf.setImage(with: url)
             
             return cell
             
@@ -155,12 +181,31 @@ extension InspireViewController: UICollectionViewDataSource {
         
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print(indexPath.item)
-        
-    }
+        if collectionView == self.typeCollectionView {
+            
+                switch indexPath.item {
+                    
+                case 0: readEachTypeData(cuisine: "美式料理")
+                case 1: readEachTypeData(cuisine: "中式料理")
+                case 2: readEachTypeData(cuisine: "義式料理")
+                case 3: readEachTypeData(cuisine: "日式料理")
+                case 4: readEachTypeData(cuisine: "韓式料理")
+                case 5: readEachTypeData(cuisine: "台式料理")
+                case 6: readEachTypeData(cuisine: "泰式料理")
+                case 7: readEachTypeData(cuisine: "西式料理")
+                    
+                default: break
+                    
+                }
+            
+                self.typeCollectionView.reloadData()
+                self.showCollectionView.reloadData()
+            
+            }
+            
+        }
     
 }
 
@@ -178,5 +223,5 @@ extension InspireViewController: UICollectionViewDelegate, UICollectionViewDeleg
 
         return CGSize(width: (self.view.frame.size.width - 30) / 2, height: 80)
     }
-
+    
 }
