@@ -12,18 +12,30 @@ class DetailCTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var heightOfTextView: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         contentTextView.backgroundColor = UIColor.clear
-        // Initialization code
+        contentTextView.isScrollEnabled = false
+        contentTextView.sizeToFit()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    override func layoutIfNeeded() {
+        
+//        let sizeForTextView = contentTextView.sizeThatFits(contentTextView.frame.size)
+//        let height = sizeForTextView.height
+        print(contentTextView.frame.height)
+//        heightOfTextView.constant = height
+        
     }
     
 }

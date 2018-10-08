@@ -32,6 +32,7 @@ class LikeDetailViewController: UIViewController {
 
         likeDetailTableView.delegate = self
         likeDetailTableView.dataSource = self
+        
         ref = Database.database().reference()
         uid = self.keychain.get("uid") ?? ""
 
@@ -101,31 +102,6 @@ class LikeDetailViewController: UIViewController {
         }
         
     }
-
-//     Codable QQ
-//        func readLocation() {
-//    
-//            ref.child("posts").queryOrdered(byChild: "location").queryEqual(toValue: "中正區").observeSingleEvent(of: .childAdded) { (snapshot) in
-//    
-//                guard let value = snapshot.value as? NSDictionary else { return }
-//    
-//                guard let locationJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-//    
-//                do {
-//    
-//                    let locationData = try self.decoder.decode(Article.self, from: locationJSONData)
-//                    self.articles.append(locationData)
-//                    print(self.articles)
-//    
-//                } catch {
-//    
-//                    print(error)
-//    
-//                }
-//    
-//            }
-//    
-//        }
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -139,7 +115,7 @@ class LikeDetailViewController: UIViewController {
 
     }
     
-    class func likeDetailViewControllerForLike(_ location: String) -> LikeDetailViewController {
+    class func likeDetailViewControllerFromLocation(_ location: String) -> LikeDetailViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -202,21 +178,11 @@ extension LikeDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let row = indexPath.row
-
-        if row == 0 {
-
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-            let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
-
-//            let detailViewController = DetailViewController.detailViewControllerForArticle()
-//            navigationController?.pushViewController(detailViewController, animated: true)
-            
-            show(detailViewController, sender: nil)
-
-        }
-
+        let article: Article = articles[indexPath.row]
+        
+        let detailViewController = DetailViewController.detailViewControllerForArticle(article)
+        navigationController?.pushViewController(detailViewController, animated: true)
+        
     }
 
 

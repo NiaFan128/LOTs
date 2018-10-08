@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="313.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02" translatesAutoresizingMaskIntoConstraints="NO" id="7hA-Dv-HVm">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7hA-Dv-HVm">
                         <rect key="frame" x="30" y="10" width="260" height="260"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="7hA-Dv-HVm" secondAttribute="height" multiplier="1:1" id="cfO-ar-tEb"/>
@@ -88,7 +89,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="02" width="242" height="281"/>
         <image name="like_2_w" width="32" height="32"/>
         <image name="maps" width="21" height="21"/>
     </resources>

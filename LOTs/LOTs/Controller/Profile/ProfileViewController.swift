@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     var fullScreenSize: CGSize!
     var articleImage = [UIImage]()
     
-//    var article: Article!
+    var article: Article!
     var articles = [Article]()
     var ref: DatabaseReference!
     let keychain = KeychainSwift()
@@ -47,7 +47,7 @@ class ProfileViewController: UIViewController {
         userName = self.keychain.get("name") ?? ""
         imageUrl = self.keychain.get("imageUrl") ?? ""
         
-        self.likeArticle()
+        self.userArticle()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -55,6 +55,12 @@ class ProfileViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
         
     }
     
@@ -72,13 +78,11 @@ class ProfileViewController: UIViewController {
         
     }
     
-    func likeArticle() {
+    func userArticle() {
         
         ref.child("posts").queryOrdered(byChild: "user/uid").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
             
             guard let value = snapshot.value as? NSDictionary else { return }
-            
-            print(value)
             
             for key in value.allKeys {
                 
@@ -156,6 +160,14 @@ extension ProfileViewController: UITableViewDelegate {
 
 extension ProfileViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let article: Article = articles[indexPath.row]
+        
+        let detailViewController = DetailViewController.detailViewControllerForArticle(article)
+        navigationController?.pushViewController(detailViewController, animated: true)
+        
+    }
     
 }
 

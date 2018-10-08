@@ -14,11 +14,12 @@ class DetailATableViewCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var createdTimeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
     
     override func awakeFromNib() {
 
         super.awakeFromNib()
-
+        
         profileImage.roundCorner()
 
     }

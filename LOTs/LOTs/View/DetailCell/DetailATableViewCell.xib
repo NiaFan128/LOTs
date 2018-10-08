@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="359" height="223.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_2" translatesAutoresizingMaskIntoConstraints="NO" id="bx4-pe-lu8">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bx4-pe-lu8">
                         <rect key="frame" x="30" y="30" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="DQz-UO-ReM"/>
@@ -51,35 +51,37 @@
                             <constraint firstAttribute="height" constant="1" id="SaD-YN-PPi"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more-1" translatesAutoresizingMaskIntoConstraints="NO" id="xCY-AH-X9I">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFr-kA-xye">
                         <rect key="frame" x="309" y="45" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="kEM-qS-m3B"/>
-                            <constraint firstAttribute="width" constant="20" id="o7t-gf-fqS"/>
+                            <constraint firstAttribute="width" constant="20" id="CYa-lJ-Xg4"/>
+                            <constraint firstAttribute="height" constant="20" id="VU8-41-HuF"/>
                         </constraints>
-                    </imageView>
+                        <state key="normal" image="more-1"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="yUB-5x-d82" firstAttribute="top" secondItem="aRt-rG-a09" secondAttribute="bottom" constant="8" id="0wA-1R-pIl"/>
                     <constraint firstItem="aRt-rG-a09" firstAttribute="leading" secondItem="VyV-Eu-KD6" secondAttribute="leading" id="1JA-jk-ra3"/>
                     <constraint firstAttribute="bottom" secondItem="yUB-5x-d82" secondAttribute="bottom" constant="10" id="2lQ-gQ-hHa"/>
                     <constraint firstItem="RNe-Ff-982" firstAttribute="centerY" secondItem="bx4-pe-lu8" secondAttribute="centerY" id="30V-a9-jHf"/>
+                    <constraint firstItem="bFr-kA-xye" firstAttribute="centerY" secondItem="RNe-Ff-982" secondAttribute="centerY" id="5iq-nm-zUN"/>
                     <constraint firstItem="yUB-5x-d82" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="GK8-qf-3MJ"/>
                     <constraint firstItem="VyV-Eu-KD6" firstAttribute="leading" secondItem="bx4-pe-lu8" secondAttribute="leading" id="RrX-E0-Ii7"/>
                     <constraint firstItem="bx4-pe-lu8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="VW4-q1-doQ"/>
                     <constraint firstItem="bx4-pe-lu8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="XHk-wv-nfc"/>
                     <constraint firstItem="aRt-rG-a09" firstAttribute="top" secondItem="VyV-Eu-KD6" secondAttribute="bottom" constant="7" id="b7V-6F-rOH"/>
                     <constraint firstAttribute="trailing" secondItem="yUB-5x-d82" secondAttribute="trailing" constant="30" id="bIp-XT-6QE"/>
-                    <constraint firstAttribute="trailing" secondItem="xCY-AH-X9I" secondAttribute="trailing" constant="30" id="kBw-Yy-POT"/>
                     <constraint firstItem="RNe-Ff-982" firstAttribute="leading" secondItem="bx4-pe-lu8" secondAttribute="trailing" constant="15" id="oOV-fg-S6c"/>
+                    <constraint firstAttribute="trailing" secondItem="bFr-kA-xye" secondAttribute="trailing" constant="30" id="pCa-tC-Cip"/>
                     <constraint firstItem="VyV-Eu-KD6" firstAttribute="top" secondItem="bx4-pe-lu8" secondAttribute="bottom" constant="8" id="sdt-NM-JgV"/>
-                    <constraint firstItem="xCY-AH-X9I" firstAttribute="centerY" secondItem="RNe-Ff-982" secondAttribute="centerY" id="uls-wc-H6P"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="authorLabel" destination="RNe-Ff-982" id="F6y-of-HZh"/>
                 <outlet property="createdTimeLabel" destination="VyV-Eu-KD6" id="oWo-m2-BOm"/>
+                <outlet property="moreButton" destination="bFr-kA-xye" id="4F2-yH-DED"/>
                 <outlet property="profileImage" destination="bx4-pe-lu8" id="3y5-vb-vo1"/>
                 <outlet property="titleLabel" destination="aRt-rG-a09" id="sHA-N2-4cF"/>
             </connections>
@@ -88,6 +90,5 @@
     </objects>
     <resources>
         <image name="more-1" width="64" height="64"/>
-        <image name="profile_2" width="480" height="480"/>
     </resources>
 </document>

@@ -110,7 +110,7 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let select: Location = locations[indexPath.row]
         let location = select.name
         
-        let detailViewController = LikeDetailViewController.likeDetailViewControllerForLike(location)
+        let detailViewController = LikeDetailViewController.likeDetailViewControllerFromLocation(location)
         
         navigationController?.pushViewController(detailViewController, animated: true)
         

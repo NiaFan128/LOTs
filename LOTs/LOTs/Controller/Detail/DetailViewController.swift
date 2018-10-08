@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import Firebase
+import Kingfisher
 
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var article: Article!
+    var ref: DatabaseReference!
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
+
+        ref = Database.database().reference()
 
         let nib = UINib(nibName: "DetailATableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "DetailACell")
@@ -29,10 +36,12 @@ class DetailViewController: UIViewController {
         tableView.dataSource = self
         
         self.navigationController?.isNavigationBarHidden = true
-        // Do any additional setup after loading the view.
+
+        tableView.estimatedRowHeight = 44.0
+
     }
     
-    class func detailViewControllerForArticle() -> DetailViewController {
+    class func detailViewControllerForArticle(_ article: Article) -> DetailViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -41,6 +50,8 @@ class DetailViewController: UIViewController {
             return DetailViewController()
             
         }
+        
+        viewController.article = article
         
         return viewController
         
@@ -52,7 +63,12 @@ class DetailViewController: UIViewController {
         
     }
     
-
+    @objc func deleteData(sender: UIButton) {
+        
+        ref.child("posts").child(articleID).removeValue()
+        
+    }
+    
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -80,8 +96,18 @@ extension DetailViewController: UITableViewDataSource {
                 
             }
             
-            cell.authorLabel.text = "Nia"
-            cell.titleLabel.text = "和姐妹們一起享用下午茶❤️"
+            let url = URL(string: article.user.image)
+            cell.profileImage.kf.setImage(with: url)
+            cell.authorLabel.text = article.user.name
+            cell.titleLabel.text = article.articleTitle
+            
+            let timeData = NSDate(timeIntervalSince1970: TimeInterval(article.createdTime ?? 0))
+            let dateFormat: DateFormatter = DateFormatter()
+            dateFormat.dateFormat = "MMMM / dd / yyyy"
+            let stringDate = dateFormat.string(from: timeData as Date)
+            cell.createdTimeLabel.text = stringDate
+            
+//            cell.moreButton.addTarget(self, action: #selector(DetailViewController.deleteData(_:), for: .touchUpInside)
             
             return cell
             
@@ -94,8 +120,13 @@ extension DetailViewController: UITableViewDataSource {
                 
             }
             
-            cell.locationLabel.text = "中正區"
-            cell.cuisineLabel.text = "英式料理"
+            let articleUrl = URL(string: article.articleImage)
+            cell.articleImage.kf.setImage(with: articleUrl)
+            cell.locationLabel.text = article.location
+            cell.cuisineLabel.text = article.cuisine
+            
+            // like or not
+            // like function
             
             return cell
             
@@ -107,6 +138,8 @@ extension DetailViewController: UITableViewDataSource {
                 
             }
             
+            cell.contentTextView.text = article.content
+            
             return cell
             
         }
@@ -115,14 +148,30 @@ extension DetailViewController: UITableViewDataSource {
         
     }
     
+//    func updateData(_ articleID: String) {
+//
+//        ref.child("posts").child(articleID).updateChildValues([
+//
+//
+//            ])
+//
+//    }
+    
 }
 
 extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        
         return UITableView.automaticDimension
         
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        
+//        print(indexPath)
+//        
+//    }
     
 }

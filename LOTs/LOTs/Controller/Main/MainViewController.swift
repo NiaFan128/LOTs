@@ -16,7 +16,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
+    var article: Article!
     var articles = [Article]()
+    
     var refreshControl: UIRefreshControl!
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
@@ -43,6 +45,12 @@ class MainViewController: UIViewController {
         if let layout = mainCollectionView?.collectionViewLayout as? MainLayout {
             layout.delegate = self
         }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
         
     }
     
@@ -101,22 +109,24 @@ class MainViewController: UIViewController {
             guard let value = snapshot.value as? NSDictionary else {
                 return
             }
-            //            print(value)
+
             for key in value.allKeys {
 
                 guard let data = value[key] as? NSDictionary else { return }
                 guard let user = data["user"] as? NSDictionary else { return }
                 guard let articleTitle = data["articleTitle"] as? String else { return }
                 guard let articleImage = data["articleImage"] as? String else { return }
-                guard let createdTime = data["createdTime"] as? Int else { return }
+                guard let cuisine = data["cuisine"] as? String else { return }
                 guard let userName = user["name"] as? String else { return }
                 guard let userImage = user["image"] as? String else { return }
                 guard let uid = user["uid"] as? String else { return }
+                guard let location = data["location"] as? String else { return }
+                guard let createdTime = data["createdTime"] as? Int else { return }
+                guard let content = data["content"] as? String else { return }
                 guard let interestedIn = data["interestedIn"] as? Bool else { return }
-
                 
-                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: "", cuisine: "", content: "", user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
-
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
+                
                 self.articles.append(article)
 
             }
@@ -176,6 +186,16 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
         
         return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let article: Article = articles[indexPath.row]
+        
+        let detailViewController = DetailViewController.detailViewControllerForArticle(article)
+        navigationController?.pushViewController(detailViewController, animated: true)
+        
         
     }
     
