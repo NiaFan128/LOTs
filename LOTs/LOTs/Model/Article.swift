@@ -21,6 +21,7 @@ struct Article {
     var content: String?
     var user: User
     var instagramPost: Bool?
+    var interestedIn: Bool = false
 
 }
 

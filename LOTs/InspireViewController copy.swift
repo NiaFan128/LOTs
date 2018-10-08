@@ -112,8 +112,9 @@ class InspireViewController: UIViewController {
                 guard let location = data["location"] as? String else { return }
                 guard let createdTime = data["createdTime"] as? Int else { return }
                 guard let content = data["content"] as? String else { return }
+                guard let interestedIn = data["interestedIn"] as? Bool else { return }
                 
-                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: true)
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: true, interestedIn: interestedIn)
                 
                 self.articles.append(article)
                 
@@ -124,6 +125,16 @@ class InspireViewController: UIViewController {
         }
         
     }
+    
+//    func showLine() {
+//
+//        let cell = TypeCollectionViewCell()
+//        cell.underlineView.isHidden = true
+//
+//        hidingLine = false
+//        cell.underlineView.isHidden = hidingLine
+//
+//    }
     
 }
 
@@ -200,7 +211,7 @@ extension InspireViewController: UICollectionViewDataSource {
                     
                 }
             
-                self.typeCollectionView.reloadData()
+//                self.typeCollectionView.reloadData()
                 self.showCollectionView.reloadData()
             
             }

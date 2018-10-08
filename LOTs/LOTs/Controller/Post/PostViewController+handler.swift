@@ -95,6 +95,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                         "cuisine": self.cuisine,
                         "location": self.location,
                         "content": self.content,
+                        "interestedIn": false,
                         "user":
                             [
                                 "name": Auth.auth().currentUser?.displayName,

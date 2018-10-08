@@ -100,7 +100,9 @@ class LoginViewController: UIViewController {
                 
                 // Get Keychain
                 guard let uuid = self.keychain.get("uid") else { return }
-//                print(uuid)
+                guard let uname = self.keychain.get("name") else { return }
+                guard let uImage = self.keychain.get("imageUrl") else { return }
+//                print(uuid, uname, uImage)
                 
                 let values = ["uid": uid,
                               "name": name,

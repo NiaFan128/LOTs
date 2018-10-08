@@ -107,23 +107,12 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        let select: Location = locations[indexPath.row]
+        let select: Location = locations[indexPath.row]
+        let location = select.name
         
-        let detailViewController = LikeDetailViewController.likeDetailViewControllerForLike()
+        let detailViewController = LikeDetailViewController.likeDetailViewControllerForLike(location)
         
         navigationController?.pushViewController(detailViewController, animated: true)
-    
-//        if row == 0 {
-        
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let likeDetailViewController = storyboard.instantiateViewController(withIdentifier: "LikeDetail")
-
-///           self.present(likeDetailViewController, animated: true, completion: nil)
-///           self.navigationController?.pushViewController(likeDetailViewController, animated: true)
-            
-//            show(likeDetailViewController, sender: nil)
-            
-//        }
         
     }
     

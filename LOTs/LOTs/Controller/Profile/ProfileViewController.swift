@@ -34,16 +34,7 @@ class ProfileViewController: UIViewController {
 
         fullScreenSize = UIScreen.main.bounds.size
         
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.sectionInset = UIEdgeInsets(top: 7.5, left: 5, bottom: 7.5, right: 5)
-        layout.minimumLineSpacing = 7.5
-        layout.minimumInteritemSpacing = 7.5
-
-//        layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: CGFloat(fullScreenSize.width) / 3 - 10, height: CGFloat(fullScreenSize.width) / 3 - 10)
-        
-        collectionView.collectionViewLayout = layout
+        self.layoutSetup()
         
         let nib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ProfileACell")
@@ -64,6 +55,20 @@ class ProfileViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+    }
+    
+    func layoutSetup() {
+        
+        let layout = UICollectionViewFlowLayout()
+        
+        layout.sectionInset = UIEdgeInsets(top: 7.5, left: 5, bottom: 7.5, right: 5)
+        layout.minimumLineSpacing = 7.5
+        layout.minimumInteritemSpacing = 7.5
+        //        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize(width: CGFloat(fullScreenSize.width) / 3 - 10, height: CGFloat(fullScreenSize.width) / 3 - 10)
+        
+        collectionView.collectionViewLayout = layout
         
     }
     
@@ -88,8 +93,9 @@ class ProfileViewController: UIViewController {
                 guard let location = data["location"] as? String else { return }
                 guard let createdTime = data["createdTime"] as? Int else { return }
                 guard let content = data["content"] as? String else { return }
+                guard let interestedIn = data["interestedIn"] as? Bool else { return }
                 
-                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false)
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
                 
                 self.articles.append(article)
                                 

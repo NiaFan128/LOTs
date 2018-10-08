@@ -112,8 +112,10 @@ class MainViewController: UIViewController {
                 guard let userName = user["name"] as? String else { return }
                 guard let userImage = user["image"] as? String else { return }
                 guard let uid = user["uid"] as? String else { return }
+                guard let interestedIn = data["interestedIn"] as? Bool else { return }
 
-                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: "", cuisine: "", content: "", user: User(name: userName, image: userImage, uid: uid), instagramPost: false)
+                
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: "", cuisine: "", content: "", user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
 
                 self.articles.append(article)
 

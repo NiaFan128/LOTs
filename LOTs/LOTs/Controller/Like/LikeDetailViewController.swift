@@ -17,6 +17,7 @@ class LikeDetailViewController: UIViewController {
     
     var article: Article!
     var articles = [Article]()
+    var location: String = ""
     var ref: DatabaseReference!
     let keychain = KeychainSwift()
     let decoder = JSONDecoder()
@@ -34,19 +35,46 @@ class LikeDetailViewController: UIViewController {
         ref = Database.database().reference()
         uid = self.keychain.get("uid") ?? ""
 
-        self.likeArticle()
-//        self.readLocation()
+        self.navigationItem.title = location
+        
+        self.likeArticle(location)
+        
+    }
+
+    // Retrieve the personal like posts and filter by location
+    func likeArticle(_ location: String) {
+        
+        ref.child("likes/\(uid)").queryOrderedByKey().queryEqual(toValue: location).observeSingleEvent(of: .value, with: { (snapshot) in
+
+            guard let value = snapshot.value as? NSDictionary else { return }
+
+            for localValue in value.allValues {
+
+                guard let dictionaryData = localValue as? NSDictionary else { return }
+
+                let articleArray = dictionaryData.allKeys
+
+                for articleID in articleArray {
+                    
+                    self.readArticleData(articleID as! String)
+
+                }
+
+            }
+
+        })
         
     }
     
-    func likeArticle() {
-
-        ref.child("posts").queryOrdered(byChild: "user/uid").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
+    // Read data according to the articleID
+    func readArticleData(_ articleID: String) {
+        
+        articles = []
+        
+        ref.child("posts").queryOrderedByKey().queryEqual(toValue: articleID).observeSingleEvent(of: .value) { (snapshot) in
             
             guard let value = snapshot.value as? NSDictionary else { return }
-            
-            print(value)
-            
+
             for key in value.allKeys {
                 
                 guard let data = value[key] as? NSDictionary else { return }
@@ -60,54 +88,20 @@ class LikeDetailViewController: UIViewController {
                 guard let location = data["location"] as? String else { return }
                 guard let createdTime = data["createdTime"] as? Int else { return }
                 guard let content = data["content"] as? String else { return }
+                guard let interestedIn = data["interestedIn"] as? Bool else { return }
                 
-                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false)
-                
-                self.articles.append(article)
-                
-//                print(article)
-                
-            }
-
-            self.likeDetailTableView.reloadData()
-
-        }
-        
-    }
-
-    func readLocation() {
-        
-        ref.child("posts").queryOrdered(byChild: "location").queryEqual(toValue: "中正區").observeSingleEvent(of: .value) { (snapshot) in
-            
-            guard let value = snapshot.value as? NSDictionary else { return }
-            
-            for key in value.allKeys {
-                
-                guard let data = value[key] as? NSDictionary else { return }
-                guard let user = data["user"] as? NSDictionary else { return }
-                guard let articleTitle = data["articleTitle"] as? String else { return }
-                guard let articleImage = data["articleImage"] as? String else { return }
-                guard let cuisine = data["cuisine"] as? String else { return }
-                guard let userName = user["name"] as? String else { return }
-                guard let userImage = user["image"] as? String else { return }
-                guard let uid = user["uid"] as? String else { return }
-                guard let location = data["location"] as? String else { return }
-                guard let createdTime = data["createdTime"] as? Int else { return }
-                guard let content = data["content"] as? String else { return }
-                
-
-                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false)
+                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
                 
                 self.articles.append(article)
                 
             }
-
+            
             self.likeDetailTableView.reloadData()
             
         }
         
     }
-    
+
 //     Codable QQ
 //        func readLocation() {
 //    
@@ -145,7 +139,7 @@ class LikeDetailViewController: UIViewController {
 
     }
     
-    class func likeDetailViewControllerForLike() -> LikeDetailViewController {
+    class func likeDetailViewControllerForLike(_ location: String) -> LikeDetailViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -155,7 +149,7 @@ class LikeDetailViewController: UIViewController {
             
         }
         
-//        viewController.article = article
+        viewController.location = location
         
         return viewController
         
