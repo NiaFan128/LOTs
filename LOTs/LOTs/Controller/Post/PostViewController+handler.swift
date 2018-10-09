@@ -87,6 +87,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     guard let uid = self.keychain.get("uid") else { return }
                     
                     self.ref.child("posts/\(postID)").setValue([
+                        "articleID": postID,
                         "articleTitle": self.articleTitle,
                         "articleImage": self.pictureURL,
                         "height": self.height,

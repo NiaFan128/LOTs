@@ -21,6 +21,7 @@ class InspireViewController: UIViewController {
     let decoder = JSONDecoder()
     
     var cuisines = [Cuisine]()
+    var article: Article!
     var articles = [Article]()
     var hidingLine: Bool = true
     
@@ -41,6 +42,12 @@ class InspireViewController: UIViewController {
         
         showCollectionView.delegate = self
         showCollectionView.dataSource = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
         
     }
     
@@ -103,6 +110,7 @@ class InspireViewController: UIViewController {
                 
                 guard let data = value[key] as? NSDictionary else { return }
                 guard let user = data["user"] as? NSDictionary else { return }
+                guard let articleID = data["articleID"] as? String else { return }
                 guard let articleTitle = data["articleTitle"] as? String else { return }
                 guard let articleImage = data["articleImage"] as? String else { return }
                 guard let cuisine = data["cuisine"] as? String else { return }
@@ -114,7 +122,7 @@ class InspireViewController: UIViewController {
                 guard let content = data["content"] as? String else { return }
                 guard let interestedIn = data["interestedIn"] as? Bool else { return }
                 
-                let article = Article(articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: true, interestedIn: interestedIn)
+                let article = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: true, interestedIn: interestedIn)
                 
                 self.articles.append(article)
                 
@@ -211,12 +219,18 @@ extension InspireViewController: UICollectionViewDataSource {
                     
                 }
             
-//                self.typeCollectionView.reloadData()
                 self.showCollectionView.reloadData()
             
-            }
+        } else {
+            
+            let article: Article = articles[indexPath.row]
+            
+            let detailViewController = DetailViewController.detailViewControllerForArticle(article)
+            navigationController?.pushViewController(detailViewController, animated: true)
             
         }
+            
+    }
     
 }
 

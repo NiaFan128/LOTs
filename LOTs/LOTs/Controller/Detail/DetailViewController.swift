@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
         tableView.estimatedRowHeight = 44.0
 
     }
-    
+        
     class func detailViewControllerForArticle(_ article: Article) -> DetailViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -63,10 +63,38 @@ class DetailViewController: UIViewController {
         
     }
     
-    @objc func deleteData(sender: UIButton) {
+    @objc func deleteData() {
         
-        ref.child("posts").child(articleID).removeValue()
+        let articleID = article.articleID
         
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
+            
+            print("edit")
+            
+        }
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { (_) in
+
+            print("delete \(articleID)")
+            self.ref.child("posts").child(articleID).removeValue()
+            
+            self.navigationController?.popViewController(animated: true)
+
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+            print("cancel")
+        })
+
+        alertController.addAction(editAction)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+
     }
     
 }
@@ -107,7 +135,9 @@ extension DetailViewController: UITableViewDataSource {
             let stringDate = dateFormat.string(from: timeData as Date)
             cell.createdTimeLabel.text = stringDate
             
-//            cell.moreButton.addTarget(self, action: #selector(DetailViewController.deleteData(_:), for: .touchUpInside)
+            // Remove Or Delete
+            
+            cell.moreButton.addTarget(self, action: #selector(DetailViewController.deleteData), for: .touchUpInside)
             
             return cell
             
@@ -148,15 +178,6 @@ extension DetailViewController: UITableViewDataSource {
         
     }
     
-//    func updateData(_ articleID: String) {
-//
-//        ref.child("posts").child(articleID).updateChildValues([
-//
-//
-//            ])
-//
-//    }
-    
 }
 
 extension DetailViewController: UITableViewDelegate {
@@ -167,11 +188,5 @@ extension DetailViewController: UITableViewDelegate {
         return UITableView.automaticDimension
         
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        print(indexPath)
-//        
-//    }
     
 }

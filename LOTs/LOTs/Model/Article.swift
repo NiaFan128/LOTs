@@ -11,6 +11,7 @@ import Foundation
 
 struct Article {
     
+    var articleID: String
     var articleTitle: String
     var articleImage: String
     var height: CGFloat?

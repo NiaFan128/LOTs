@@ -47,6 +47,8 @@ class MainLayout: UICollectionViewLayout {
     
     override func prepare() {
         
+        cache.removeAll()
+        
         guard cache.isEmpty == true, let collectionView = collectionView else {
             return
         }
@@ -62,6 +64,9 @@ class MainLayout: UICollectionViewLayout {
         
         var column = 0
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
+        
+        // test
+//        collectionView.collectionViewLayout.invalidateLayout()
         
         // Iterates through the list of items in the first section
         for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
