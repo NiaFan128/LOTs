@@ -41,7 +41,13 @@ class DetailViewController: UIViewController {
         tableView.estimatedRowHeight = 44.0
 
     }
-        
+    
+    override func viewWillAppear(_ animated: Bool) {
+    
+        self.navigationController?.isNavigationBarHidden = true
+    
+    }
+    
     class func detailViewControllerForArticle(_ article: Article) -> DetailViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

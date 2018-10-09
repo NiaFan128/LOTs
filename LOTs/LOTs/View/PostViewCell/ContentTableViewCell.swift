@@ -13,6 +13,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var contentCancelButton: UIButton!
     
     override func awakeFromNib() {
         
@@ -37,6 +38,12 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate, UITextFieldDele
         
     }
 
+    @objc func onClearPressed(_ sender: Any) {
+        
+        contentTextView.text = ""
+        contentCancelButton.isEnabled = false
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         

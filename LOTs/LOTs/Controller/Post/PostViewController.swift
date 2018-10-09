@@ -25,6 +25,7 @@ class PostViewController: UIViewController {
     var cuisine: String?
     var createdTime: Int?
     var instagram: Bool?
+    var articleID: String?
     var articleTitle: String?
     var content: String?
     var picture: UIImage?
@@ -65,6 +66,10 @@ class PostViewController: UIViewController {
         
         if editArticle != nil {
             readEditData()
+            
+            let url = URL(string: editArticle?.articleImage ?? "")
+            articleImage.kf.setImage(with: url)
+            
         }
         
         tableView.rowHeight = UITableView.automaticDimension
@@ -79,6 +84,7 @@ class PostViewController: UIViewController {
     
     func readEditData() {
         
+        articleID = editArticle?.articleID ?? ""
         location = editArticle?.location
         cuisine = editArticle?.cuisine
         createdTime = editArticle?.createdTime
@@ -91,13 +97,24 @@ class PostViewController: UIViewController {
     // Post Action
     @IBAction func postAction(_ sender: Any) {
         
+        if editArticle != nil {
+        
+            editAction()
+        
+        }
+        
         handleRegister()
 
     }
     
     @IBAction func cancelAction(_ sender: Any) {
         
-    
+        if editArticle != nil {
+        
+            navigationController?.popViewController(animated: true)
+            
+        }
+        
     }
     
     class func editForArticle(_ article: Article) -> PostViewController {
@@ -196,9 +213,11 @@ extension PostViewController: UITableViewDataSource {
             
                 cell.titleTextField.text = editArticle?.articleTitle
                 cell.contentTextView.text = editArticle?.content
-            
+//                cell.contentCancelButton.addTarget(self, action: #selector(getter: ContentTableViewCell.contentCancelButton), for: .touchUpInside)
+                cell.contentCancelButton.isHidden = false
             }
-           
+            
+            cell.contentCancelButton.isHidden = true
             cell.titleTextField.delegate = self
             cell.contentTextView.delegate = self
 
@@ -230,43 +249,11 @@ extension PostViewController: UITableViewDelegate {
 
 }
 
-extension PostViewController: UITextViewDelegate {
-    
-
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        
-//        if editArticle != nil {
-//
-//            textView.text = editArticle?.content
-//
-//        }
-        
-//        textView.text = ""
-        
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        
-        content = textView.text ?? ""
-        print("content: \(content)")
-        
-    }
-
-}
-
 extension PostViewController: UITextFieldDelegate {
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-//        if editArticle != nil {
-//
-//            textField.text = editArticle?.articleTitle
-//
-//        }
-        
-//        textField.text = ""
         
     }
     
@@ -277,6 +264,37 @@ extension PostViewController: UITextFieldDelegate {
         
     }
     
+}
 
+extension PostViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        //        if editArticle != nil {
+        //
+        //            textView.text = editArticle?.content
+        //
+        //        }
+        
+        //        textView.text = ""
+        
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+//        if editArticle != nil {
+//
+//
+//
+//        }
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        content = textView.text ?? ""
+        print("content: \(content)")
+        
+    }
     
 }

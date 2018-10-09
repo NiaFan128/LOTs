@@ -113,6 +113,101 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                 
     }
     
+    func editAction() {
+        
+        // Auth
+        
+        // Error Handler
+        guard location != nil else {
+            alertRemind(status: "location")
+            return
+        }
+        
+        guard cuisine != nil else {
+            alertRemind(status: "cuisine")
+            return
+        }
+        
+        guard createdTime != nil else {
+            alertRemind(status: "time")
+            return
+        }
+        
+        guard articleTitle != nil else {
+            alertRemind(status: "article title")
+            return
+        }
+        
+        guard content != nil else {
+            alertRemind(status: "content")
+            return
+        }
+        
+        guard articleID != nil else {
+            return
+        }
+        
+        // UUID
+        let fileName = UUID().uuidString
+        
+        // Storage
+        let storageRef = Storage.storage().reference().child("article_images").child("\(fileName).jpg")
+        
+        if let articleImage = self.articleImage.image, let uploadData = self.articleImage.image?.jpegData(compressionQuality: 0.5) {
+            
+            height = articleImage.size.height
+            width = articleImage.size.width
+            
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpg"
+            
+            storageRef.putData(uploadData, metadata: metaData) { (metadata, error) in
+                
+                if error != nil {
+                    print(error)
+                    return
+                }
+                
+                print(metadata)
+                
+                storageRef.downloadURL(completion: { (url, error) in
+                    
+                    guard let downloadURL = url else { return }
+                    self.pictureURL = downloadURL.absoluteString
+                    guard let uid = self.keychain.get("uid") else { return }
+//                    guard self.articleID != nil else { return }
+                    
+                    self.ref.child("posts/\(self.articleID)").updateChildValues([
+            
+                        "articleID": self.articleID,
+                        "articleTitle": self.articleTitle,
+                        "articleImage": self.pictureURL,
+                        "height": self.height,
+                        "width": self.width,
+                        "createdTime": self.createdTime,
+                        "cuisine": self.cuisine,
+                        "location": self.location,
+                        "content": self.content,
+                        "interestedIn": false,
+                        "user":
+                            [
+                                "name": Auth.auth().currentUser?.displayName,
+                                "image": Auth.auth().currentUser?.photoURL?.absoluteString,
+                                "uid": uid
+                        ]
+                        
+                    ])
+                    
+                })
+            }
+            
+            navigationController?.popViewController(animated: true)
+            
+        }
+        
+    }
+
+    
     func alertRemind(status: String) {
         
         let alertController = UIAlertController(title: "Error", message: "Please complete \(status) part!", preferredStyle: .alert)
@@ -141,12 +236,9 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
             
             selectImageFromPicker = editedImage
             
-//            print(editedImage)
-            
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             
             selectImageFromPicker = originalImage
-//            print(originalImage)
 
         }
         
