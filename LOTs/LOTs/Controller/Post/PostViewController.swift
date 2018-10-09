@@ -33,6 +33,8 @@ class PostViewController: UIViewController {
     var pictureURL: String?
     let keychain = KeychainSwift()
 
+    var editArticle: Article?
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -61,7 +63,28 @@ class PostViewController: UIViewController {
         
         uploadPicture()
         
+        if editArticle != nil {
+            readEditData()
+        }
+        
         tableView.rowHeight = UITableView.automaticDimension
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
+        
+    }
+    
+    func readEditData() {
+        
+        location = editArticle?.location
+        cuisine = editArticle?.cuisine
+        createdTime = editArticle?.createdTime
+        articleTitle = editArticle?.articleTitle
+        content = editArticle?.content
+        pictureURL = editArticle?.articleImage
         
     }
     
@@ -69,20 +92,25 @@ class PostViewController: UIViewController {
     @IBAction func postAction(_ sender: Any) {
         
         handleRegister()
-//        backToMainPage()
 
     }
     
     @IBAction func cancelAction(_ sender: Any) {
         
-        emptyData()
-//        dismiss(animated: true, completion: nil)
     
     }
     
-    func emptyData() {
+    class func editForArticle(_ article: Article) -> PostViewController {
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        guard let editViewController = storyboard.instantiateViewController(withIdentifier: "selectPage") as? PostViewController else {
+            return PostViewController()
+        }
+        
+        editViewController.editArticle = article
+        
+        return editViewController
         
     }
     
@@ -119,18 +147,25 @@ extension PostViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if indexPath.section == 0 {
-
+        switch indexPath.section {
+            
+        case 0:
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostInfoCell", for: indexPath) as? PostTableViewCell else {
-
                 return UITableViewCell()
-
+            }
+            
+            if editArticle != nil {
+                
+                cell.dateChange(createdTime)
+                cell.locationChange(location)
+                cell.cuisineChange(cuisine)
+            
             }
             
             cell.dateCompletion = { (data : Int) -> Void in
                 
                 self.createdTime = data
-                
                 print("createdTime: \(data)")
                 
             }
@@ -138,31 +173,38 @@ extension PostViewController: UITableViewDataSource {
             cell.locationCompletion = { (data : String) -> Void in
                 
                 self.location = data
-                
                 print("location: \(data)")
+                
             }
             
             cell.cuisineCompletion = { (data : String) -> Void in
                 
                 self.cuisine = data
-                
                 print("cuisine: \(data)")
+            
             }
             
             return cell
-
-        } else if indexPath.section == 1 {
+            
+        case 1:
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContentCell", for: indexPath) as? ContentTableViewCell else {
-                
                 return UITableViewCell()
-
             }
             
-            cell.contentTextView.delegate = self
-            cell.titleTextField.delegate = self
+            if editArticle != nil {
             
+                cell.titleTextField.text = editArticle?.articleTitle
+                cell.contentTextView.text = editArticle?.content
+            
+            }
+           
+            cell.titleTextField.delegate = self
+            cell.contentTextView.delegate = self
+
             return cell
+            
+        default: break
             
         }
 
@@ -190,35 +232,51 @@ extension PostViewController: UITableViewDelegate {
 
 extension PostViewController: UITextViewDelegate {
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        
-        content = textView.text
-        print("content: \(content)")
-        
-    }
+
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        textView.text = ""
+//        if editArticle != nil {
+//
+//            textView.text = editArticle?.content
+//
+//        }
+        
+//        textView.text = ""
         
     }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        content = textView.text ?? ""
+        print("content: \(content)")
+        
+    }
+
 }
 
 extension PostViewController: UITextFieldDelegate {
     
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+//        if editArticle != nil {
+//
+//            textField.text = editArticle?.articleTitle
+//
+//        }
+        
+//        textField.text = ""
+        
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         articleTitle = textField.text ?? ""
-        //        title = textField.text
         print("article: \(articleTitle)")
         
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        textField.text = ""
-        
-    }
+
     
 }

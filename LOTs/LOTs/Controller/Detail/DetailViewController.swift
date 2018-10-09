@@ -36,6 +36,7 @@ class DetailViewController: UIViewController {
         tableView.dataSource = self
         
         self.navigationController?.isNavigationBarHidden = true
+        NotificationCenter.default.post(name: Notification.Name("Update"), object: article)
 
         tableView.estimatedRowHeight = 44.0
 
@@ -63,7 +64,7 @@ class DetailViewController: UIViewController {
         
     }
     
-    @objc func deleteData() {
+    @objc func editArticle() {
         
         let articleID = article.articleID
         
@@ -71,7 +72,13 @@ class DetailViewController: UIViewController {
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
             
-            print("edit")
+            // 傳值
+            print(self.article)
+            let editViewController = PostViewController.editForArticle(self.article)
+            
+            editViewController.hidesBottomBarWhenPushed = true
+            
+            self.show(editViewController, sender: nil)
             
         }
         
@@ -100,7 +107,6 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: UITableViewDataSource {
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -135,9 +141,8 @@ extension DetailViewController: UITableViewDataSource {
             let stringDate = dateFormat.string(from: timeData as Date)
             cell.createdTimeLabel.text = stringDate
             
-            // Remove Or Delete
-            
-            cell.moreButton.addTarget(self, action: #selector(DetailViewController.deleteData), for: .touchUpInside)
+            // Edit function
+            cell.moreButton.addTarget(self, action: #selector(DetailViewController.editArticle), for: .touchUpInside)
             
             return cell
             
@@ -183,7 +188,6 @@ extension DetailViewController: UITableViewDataSource {
 extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         
         return UITableView.automaticDimension
         

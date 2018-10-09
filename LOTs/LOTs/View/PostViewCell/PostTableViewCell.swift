@@ -86,7 +86,29 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
-    func locationPicker(){
+    func locationChange(_ location: String?) {
+        
+        locationTextField.text = location
+        
+    }
+    
+    func cuisineChange(_ cuisine: String?) {
+        
+        cuisineTextField.text = cuisine
+        
+    }
+    
+    func dateChange(_ createdTime: Int?) {
+        
+        let timeData = NSDate(timeIntervalSince1970: TimeInterval(createdTime ?? 0))
+        let dateFormat: DateFormatter = DateFormatter()
+        dateFormat.dateFormat = "MMMM / dd / yyyy"
+        let stringDate = dateFormat.string(from: timeData as Date)
+        dateTextField.text = stringDate
+        
+    }
+    
+    func locationPicker() {
         
         let data: [[String]] = [
             ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區",

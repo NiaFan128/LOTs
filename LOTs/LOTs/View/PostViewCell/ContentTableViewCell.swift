@@ -24,6 +24,19 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate, UITextFieldDele
         titleTextField.returnKeyType = .done
 
     }
+    
+    func titleChange(_ articleTitle: String?) {
+        
+        titleTextField.text = articleTitle
+        
+    }
+    
+    func contentChange(_ content: String?) {
+        
+        contentTextView.text = content
+        
+    }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         
