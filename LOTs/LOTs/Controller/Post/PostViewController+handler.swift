@@ -175,11 +175,11 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     guard let downloadURL = url else { return }
                     self.pictureURL = downloadURL.absoluteString
                     guard let uid = self.keychain.get("uid") else { return }
-//                    guard self.articleID != nil else { return }
+                    guard let articleID = self.articleID else { return }
                     
-                    self.ref.child("posts/\(self.articleID)").updateChildValues([
+                    self.ref.child("posts/\(articleID)").updateChildValues([
             
-                        "articleID": self.articleID,
+                        "articleID": articleID,
                         "articleTitle": self.articleTitle,
                         "articleImage": self.pictureURL,
                         "height": self.height,

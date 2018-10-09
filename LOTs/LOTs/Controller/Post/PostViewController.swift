@@ -101,9 +101,11 @@ class PostViewController: UIViewController {
         
             editAction()
         
-        }
+        } else {
+            
+            handleRegister()
         
-        handleRegister()
+        }
 
     }
     
