@@ -35,7 +35,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArC-PP-n7E">
                         <rect key="frame" x="65" y="281" width="58" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" red="0.82745098039999998" green="0.35294117650000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="112" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKH-0Q-rMw">
@@ -45,9 +45,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  cuisine  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEU-3w-Ld1">
-                        <rect key="frame" x="126" y="283.5" width="68" height="15"/>
-                        <color key="backgroundColor" red="0.98823529409999999" green="0.87843137250000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <rect key="frame" x="125" y="283.5" width="70.5" height="15"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" red="0.82745098039999998" green="0.35294117650000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -83,6 +82,7 @@
                 <outlet property="cuisineLabel" destination="kEU-3w-Ld1" id="g2P-rh-AOU"/>
                 <outlet property="likeButton" destination="hgg-F5-VAD" id="S3Y-Iz-udb"/>
                 <outlet property="likeLabel" destination="tKH-0Q-rMw" id="Dam-bb-7eN"/>
+                <outlet property="locationImage" destination="psr-DC-9NA" id="fzd-QL-Uth"/>
                 <outlet property="locationLabel" destination="ArC-PP-n7E" id="fcu-qY-FrC"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="170.01499250374815"/>

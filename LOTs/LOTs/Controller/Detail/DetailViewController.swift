@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import Kingfisher
+import KeychainSwift
+
 
 class DetailViewController: UIViewController {
 
@@ -16,12 +18,15 @@ class DetailViewController: UIViewController {
     
     var article: Article!
     var ref: DatabaseReference!
+    var refreshControl: UIRefreshControl!
+    let keychain = KeychainSwift()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         ref = Database.database().reference()
+//        guard let uid = self.keychain.get("uid") else { return }
 
         let nib = UINib(nibName: "DetailATableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "DetailACell")
@@ -35,6 +40,10 @@ class DetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        refreshControl = UIRefreshControl()
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
+
         self.navigationController?.isNavigationBarHidden = true
         NotificationCenter.default.post(name: Notification.Name("Update"), object: article)
 
@@ -46,6 +55,24 @@ class DetailViewController: UIViewController {
     
         self.navigationController?.isNavigationBarHidden = true
     
+    }
+    
+    @objc func loadData() {
+        
+        // Animation to simulate the Internet fetching data
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            
+            // Stop animation
+            self.refreshControl.endRefreshing()
+            
+            // Loading more data
+//            self.readData()
+            
+            // Scroll to the latest
+//            self.mainCollectionView.scrollToItem(at: [0, 0], at: UICollectionView.ScrollPosition.top, animated: true)
+            
+        }
+        
     }
     
     class func detailViewControllerForArticle(_ article: Article) -> DetailViewController {
@@ -70,40 +97,87 @@ class DetailViewController: UIViewController {
         
     }
     
+    func userHandler(_ action: String) {
+        
+        let alertController = UIAlertController(title: "Warning", message: "You can't \(action) this article.", preferredStyle: .alert)
+        
+        // 建立[確認]按鈕
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) -> Void in
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        })
+        
+        alertController.addAction(okAction)
+        
+        // 顯示提示框
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
     @objc func editArticle() {
         
         let articleID = article.articleID
+        
+        let userID = article.user.uid
+        let uid = self.keychain.get("uid")
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
             
-            // 傳值
-            print(self.article)
-            let editViewController = PostViewController.editForArticle(self.article)
+            if userID == uid {
+                
+                // Convert the data
+                let editViewController = PostViewController.editForArticle(self.article)
+                
+                editViewController.hidesBottomBarWhenPushed = true
+                
+                self.show(editViewController, sender: nil)
             
-            editViewController.hidesBottomBarWhenPushed = true
-            
-            self.show(editViewController, sender: nil)
+            } else {
+                
+                self.userHandler("edit")
+                print("You can't edit this article.")
+                
+            }
             
         }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { (_) in
 
-            print("delete \(articleID)")
-            self.ref.child("posts").child(articleID).removeValue()
+            if userID == uid {
+                
+                print("delete \(articleID)")
+                
+                self.ref.child("posts").child(articleID).removeValue()
+                
+                self.navigationController?.popViewController(animated: true)
+                
+            } else {
+                
+                self.userHandler("delete")
+                print("You can't delete this article.")
+                
+            }
             
-            self.navigationController?.popViewController(animated: true)
-
         })
+        
+        let reportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
+            
+            print("report")
+            
+        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
             
             print("cancel")
+            
         })
 
         alertController.addAction(editAction)
         alertController.addAction(deleteAction)
+        alertController.addAction(reportAction)
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
