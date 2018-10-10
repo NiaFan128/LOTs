@@ -182,6 +182,7 @@ extension LikeDetailViewController: UITableViewDelegate {
         let article: Article = articles[indexPath.row]
         
         let detailViewController = DetailViewController.detailViewControllerForArticle(article)
+//        detailViewController.readInterestedIn()
         navigationController?.pushViewController(detailViewController, animated: true)
         
     }

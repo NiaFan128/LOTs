@@ -204,7 +204,7 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
-    @IBAction func instagramSelect(_ sender: Any) {
+    @IBAction func facebookSelect(_ sender: Any) {
         
         let switchOn = !upload
         upload = switchOn

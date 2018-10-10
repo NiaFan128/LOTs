@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import KeychainSwift
+
+protocol LikeButton: AnyObject {
+
+    func buttonSelect(_ button: UIButton)
+//    func buttonDefault(_ button: UIButton)
+
+}
 
 class DetailBTableViewCell: UITableViewCell {
 
@@ -16,6 +25,13 @@ class DetailBTableViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var cuisineLabel: UILabel!
+    
+    var ref: DatabaseReference!
+    let keychain = KeychainSwift()
+
+    var notinterestedIn = true
+    
+    weak var buttonDelegate: LikeButton?
     
     override func awakeFromNib() {
         
@@ -30,10 +46,19 @@ class DetailBTableViewCell: UITableViewCell {
         likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
 //            UIColor.init(red: 250.0/255.0, green: 145.0/255.0, blue: 150.0/255.0, alpha: 1.0)
         
+        ref = Database.database().reference()
+//        buttonDelegate?.buttonDefault(self.likeButton)
+
+    }
+    
+    @IBAction func likeAction(_ sender: Any) {
+        
+        buttonDelegate?.buttonSelect(self.likeButton)
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

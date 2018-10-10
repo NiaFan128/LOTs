@@ -196,6 +196,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let article: Article = articles[indexPath.row]
         
         let detailViewController = DetailViewController.detailViewControllerForArticle(article)
+//        detailViewController.readInterestedIn()
         navigationController?.pushViewController(detailViewController, animated: true)
         
         

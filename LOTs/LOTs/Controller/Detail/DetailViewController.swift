@@ -18,8 +18,12 @@ class DetailViewController: UIViewController {
     
     var article: Article!
     var ref: DatabaseReference!
+
     var refreshControl: UIRefreshControl!
     let keychain = KeychainSwift()
+
+    var notinterestedIn = true
+    var interestedIn: Bool = false
 
     override func viewDidLoad() {
         
@@ -45,8 +49,9 @@ class DetailViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
 
         self.navigationController?.isNavigationBarHidden = true
-        NotificationCenter.default.post(name: Notification.Name("Update"), object: article)
 
+        readInterestedIn()
+        
         tableView.estimatedRowHeight = 44.0
 
     }
@@ -55,6 +60,8 @@ class DetailViewController: UIViewController {
     
         self.navigationController?.isNavigationBarHidden = true
     
+        readInterestedIn()
+        
     }
     
     @objc func loadData() {
@@ -86,7 +93,7 @@ class DetailViewController: UIViewController {
         }
         
         viewController.article = article
-        
+                
         return viewController
         
     }
@@ -223,6 +230,69 @@ class DetailViewController: UIViewController {
     
     }
     
+    // like function
+    func interstedIn() {
+        
+        guard let uid = keychain.get("uid") else { return }
+        guard let location = article.location else { return }
+        let articleID = article.articleID
+        
+        ref.child("likes/\(uid)").child("\(location)").setValue(["\(articleID)": true])
+
+    }
+    
+    // dislike function
+    func notInterstedIn() {
+        
+        guard let uid = keychain.get("uid") else { return }
+        guard let location = article.location else { return }
+        let articleID = article.articleID
+        
+        ref.child("likes/\(uid)").child("\(location)").child(articleID).removeValue()
+
+    }
+    
+    func readInterestedIn() {
+        
+        DispatchQueue.main.async {
+            
+//            let userID = self.article.user.uid
+            guard let uid = self.keychain.get("uid") else { return }
+            guard let location = self.article.location else { return }
+            let articleID = self.article.articleID
+            
+            print("userID:\(uid), location: \(location), articleID: \(articleID) ")
+            
+            self.ref.child("likes/\(uid)/\(location)").queryOrderedByKey().observe(.value) { (snapshot) in
+                
+                print(snapshot)
+                
+                guard let value = snapshot.value as? NSDictionary else { return }
+                
+                guard let thisArticleID = value["\(articleID)"] as? Bool else {
+                    print("You never like this article before.")
+                    return
+                }
+                
+                if thisArticleID == true {
+                    
+                    self.interestedIn = true
+                    print("true")
+                    
+                } else {
+                    
+                    self.interestedIn = false
+                    print("You never like this article before.")
+                    
+                }
+                
+                self.tableView.reloadData()
+            }
+            
+        }
+        
+    }
+    
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -279,8 +349,20 @@ extension DetailViewController: UITableViewDataSource {
             cell.locationLabel.text = article.location
             cell.cuisineLabel.text = article.cuisine
             
-            // like or not
             // like function
+            cell.buttonDelegate = self
+            
+            if interestedIn == true {
+                
+                cell.likeButton.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
+                cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                
+            } else {
+                
+                cell.likeButton.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
+                cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                
+            }
             
             return cell
             
@@ -311,5 +393,50 @@ extension DetailViewController: UITableViewDelegate {
         return UITableView.automaticDimension
         
     }
+    
+}
+
+extension DetailViewController: LikeButton {
+    
+//    func buttonDefault(_ button: UIButton) {
+//
+//        if interestedIn == true {
+//
+//            button.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
+//            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+//
+//        } else {
+//
+//            button.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
+//            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+//
+//        }
+//
+//    }
+    
+    func buttonSelect(_ button: UIButton) {
+        
+//        let select = !button.isSelected
+        let interestedIn = !notinterestedIn
+        notinterestedIn = interestedIn
+        
+        if notinterestedIn {
+            
+            // not interest
+            button.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
+            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+            notInterstedIn()
+            
+        } else {
+            
+            // interest
+            button.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
+            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+            interstedIn()
+
+        }
+
+    }
+    
     
 }
