@@ -97,24 +97,6 @@ class DetailViewController: UIViewController {
         
     }
     
-    func userHandler(_ action: String) {
-        
-        let alertController = UIAlertController(title: "Warning", message: "You can't \(action) this article.", preferredStyle: .alert)
-        
-        // 建立[確認]按鈕
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) -> Void in
-            
-            self.navigationController?.popViewController(animated: true)
-            
-        })
-        
-        alertController.addAction(okAction)
-        
-        // 顯示提示框
-        self.present(alertController, animated: true, completion: nil)
-        
-    }
-    
     @objc func editArticle() {
         
         let articleID = article.articleID
@@ -165,7 +147,16 @@ class DetailViewController: UIViewController {
         
         let reportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
             
-            print("report")
+            if userID != uid {
+                
+                print("report")
+                self.reportAction()
+
+            } else {
+                
+                self.userHandler("report")
+                
+            }
             
         }
         
@@ -182,6 +173,54 @@ class DetailViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
 
+    }
+    
+    func userHandler(_ action: String) {
+        
+        let alertController = UIAlertController(title: "Warning", message: "You can't \(action) this article.", preferredStyle: .alert)
+        
+        // 建立[確認]按鈕
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        })
+        
+        alertController.addAction(okAction)
+        
+        // 顯示提示框
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func reportAction() {
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let spamAction = UIAlertAction(title: "It's spam", style: .destructive, handler: { (_) in
+            
+            print("It's spam.")
+            
+        })
+        
+        let inappropriateAction = UIAlertAction(title: "It's inappropriate", style: .destructive, handler: { (_) in
+            
+            print("It's inappropriate.")
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+            print("cancel")
+            
+        })
+
+        alertController.addAction(spamAction)
+        alertController.addAction(inappropriateAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    
     }
     
 }
