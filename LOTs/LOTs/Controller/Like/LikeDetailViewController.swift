@@ -40,6 +40,20 @@ class LikeDetailViewController: UIViewController {
         
         self.likeArticle(location)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(removeFromLike(notification:)), name: Notification.Name("Remove"), object: nil)
+        
+    }
+    
+    @objc func removeFromLike(notification: Notification) {
+        
+        guard let data = notification.userInfo as? [String: String] else { return }
+        guard let articleID = data["articleID"] else { return }
+        guard let location = data["location"] else { return }
+
+        print("articleID: \(articleID), location: \(location)")
+        
+        ref.child("likes/\(uid)").child("\(location)").child(articleID).removeValue()
+        
     }
 
     // Retrieve the personal like posts and filter by location
@@ -182,7 +196,7 @@ extension LikeDetailViewController: UITableViewDelegate {
         let article: Article = articles[indexPath.row]
         
         let detailViewController = DetailViewController.detailViewControllerForArticle(article)
-//        detailViewController.readInterestedIn()
+
         navigationController?.pushViewController(detailViewController, animated: true)
         
     }

@@ -47,6 +47,8 @@ class DetailBTableViewCell: UITableViewCell {
 //            UIColor.init(red: 250.0/255.0, green: 145.0/255.0, blue: 150.0/255.0, alpha: 1.0)
         
         ref = Database.database().reference()
+        
+        likeLabel.isHidden = true
 //        buttonDelegate?.buttonDefault(self.likeButton)
 
     }

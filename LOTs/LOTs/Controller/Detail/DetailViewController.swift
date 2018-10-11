@@ -11,7 +11,6 @@ import Firebase
 import Kingfisher
 import KeychainSwift
 
-
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -51,6 +50,7 @@ class DetailViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
 
         readInterestedIn()
+//        fetchInterestNumber()
         
         tableView.estimatedRowHeight = 44.0
 
@@ -107,6 +107,7 @@ class DetailViewController: UIViewController {
     @objc func editArticle() {
         
         let articleID = article.articleID
+        let location = article.location
         
         let userID = article.user.uid
         let uid = self.keychain.get("uid")
@@ -127,7 +128,6 @@ class DetailViewController: UIViewController {
             } else {
                 
                 self.userHandler("edit")
-                print("You can't edit this article.")
                 
             }
             
@@ -141,12 +141,16 @@ class DetailViewController: UIViewController {
                 
                 self.ref.child("posts").child(articleID).removeValue()
                 
+                NotificationCenter.default.post(name: Notification.Name("Remove"),
+                                                object: nil,
+                                                userInfo: ["articleID": articleID,
+                                                           "location": location])
+                
                 self.navigationController?.popViewController(animated: true)
                 
             } else {
                 
                 self.userHandler("delete")
-                print("You can't delete this article.")
                 
             }
             
@@ -189,7 +193,8 @@ class DetailViewController: UIViewController {
         // 建立[確認]按鈕
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { (_) in
             
-            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+//            self.navigationController?.popViewController(animated: true)
             
         })
         
@@ -256,33 +261,26 @@ class DetailViewController: UIViewController {
         
         DispatchQueue.main.async {
             
-//            let userID = self.article.user.uid
             guard let uid = self.keychain.get("uid") else { return }
             guard let location = self.article.location else { return }
             let articleID = self.article.articleID
-            
-            print("userID:\(uid), location: \(location), articleID: \(articleID) ")
+//            print("userID:\(uid), location: \(location), articleID: \(articleID) ")
             
             self.ref.child("likes/\(uid)/\(location)").queryOrderedByKey().observe(.value) { (snapshot) in
-                
-                print(snapshot)
                 
                 guard let value = snapshot.value as? NSDictionary else { return }
                 
                 guard let thisArticleID = value["\(articleID)"] as? Bool else {
-                    print("You never like this article before.")
                     return
                 }
                 
                 if thisArticleID == true {
                     
                     self.interestedIn = true
-                    print("true")
                     
                 } else {
                     
                     self.interestedIn = false
-                    print("You never like this article before.")
                     
                 }
                 
@@ -291,6 +289,28 @@ class DetailViewController: UIViewController {
             
         }
         
+    }
+    
+    // TBC
+    func fetchInterestNumber() {
+        
+        let articleID = self.article.articleID
+        guard let location = self.article.location else { return }
+
+//        queryOrdered(byChild: "\(location)")
+
+        ref.child("likes").queryOrderedByValue().queryEqual(toValue: articleID).observe(.value) { (snapshot) in
+            
+            print(snapshot)
+            
+        }
+        
+//        ref.child("likes").queryOrdered(byChild: articleID).queryEqual(toValue: true).observe(.value, with: { (snapshot) in
+//
+//            print(snapshot)
+//
+//        })
+    
     }
     
 }

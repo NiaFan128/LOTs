@@ -16,7 +16,15 @@ extension UIView {
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 15
         self.layer.shadowOpacity = 1
-        self.layer.shouldRasterize = true
+//        self.layer.shouldRasterize = true
+        self.layer.cornerRadius = 10
+        
+    }
+    
+    func backgroundBord() {
+        
+        self.layer.borderColor = #colorLiteral(red: 0.8901960784, green: 0.8901960784, blue: 0.8901960784, alpha: 1)
+        self.layer.borderWidth = 1.0
         self.layer.cornerRadius = 10
         
     }

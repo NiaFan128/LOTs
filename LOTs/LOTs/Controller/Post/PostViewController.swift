@@ -245,6 +245,12 @@ extension PostViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+//        if indexPath.section == 0 {
+//
+//            return 204.0
+//
+//        }
+        
         return UITableView.automaticDimension
         
     }
@@ -271,32 +277,46 @@ extension PostViewController: UITextFieldDelegate {
 extension PostViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        //        if editArticle != nil {
-        //
-        //            textView.text = editArticle?.content
-        //
-        //        }
-        
-        //        textView.text = ""
-        
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        
-//        if editArticle != nil {
-//
-//
-//
-//        }
+
+        if editArticle != nil {
+
+            textView.text = editArticle?.content
+            textView.textColor = UIColor.black
+
+        } else {
+
+            textView.text = ""
+            textView.textColor = UIColor.black
+
+        }
         
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
-        content = textView.text ?? ""
-        print("content: \(content)")
+        if textView.text.isEmpty {
+            
+            
+        } else {
+            
+            content = textView.text ?? ""
+            textView.textColor = UIColor.black
+            print("content: \(content)")
+            
+        }
         
     }
+    
+    // should fix if edit.
+//    func textViewDidChange(_ textView: UITextView) {
+//
+//        if editArticle == nil {
+//
+//            var text = textView.text
+//            print(text)
+//
+//        }
+//
+//    }
     
 }

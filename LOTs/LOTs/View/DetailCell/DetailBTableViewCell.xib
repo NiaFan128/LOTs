@@ -39,7 +39,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="112" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKH-0Q-rMw">
-                        <rect key="frame" x="260" y="280.5" width="25" height="21"/>
+                        <rect key="frame" x="232" y="280.5" width="25" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.98039215686274506" green="0.56862745098039214" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgg-F5-VAD">
-                        <rect key="frame" x="233" y="281" width="20" height="20"/>
+                        <rect key="frame" x="265" y="281" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="5ZF-qs-nmi"/>
                             <constraint firstAttribute="height" constant="20" id="HuQ-aj-0Kf"/>
@@ -63,8 +63,8 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="hgg-F5-VAD" firstAttribute="leading" secondItem="tKH-0Q-rMw" secondAttribute="trailing" constant="8" id="5Uy-2Y-sMu"/>
                     <constraint firstItem="psr-DC-9NA" firstAttribute="top" secondItem="7hA-Dv-HVm" secondAttribute="bottom" constant="10" id="AHI-1W-2Cy"/>
-                    <constraint firstItem="tKH-0Q-rMw" firstAttribute="trailing" secondItem="7hA-Dv-HVm" secondAttribute="trailing" constant="-5" id="GPx-jM-zes"/>
                     <constraint firstItem="ArC-PP-n7E" firstAttribute="leading" secondItem="psr-DC-9NA" secondAttribute="trailing" constant="8" id="JKA-Fw-1uA"/>
                     <constraint firstItem="7hA-Dv-HVm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Jaz-iR-vAF"/>
                     <constraint firstItem="7hA-Dv-HVm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="P8v-V0-MHh"/>
@@ -74,8 +74,8 @@
                     <constraint firstItem="kEU-3w-Ld1" firstAttribute="centerY" secondItem="ArC-PP-n7E" secondAttribute="centerY" id="ihG-rc-i4b"/>
                     <constraint firstItem="ArC-PP-n7E" firstAttribute="centerY" secondItem="psr-DC-9NA" secondAttribute="centerY" id="izd-iX-aIN"/>
                     <constraint firstItem="tKH-0Q-rMw" firstAttribute="centerY" secondItem="ArC-PP-n7E" secondAttribute="centerY" id="rvt-35-5k6"/>
-                    <constraint firstItem="tKH-0Q-rMw" firstAttribute="leading" secondItem="hgg-F5-VAD" secondAttribute="trailing" constant="7" id="vEK-lu-z4j"/>
                     <constraint firstAttribute="trailing" secondItem="7hA-Dv-HVm" secondAttribute="trailing" constant="30" id="x2j-94-0Pl"/>
+                    <constraint firstItem="hgg-F5-VAD" firstAttribute="trailing" secondItem="7hA-Dv-HVm" secondAttribute="trailing" constant="-5" id="y4R-at-hYT"/>
                     <constraint firstItem="hgg-F5-VAD" firstAttribute="centerY" secondItem="tKH-0Q-rMw" secondAttribute="centerY" id="zcq-Ey-Atk"/>
                 </constraints>
             </tableViewCellContentView>

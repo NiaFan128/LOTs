@@ -19,7 +19,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate, UITextFieldDele
         
         super.awakeFromNib()
         
-        contentTextView.backgroundBorder()
+        contentTextView.backgroundBord()
         
         titleTextField.keyboardType = .default
         titleTextField.returnKeyType = .done

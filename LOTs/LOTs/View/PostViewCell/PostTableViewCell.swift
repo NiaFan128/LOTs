@@ -17,6 +17,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var locationTextField: McTextField!
     @IBOutlet weak var cuisineTextField: McTextField!
     @IBOutlet weak var instagramSwitchButton: UIButton!
+    @IBOutlet weak var cityTextField: UITextField!
     
     var locationCompletion: ((_ data: String) -> Void)?
     var cuisineCompletion: ((_ data: String) -> Void)?
@@ -32,12 +33,21 @@ class PostTableViewCell: UITableViewCell {
         
         super.awakeFromNib()
         
-        infoView.backgroundBorder()
+//        infoView.backgroundBorder()
+        infoView.backgroundBord()
         
         self.locationPicker()
         self.cuisinePicker()
         self.date()
-            
+                
+        cityTextField.isUserInteractionEnabled = false
+
+//        dateTextField.contentScaleFactor = UIScreen.main.scale
+//        cuisineTextField.contentScaleFactor = UIScreen.main.scale
+//        locationTextField.contentScaleFactor = UIScreen.main.scale
+        
+        print(self.frame.height)
+        
         dateTextField.delegate = self
 
     }
