@@ -104,8 +104,91 @@ class DetailViewController: UIViewController {
         
     }
     
-    @objc func editArticle() {
+    @objc func moreAction() {
         
+        let articleID = article.articleID
+        let location = article.location
+        let userID = article.user.uid
+        let uid = self.keychain.get("uid")
+        
+        if userID == uid {
+            
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
+                    
+                    // Convert the data
+                    let editViewController = PostViewController.editForArticle(self.article)
+                    
+                    editViewController.hidesBottomBarWhenPushed = true
+                    
+                    self.show(editViewController, sender: nil)
+                
+            }
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { (_) in
+                
+                    print("delete \(articleID)")
+                    
+                    self.ref.child("posts").child(articleID).removeValue()
+                    
+                    NotificationCenter.default.post(name: Notification.Name("Remove"),
+                                                    object: nil,
+                                                    userInfo: ["articleID": articleID,
+                                                               "location": location])
+                    
+                    self.navigationController?.popViewController(animated: true)
+                
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+                
+                print("cancel")
+                
+            })
+            
+            alertController.addAction(editAction)
+            alertController.addAction(deleteAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+        } else {
+            
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+            let reportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
+                
+                if userID != uid {
+                    
+                    print("report")
+                    self.reportAction()
+                    
+                } else {
+                    
+                    self.userHandler("report")
+                    
+                }
+                
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+                
+                print("cancel")
+                
+            })
+            
+            alertController.addAction(reportAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        
+    }
+    
+    @objc func editArticle() {
+    
         let articleID = article.articleID
         let location = article.location
         
@@ -304,12 +387,6 @@ class DetailViewController: UIViewController {
             print(snapshot)
             
         }
-        
-//        ref.child("likes").queryOrdered(byChild: articleID).queryEqual(toValue: true).observe(.value, with: { (snapshot) in
-//
-//            print(snapshot)
-//
-//        })
     
     }
     
@@ -351,7 +428,8 @@ extension DetailViewController: UITableViewDataSource {
             cell.createdTimeLabel.text = stringDate
             
             // Edit function
-            cell.moreButton.addTarget(self, action: #selector(DetailViewController.editArticle), for: .touchUpInside)
+//            cell.moreButton.addTarget(self, action: #selector(DetailViewController.editArticle), for: .touchUpInside)
+            cell.moreButton.addTarget(self, action: #selector(DetailViewController.moreAction), for: .touchUpInside)
             
             return cell
             

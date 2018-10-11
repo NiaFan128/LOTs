@@ -129,4 +129,18 @@ class LoginViewController: UIViewController {
         
     }
         
+    @IBAction func visitorLogin(_ sender: Any) {
+        
+        keychain.set("visitor", forKey: "visitor")
+        print(keychain.get("visitor"))
+        
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") {
+            
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            self.dismiss(animated: true, completion: nil)
+            
+        }
+        
+    }
+    
 }

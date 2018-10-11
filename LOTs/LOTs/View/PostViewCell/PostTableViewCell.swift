@@ -118,6 +118,19 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
+    func locationClean() {
+        
+        locationTextField.text = "地區"
+        
+    }
+
+    func cuisineClean() {
+        
+        cuisineTextField.text = "料理種類"
+        
+    }
+    
+    
     func locationPicker() {
         
         let data: [[String]] = [

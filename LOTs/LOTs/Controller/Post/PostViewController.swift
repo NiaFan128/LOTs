@@ -40,11 +40,8 @@ class PostViewController: UIViewController {
         
         super.viewDidLoad()
 
-        articleImage.image = UIImage(named: "imageDefault")
-        articleImage.translatesAutoresizingMaskIntoConstraints = false
-        articleImage.contentMode = .scaleAspectFill
-        articleImage.corner(corner: 17.5)
-        
+        pictureDefault()
+
         ref = Database.database().reference()
         
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
@@ -65,6 +62,7 @@ class PostViewController: UIViewController {
         uploadPicture()
         
         if editArticle != nil {
+            
             readEditData()
             
             let url = URL(string: editArticle?.articleImage ?? "")
@@ -79,6 +77,15 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.isNavigationBarHidden = false
+        
+    }
+    
+    func pictureDefault() {
+        
+        articleImage.image = UIImage(named: "imageDefault")
+        articleImage.translatesAutoresizingMaskIntoConstraints = false
+        articleImage.contentMode = .scaleAspectFill
+        articleImage.corner(corner: 17.5)
         
     }
     
@@ -115,6 +122,13 @@ class PostViewController: UIViewController {
         
             navigationController?.popViewController(animated: true)
             
+        } else {
+            
+            cleanData()
+//            let tabController = self.view.window!.rootViewController as? UITabBarController
+//            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+//            tabController?.selectedIndex = 0
+            
         }
         
     }
@@ -145,6 +159,12 @@ class PostViewController: UIViewController {
         let tabController = self.view.window!.rootViewController as? UITabBarController
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         tabController?.selectedIndex = 0
+        
+    }
+    
+    func cleanData() {
+        
+        pictureDefault()
         
     }
 
@@ -215,8 +235,8 @@ extension PostViewController: UITableViewDataSource {
             
                 cell.titleTextField.text = editArticle?.articleTitle
                 cell.contentTextView.text = editArticle?.content
-//                cell.contentCancelButton.addTarget(self, action: #selector(getter: ContentTableViewCell.contentCancelButton), for: .touchUpInside)
                 cell.contentCancelButton.isHidden = false
+
             }
             
             cell.contentCancelButton.isHidden = true
@@ -244,12 +264,6 @@ extension PostViewController: UITableViewDataSource {
 extension PostViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-//        if indexPath.section == 0 {
-//
-//            return 204.0
-//
-//        }
         
         return UITableView.automaticDimension
         
