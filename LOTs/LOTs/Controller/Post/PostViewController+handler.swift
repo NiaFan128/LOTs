@@ -107,6 +107,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                 })
             }
             
+            cleanData()
             backToMainPage()
 
         }

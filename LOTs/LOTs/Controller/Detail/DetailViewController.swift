@@ -106,52 +106,14 @@ class DetailViewController: UIViewController {
     
     @objc func moreAction() {
         
-        let articleID = article.articleID
-        let location = article.location
+//        let articleID = article.articleID
+//        let location = article.location
         let userID = article.user.uid
         let uid = self.keychain.get("uid")
         
         if userID == uid {
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            
-            let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
-                    
-                    // Convert the data
-                    let editViewController = PostViewController.editForArticle(self.article)
-                    
-                    editViewController.hidesBottomBarWhenPushed = true
-                    
-                    self.show(editViewController, sender: nil)
-                
-            }
-            
-            let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { (_) in
-                
-                    print("delete \(articleID)")
-                    
-                    self.ref.child("posts").child(articleID).removeValue()
-                    
-                    NotificationCenter.default.post(name: Notification.Name("Remove"),
-                                                    object: nil,
-                                                    userInfo: ["articleID": articleID,
-                                                               "location": location])
-                    
-                    self.navigationController?.popViewController(animated: true)
-                
-            })
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-                
-                print("cancel")
-                
-            })
-            
-            alertController.addAction(editAction)
-            alertController.addAction(deleteAction)
-            alertController.addAction(cancelAction)
-            
-            self.present(alertController, animated: true, completion: nil)
+            editAction()
             
         } else {
             
@@ -159,16 +121,7 @@ class DetailViewController: UIViewController {
 
             let reportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
                 
-                if userID != uid {
-                    
-                    print("report")
-                    self.reportAction()
-                    
-                } else {
-                    
-                    self.userHandler("report")
-                    
-                }
+                self.reportAction()
                 
             }
             
@@ -187,103 +140,49 @@ class DetailViewController: UIViewController {
         
     }
     
-    @objc func editArticle() {
-    
+    func editAction() {
+        
         let articleID = article.articleID
         let location = article.location
-        
-        let userID = article.user.uid
-        let uid = self.keychain.get("uid")
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
             
-            if userID == uid {
-                
-                // Convert the data
-                let editViewController = PostViewController.editForArticle(self.article)
-                
-                editViewController.hidesBottomBarWhenPushed = true
-                
-                self.show(editViewController, sender: nil)
+            // Convert the data
+            let editViewController = PostViewController.editForArticle(self.article)
             
-            } else {
-                
-                self.userHandler("edit")
-                
-            }
+            editViewController.hidesBottomBarWhenPushed = true
+            
+            self.show(editViewController, sender: nil)
             
         }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { (_) in
-
-            if userID == uid {
-                
-                print("delete \(articleID)")
-                
-                self.ref.child("posts").child(articleID).removeValue()
-                
-                NotificationCenter.default.post(name: Notification.Name("Remove"),
-                                                object: nil,
-                                                userInfo: ["articleID": articleID,
-                                                           "location": location])
-                
-                self.navigationController?.popViewController(animated: true)
-                
-            } else {
-                
-                self.userHandler("delete")
-                
-            }
+            
+            print("delete \(articleID)")
+            
+            self.ref.child("posts").child(articleID).removeValue()
+            
+            NotificationCenter.default.post(name: Notification.Name("Remove"),
+                                            object: nil,
+                                            userInfo: ["articleID": articleID,
+                                                       "location": location])
+            
+            self.navigationController?.popViewController(animated: true)
             
         })
-        
-        let reportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
-            
-            if userID != uid {
-                
-                print("report")
-                self.reportAction()
-
-            } else {
-                
-                self.userHandler("report")
-                
-            }
-            
-        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
             
             print("cancel")
             
         })
-
+        
         alertController.addAction(editAction)
         alertController.addAction(deleteAction)
-        alertController.addAction(reportAction)
         alertController.addAction(cancelAction)
         
-        self.present(alertController, animated: true, completion: nil)
-
-    }
-    
-    func userHandler(_ action: String) {
-        
-        let alertController = UIAlertController(title: "Warning", message: "You can't \(action) this article.", preferredStyle: .alert)
-        
-        // 建立[確認]按鈕
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (_) in
-            
-            self.dismiss(animated: true, completion: nil)
-//            self.navigationController?.popViewController(animated: true)
-            
-        })
-        
-        alertController.addAction(okAction)
-        
-        // 顯示提示框
         self.present(alertController, animated: true, completion: nil)
         
     }
@@ -390,6 +289,9 @@ class DetailViewController: UIViewController {
     
     }
     
+    
+
+    
 }
 
 extension DetailViewController: UITableViewDataSource {
@@ -481,6 +383,7 @@ extension DetailViewController: UITableViewDataSource {
         return UITableViewCell()
         
     }
+    
     
 }
 

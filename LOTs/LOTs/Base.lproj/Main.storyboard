@@ -285,12 +285,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="EVI-U8-rHS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4VN-kB-wz2">
-                                <rect key="frame" x="0.0" y="56" width="414" height="669"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="jWV-L7-wNn" customClass="MainLayout" customModule="LOTs" customModuleProvider="target"/>
                                 <cells>
@@ -357,10 +353,7 @@
                         <constraints>
                             <constraint firstItem="4VN-kB-wz2" firstAttribute="leading" secondItem="Iy1-J7-tHh" secondAttribute="leading" id="0SX-86-zQN"/>
                             <constraint firstItem="Iy1-J7-tHh" firstAttribute="bottom" secondItem="4VN-kB-wz2" secondAttribute="bottom" id="1wi-JU-4Q3"/>
-                            <constraint firstItem="4VN-kB-wz2" firstAttribute="top" secondItem="EVI-U8-rHS" secondAttribute="bottom" id="4rO-M2-ITa"/>
-                            <constraint firstItem="EVI-U8-rHS" firstAttribute="top" secondItem="Iy1-J7-tHh" secondAttribute="top" id="CGT-a8-3xS"/>
-                            <constraint firstItem="EVI-U8-rHS" firstAttribute="trailing" secondItem="Iy1-J7-tHh" secondAttribute="trailing" id="KNh-HL-2D9"/>
-                            <constraint firstItem="EVI-U8-rHS" firstAttribute="leading" secondItem="Iy1-J7-tHh" secondAttribute="leading" id="Ps2-RP-efn"/>
+                            <constraint firstItem="4VN-kB-wz2" firstAttribute="top" secondItem="Iy1-J7-tHh" secondAttribute="top" id="agn-1J-d83"/>
                             <constraint firstItem="Iy1-J7-tHh" firstAttribute="trailing" secondItem="4VN-kB-wz2" secondAttribute="trailing" id="wwq-YO-853"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iy1-J7-tHh"/>
@@ -368,7 +361,6 @@
                     <navigationItem key="navigationItem" title="LOTs" id="wHA-5r-z1F"/>
                     <connections>
                         <outlet property="mainCollectionView" destination="4VN-kB-wz2" id="qkX-cb-NAg"/>
-                        <outlet property="searchBar" destination="EVI-U8-rHS" id="bW7-uh-oPI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iup-GW-HgL" userLabel="First Responder" sceneMemberID="firstResponder"/>

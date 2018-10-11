@@ -118,17 +118,17 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
-    func locationClean() {
-        
-        locationTextField.text = "地區"
-        
-    }
-
-    func cuisineClean() {
-        
-        cuisineTextField.text = "料理種類"
-        
-    }
+//    func locationClean() {
+//        
+//        locationTextField.text = "地區"
+//        
+//    }
+//
+//    func cuisineClean() {
+//        
+//        cuisineTextField.text = "料理種類"
+//        
+//    }
     
     
     func locationPicker() {
@@ -250,6 +250,16 @@ class PostTableViewCell: UITableViewCell {
         
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    override func prepareForReuse() {
+        
+        date()
+        locationTextField.text = "地區"
+        locationTextField.textColor = #colorLiteral(red: 0.5217987895, green: 0.5218115449, blue: 0.52180475, alpha: 1)
+        cuisineTextField.text = "料理種類"
+        cuisineTextField.textColor = #colorLiteral(red: 0.5217987895, green: 0.5218115449, blue: 0.52180475, alpha: 1)
+        
     }
     
 }

@@ -13,7 +13,7 @@ import KeychainSwift
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
+//    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
     var article: Article!
@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
 
-        searchBar.backgroundImage = UIImage()
+//        searchBar.backgroundImage = UIImage()
         ref = Database.database().reference()
         
         mainCollectionView.delegate = self

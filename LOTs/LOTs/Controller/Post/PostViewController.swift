@@ -111,7 +111,7 @@ class PostViewController: UIViewController {
         } else {
             
             handleRegister()
-        
+    
         }
 
     }
@@ -125,9 +125,9 @@ class PostViewController: UIViewController {
         } else {
             
             cleanData()
-//            let tabController = self.view.window!.rootViewController as? UITabBarController
-//            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-//            tabController?.selectedIndex = 0
+            let tabController = self.view.window!.rootViewController as? UITabBarController
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            tabController?.selectedIndex = 0
             
         }
         
@@ -165,6 +165,7 @@ class PostViewController: UIViewController {
     func cleanData() {
         
         pictureDefault()
+        self.tableView.reloadData()
         
     }
 
