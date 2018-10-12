@@ -254,22 +254,40 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLT-VV-qzk">
+                                <rect key="frame" x="0.0" y="280" width="414" height="445"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL7-NE-7y7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Tbb-ew-HCN" firstAttribute="trailing" secondItem="4OO-P6-xKo" secondAttribute="trailing" id="0PW-VD-KPT"/>
                             <constraint firstItem="KGD-6f-SVB" firstAttribute="top" secondItem="Tbb-ew-HCN" secondAttribute="top" id="2jG-h7-Ibc"/>
                             <constraint firstItem="4OO-P6-xKo" firstAttribute="leading" secondItem="Tbb-ew-HCN" secondAttribute="leading" id="5BT-4m-DI7"/>
+                            <constraint firstItem="lLT-VV-qzk" firstAttribute="trailing" secondItem="Tbb-ew-HCN" secondAttribute="trailing" id="BTY-Ed-mcg"/>
+                            <constraint firstItem="fL7-NE-7y7" firstAttribute="leading" secondItem="Tbb-ew-HCN" secondAttribute="leading" id="FAE-4W-9C8"/>
                             <constraint firstItem="Tbb-ew-HCN" firstAttribute="trailing" secondItem="KGD-6f-SVB" secondAttribute="trailing" id="Hyq-rV-TzA"/>
+                            <constraint firstItem="lLT-VV-qzk" firstAttribute="leading" secondItem="Tbb-ew-HCN" secondAttribute="leading" id="LYY-xm-H9O"/>
+                            <constraint firstItem="Tbb-ew-HCN" firstAttribute="trailing" secondItem="fL7-NE-7y7" secondAttribute="trailing" id="QXH-m1-iMU"/>
+                            <constraint firstItem="lLT-VV-qzk" firstAttribute="top" secondItem="KGD-6f-SVB" secondAttribute="bottom" id="Xxe-7t-Sdy"/>
                             <constraint firstItem="4OO-P6-xKo" firstAttribute="top" secondItem="KGD-6f-SVB" secondAttribute="bottom" id="cB6-MM-fBr"/>
                             <constraint firstItem="Tbb-ew-HCN" firstAttribute="bottom" secondItem="4OO-P6-xKo" secondAttribute="bottom" id="ejY-OV-0EZ"/>
                             <constraint firstItem="KGD-6f-SVB" firstAttribute="leading" secondItem="Tbb-ew-HCN" secondAttribute="leading" id="k2u-WW-HGq"/>
+                            <constraint firstItem="Tbb-ew-HCN" firstAttribute="bottom" secondItem="lLT-VV-qzk" secondAttribute="bottom" id="lYG-1Z-oH3"/>
+                            <constraint firstItem="Tbb-ew-HCN" firstAttribute="bottom" secondItem="fL7-NE-7y7" secondAttribute="bottom" id="lrj-iY-W3l"/>
+                            <constraint firstItem="fL7-NE-7y7" firstAttribute="top" secondItem="Tbb-ew-HCN" secondAttribute="top" id="rc4-me-kne"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tbb-ew-HCN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="WJs-S2-ttT"/>
                     <connections>
+                        <outlet property="animationBGView" destination="lLT-VV-qzk" id="WoD-y2-3f9"/>
                         <outlet property="collectionView" destination="4OO-P6-xKo" id="Nwb-tD-5IT"/>
+                        <outlet property="emptyView" destination="fL7-NE-7y7" id="5lk-gU-egC"/>
                         <outlet property="tableView" destination="KGD-6f-SVB" id="izb-7g-AF3"/>
                     </connections>
                 </viewController>

@@ -27,4 +27,5 @@ import UIKit
 // Color #FA9196
 // UIColor.init(red: 250.0/255.0, green: 145.0/255.0, blue: 150.0/255.0, alpha: 1.0)
 
-
+// #d35a66
+// #f7c0c3

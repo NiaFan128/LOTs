@@ -181,9 +181,15 @@ extension PostViewController: UITableViewDataSource {
         return 1
 
     }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        
+        
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         switch indexPath.section {
             
         case 0:
@@ -220,6 +226,8 @@ extension PostViewController: UITableViewDataSource {
                 print("cuisine: \(data)")
             
             }
+            
+            cell.selectionStyle = .none
             
             return cell
             

@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
         showLoadingAnimation()
         readData()
         
-        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
+        refreshControl.addTarget(self, action: #selector(loadData(_:)), for: UIControl.Event.valueChanged)
         
         // Set the PinterestLayout delegate
         if let layout = mainCollectionView?.collectionViewLayout as? MainLayout {
@@ -82,19 +82,21 @@ class MainViewController: UIViewController {
         
     }
     
-    @objc func loadData() {
+    @objc func loadData(_ refreshControl: UIRefreshControl) {
         
         // Animation to simulate the Internet fetching data
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             
-            // Stop animation
-            self.refreshControl.endRefreshing()
+            self.refreshControl.beginRefreshing()
             
             // Loading more data
             self.readData()
+
+            // Stop animation
+            self.refreshControl.endRefreshing()
             
             // Scroll to the latest
-            self.mainCollectionView.scrollToItem(at: [0, 0], at: UICollectionView.ScrollPosition.top, animated: true)
+//            self.mainCollectionView.scrollToItem(at: [0, 0], at: UICollectionView.ScrollPosition.top, animated: true)
             
         }
         
@@ -129,9 +131,11 @@ class MainViewController: UIViewController {
 
     func readData() {
 
-        articles = []
+//        articles = []
 
         Database.database().reference().child("posts").queryOrdered(byChild: "createdTime").observeSingleEvent(of: .value) { (snapshot) in
+
+            self.articles = []
 
             guard let value = snapshot.value as? NSDictionary else {
                 return
@@ -169,6 +173,12 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        return 1
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
