@@ -401,6 +401,7 @@
 				2B8303612151EEE8006E2522 /* Frameworks */,
 				2B8303622151EEE8006E2522 /* Resources */,
 				B04E04A07F211AA6A6297468 /* [CP] Embed Pods Frameworks */,
+				2B2AF6A6217089E2002A2748 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -472,6 +473,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2B2AF6A6217089E2002A2748 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0b67512db0b146d42f59aa872851c57309a83da7 935b4236c90576321d9c1cba824a4058bb561ccd0d8f850d9726706735d01712\n";
+		};
 		B04E04A07F211AA6A6297468 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

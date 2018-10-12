@@ -5,7 +5,10 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Crashlytics (3.10.8):
+    - Fabric (~> 1.7.12)
   - DatePickerDialog (2.0)
+  - Fabric (1.7.12)
   - FBSDKCoreKit (4.37.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.37.0):
@@ -90,7 +93,9 @@ PODS:
 
 DEPENDENCIES:
   - Bolts
+  - Crashlytics
   - DatePickerDialog
+  - Fabric
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Firebase/Auth
@@ -108,7 +113,9 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Bolts
+    - Crashlytics
     - DatePickerDialog
+    - Fabric
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -134,7 +141,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
   DatePickerDialog: 5e1c24d9fe6506cd45dbc573eed7b0a251b1c09d
+  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
   FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
   Firebase: a870ed114d769b424021a0c8ddb0c86c3250a0c5
@@ -158,6 +167,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: a3ed1bf4d426d3a4f90fd8e84d79c0991710884b
+PODFILE CHECKSUM: 31074034ade7cadc299d2b5a00c7b746dd338034
 
 COCOAPODS: 1.5.3

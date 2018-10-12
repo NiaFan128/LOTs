@@ -20,5 +20,7 @@ target 'LOTs' do
   pod 'KeychainSwift', '~> 12.0'
   pod 'IQKeyboardManagerSwift'
   pod 'lottie-ios'
+  pod 'Fabric'
+  pod 'Crashlytics'
   
 end

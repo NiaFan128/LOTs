@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 import Firebase
 import FBSDKLoginKit
 import FBSDKCoreKit
@@ -30,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKSettings.setAppID("475484662946492")
         
         IQKeyboardManager.shared.enable = true
+        
+        Fabric.with([Crashlytics.self])
         
         let keychain: KeychainSwift = KeychainSwift()
         
