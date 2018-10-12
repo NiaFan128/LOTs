@@ -79,6 +79,7 @@ PODS:
   - KeychainSwift (12.0.0)
   - Kingfisher (4.10.0)
   - leveldb-library (1.20)
+  - lottie-ios (2.5.0)
   - McPicker (2.0.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -100,6 +101,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - KeychainSwift (~> 12.0)
   - Kingfisher (~> 4.0)
+  - lottie-ios
   - McPicker (~> 2.0.0)
   - SwiftLint
 
@@ -125,6 +127,7 @@ SPEC REPOS:
     - KeychainSwift
     - Kingfisher
     - leveldb-library
+    - lottie-ios
     - McPicker
     - nanopb
     - SwiftLint
@@ -150,10 +153,11 @@ SPEC CHECKSUMS:
   KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   McPicker: 1d11ad8c07c337a16dd9397e45f321125304cbb0
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 1eed67697c549e26d49c17707b530fda34c4372d
+PODFILE CHECKSUM: a3ed1bf4d426d3a4f90fd8e84d79c0991710884b
 
 COCOAPODS: 1.5.3

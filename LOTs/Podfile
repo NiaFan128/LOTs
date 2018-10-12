@@ -19,5 +19,6 @@ target 'LOTs' do
   pod 'Kingfisher', '~> 4.0'
   pod 'KeychainSwift', '~> 12.0'
   pod 'IQKeyboardManagerSwift'
+  pod 'lottie-ios'
   
 end

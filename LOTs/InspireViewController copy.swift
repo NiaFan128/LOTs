@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 import Firebase
 import Kingfisher
 
@@ -19,6 +20,9 @@ class InspireViewController: UIViewController {
     
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
+//    let animationView = LOTAnimationView(name: "animation_construction")
+    let animationView = LOTAnimationView(name: "lunch_time")
+    var animationLabel = UILabel()
     
     var cuisines = [Cuisine]()
     var article: Article!
@@ -30,6 +34,8 @@ class InspireViewController: UIViewController {
         super.viewDidLoad()
         
         fullScreenSize = UIScreen.main.bounds.size
+        animationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: fullScreenSize.width, height: 21))
+
         typeCollectionSet()
         
         let nib2 = UINib(nibName: "ProfileCollectionViewCell", bundle: nil)
@@ -38,6 +44,7 @@ class InspireViewController: UIViewController {
         ref = Database.database().reference()
         
         self.readTypeData()
+//        self.showNoDataAnimation()
         self.readEachTypeData(cuisine: "美式料理")
         
         showCollectionView.delegate = self
@@ -50,6 +57,35 @@ class InspireViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         
     }
+    
+    func showNoDataAnimation() {
+        
+        animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        animationView.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5) - 50)
+
+        animationView.contentMode = .scaleAspectFit
+        
+        view.addSubview(animationView)
+        
+        animationView.play()
+        animationView.loopAnimation = false
+        
+        animationLabel.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5) + 20)
+        animationLabel.textAlignment = .center
+        animationLabel.text = "There is no related article now."
+        animationLabel.textColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
+        
+        view.addSubview(animationLabel)
+        
+    }
+    
+    func removeAnimation() {
+        
+        animationView.removeFromSuperview()
+        animationLabel.removeFromSuperview()
+        
+    }
+    
     
     func typeCollectionSet() {
      
@@ -151,13 +187,23 @@ extension InspireViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == self.typeCollectionView {
-            
+
             return cuisines.count
-            
+
         } else {
+
+            if articles.count != 0 {
+
+                self.removeAnimation()
+
+            } else {
+
+                self.showNoDataAnimation()
+
+            }
             
             return articles.count
-            
+
         }
         
     }

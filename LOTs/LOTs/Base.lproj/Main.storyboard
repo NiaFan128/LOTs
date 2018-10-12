@@ -317,7 +317,7 @@
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="Hus-uL-U52" firstAttribute="top" secondItem="zNM-yo-Id2" secondAttribute="top" id="2Aw-7h-kwv"/>
                                                         <constraint firstItem="COp-c5-fwE" firstAttribute="leading" secondItem="zNM-yo-Id2" secondAttribute="leading" constant="15" id="3hl-Sa-MOc"/>

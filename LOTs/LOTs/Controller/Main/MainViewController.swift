@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 import Firebase
 import Kingfisher
 import KeychainSwift
@@ -16,6 +17,7 @@ class MainViewController: UIViewController {
 //    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
+    var fullScreenSize: CGSize!
     var article: Article!
     var articles = [Article]()
     
@@ -23,13 +25,16 @@ class MainViewController: UIViewController {
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
     let keychain = KeychainSwift()
+    let animationView = LOTAnimationView(name: "loading_2")
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
 //        searchBar.backgroundImage = UIImage()
         ref = Database.database().reference()
+        fullScreenSize = UIScreen.main.bounds.size
+
         
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
@@ -37,6 +42,7 @@ class MainViewController: UIViewController {
         refreshControl = UIRefreshControl()
         mainCollectionView.addSubview(refreshControl)
         
+        showLoadingAnimation()
         readData()
         
         refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
@@ -45,6 +51,28 @@ class MainViewController: UIViewController {
         if let layout = mainCollectionView?.collectionViewLayout as? MainLayout {
             layout.delegate = self
         }
+        
+    }
+    
+    func showLoadingAnimation() {
+        
+        animationView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        animationView.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5))
+        animationView.contentMode = .scaleAspectFill
+            
+        view.addSubview(animationView)
+        
+        animationView.play()
+        animationView.loopAnimation = true
+        
+    }
+    
+    func removeLoadingAnimation() {
+        
+//        animationView.layer.removeAllAnimations()
+//        self.view.layoutIfNeeded()
+        animationView.layer.opacity = 0.5
+        animationView.removeFromSuperview()
         
     }
     
@@ -131,6 +159,7 @@ class MainViewController: UIViewController {
 
             }
 
+            self.removeLoadingAnimation()
             self.mainCollectionView.reloadData()
 
         }
