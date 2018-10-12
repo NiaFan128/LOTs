@@ -131,12 +131,11 @@ extension ProfileViewController: UITableViewDataSource {
             
         }
         
-        cell.authorLabel.text = userName
-        let userUrl = URL(string: imageUrl)
-        cell.profileImage.kf.setImage(with: userUrl)
-        
         DispatchQueue.main.async {
             
+            cell.authorLabel.text = self.userName
+            let userUrl = URL(string: self.imageUrl)
+            cell.profileImage.kf.setImage(with: userUrl)
             cell.postsAmountLabel.text = String(self.articles.count)
         
         }
@@ -151,7 +150,7 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        return 140
+        return 280
 
 //        return UITableView.automaticDimension
         

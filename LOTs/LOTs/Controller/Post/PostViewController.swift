@@ -125,9 +125,6 @@ class PostViewController: UIViewController {
         } else {
             
             cleanData()
-            let tabController = self.view.window!.rootViewController as? UITabBarController
-            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-            tabController?.selectedIndex = 0
             
         }
         

@@ -11,7 +11,7 @@ import UIKit
 class ProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var editButton: UIButton!
+//    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var postsAmountLabel: UILabel!
     
@@ -19,9 +19,9 @@ class ProfileTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         profileImage.roundCorner()
-        editButton.layer.cornerRadius = 6
-        editButton.layer.borderColor = UIColor.lightGray.cgColor
-        editButton.layer.borderWidth = 1
+//        editButton.layer.cornerRadius = 6
+//        editButton.layer.borderColor = UIColor.lightGray.cgColor
+//        editButton.layer.borderWidth = 1
 
     }
 
