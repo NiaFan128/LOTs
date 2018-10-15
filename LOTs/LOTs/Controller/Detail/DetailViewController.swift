@@ -235,8 +235,9 @@ class DetailViewController: UIViewController {
             guard let location = article.location else { return }
             let articleID = article.articleID
             
-            ref.child("likes/\(uid)").child("\(location)").setValue(["\(articleID)": true])
-            
+//            ref.child("likes/\(uid)").child("\(location)").setValue(["\(articleID)": true])
+            ref.child("likes/\(uid)").child("\(location)").updateChildValues(["\(articleID)": true])
+
         }
 
     }

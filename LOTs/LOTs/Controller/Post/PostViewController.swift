@@ -19,7 +19,8 @@ class PostViewController: UIViewController {
     @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var loginView: UIView!
+
     var ref: DatabaseReference!
     var location: String?
     var cuisine: String?
@@ -75,11 +76,13 @@ class PostViewController: UIViewController {
         
         if uid == nil {
             
-            alertRemind()
+            loginView.isHidden = false
+            self.navigationItem.leftBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem = nil
             
-//            let tabController = self.view.window?.rootViewController as? UITabBarController
-//            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-//            tabController?.selectedIndex = 0
+        } else {
+            
+            loginView.isHidden = true
             
         }
         
@@ -90,16 +93,6 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.isNavigationBarHidden = false
-        
-    }
-    
-    // Visitor Alert
-    func alertRemind() {
-        
-        let alertController = UIAlertController(title: "Error", message: "Please login with Facebook.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
         
     }
     

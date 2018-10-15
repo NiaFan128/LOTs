@@ -9,10 +9,12 @@
 import UIKit
 import Firebase
 import Kingfisher
+import KeychainSwift
 
 class LikeViewController: UIViewController {
 
     @IBOutlet weak var likeCollectionView: UICollectionView!
+    @IBOutlet weak var loginView: UIView!
     
     var fullScreenSize: CGSize!
     var ref: DatabaseReference!
@@ -20,7 +22,9 @@ class LikeViewController: UIViewController {
     let decoder = JSONDecoder()
     
     var articles = [Article]()
-
+    let keychain = KeychainSwift()
+    var uid: String?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -42,9 +46,22 @@ class LikeViewController: UIViewController {
         let nib = UINib(nibName: "LikeCollectionViewCell", bundle: nil)
         likeCollectionView.register(nib, forCellWithReuseIdentifier: "LikeCell")
 
+        
         likeCollectionView.delegate = self
         likeCollectionView.dataSource = self
 
+        uid = self.keychain.get("uid")
+
+        if uid == nil {
+            
+            loginView.isHidden = false
+            
+        } else {
+            
+            loginView.isHidden = true
+            
+        }
+        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
 

@@ -34,6 +34,7 @@
 		2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86435C2162252900D39812 /* UIKit+Effect.swift */; };
 		2BBFA63C216310B500A31D58 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBFA63B216310B500A31D58 /* Category.swift */; };
 		2BBFA63E2163724A00A31D58 /* Food.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBFA63D2163724A00A31D58 /* Food.xcassets */; };
+		2BD77FE02174716400C378F7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD77FDF2174716300C378F7 /* UserViewController.swift */; };
 		2BDD665D2155079700E3C74A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BDD665C2155079700E3C74A /* GoogleService-Info.plist */; };
 		2BDD665F2155173400E3C74A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDD665E2155173400E3C74A /* Article.swift */; };
 		2BE27EEC215B76B3005387A4 /* LikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27EEA215B76B3005387A4 /* LikeCollectionViewCell.swift */; };
@@ -90,6 +91,7 @@
 		2B86435C2162252900D39812 /* UIKit+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Effect.swift"; sourceTree = "<group>"; };
 		2BBFA63B216310B500A31D58 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2BBFA63D2163724A00A31D58 /* Food.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Food.xcassets; sourceTree = "<group>"; };
+		2BD77FDF2174716300C378F7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		2BDD665C2155079700E3C74A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2BDD665E2155173400E3C74A /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		2BE27EEA215B76B3005387A4 /* LikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 		2B86434E2162107000D39812 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2BD77FE12174717300C378F7 /* User */,
 				2B864354216211F200D39812 /* Main */,
 				2B864353216211D700D39812 /* MainCell */,
 				2B8643552162124800D39812 /* Inspire */,
@@ -353,6 +356,14 @@
 				2B86435C2162252900D39812 /* UIKit+Effect.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		2BD77FE12174717300C378F7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2BD77FDF2174716300C378F7 /* UserViewController.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		2BE27EEE215B76B9005387A4 /* Like */ = {
@@ -591,6 +602,7 @@
 				2B83038721524275006E2522 /* MainLayout.swift in Sources */,
 				2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */,
 				2B42E712215CDCF500BB0F86 /* InspireViewController copy.swift in Sources */,
+				2BD77FE02174716400C378F7 /* UserViewController.swift in Sources */,
 				2BE27F0C215C8369005387A4 /* DetailBTableViewCell.swift in Sources */,
 				2BE27EF8215BAC5A005387A4 /* LikeDetailViewController.swift in Sources */,
 				2BE27F02215BD475005387A4 /* ProfileCollectionViewCell.swift in Sources */,

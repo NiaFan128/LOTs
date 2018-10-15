@@ -200,31 +200,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let url = URL(string: article.user.image)
         cell.profileImageView.kf.setImage(with: url)
         
-        let articleImageUrl = article.articleImage
-            
-        if let url = URL(string: articleImageUrl) {
-                
-                URLSession.shared.dataTask(with: url) { (data, response, error) in
-                    
-                    // download hit an error so lets return out
-                    if error != nil {
-                        print(error)
-                        return
-                    }
-                    
-                    DispatchQueue.main.async {
-                        
-                        guard let image: UIImage = UIImage(data: data!) else {
-                            return
-                        }
-                        
-                        cell.imageView?.image = image
-                        
-                    }
-                    
-                    }.resume()
-                
-            }
+        let articleUrl = URL(string: article.articleImage)
+        cell.imageView?.kf.indicatorType = .activity
+        cell.imageView.kf.setImage(with: articleUrl)
         
         return cell
         
@@ -235,9 +213,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let article: Article = articles[indexPath.row]
         
         let detailViewController = DetailViewController.detailViewControllerForArticle(article)
-//        detailViewController.readInterestedIn()
+
         navigationController?.pushViewController(detailViewController, animated: true)
-        
         
     }
     
