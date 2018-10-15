@@ -23,7 +23,8 @@ class DetailViewController: UIViewController {
 
     var notinterestedIn = true
     var interestedIn: Bool = false
-
+    var uid: String?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -42,6 +43,8 @@ class DetailViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        uid = self.keychain.get("uid")
         
         refreshControl = UIRefreshControl()
         tableView.addSubview(refreshControl)
@@ -220,24 +223,54 @@ class DetailViewController: UIViewController {
     // like function
     func interstedIn() {
         
-        guard let uid = keychain.get("uid") else { return }
-        guard let location = article.location else { return }
-        let articleID = article.articleID
+//        guard let uid = keychain.get("uid") else { return }
         
-        ref.child("likes/\(uid)").child("\(location)").setValue(["\(articleID)": true])
+        if uid == nil {
+            
+            alertRemind()
+            
+        } else {
+            
+            guard let uid = self.keychain.get("uid") as? String else { return }
+            guard let location = article.location else { return }
+            let articleID = article.articleID
+            
+            ref.child("likes/\(uid)").child("\(location)").setValue(["\(articleID)": true])
+            
+        }
 
     }
     
     // dislike function
     func notInterstedIn() {
         
-        guard let uid = keychain.get("uid") else { return }
-        guard let location = article.location else { return }
-        let articleID = article.articleID
-        
-        ref.child("likes/\(uid)").child("\(location)").child(articleID).removeValue()
+        if uid == nil {
+            
+            alertRemind()
+            
+        } else {
+            
+            guard let uid = keychain.get("uid") else { return }
+            guard let location = article.location else { return }
+            let articleID = article.articleID
+            
+            ref.child("likes/\(uid)").child("\(location)").child(articleID).removeValue()
+            
+        }
 
     }
+    
+    
+    // Visitor Alert
+    func alertRemind() {
+        
+        let alertController = UIAlertController(title: "Error", message: "Please login with Facebook.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
     
     func readInterestedIn() {
         
@@ -399,43 +432,55 @@ extension DetailViewController: UITableViewDelegate {
 
 extension DetailViewController: LikeButton {
     
-//    func buttonDefault(_ button: UIButton) {
-//
-//        if interestedIn == true {
-//
-//            button.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
-//            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
-//
-//        } else {
-//
-//            button.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
-//            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
-//
-//        }
-//
-//    }
-    
     func buttonSelect(_ button: UIButton) {
         
-//        let select = !button.isSelected
-        let interestedIn = !notinterestedIn
-        notinterestedIn = interestedIn
-        
-        if notinterestedIn {
+        if uid == nil {
             
-            // not interest
-            button.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
-            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
-            notInterstedIn()
+            alertRemind()
+            button.isEnabled = false
             
         } else {
             
-            // interest
-            button.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
-            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
-            interstedIn()
-
+            let interestedIn = !notinterestedIn
+            notinterestedIn = interestedIn
+            
+            if notinterestedIn {
+                
+                // not interest
+                button.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
+                button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                notInterstedIn()
+                
+            } else {
+                
+                // interest
+                button.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
+                button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                interstedIn()
+                
+            }
+            
         }
+        
+        
+//        let interestedIn = !notinterestedIn
+//        notinterestedIn = interestedIn
+//
+//        if notinterestedIn {
+//
+//            // not interest
+//            button.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
+//            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+//            notInterstedIn()
+//
+//        } else {
+//
+//            // interest
+//            button.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
+//            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+//            interstedIn()
+//
+//        }
 
     }
     

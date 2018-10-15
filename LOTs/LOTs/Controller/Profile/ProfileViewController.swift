@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var animationBGView: UIView!
     
     var fullScreenSize: CGSize!
+    var animationScreenSize: CGSize!
 //    var articleImage = [UIImage]()
 //    let animationView = LOTAnimationView(name: "profile")
     let animationView = LOTAnimationView(name: "list")
@@ -32,16 +33,16 @@ class ProfileViewController: UIViewController {
     var articles = [Article]()
     var ref: DatabaseReference!
     let keychain = KeychainSwift()
-    var uid: String = ""
     var userName: String = ""
     var imageUrl: String = ""
-    var visitor: String = ""
+    var uid: String?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         fullScreenSize = UIScreen.main.bounds.size
+        animationScreenSize = animationBGView.bounds.size
         animationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: fullScreenSize.width, height: 21))
         userAnimationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: fullScreenSize.width, height: 40))
 
@@ -54,25 +55,24 @@ class ProfileViewController: UIViewController {
         collectionView.register(nib2, forCellWithReuseIdentifier: "ProfileBCell")
 
         ref = Database.database().reference()
-        uid = self.keychain.get("uid") ?? ""
         userName = self.keychain.get("name") ?? ""
         imageUrl = self.keychain.get("imageUrl") ?? ""
-        visitor = self.keychain.get("visitor") ?? ""
+        uid = self.keychain.get("uid")
         
-        if visitor == "visitor" {
+        if uid != nil {
+            
+            emptyView.isHidden = true
+            animationBGView.isHidden = false
+            
+        } else {
             
             self.emptyView.isHidden = false
             self.showLoginAnimation()
             self.animationBGView.isHidden = true
             
-        } else {
-            
-            emptyView.isHidden = true
-            animationBGView.isHidden = false
-            
         }
         
-//        self.userArticle()
+        self.userArticle()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -162,7 +162,7 @@ class ProfileViewController: UIViewController {
     func showNoDataAnimation() {
 
         animationView.frame = CGRect(x: 0, y: 0, width: 250, height: 250)
-        animationView.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5))
+        animationView.center = CGPoint(x: (animationScreenSize.width * 0.5), y: (animationScreenSize.height * 0.5))
         animationView.contentMode = .scaleAspectFit
         animationBGView.addSubview(animationView)
         
@@ -170,7 +170,7 @@ class ProfileViewController: UIViewController {
         animationView.animationSpeed = 1.5
         animationView.loopAnimation = false
 
-        animationLabel.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5) + 50)
+        animationLabel.center = CGPoint(x: (animationScreenSize.width * 0.5), y: (animationScreenSize.height * 0.5) + 50)
         animationLabel.textAlignment = .center
         animationLabel.text = "You haven't posted any article yet."
         animationLabel.textColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)

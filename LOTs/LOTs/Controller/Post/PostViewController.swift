@@ -35,6 +35,7 @@ class PostViewController: UIViewController {
     let keychain = KeychainSwift()
 
     var editArticle: Article?
+    var uid: String?
 
     override func viewDidLoad() {
         
@@ -59,6 +60,8 @@ class PostViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        uid = self.keychain.get("uid") 
+        
         uploadPicture()
         
         if editArticle != nil {
@@ -70,6 +73,16 @@ class PostViewController: UIViewController {
             
         }
         
+        if uid == nil {
+            
+            alertRemind()
+            
+//            let tabController = self.view.window?.rootViewController as? UITabBarController
+//            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+//            tabController?.selectedIndex = 0
+            
+        }
+        
         tableView.rowHeight = UITableView.automaticDimension
         
     }
@@ -77,6 +90,16 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.isNavigationBarHidden = false
+        
+    }
+    
+    // Visitor Alert
+    func alertRemind() {
+        
+        let alertController = UIAlertController(title: "Error", message: "Please login with Facebook.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
         
     }
     

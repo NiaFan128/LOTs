@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 import Firebase
 import Kingfisher
 import KeychainSwift
@@ -23,9 +24,16 @@ class LikeDetailViewController: UIViewController {
     let decoder = JSONDecoder()
     var uid: String = ""
     
+    var fullScreenSize: CGSize!
+    let animationView = LOTAnimationView(name: "lunch_time")
+    var animationLabel = UILabel()
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        fullScreenSize = UIScreen.main.bounds.size
+        animationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: fullScreenSize.width, height: 21))
         
         let nib = UINib(nibName: "LikeDetailTableViewCell", bundle: nil)
         likeDetailTableView.register(nib, forCellReuseIdentifier: "LikeDetailCell")
@@ -146,11 +154,49 @@ class LikeDetailViewController: UIViewController {
         
     }
     
+    func showNoDataAnimation() {
+        
+        animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        animationView.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5) - 50)
+        
+        animationView.contentMode = .scaleAspectFit
+        
+        view.addSubview(animationView)
+        
+        animationView.play()
+        animationView.loopAnimation = false
+        
+        animationLabel.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5) + 20)
+        animationLabel.textAlignment = .center
+        animationLabel.text = "There is no related article now."
+        animationLabel.textColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
+        
+        view.addSubview(animationLabel)
+        
+    }
+    
+    func removeAnimation() {
+        
+        animationView.removeFromSuperview()
+        animationLabel.removeFromSuperview()
+        
+    }
+    
 }
 
 extension LikeDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if articles.count != 0 {
+            
+            self.removeAnimation()
+            
+        } else {
+            
+            self.showNoDataAnimation()
+            
+        }
         
         return articles.count
         
