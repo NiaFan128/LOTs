@@ -19,6 +19,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var animationBGView: UIView!
     
+    @IBOutlet weak var loginView: UIView!
+    
     var fullScreenSize: CGSize!
     var animationScreenSize: CGSize!
 //    var articleImage = [UIImage]()
@@ -61,13 +63,18 @@ class ProfileViewController: UIViewController {
         
         if uid != nil {
             
+            loginView.isHidden = true
+
+            
             emptyView.isHidden = true
             animationBGView.isHidden = false
             
         } else {
             
+            loginView.isHidden = false
+
             self.emptyView.isHidden = false
-            self.showLoginAnimation()
+//            self.showLoginAnimation()
             self.animationBGView.isHidden = true
             
         }
@@ -137,27 +144,27 @@ class ProfileViewController: UIViewController {
         
     }
 
-    func showLoginAnimation() {
-        
-        userAnimationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        userAnimationView.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5) - 70)
-        userAnimationView.contentMode = .scaleAspectFit
-        
-        emptyView.addSubview(userAnimationView)
-        
-        userAnimationView.play()
-        userAnimationView.animationSpeed = 1.5
-        userAnimationView.loopAnimation = false
-        
-        userAnimationLabel.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5))
-        userAnimationLabel.textAlignment = .center
-        userAnimationLabel.numberOfLines = 0
-        userAnimationLabel.text = "Please login with Facebook."
-        userAnimationLabel.textColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
-        
-        emptyView.addSubview(userAnimationLabel)
-        
-    }
+//    func showLoginAnimation() {
+//
+//        userAnimationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        userAnimationView.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5) - 70)
+//        userAnimationView.contentMode = .scaleAspectFit
+//
+//        emptyView.addSubview(userAnimationView)
+//
+//        userAnimationView.play()
+//        userAnimationView.animationSpeed = 1.5
+//        userAnimationView.loopAnimation = false
+//
+//        userAnimationLabel.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5))
+//        userAnimationLabel.textAlignment = .center
+//        userAnimationLabel.numberOfLines = 0
+//        userAnimationLabel.text = "Please login with Facebook."
+//        userAnimationLabel.textColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
+//
+//        emptyView.addSubview(userAnimationLabel)
+//
+//    }
     
     func showNoDataAnimation() {
 

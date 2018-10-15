@@ -261,17 +261,15 @@ class DetailViewController: UIViewController {
 
     }
     
-    
     // Visitor Alert
     func alertRemind() {
         
-        let alertController = UIAlertController(title: "Error", message: "Please login with Facebook.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Oops!", message: "Please login with Facebook \n to explore more features.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
         
     }
-    
     
     func readInterestedIn() {
         
@@ -322,9 +320,6 @@ class DetailViewController: UIViewController {
         }
     
     }
-    
-    
-
     
 }
 
@@ -438,7 +433,7 @@ extension DetailViewController: LikeButton {
         if uid == nil {
             
             alertRemind()
-            button.isEnabled = false
+//            button.isEnabled = false
             
         } else {
             
