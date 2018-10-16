@@ -165,6 +165,33 @@ class DetailViewController: UIViewController {
             
             print("delete \(articleID)")
             
+            self.deleteAlertRemind(articleID)
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+            print("cancel")
+            
+        })
+        
+        alertController.addAction(editAction)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func deleteAlertRemind(_ articleID: String) {
+        
+        let articleID = article.articleID
+        let location = article.location
+
+        let alertController = UIAlertController(title: "Oops!", message: "Are you sure to delete this item ?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
+            
             self.ref.child("posts").child(articleID).removeValue()
             
             NotificationCenter.default.post(name: Notification.Name("Remove"),
@@ -178,12 +205,10 @@ class DetailViewController: UIViewController {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
             
-            print("cancel")
-            
         })
         
-        alertController.addAction(editAction)
-        alertController.addAction(deleteAction)
+        
+        alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)

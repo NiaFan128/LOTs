@@ -54,6 +54,17 @@
                             <constraint firstAttribute="height" constant="1" id="djY-a0-XZE"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csw-sc-IGH">
+                        <rect key="frame" x="411" y="25" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="SeA-B6-5rp"/>
+                            <constraint firstAttribute="width" constant="20" id="guN-ZU-JXa"/>
+                        </constraints>
+                        <state key="normal" image="exit_1"/>
+                        <connections>
+                            <action selector="logOutAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cIi-Cw-0Rd"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Vls-ie-haO" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4Ti-UT-VSO"/>
@@ -66,17 +77,23 @@
                     <constraint firstItem="A77-fk-jqA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="XaD-N8-K6b"/>
                     <constraint firstItem="cKm-2b-mqU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="aXM-fr-ASb"/>
                     <constraint firstAttribute="bottom" secondItem="cKm-2b-mqU" secondAttribute="bottom" constant="13.5" id="eBe-Dl-gpQ"/>
+                    <constraint firstAttribute="trailing" secondItem="csw-sc-IGH" secondAttribute="trailing" constant="20" id="jE9-Uq-GFL"/>
                     <constraint firstItem="OUb-jV-Wph" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="prp-Z6-I8k"/>
+                    <constraint firstItem="csw-sc-IGH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="r1v-QT-1Nc"/>
                     <constraint firstItem="PYG-wB-gGs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wUY-v7-ssv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="authorLabel" destination="Vls-ie-haO" id="Y9d-hb-aPK"/>
+                <outlet property="logoutButton" destination="csw-sc-IGH" id="dtL-PX-9F0"/>
                 <outlet property="postsAmountLabel" destination="OUb-jV-Wph" id="bu6-qZ-A6H"/>
                 <outlet property="profileImage" destination="A77-fk-jqA" id="R9s-N0-mus"/>
             </connections>
             <point key="canvasLocation" x="96.799999999999997" y="260.41979010494754"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="exit_1" width="21" height="21"/>
+    </resources>
 </document>

@@ -27,13 +27,14 @@ class PostTableViewCell: UITableViewCell {
     var selectCuisine: String?
     var selectDate: String?
     
+    var firstFlag = true
+    
     var upload = true
     
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
-//        infoView.backgroundBorder()
         infoView.backgroundBord()
         
         self.locationPicker()
@@ -41,12 +42,6 @@ class PostTableViewCell: UITableViewCell {
         self.date()
                 
         cityTextField.isUserInteractionEnabled = false
-
-//        dateTextField.contentScaleFactor = UIScreen.main.scale
-//        cuisineTextField.contentScaleFactor = UIScreen.main.scale
-//        locationTextField.contentScaleFactor = UIScreen.main.scale
-        
-        print(self.frame.height)
         
         dateTextField.delegate = self
 
@@ -61,6 +56,9 @@ class PostTableViewCell: UITableViewCell {
         let dateString: String = dateFormat.string(from: now)
     
         dateTextField.text = dateString
+        
+        self.dateCompletion?(Int(now.timeIntervalSince1970))
+
     }
     
     func datePickerTapped() {
@@ -83,6 +81,7 @@ class PostTableViewCell: UITableViewCell {
                         datePickerMode: .date) { (date) in
                             
                             if let date = date {
+                                
                                 print(date)
                                 let dateFormat: DateFormatter = DateFormatter()
                                 dateFormat.dateFormat = "MMMM / dd / yyyy"
@@ -150,7 +149,7 @@ class PostTableViewCell: UITableViewCell {
         
         locationTextField.cancelHandler = { [weak locationTextField] in
             
-            locationTextField?.text = "Cancelled."
+//            locationTextField?.text = "Cancelled."
             
         }
         
@@ -198,7 +197,7 @@ class PostTableViewCell: UITableViewCell {
 
         cuisineTextField.cancelHandler = { [weak cuisineTextField] in
             
-            cuisineTextField?.text = "Cancelled."
+//            cuisineTextField?.text = "Cancelled."
         
         }
         

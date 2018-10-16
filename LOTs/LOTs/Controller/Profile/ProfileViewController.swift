@@ -10,6 +10,7 @@ import UIKit
 import Lottie
 import Firebase
 import Kingfisher
+import FBSDKLoginKit
 import KeychainSwift
 
 class ProfileViewController: UIViewController {
@@ -23,7 +24,6 @@ class ProfileViewController: UIViewController {
     
     var fullScreenSize: CGSize!
     var animationScreenSize: CGSize!
-//    var articleImage = [UIImage]()
 //    let animationView = LOTAnimationView(name: "profile")
     let animationView = LOTAnimationView(name: "list")
     let userAnimationView = LOTAnimationView(name: "user")
@@ -65,7 +65,6 @@ class ProfileViewController: UIViewController {
             
             loginView.isHidden = true
 
-            
             emptyView.isHidden = true
             animationBGView.isHidden = false
             
@@ -169,7 +168,7 @@ class ProfileViewController: UIViewController {
     func showNoDataAnimation() {
 
         animationView.frame = CGRect(x: 0, y: 0, width: 250, height: 250)
-        animationView.center = CGPoint(x: (animationScreenSize.width * 0.5), y: (animationScreenSize.height * 0.5))
+        animationView.center = CGPoint(x: (animationBGView.frame.width) * 0.5, y: (animationBGView.frame.height * 0.5))
         animationView.contentMode = .scaleAspectFit
         animationBGView.addSubview(animationView)
         
@@ -177,7 +176,7 @@ class ProfileViewController: UIViewController {
         animationView.animationSpeed = 1.5
         animationView.loopAnimation = false
 
-        animationLabel.center = CGPoint(x: (animationScreenSize.width * 0.5), y: (animationScreenSize.height * 0.5) + 50)
+        animationLabel.center = CGPoint(x: (animationBGView.frame.width * 0.5), y: (animationBGView.frame.height * 0.5) + 50)
         animationLabel.textAlignment = .center
         animationLabel.text = "You haven't posted any article yet."
         animationLabel.textColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
@@ -190,6 +189,46 @@ class ProfileViewController: UIViewController {
         
         animationView.removeFromSuperview()
         animationLabel.removeFromSuperview()
+        
+    }
+    
+//    @objc func fbLogOut(sender: UIButton) {
+//
+//        keychain.clear()
+//
+//        FBSDKLoginManager().logOut()
+//
+//        logoutAlertReminder(article.user.name)
+//
+//    }
+    
+    func logoutAlertReminder(_ userName: String) {
+        
+//        let userName = article.user.name
+        
+        let alertController = UIAlertController(title: "Oops!", message: "Dear \(userName),\n Are you sure to log out? 😢 ", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
+            
+            self.keychain.clear()
+            
+            FBSDKLoginManager().logOut()
+            
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+            
+            UIApplication.shared.keyWindow?.rootViewController = loginViewController
+            self.dismiss(animated: true, completion: nil)
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+        })
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
         
     }
     
@@ -219,6 +258,10 @@ extension ProfileViewController: UITableViewDataSource {
             cell.postsAmountLabel.text = String(self.articles.count)
         
         }
+//
+//        cell.logoutButton.addTarget(self, action: #selector(fbLogOut(sender:)), for: .touchUpInside)
+
+        cell.buttonDelegate = self
         
         return cell
         
@@ -288,4 +331,14 @@ extension ProfileViewController: UICollectionViewDataSource {
         
     }
 
+}
+
+extension ProfileViewController: LogoutButton {
+    
+    func buttonSelect(_ button: UIButton) {
+        
+        logoutAlertReminder(userName)
+        
+    }
+    
 }

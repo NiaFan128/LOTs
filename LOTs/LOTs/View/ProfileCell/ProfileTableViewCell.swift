@@ -8,20 +8,33 @@
 
 import UIKit
 
+protocol LogoutButton: AnyObject {
+    
+    func buttonSelect(_ button: UIButton)
+    
+}
+
 class ProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImage: UIImageView!
 //    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var postsAmountLabel: UILabel!
     
+    weak var buttonDelegate: LogoutButton?
+    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
 
         profileImage.roundCorner()
 //        editButton.layer.cornerRadius = 6
 //        editButton.layer.borderColor = UIColor.lightGray.cgColor
 //        editButton.layer.borderWidth = 1
+        
+        self.isUserInteractionEnabled = true
+        
 
     }
 
@@ -31,4 +44,9 @@ class ProfileTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func logOutAction(_ sender: Any) {
+        
+        buttonDelegate?.buttonSelect(self.logoutButton)
+        
+    }
 }

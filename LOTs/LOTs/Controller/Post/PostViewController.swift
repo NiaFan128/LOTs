@@ -37,6 +37,7 @@ class PostViewController: UIViewController {
 
     var editArticle: Article?
     var uid: String?
+    let now: Date = Date()
 
     override func viewDidLoad() {
         
@@ -85,6 +86,8 @@ class PostViewController: UIViewController {
             loginView.isHidden = true
             
         }
+        
+        createdTime = Int(now.timeIntervalSince1970)
         
         tableView.rowHeight = UITableView.automaticDimension
         
@@ -221,27 +224,33 @@ extension PostViewController: UITableViewDataSource {
                 cell.cuisineChange(cuisine)
             
             }
+                        
+//            if cell.firstFlag == true {
             
-            cell.dateCompletion = { (data : Int) -> Void in
+                cell.dateCompletion = { (data : Int) -> Void in
+                    
+                    self.createdTime = data
+                    print("createdTime: \(data)")
+                    
+                }
                 
-                self.createdTime = data
-                print("createdTime: \(data)")
+                cell.locationCompletion = { (data : String) -> Void in
+                    
+                    self.location = data
+                    print("location: \(data)")
+                    
+                }
                 
-            }
-            
-            cell.locationCompletion = { (data : String) -> Void in
+                cell.cuisineCompletion = { (data : String) -> Void in
+                    
+                    self.cuisine = data
+                    print("cuisine: \(data)")
+                    
+                }
                 
-                self.location = data
-                print("location: \(data)")
-                
-            }
-            
-            cell.cuisineCompletion = { (data : String) -> Void in
-                
-                self.cuisine = data
-                print("cuisine: \(data)")
-            
-            }
+//                cell.firstFlag = false
+//
+//            }
             
             cell.selectionStyle = .none
             

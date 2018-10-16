@@ -249,7 +249,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KGD-6f-SVB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KGD-6f-SVB">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -804,6 +804,7 @@ to explore more features !</string>
                             <constraint firstItem="aUw-SX-uCk" firstAttribute="centerX" secondItem="c6j-Kc-H0j" secondAttribute="centerX" id="iK6-NO-MbF"/>
                             <constraint firstItem="add-eT-dbl" firstAttribute="centerX" secondItem="c6j-Kc-H0j" secondAttribute="centerX" id="kvz-Dj-2KG"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ghh-no-kL6"/>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="aUw-SX-uCk" id="hFs-LH-VuX"/>
@@ -893,6 +894,7 @@ to explore more features !</string>
                             <constraint firstItem="VzY-16-gbq" firstAttribute="centerX" secondItem="r70-J3-H1d" secondAttribute="centerX" id="MQB-JN-MW1"/>
                             <constraint firstItem="VzY-16-gbq" firstAttribute="centerY" secondItem="r70-J3-H1d" secondAttribute="centerY" id="f0t-yK-Rez"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="FIL-Et-wnE"/>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="VzY-16-gbq" id="C1e-Ok-Unm"/>
@@ -982,6 +984,7 @@ to explore more features !</string>
                             <constraint firstItem="aeH-s3-Hnw" firstAttribute="centerY" secondItem="EPI-vE-puB" secondAttribute="centerY" id="BXC-Ge-10B"/>
                             <constraint firstItem="aeH-s3-Hnw" firstAttribute="centerX" secondItem="EPI-vE-puB" secondAttribute="centerX" id="Tkd-XC-QhY"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="XSa-XF-sa7"/>
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="aeH-s3-Hnw" id="c3y-VE-0mY"/>
