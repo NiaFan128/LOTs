@@ -20,13 +20,15 @@ class UserViewController: UIViewController {
     @IBOutlet weak var userIconImage: UIImageView!
     @IBOutlet weak var reminderLabel: UILabel!
     @IBOutlet weak var loginFacebookButton: UIButton!
-    
-    let photoSize: String = "?width=400&height=400"
+
+    var ref: DatabaseReference!
     let keychain = KeychainSwift()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+
+        ref = Database.database().reference()
 
         backgroundView.layer.cornerRadius = 20
         
@@ -37,7 +39,6 @@ class UserViewController: UIViewController {
         loginFacebookButton.layer.borderColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
         loginFacebookButton.layer.borderWidth = 1.0
         loginFacebookButton.layer.cornerRadius = 6
-//        loginFacebookButton.layer.shadowColor = #colorLiteral(red: 0.5529411765, green: 0.262745098, blue: 0.2901960784, alpha: 1)
         loginFacebookButton.layer.shadowColor = #colorLiteral(red: 0.9019607843, green: 0.631372549, blue: 0.6588235294, alpha: 1)
 
         loginFacebookButton.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
@@ -53,82 +54,93 @@ class UserViewController: UIViewController {
         
         fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             
-            guard error == nil else {
-                print("Failed to login: \(String(describing: error?.localizedDescription))")
+            if let error = error {
+                
+                print("Failed to login: \(String(describing: error.localizedDescription))")
                 return
+                
             }
             
-            guard result != nil else {
-                print(result.debugDescription)
+            guard let result = result else { return }
+            
+            if result.isCancelled {
+                
                 return
+                
+            } else {
+                
+                // login successful status
+                
+                if let fbAccessToken = result.token.tokenString {
+                    
+                    self.getUserInfo(token: fbAccessToken)
+                    
+                }
+                
             }
-            
-            guard let fbAccessToken = result?.token.tokenString else {
-                print("Failed to get access token")
-                return
-            }
-            
-            // Firebase Auth Login Set up
-            let credential = FacebookAuthProvider.credential(withAccessToken: fbAccessToken)
-            
-            Auth.auth().signInAndRetrieveData(with: credential, completion: { (result, error) in
-                
-                // Error Handler
-                if let error = error {
-                    
-                    print("Login error: \(error.localizedDescription)")
-                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(okAction)
-                    self.present(alertController, animated: true, completion: nil)
-                    
-                }
-                
-                // Successfully Authenticated User
-                guard let currentUser = Auth.auth().currentUser, let uid = Auth.auth().currentUser?.uid else {
-                    return
-                }
-                
-                guard let name = currentUser.displayName,
-                    let email = currentUser.email,
-                    let profileImageUrl = currentUser.photoURL?.absoluteString else {
-                        return
-                }
-                
-                // Keychain Set Up
-                guard self.keychain.set(uid, forKey: "uid") else { return }
-                guard self.keychain.set(name, forKey: "name") else { return }
-                guard self.keychain.set(profileImageUrl + self.photoSize, forKey: "imageUrl") else { return }
-                
-                // Get Keychain
-                guard let uuid = self.keychain.get("uid") else { return }
-                guard let uname = self.keychain.get("name") else { return }
-                guard let uImage = self.keychain.get("imageUrl") else { return }
-                //                print(uuid, uname, uImage)
-                
-                let values = ["uid": uid,
-                              "name": name,
-                              "email": email,
-                              "profileImageUrl": profileImageUrl + self.photoSize] as [String: AnyObject]
-                
-                let ref = Database.database().reference()
-                
-                let usersReference = ref.child("users").child(uid)
-                
-                usersReference.updateChildValues(values)
-                
-                // Switch the page
-                if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") {
-                    
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                    self.dismiss(animated: true, completion: nil)
-                    
-                }
-                
-            })
             
         }
     
+    }
+    
+    func getUserInfo(token: String) {
+        
+        FBSDKGraphRequest(graphPath: "me",
+                          parameters: ["fields" : "name, email, picture.width(400).height(400)"])?.start(completionHandler: { (connection, result, error) in
+                            
+                            if error == nil {
+                                
+                                if let info = result as? [String: Any] {
+                                    
+                                    print("info: \(info)")
+                                    
+                                    let fbName = info["name"] as? String
+                                    let fbEmail = info["email"] as? String
+                                    let fbPhoto = info["picture"] as? [String: Any]
+                                    let photoData = fbPhoto?["data"] as? [String: Any]
+                                    let photoURL = photoData?["url"] as? String
+                                    
+                                    self.keychain.set(token, forKey: "token")
+                                    
+                                    let credential = FacebookAuthProvider.credential(withAccessToken: token)
+                                    
+                                    Auth.auth().signInAndRetrieveData(with: credential, completion: { (result, error) in
+                                        
+                                        // Successfully Authenticated User
+                                        guard let uid = Auth.auth().currentUser?.uid else { return }
+                                        
+                                        guard let name = fbName,
+                                            let email = fbEmail,
+                                            let profileImageUrl = photoURL else {
+                                                return
+                                        }
+                                        
+                                        // Keychain Set Up
+                                        guard self.keychain.set(uid, forKey: "uid") else { return }
+                                        guard self.keychain.set(name, forKey: "name") else { return }
+                                        guard self.keychain.set(profileImageUrl, forKey: "imageUrl") else { return }
+                                        
+                                        self.ref.child("users").child(uid).updateChildValues(["uid": uid,
+                                                                                              "name": name,
+                                                                                              "email": email,
+                                                                                              "profileImageUrl": profileImageUrl])
+                                        
+                                        // Switch the page
+                                        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") {
+                                            
+                                            UIApplication.shared.keyWindow?.rootViewController = viewController
+                                            self.dismiss(animated: true, completion: nil)
+                                            
+                                        }
+                                        
+                                    })
+                                    
+                                }
+                                
+                            }
+                            
+                          })
+        
     }
 
 }

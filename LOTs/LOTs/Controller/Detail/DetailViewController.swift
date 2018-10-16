@@ -122,7 +122,7 @@ class DetailViewController: UIViewController {
             
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-            let reportAction = UIAlertAction(title: "Report", style: .destructive) { (_) in
+            let reportAction = UIAlertAction(title: "Report User", style: .destructive) { (_) in
                 
                 self.reportAction()
                 

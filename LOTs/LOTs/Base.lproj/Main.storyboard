@@ -443,7 +443,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXF-LB-9bO">
-                                <rect key="frame" x="107" y="486" width="200" height="2"/>
+                                <rect key="frame" x="107" y="476" width="200" height="2"/>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.70196078429999997" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="0wA-g0-tW7"/>
@@ -452,7 +452,7 @@
                                 <viewLayoutGuide key="safeArea" id="Dbp-qG-cyF"/>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP9-Vo-wBH">
-                                <rect key="frame" x="107" y="331" width="200" height="30"/>
+                                <rect key="frame" x="107" y="346" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.9882352941176471" green="0.8784313725490196" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AYP-4T-OnB"/>
@@ -466,7 +466,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyg-Nm-b86">
-                                <rect key="frame" x="107" y="381" width="200" height="30"/>
+                                <rect key="frame" x="107" y="376" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.98823529409999999" green="0.87843137250000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Xgo-vP-AX2"/>
@@ -477,7 +477,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYQ-TH-ekO">
-                                <rect key="frame" x="107" y="431" width="200" height="30"/>
+                                <rect key="frame" x="107" y="406" width="200" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="829-eV-62c"/>
@@ -491,14 +491,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-logo" translatesAutoresizingMaskIntoConstraints="NO" id="KnL-Wy-gPN">
-                                <rect key="frame" x="114" y="338" width="16" height="16"/>
+                                <rect key="frame" x="114" y="353" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="IHT-ew-x7j"/>
                                     <constraint firstAttribute="height" constant="16" id="JNs-CQ-tvB"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google-plus" translatesAutoresizingMaskIntoConstraints="NO" id="5tG-PU-mF6">
-                                <rect key="frame" x="117" y="388" width="16" height="16"/>
+                                <rect key="frame" x="117" y="383" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="HOX-3c-o7N"/>
                                     <constraint firstAttribute="width" constant="16" id="hD5-cc-s7v"/>
@@ -507,13 +507,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.82745098039215681" green="0.35294117647058826" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bXF-LB-9bO" firstAttribute="top" secondItem="rYQ-TH-ekO" secondAttribute="bottom" constant="25" id="1Ma-o7-uZM"/>
+                            <constraint firstItem="bXF-LB-9bO" firstAttribute="top" secondItem="rYQ-TH-ekO" secondAttribute="bottom" constant="40" id="1Ma-o7-uZM"/>
                             <constraint firstItem="UmD-a2-d8q" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="4IN-JP-qmv"/>
                             <constraint firstItem="jVV-7O-FZW" firstAttribute="top" secondItem="UmD-a2-d8q" secondAttribute="bottom" constant="-20" id="8mI-LR-AMj"/>
                             <constraint firstItem="Nyg-Nm-b86" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="Bed-4t-yDj"/>
                             <constraint firstItem="Nyg-Nm-b86" firstAttribute="leading" secondItem="5tG-PU-mF6" secondAttribute="trailing" constant="-26" id="Ebm-dR-AC3"/>
                             <constraint firstItem="UmD-a2-d8q" firstAttribute="top" secondItem="ah9-3z-YcF" secondAttribute="top" constant="80" id="LN0-m0-faj"/>
-                            <constraint firstItem="rYQ-TH-ekO" firstAttribute="top" secondItem="Nyg-Nm-b86" secondAttribute="bottom" constant="20" id="NSy-kx-Iuq"/>
+                            <constraint firstItem="rYQ-TH-ekO" firstAttribute="top" secondItem="Nyg-Nm-b86" secondAttribute="bottom" id="NSy-kx-Iuq"/>
                             <constraint firstItem="KnL-Wy-gPN" firstAttribute="centerY" secondItem="MP9-Vo-wBH" secondAttribute="centerY" id="VjT-Hs-jPw"/>
                             <constraint firstItem="bXF-LB-9bO" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="WnC-YK-Itu"/>
                             <constraint firstItem="rYQ-TH-ekO" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="bto-wl-YGW"/>
@@ -521,8 +521,8 @@
                             <constraint firstItem="jVV-7O-FZW" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="ejf-Gf-u1k"/>
                             <constraint firstItem="MP9-Vo-wBH" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="fKn-fL-pdO"/>
                             <constraint firstItem="5tG-PU-mF6" firstAttribute="centerY" secondItem="Nyg-Nm-b86" secondAttribute="centerY" id="lzQ-MP-QEx"/>
-                            <constraint firstItem="Nyg-Nm-b86" firstAttribute="top" secondItem="MP9-Vo-wBH" secondAttribute="bottom" constant="20" id="vux-EU-12U"/>
-                            <constraint firstItem="MP9-Vo-wBH" firstAttribute="top" secondItem="jVV-7O-FZW" secondAttribute="bottom" constant="25" id="z2b-kk-BkN"/>
+                            <constraint firstItem="Nyg-Nm-b86" firstAttribute="top" secondItem="MP9-Vo-wBH" secondAttribute="bottom" id="vux-EU-12U"/>
+                            <constraint firstItem="MP9-Vo-wBH" firstAttribute="top" secondItem="jVV-7O-FZW" secondAttribute="bottom" constant="40" id="z2b-kk-BkN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ah9-3z-YcF"/>
                     </view>
