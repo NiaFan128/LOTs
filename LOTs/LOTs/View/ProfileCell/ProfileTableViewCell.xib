@@ -60,7 +60,6 @@
                             <constraint firstAttribute="height" constant="20" id="SeA-B6-5rp"/>
                             <constraint firstAttribute="width" constant="20" id="guN-ZU-JXa"/>
                         </constraints>
-                        <state key="normal" image="exit_1"/>
                         <connections>
                             <action selector="logOutAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cIi-Cw-0Rd"/>
                         </connections>
@@ -93,7 +92,4 @@
             <point key="canvasLocation" x="96.799999999999997" y="260.41979010494754"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="exit_1" width="21" height="21"/>
-    </resources>
 </document>

@@ -51,7 +51,14 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate, UITextFieldDele
 
     }
     
-    override func prepareForReuse() {
+//    override func prepareForReuse() {
+//
+//        titleTextField.text = ""
+//        contentTextView.text = ""
+//
+//    }
+    
+    func setUpValue() {
         
         titleTextField.text = ""
         contentTextView.text = ""

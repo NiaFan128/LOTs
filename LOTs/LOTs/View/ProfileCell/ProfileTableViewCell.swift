@@ -33,6 +33,9 @@ class ProfileTableViewCell: UITableViewCell {
 //        editButton.layer.borderColor = UIColor.lightGray.cgColor
 //        editButton.layer.borderWidth = 1
         
+        logoutButton.setImage(#imageLiteral(resourceName: "exit_1").withRenderingMode(.alwaysTemplate), for: .normal)
+        logoutButton.tintColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
+        
         self.isUserInteractionEnabled = true
         
 

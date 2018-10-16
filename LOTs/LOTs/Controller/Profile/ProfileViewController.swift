@@ -258,11 +258,10 @@ extension ProfileViewController: UITableViewDataSource {
             cell.postsAmountLabel.text = String(self.articles.count)
         
         }
-//
-//        cell.logoutButton.addTarget(self, action: #selector(fbLogOut(sender:)), for: .touchUpInside)
 
         cell.buttonDelegate = self
-        
+        cell.selectionStyle = .none
+
         return cell
         
     }

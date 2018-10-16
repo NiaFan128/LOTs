@@ -38,6 +38,7 @@ class PostViewController: UIViewController {
     var editArticle: Article?
     var uid: String?
     let now: Date = Date()
+    var flag = true
 
     override func viewDidLoad() {
         
@@ -143,6 +144,7 @@ class PostViewController: UIViewController {
             
         } else {
             
+            flag = true
             cleanData()
             
         }
@@ -224,9 +226,12 @@ extension PostViewController: UITableViewDataSource {
                 cell.cuisineChange(cuisine)
             
             }
-                        
-//            if cell.firstFlag == true {
             
+            // First loading data
+            if flag {
+                
+                cell.setUpValue()
+                
                 cell.dateCompletion = { (data : Int) -> Void in
                     
                     self.createdTime = data
@@ -248,9 +253,9 @@ extension PostViewController: UITableViewDataSource {
                     
                 }
                 
-//                cell.firstFlag = false
-//
-//            }
+//                flag = false
+
+            }
             
             cell.selectionStyle = .none
             
@@ -267,6 +272,14 @@ extension PostViewController: UITableViewDataSource {
                 cell.titleTextField.text = editArticle?.articleTitle
                 cell.contentTextView.text = editArticle?.content
                 cell.contentCancelButton.isHidden = false
+
+            }
+            
+            if flag {
+                
+                cell.setUpValue()
+
+                flag = false
 
             }
             

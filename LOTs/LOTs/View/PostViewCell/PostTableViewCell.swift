@@ -27,7 +27,7 @@ class PostTableViewCell: UITableViewCell {
     var selectCuisine: String?
     var selectDate: String?
     
-    var firstFlag = true
+//    var firstFlag = true
     
     var upload = true
     
@@ -238,7 +238,7 @@ class PostTableViewCell: UITableViewCell {
 
     }
     
-    override func prepareForReuse() {
+    func setUpValue() {
         
         date()
         locationTextField.text = "地區"

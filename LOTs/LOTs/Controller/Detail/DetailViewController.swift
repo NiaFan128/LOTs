@@ -384,7 +384,6 @@ extension DetailViewController: UITableViewDataSource {
             cell.createdTimeLabel.text = stringDate
             
             // Edit function
-//            cell.moreButton.addTarget(self, action: #selector(DetailViewController.editArticle), for: .touchUpInside)
             cell.moreButton.addTarget(self, action: #selector(DetailViewController.moreAction), for: .touchUpInside)
             
             return cell
