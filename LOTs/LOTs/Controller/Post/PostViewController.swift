@@ -14,6 +14,13 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 
+protocol EditUpdate: AnyObject {
+
+    func readUpdateData()
+    
+}
+
+
 class PostViewController: UIViewController {
 
     @IBOutlet weak var articleImage: UIImageView!
@@ -39,6 +46,8 @@ class PostViewController: UIViewController {
     var uid: String?
     let now: Date = Date()
     var flag = true
+    
+    weak var delegate: EditUpdate?
 
     override func viewDidLoad() {
         
@@ -250,8 +259,6 @@ extension PostViewController: UITableViewDataSource {
                     
                 }
                 
-//                flag = false
-
             }
             
             cell.selectionStyle = .none

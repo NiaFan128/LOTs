@@ -195,12 +195,12 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                 })
             }
             
+            delegate?.readUpdateData()
             navigationController?.popViewController(animated: true)
             
         }
         
     }
-
     
     func alertRemind(status: String) {
         

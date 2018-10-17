@@ -34,7 +34,6 @@ class MainViewController: UIViewController {
 //        searchBar.backgroundImage = UIImage()
         ref = Database.database().reference()
         fullScreenSize = UIScreen.main.bounds.size
-
         
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self

@@ -192,16 +192,6 @@ class ProfileViewController: UIViewController {
         
     }
     
-//    @objc func fbLogOut(sender: UIButton) {
-//
-//        keychain.clear()
-//
-//        FBSDKLoginManager().logOut()
-//
-//        logoutAlertReminder(article.user.name)
-//
-//    }
-    
     func logoutAlertReminder(_ userName: String) {
         
 //        let userName = article.user.name

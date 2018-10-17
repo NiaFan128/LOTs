@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 import Firebase
 import Kingfisher
 import KeychainSwift
@@ -14,23 +15,24 @@ import KeychainSwift
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var animationBGView: UIView!
     
+    var fullScreenSize: CGSize!
     var article: Article!
     var ref: DatabaseReference!
-
-    var refreshControl: UIRefreshControl!
     let keychain = KeychainSwift()
-
+    let animationView = LOTAnimationView(name: "loading_2")
+    
     var notinterestedIn = true
     var interestedIn: Bool = false
     var uid: String?
-    
+        
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         ref = Database.database().reference()
-//        guard let uid = self.keychain.get("uid") else { return }
+        fullScreenSize = UIScreen.main.bounds.size
 
         let nib = UINib(nibName: "DetailATableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "DetailACell")
@@ -46,14 +48,12 @@ class DetailViewController: UIViewController {
         
         uid = self.keychain.get("uid")
         
-        refreshControl = UIRefreshControl()
-        tableView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
-
         self.navigationController?.isNavigationBarHidden = true
 
         readInterestedIn()
-//        fetchInterestNumber()
+        animationBGView.isHidden = true
+        
+        //        fetchInterestNumber()
         
         tableView.estimatedRowHeight = 44.0
 
@@ -64,24 +64,6 @@ class DetailViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     
         readInterestedIn()
-        
-    }
-    
-    @objc func loadData() {
-        
-        // Animation to simulate the Internet fetching data
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            
-            // Stop animation
-            self.refreshControl.endRefreshing()
-            
-            // Loading more data
-//            self.readData()
-            
-            // Scroll to the latest
-//            self.mainCollectionView.scrollToItem(at: [0, 0], at: UICollectionView.ScrollPosition.top, animated: true)
-            
-        }
         
     }
     
@@ -109,8 +91,6 @@ class DetailViewController: UIViewController {
     
     @objc func moreAction() {
         
-//        let articleID = article.articleID
-//        let location = article.location
         let userID = article.user.uid
         let uid = self.keychain.get("uid")
         
@@ -156,6 +136,8 @@ class DetailViewController: UIViewController {
             let editViewController = PostViewController.editForArticle(self.article)
             
             editViewController.hidesBottomBarWhenPushed = true
+            
+            editViewController.delegate = self
             
             self.show(editViewController, sender: nil)
             
@@ -260,7 +242,6 @@ class DetailViewController: UIViewController {
             guard let location = article.location else { return }
             let articleID = article.articleID
             
-//            ref.child("likes/\(uid)").child("\(location)").setValue(["\(articleID)": true])
             ref.child("likes/\(uid)").child("\(location)").updateChildValues(["\(articleID)": true])
 
         }
@@ -303,7 +284,6 @@ class DetailViewController: UIViewController {
             guard let uid = self.keychain.get("uid") else { return }
             guard let location = self.article.location else { return }
             let articleID = self.article.articleID
-//            print("userID:\(uid), location: \(location), articleID: \(articleID) ")
             
             self.ref.child("likes/\(uid)/\(location)").queryOrderedByKey().observe(.value) { (snapshot) in
                 
@@ -324,19 +304,79 @@ class DetailViewController: UIViewController {
                 }
                 
                 self.tableView.reloadData()
+                
             }
             
         }
         
     }
     
+    func reloadUpdateData(_ articleID: String) {
+        
+        showLoadingAnimation()
+        
+        ref.child("posts").queryOrderedByKey().queryEqual(toValue: articleID).observe(.value, with: { (snapshot) in
+            
+            guard let value = snapshot.value as? NSDictionary else { return }
+            guard let data = value[articleID] as? NSDictionary else { return }
+            
+            guard let user = data["user"] as? NSDictionary else { return }
+            guard let userName = user["name"] as? String else { return }
+            guard let userImage = user["image"] as? String else { return }
+            guard let uid = user["uid"] as? String else { return }
+            
+            guard let location = data["location"] as? String else { return }
+            guard let articleTitle = data["articleTitle"] as? String else { return }
+            guard let articleImage = data["articleImage"] as? String else { return }
+            guard let cuisine = data["cuisine"] as? String else { return }
+            guard let createdTime = data["createdTime"] as? Int else { return }
+            guard let content = data["content"] as? String else { return }
+            guard let interestedIn = data["interestedIn"] as? Bool else { return }
+
+            let updateArticle = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
+
+            self.article = updateArticle
+            
+            self.tableView.reloadData()
+            
+            DispatchQueue.main.async {
+
+                self.removeLoadingAnimation()
+            
+            }
+                
+        })
+    
+    }
+    
+    // Loading Animation
+    func showLoadingAnimation() {
+        
+        animationBGView.isHidden = false
+        
+        animationView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        animationView.center = CGPoint(x: (animationBGView.frame.width * 0.5), y: (animationBGView.frame.height * 0.5))
+        animationView.contentMode = .scaleAspectFill
+        animationBGView.addSubview(animationView)
+        
+        animationView.play()
+        animationView.loopAnimation = true
+        
+    }
+    
+    func removeLoadingAnimation() {
+
+//        animationView.layer.opacity = 0.5
+//        animationView.removeFromSuperview()
+        animationBGView.isHidden = true
+
+    }
+        
     // TBC
     func fetchInterestNumber() {
         
         let articleID = self.article.articleID
         guard let location = self.article.location else { return }
-
-//        queryOrdered(byChild: "\(location)")
 
         ref.child("likes").queryOrderedByValue().queryEqual(toValue: articleID).observe(.value) { (snapshot) in
             
@@ -397,8 +437,14 @@ extension DetailViewController: UITableViewDataSource {
                 
             }
             
-            let articleUrl = URL(string: article.articleImage)
-            cell.articleImage.kf.setImage(with: articleUrl)
+            DispatchQueue.main.async {
+
+                let articleUrl = URL(string: self.article.articleImage)
+                cell.articleImage?.kf.indicatorType = .activity
+                cell.articleImage.kf.setImage(with: articleUrl)
+
+            }
+            
             cell.locationLabel.text = article.location
             cell.cuisineLabel.text = article.cuisine
             
@@ -457,7 +503,6 @@ extension DetailViewController: LikeButton {
         if uid == nil {
             
             alertRemind()
-//            button.isEnabled = false
             
         } else {
             
@@ -481,28 +526,19 @@ extension DetailViewController: LikeButton {
             }
             
         }
-        
-        
-//        let interestedIn = !notinterestedIn
-//        notinterestedIn = interestedIn
-//
-//        if notinterestedIn {
-//
-//            // not interest
-//            button.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
-//            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
-//            notInterstedIn()
-//
-//        } else {
-//
-//            // interest
-//            button.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
-//            button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
-//            interstedIn()
-//
-//        }
 
     }
     
+}
+
+extension DetailViewController: EditUpdate {
+    
+    func readUpdateData() {
+        
+        self.reloadUpdateData(article.articleID)
+        
+//        self.removeLoadingAnimation()
+        
+    }
     
 }
