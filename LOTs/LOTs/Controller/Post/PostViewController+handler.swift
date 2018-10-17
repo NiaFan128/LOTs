@@ -21,11 +21,6 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     
     func handleRegister() {
         
-        // E-mail control
-        
-        
-        // Auth
-        
         // Error Handler
         guard location != nil else {
             alertRemind(status: "location")
@@ -59,8 +54,6 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         let storageRef = Storage.storage().reference().child("article_images").child("\(fileName).jpg")
         
         if let articleImage = self.articleImage.image, let uploadData = self.articleImage.image?.jpegData(compressionQuality: 0.5) {
-            
-//            print(uploadData)
             
             height = articleImage.size.height
             width = articleImage.size.width

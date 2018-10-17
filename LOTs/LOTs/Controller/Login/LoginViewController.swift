@@ -23,7 +23,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var googleImage: UIImageView!
     
     var ref: DatabaseReference!
-    let photoSize: String = "?width=400&height=400"
     let keychain = KeychainSwift()
     
     override func viewDidLoad() {
@@ -46,6 +45,7 @@ class LoginViewController: UIViewController {
         
     }
     
+    // Facebook Login
     @IBAction func facebookLogin(_ sender: Any) {
         
         let fbLoginManager = FBSDKLoginManager()

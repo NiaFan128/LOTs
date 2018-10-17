@@ -111,7 +111,7 @@ class PostViewController: UIViewController {
     
     func readEditData() {
         
-        articleID = editArticle?.articleID ?? ""
+        articleID = editArticle?.articleID
         location = editArticle?.location
         cuisine = editArticle?.cuisine
         createdTime = editArticle?.createdTime
@@ -225,10 +225,7 @@ extension PostViewController: UITableViewDataSource {
                 cell.locationChange(location)
                 cell.cuisineChange(cuisine)
             
-            }
-            
-            // First loading data
-            if flag {
+            } else if flag {
                 
                 cell.setUpValue()
                 
@@ -273,9 +270,7 @@ extension PostViewController: UITableViewDataSource {
                 cell.contentTextView.text = editArticle?.content
                 cell.contentCancelButton.isHidden = false
 
-            }
-            
-            if flag {
+            } else if flag {
                 
                 cell.setUpValue()
 
