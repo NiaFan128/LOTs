@@ -45,42 +45,28 @@
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZF-TJ-146">
-                        <rect key="frame" x="289" y="70" width="19" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="19" id="i2E-gs-kwQ"/>
-                            <constraint firstAttribute="height" constant="22" id="yV6-n7-fbb"/>
-                        </constraints>
-                        <state key="normal" image="cancel"/>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="eZ0-v3-GjG" secondAttribute="trailing" id="1Mb-hU-lO5"/>
                     <constraint firstAttribute="bottom" secondItem="eZ0-v3-GjG" secondAttribute="bottom" id="2cu-RF-g19"/>
                     <constraint firstItem="8Vu-yp-SJ8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="Au3-Ym-zYL"/>
                     <constraint firstItem="8Vu-yp-SJ8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GHk-AU-kKS"/>
-                    <constraint firstAttribute="trailing" secondItem="BZF-TJ-146" secondAttribute="trailing" constant="12" id="GUL-dM-6aT"/>
                     <constraint firstItem="ClF-Cf-rUg" firstAttribute="top" secondItem="8Vu-yp-SJ8" secondAttribute="bottom" constant="15" id="IjD-zJ-cj4"/>
                     <constraint firstItem="eZ0-v3-GjG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="TT9-Yo-6ym"/>
                     <constraint firstItem="ClF-Cf-rUg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZDy-pm-9ZI"/>
                     <constraint firstAttribute="trailing" secondItem="8Vu-yp-SJ8" secondAttribute="trailing" id="kDS-DI-nry"/>
                     <constraint firstAttribute="trailing" secondItem="ClF-Cf-rUg" secondAttribute="trailing" id="mvA-Zk-5jp"/>
                     <constraint firstItem="eZ0-v3-GjG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pmS-mV-lK3"/>
-                    <constraint firstItem="BZF-TJ-146" firstAttribute="top" secondItem="8Vu-yp-SJ8" secondAttribute="bottom" constant="20" id="qt1-LB-ZQe"/>
                     <constraint firstAttribute="bottom" secondItem="ClF-Cf-rUg" secondAttribute="bottom" id="sXQ-aa-Fuf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backView" destination="eZ0-v3-GjG" id="qRw-Dv-72E"/>
-                <outlet property="contentCancelButton" destination="BZF-TJ-146" id="IXc-Ab-9sO"/>
                 <outlet property="contentTextView" destination="ClF-Cf-rUg" id="2ik-RH-eW9"/>
                 <outlet property="titleTextField" destination="8Vu-yp-SJ8" id="0eD-7Q-kwX"/>
             </connections>
             <point key="canvasLocation" x="124.8" y="225.78710644677662"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="cancel" width="19" height="19"/>
-    </resources>
 </document>

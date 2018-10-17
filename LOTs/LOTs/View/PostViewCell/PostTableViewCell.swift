@@ -16,7 +16,9 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var locationTextField: McTextField!
     @IBOutlet weak var cuisineTextField: McTextField!
-    @IBOutlet weak var instagramSwitchButton: UIButton!
+//    @IBOutlet weak var facebookShareButton: UIButton!
+//    @IBOutlet weak var facebookShareImage: UIImageView!
+//    @IBOutlet weak var facebookShareLabel: UILabel!
     @IBOutlet weak var cityTextField: UITextField!
     
     var locationCompletion: ((_ data: String) -> Void)?
@@ -213,24 +215,24 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
-    @IBAction func facebookSelect(_ sender: Any) {
-        
-        let switchOn = !upload
-        upload = switchOn
-        
-        if upload {
-            
-            instagramSwitchButton.setImage(#imageLiteral(resourceName: "switch_off").withRenderingMode(.alwaysTemplate), for: .normal)
-            //            instagramSwitchButton.tintColor = UIColor.lightGray
-            
-        } else {
-            
-            instagramSwitchButton.setImage(#imageLiteral(resourceName: "switch_on").withRenderingMode(.alwaysTemplate), for: .normal)
-            instagramSwitchButton.tintColor = UIColor.init(red: 211.0/255.0, green: 90.0/255.0, blue: 102.0/255.0, alpha: 1.0)
-            
-        }
-        
-    }
+//    @IBAction func facebookSelect(_ sender: Any) {
+//        
+//        let switchOn = !upload
+//        upload = switchOn
+//        
+//        if upload {
+//            
+//            facebookShareButton.setImage(#imageLiteral(resourceName: "switch_off").withRenderingMode(.alwaysTemplate), for: .normal)
+//            //            instagramSwitchButton.tintColor = UIColor.lightGray
+//            
+//        } else {
+//            
+//            facebookShareButton.setImage(#imageLiteral(resourceName: "switch_on").withRenderingMode(.alwaysTemplate), for: .normal)
+//            facebookShareButton.tintColor = UIColor.init(red: 211.0/255.0, green: 90.0/255.0, blue: 102.0/255.0, alpha: 1.0)
+//            
+//        }
+//        
+//    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         

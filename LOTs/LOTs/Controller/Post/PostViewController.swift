@@ -143,6 +143,7 @@ class PostViewController: UIViewController {
     
         }
 
+        view.endEditing(true)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -275,7 +276,7 @@ extension PostViewController: UITableViewDataSource {
             
                 cell.titleTextField.text = editArticle?.articleTitle
                 cell.contentTextView.text = editArticle?.content
-                cell.contentCancelButton.isHidden = false
+//                cell.contentCancelButton.isHidden = false
 
             } else if flag {
                 
@@ -285,7 +286,7 @@ extension PostViewController: UITableViewDataSource {
 
             }
             
-            cell.contentCancelButton.isHidden = true
+//            cell.contentCancelButton.isHidden = true
             cell.titleTextField.delegate = self
             cell.contentTextView.delegate = self
 
@@ -345,7 +346,7 @@ extension PostViewController: UITextViewDelegate {
 
         } else {
 
-            textView.text = ""
+//            textView.text = ""
             textView.textColor = UIColor.black
 
         }
@@ -354,29 +355,10 @@ extension PostViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
-        if textView.text.isEmpty {
-            
-            
-        } else {
-            
-            content = textView.text ?? ""
-            textView.textColor = UIColor.black
-            print("content: \(content)")
-            
-        }
+        content = textView.text ?? ""
+        textView.textColor = UIColor.black
+        print("content: \(content)")
         
     }
-    
-    // should fix if edit.
-//    func textViewDidChange(_ textView: UITextView) {
-//
-//        if editArticle == nil {
-//
-//            var text = textView.text
-//            print(text)
-//
-//        }
-//
-//    }
     
 }

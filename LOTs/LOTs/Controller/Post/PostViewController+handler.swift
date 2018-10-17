@@ -192,12 +192,12 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                         
                     ])
                     
+                    self.delegate?.readUpdateData()
+                    self.navigationController?.popViewController(animated: true)
+                    
                 })
             }
-            
-            delegate?.readUpdateData()
-            navigationController?.popViewController(animated: true)
-            
+
         }
         
     }

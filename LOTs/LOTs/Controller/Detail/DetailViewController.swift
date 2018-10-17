@@ -26,7 +26,10 @@ class DetailViewController: UIViewController {
     var notinterestedIn = true
     var interestedIn: Bool = false
     var uid: String?
-        
+
+    let dispatchGroup = DispatchGroup()
+//    var semaphore = DispatchSemaphore(value: 1)
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -313,40 +316,34 @@ class DetailViewController: UIViewController {
     
     func reloadUpdateData(_ articleID: String) {
         
-        showLoadingAnimation()
-        
-        ref.child("posts").queryOrderedByKey().queryEqual(toValue: articleID).observe(.value, with: { (snapshot) in
-            
-            guard let value = snapshot.value as? NSDictionary else { return }
-            guard let data = value[articleID] as? NSDictionary else { return }
-            
-            guard let user = data["user"] as? NSDictionary else { return }
-            guard let userName = user["name"] as? String else { return }
-            guard let userImage = user["image"] as? String else { return }
-            guard let uid = user["uid"] as? String else { return }
-            
-            guard let location = data["location"] as? String else { return }
-            guard let articleTitle = data["articleTitle"] as? String else { return }
-            guard let articleImage = data["articleImage"] as? String else { return }
-            guard let cuisine = data["cuisine"] as? String else { return }
-            guard let createdTime = data["createdTime"] as? Int else { return }
-            guard let content = data["content"] as? String else { return }
-            guard let interestedIn = data["interestedIn"] as? Bool else { return }
-
-            let updateArticle = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
-
-            self.article = updateArticle
-            
-            self.tableView.reloadData()
-            
-            DispatchQueue.main.async {
-
-                self.removeLoadingAnimation()
-            
-            }
+        self.ref.child("posts").queryOrderedByKey().queryEqual(toValue: articleID).observeSingleEvent(of: .value, with: { (snapshot) in
                 
-        })
-    
+                guard let value = snapshot.value as? NSDictionary else { return }
+                guard let data = value[articleID] as? NSDictionary else { return }
+                
+                guard let user = data["user"] as? NSDictionary else { return }
+                guard let userName = user["name"] as? String else { return }
+                guard let userImage = user["image"] as? String else { return }
+                guard let uid = user["uid"] as? String else { return }
+                
+                guard let location = data["location"] as? String else { return }
+                guard let articleTitle = data["articleTitle"] as? String else { return }
+                guard let articleImage = data["articleImage"] as? String else { return }
+                guard let cuisine = data["cuisine"] as? String else { return }
+                guard let createdTime = data["createdTime"] as? Int else { return }
+                guard let content = data["content"] as? String else { return }
+                guard let interestedIn = data["interestedIn"] as? Bool else { return }
+                
+                let updateArticle = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
+                
+                self.article = updateArticle
+                
+                self.tableView.reloadData()
+                
+                self.removeLoadingAnimation()
+                
+            })
+        
     }
     
     // Loading Animation
@@ -366,9 +363,11 @@ class DetailViewController: UIViewController {
     
     func removeLoadingAnimation() {
 
-//        animationView.layer.opacity = 0.5
-//        animationView.removeFromSuperview()
-        animationBGView.isHidden = true
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+            
+            self.animationBGView.isHidden = true
+            
+        })
 
     }
         
@@ -437,13 +436,11 @@ extension DetailViewController: UITableViewDataSource {
                 
             }
             
-            DispatchQueue.main.async {
-
-                let articleUrl = URL(string: self.article.articleImage)
-                cell.articleImage?.kf.indicatorType = .activity
-                cell.articleImage.kf.setImage(with: articleUrl)
-
-            }
+            cell.articleImage.image = nil
+            
+            let articleUrl = URL(string: article.articleImage)
+            cell.articleImage?.kf.indicatorType = .activity
+            cell.articleImage.kf.setImage(with: articleUrl, placeholder: nil)
             
             cell.locationLabel.text = article.location
             cell.cuisineLabel.text = article.cuisine
@@ -537,8 +534,12 @@ extension DetailViewController: EditUpdate {
         
         self.reloadUpdateData(article.articleID)
         
-//        self.removeLoadingAnimation()
+        self.article = Article.init(articleID: "", articleTitle: "", articleImage: "", height: 0, width: 0, createdTime: 0, location: "", cuisine: "", content: "", user: User.init(name: "", image: "", uid: ""), instagramPost: false, interestedIn: true)
         
+        self.tableView.reloadData()
+        
+        self.showLoadingAnimation()
+    
     }
     
 }
