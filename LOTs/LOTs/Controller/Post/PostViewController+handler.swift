@@ -110,9 +110,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     }
     
     func editAction() {
-        
-        // Auth
-        
+                
         // Error Handler
         guard location != nil else {
             alertRemind(status: "location")
