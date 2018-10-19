@@ -40,13 +40,14 @@ class CameraController {
 
     var frontCamera: AVCaptureDevice?
     var rearCamera: AVCaptureDevice?
-    
     var photoOutput: AVCapturePhotoOutput?
 
     var frontCameraInput: AVCaptureDeviceInput?
     var rearCameraInput: AVCaptureDeviceInput?
     
     var previewLayer: AVCaptureVideoPreviewLayer?
+    
+    var flashMode = AVCaptureDevice.FlashMode.off
     
     func prepare(completionHandler: @escaping (Error?) -> Void) {
         
@@ -172,8 +173,84 @@ class CameraController {
         self.previewLayer?.connection?.videoOrientation = .portrait
         
         view.layer.insertSublayer(self.previewLayer!, at: 0)
-        self.previewLayer?.frame = view.frame
+        
+//        self.previewLayer?.frame = view.frame
+
+        self.previewLayer?.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+
+        //        self.previewLayer?.frame = view.frame
         
     }
 
+    func switchCameras() throws {
+        
+        // Check the available capture session during change the camera
+        guard let currentCameraPosition = currentCameraPosition, let captureSession = self.captureSession, captureSession.isRunning else {
+                throw CameraControllerError.captureSessionIsMissing
+        }
+
+        captureSession.beginConfiguration()
+        
+        func switchToFrontCamera() throws {
+            
+            guard let rearCameraInput = self.rearCameraInput, captureSession.inputs.contains(rearCameraInput),
+                let frontCamera = self.frontCamera else { throw CameraControllerError.invalidOperation }
+            
+            self.frontCameraInput = try AVCaptureDeviceInput(device: frontCamera)
+            
+            captureSession.removeInput(rearCameraInput)
+            
+            if captureSession.canAddInput(self.frontCameraInput!) {
+                
+                captureSession.addInput(self.frontCameraInput!)
+                
+                self.currentCameraPosition = .front
+            
+            }
+                
+            else {
+            
+                throw CameraControllerError.invalidOperation
+            
+            }
+            
+        }
+        
+        func switchToRearCamera() throws {
+            
+            guard let frontCameraInput = self.frontCameraInput, captureSession.inputs.contains(frontCameraInput),
+                let rearCamera = self.rearCamera else { throw CameraControllerError.invalidOperation }
+            
+            self.rearCameraInput = try AVCaptureDeviceInput(device: rearCamera)
+            
+            captureSession.removeInput(frontCameraInput)
+            
+            if captureSession.canAddInput(self.rearCameraInput!) {
+                
+                captureSession.addInput(self.rearCameraInput!)
+                
+                self.currentCameraPosition = .rear
+            
+            } else {
+                
+                throw CameraControllerError.invalidOperation
+                
+            }
+            
+        }
+        
+        switch currentCameraPosition {
+            
+        case .front:
+            try switchToRearCamera()
+            
+        case .rear:
+            try switchToFrontCamera()
+            
+        }
+        
+        captureSession.commitConfiguration()
+        
+    }
+    
 }

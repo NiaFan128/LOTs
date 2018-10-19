@@ -48,21 +48,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let keychain: KeychainSwift = KeychainSwift()
         
-        if keychain.get("uid") as? String == nil {
-            
-            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let navo = storyboard.instantiateViewController(withIdentifier: "Login")
-            
-            self.window?.rootViewController = navo
-            
-        } else {
-            
-            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let navo = storyboard.instantiateViewController(withIdentifier: "MainPage")
-
-            self.window?.rootViewController = navo
-
-        }
+//        if keychain.get("uid") as? String == nil {
+//            
+//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            let navo = storyboard.instantiateViewController(withIdentifier: "Login")
+//            
+//            self.window?.rootViewController = navo
+//            
+//        } else {
+//            
+//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            let navo = storyboard.instantiateViewController(withIdentifier: "MainPage")
+//
+//            self.window?.rootViewController = navo
+//
+//        }
         
         return true
         

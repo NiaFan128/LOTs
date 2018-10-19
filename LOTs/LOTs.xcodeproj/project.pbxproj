@@ -35,7 +35,6 @@
 		2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86435C2162252900D39812 /* UIKit+Effect.swift */; };
 		2BBFA63C216310B500A31D58 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBFA63B216310B500A31D58 /* Category.swift */; };
 		2BD07D3221788D360039DB2F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD07D3021788D360039DB2F /* CameraViewController.swift */; };
-		2BD07D3321788D360039DB2F /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BD07D3121788D360039DB2F /* CameraViewController.xib */; };
 		2BD07D35217892610039DB2F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD07D34217892610039DB2F /* CameraController.swift */; };
 		2BD77FE02174716400C378F7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD77FDF2174716300C378F7 /* UserViewController.swift */; };
 		2BDD665D2155079700E3C74A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BDD665C2155079700E3C74A /* GoogleService-Info.plist */; };
@@ -95,7 +94,6 @@
 		2B86435C2162252900D39812 /* UIKit+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Effect.swift"; sourceTree = "<group>"; };
 		2BBFA63B216310B500A31D58 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2BD07D3021788D360039DB2F /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		2BD07D3121788D360039DB2F /* CameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
 		2BD07D34217892610039DB2F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2BD77FDF2174716300C378F7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		2BDD665C2155079700E3C74A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -369,7 +367,6 @@
 			children = (
 				2BD07D3021788D360039DB2F /* CameraViewController.swift */,
 				2B116A9E2179657600B3185F /* Camera.storyboard */,
-				2BD07D3121788D360039DB2F /* CameraViewController.xib */,
 				2BD07D34217892610039DB2F /* CameraController.swift */,
 			);
 			path = Camera;
@@ -497,7 +494,6 @@
 				2B42E716215CDF3500BB0F86 /* TypeCollectionViewCell.xib in Resources */,
 				2B2AF69B21704E0A002A2748 /* loading_2.json in Resources */,
 				2BE27F11215C8378005387A4 /* DetailCTableViewCell.xib in Resources */,
-				2BD07D3321788D360039DB2F /* CameraViewController.xib in Resources */,
 				2BE27F09215C8357005387A4 /* DetailATableViewCell.xib in Resources */,
 				2BE27EF6215B9B87005387A4 /* LikeDetailTableViewCell.xib in Resources */,
 				2BE27EED215B76B3005387A4 /* LikeCollectionViewCell.xib in Resources */,
