@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,8 +25,8 @@
                             <constraint firstAttribute="width" constant="50" id="vaY-Qc-BeC"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="authorLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNe-Ff-982">
-                        <rect key="frame" x="95" y="44.5" width="99" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="authorLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNe-Ff-982">
+                        <rect key="frame" x="95" y="45" width="194" height="20.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <color key="textColor" red="0.82745098039999998" green="0.35294117650000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -63,6 +62,7 @@
                 <constraints>
                     <constraint firstItem="yUB-5x-d82" firstAttribute="top" secondItem="aRt-rG-a09" secondAttribute="bottom" constant="8" id="0wA-1R-pIl"/>
                     <constraint firstItem="aRt-rG-a09" firstAttribute="leading" secondItem="VyV-Eu-KD6" secondAttribute="leading" id="1JA-jk-ra3"/>
+                    <constraint firstItem="bFr-kA-xye" firstAttribute="leading" secondItem="RNe-Ff-982" secondAttribute="trailing" constant="20" id="1JD-qo-Fyr"/>
                     <constraint firstAttribute="bottom" secondItem="yUB-5x-d82" secondAttribute="bottom" constant="10" id="2lQ-gQ-hHa"/>
                     <constraint firstItem="RNe-Ff-982" firstAttribute="centerY" secondItem="bx4-pe-lu8" secondAttribute="centerY" id="30V-a9-jHf"/>
                     <constraint firstItem="bFr-kA-xye" firstAttribute="centerY" secondItem="RNe-Ff-982" secondAttribute="centerY" id="5iq-nm-zUN"/>
