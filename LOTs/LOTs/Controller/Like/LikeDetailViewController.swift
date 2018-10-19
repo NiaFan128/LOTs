@@ -52,6 +52,7 @@ class LikeDetailViewController: UIViewController {
         
     }
     
+    // Need to fix since didn't receive the notification
     @objc func removeFromLike(notification: Notification) {
         
         guard let data = notification.userInfo as? [String: String] else { return }
@@ -61,6 +62,7 @@ class LikeDetailViewController: UIViewController {
         print("articleID: \(articleID), location: \(location)")
         
         ref.child("likes/\(uid)").child("\(location)").child(articleID).removeValue()
+
         
     }
 
