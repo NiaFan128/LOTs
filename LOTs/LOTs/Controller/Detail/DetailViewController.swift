@@ -96,6 +96,7 @@ class DetailViewController: UIViewController {
         
         let userID = article.user.uid
         let uid = self.keychain.get("uid")
+        let userName = article.user.name
         
         if userID == uid {
             
@@ -105,9 +106,15 @@ class DetailViewController: UIViewController {
             
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-            let reportAction = UIAlertAction(title: "Report User", style: .destructive) { (_) in
+            let reportUserAction = UIAlertAction(title: "Block User", style: .destructive) { (_) in
                 
-                self.reportAction()
+                self.blockUser(userName)
+                
+            }
+            
+            let reportArticleAction = UIAlertAction(title: "Report Article", style: .destructive) { (_) in
+                
+                self.reportArticle()
                 
             }
             
@@ -117,7 +124,8 @@ class DetailViewController: UIViewController {
                 
             })
             
-            alertController.addAction(reportAction)
+            alertController.addAction(reportUserAction)
+            alertController.addAction(reportArticleAction)
             alertController.addAction(cancelAction)
             
             self.present(alertController, animated: true, completion: nil)
@@ -200,7 +208,7 @@ class DetailViewController: UIViewController {
         
     }
     
-    func reportAction() {
+    func reportArticle() {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -208,11 +216,15 @@ class DetailViewController: UIViewController {
             
             print("It's spam.")
             
+            self.reportConfirmation("spam")
+            
         })
         
         let inappropriateAction = UIAlertAction(title: "It's inappropriate", style: .destructive, handler: { (_) in
             
             print("It's inappropriate.")
+            
+            self.reportConfirmation("inappropriate")
             
         })
         
@@ -228,6 +240,67 @@ class DetailViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     
+    }
+    
+    func reportConfirmation(_ message: String) {
+
+        let alertController = UIAlertController(title: "", message: "Do you think it is \(message)? \n We will proceed accordingly soon! ", preferredStyle: .alert)
+        
+//        let alertController = UIAlertController(title: "Report", message: "Do you think it is \(message)? \n We will proceed accordingly soon! ", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
+            
+            self.receiveMessage()
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+        })
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    // Receive Message
+    func receiveMessage() {
+        
+        let alertController = UIAlertController(title: "Thank you", message: "We will proceed your feedback soon.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+            
+        })
+        
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func blockUser(_ user: String) {
+
+        let alertController = UIAlertController(title: "", message: "Are you sure to block this user, \(user) ?", preferredStyle: .alert)
+
+//        let alertController = UIAlertController(title: "Block", message: "Are you sure to block this user, \(user) ?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
+            
+            self.receiveMessage()
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+        })
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     // like function
