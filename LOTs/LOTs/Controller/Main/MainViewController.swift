@@ -20,11 +20,14 @@ class MainViewController: UIViewController {
     var fullScreenSize: CGSize!
     var article: Article!
     var articles = [Article]()
+    let keychain = KeychainSwift()
     
     var refreshControl: UIRefreshControl!
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
-    let keychain = KeychainSwift()
+    
+    let userDefaults = UserDefaults.standard
+
     let animationView = LOTAnimationView(name: "loading_2")
     
     override func viewDidLoad() {
@@ -51,6 +54,8 @@ class MainViewController: UIViewController {
             layout.delegate = self
         }
         
+//        userDefaults.removeObject(forKey: "block")
+        
     }
     
     func showLoadingAnimation() {
@@ -68,8 +73,6 @@ class MainViewController: UIViewController {
     
     func removeLoadingAnimation() {
         
-//        animationView.layer.removeAllAnimations()
-//        self.view.layoutIfNeeded()
         animationView.layer.opacity = 0.5
         animationView.removeFromSuperview()
         
@@ -129,9 +132,7 @@ class MainViewController: UIViewController {
 //    }
 
     func readData() {
-
-//        articles = []
-
+        
         Database.database().reference().child("posts").queryOrdered(byChild: "createdTime").observeSingleEvent(of: .value) { (snapshot) in
 
             self.articles = []
@@ -159,6 +160,18 @@ class MainViewController: UIViewController {
                 let article = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
                 
                 self.articles.append(article)
+                
+            }
+            
+            if let blockUsers = self.userDefaults.array(forKey: "block") {
+                
+                for blockUser in blockUsers {
+                    
+                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
+                    
+                    print(self.articles)
+                    
+                }
 
             }
 

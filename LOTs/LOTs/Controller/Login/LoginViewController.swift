@@ -163,6 +163,10 @@ class LoginViewController: UIViewController {
     @objc func facebookEULA() {
         
         print("EULA")
+    
+        let webVC = TermsViewController()
+        
+        self.show(webVC, sender: nil)
         
     }
     

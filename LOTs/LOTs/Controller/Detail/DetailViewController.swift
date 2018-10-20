@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     
     var fullScreenSize: CGSize!
     var article: Article!
+    var blockUsers: [String] = []
     var ref: DatabaseReference!
     let keychain = KeychainSwift()
     let animationView = LOTAnimationView(name: "loading_2")
@@ -28,7 +29,8 @@ class DetailViewController: UIViewController {
     var uid: String?
 
     let dispatchGroup = DispatchGroup()
-//    var semaphore = DispatchSemaphore(value: 1)
+    
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         
@@ -289,7 +291,8 @@ class DetailViewController: UIViewController {
         let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
             
             self.receiveMessage()
-            
+            self.blockUserAction()
+
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
@@ -302,6 +305,21 @@ class DetailViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
         
     }
+    
+    func blockUserAction() {
+        
+        if let value = userDefaults.value(forKey: "block") as? NSArray {
+
+            blockUsers = value as! [String]
+
+        }
+        
+        blockUsers.append(article.user.uid)
+        userDefaults.set(blockUsers, forKey: "block")
+//        userDefaults.synchronize()
+        
+    }
+    
     
     // like function
     func interstedIn() {
