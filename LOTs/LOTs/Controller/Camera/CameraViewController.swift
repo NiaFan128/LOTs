@@ -61,11 +61,48 @@ class CameraViewController: UIViewController {
     
     @IBAction func switchCameras(_ sender: UIButton) {
         
+        do {
+            
+            try cameraController.switchCameras()
+            
+        }
         
+        catch {
+            
+            print(error)
+            
+        }
+        
+        switch cameraController.currentCameraPosition {
+            
+        case .some(.front):
+            toggleCameraButton.setImage(#imageLiteral(resourceName: "Flip"), for: .normal)
+            
+        case .some(.rear):
+            toggleCameraButton.setImage(#imageLiteral(resourceName: "Flip"), for: .normal)
+            
+        case .none:
+            return
+            
+        }
         
         
     }
     
+    @IBAction func captureImage(_ sender: UIButton) {
+        
+        cameraController.captureImage { (image, error) in
+            
+            guard let image = image else {
+                print(error ?? "Image capture error")
+                return
+            }
+            
+            self.performSegue(withIdentifier: "photoEdit", sender: image)
+            
+        }
+        
+    }
     
 }
 

@@ -35,7 +35,7 @@
                                     <constraint firstItem="pvi-ab-srM" firstAttribute="leading" secondItem="MsU-81-1fb" secondAttribute="leading" constant="25" id="htg-Zy-FPJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fi-H2-fAA">
+                            <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fi-H2-fAA">
                                 <rect key="frame" x="0.0" y="70" width="375" height="375"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -77,6 +77,9 @@
                                     <constraint firstAttribute="height" constant="50" id="NWG-qS-tqN"/>
                                     <constraint firstAttribute="width" constant="50" id="n5i-Yt-2bK"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="captureImage:" destination="eM8-cv-M8u" eventType="touchUpInside" id="q7x-xG-HEK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,16 +110,63 @@
                         <outlet property="capturePreviewView" destination="4Fi-H2-fAA" id="jCq-9B-Lam"/>
                         <outlet property="toggleCameraButton" destination="hW7-kL-fpM" id="y7W-Ye-LpH"/>
                         <outlet property="toggleFlashButton" destination="6KB-DS-iMb" id="GUJ-i1-NEm"/>
+                        <segue destination="ZeA-aO-2Qg" kind="show" identifier="photoEdit" id="Wnj-LA-SV5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tt7-Vx-Deb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1118" y="-1576"/>
         </scene>
+        <!--Camera Edit View Controller-->
+        <scene sceneID="hgv-tb-UfK">
+            <objects>
+                <viewController id="ZeA-aO-2Qg" customClass="CameraEditViewController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wSE-Ym-rzt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G0g-zn-jGZ">
+                                <rect key="frame" x="0.0" y="70" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="G0g-zn-jGZ" secondAttribute="height" multiplier="1:1" id="i6m-7Z-rpJ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNy-mL-88r">
+                                <rect key="frame" x="306" y="455" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="q9i-Dz-Myq"/>
+                                    <constraint firstAttribute="width" constant="44" id="siw-bC-awW"/>
+                                </constraints>
+                                <state key="normal" image="save"/>
+                                <connections>
+                                    <action selector="saveToPhone:" destination="ZeA-aO-2Qg" eventType="touchUpInside" id="WLR-VU-REr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="G0g-zn-jGZ" firstAttribute="leading" secondItem="rUk-Wb-zOC" secondAttribute="leading" id="90b-8N-1zt"/>
+                            <constraint firstItem="G0g-zn-jGZ" firstAttribute="top" secondItem="rUk-Wb-zOC" secondAttribute="top" constant="50" id="DjG-iD-lU8"/>
+                            <constraint firstItem="rUk-Wb-zOC" firstAttribute="trailing" secondItem="G0g-zn-jGZ" secondAttribute="trailing" id="KDT-nN-qpk"/>
+                            <constraint firstItem="rUk-Wb-zOC" firstAttribute="trailing" secondItem="TNy-mL-88r" secondAttribute="trailing" constant="25" id="d2N-9m-Eb8"/>
+                            <constraint firstItem="G0g-zn-jGZ" firstAttribute="centerX" secondItem="wSE-Ym-rzt" secondAttribute="centerX" id="iX2-4b-LMc"/>
+                            <constraint firstItem="TNy-mL-88r" firstAttribute="top" secondItem="G0g-zn-jGZ" secondAttribute="bottom" constant="10" id="qpX-kC-fnV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rUk-Wb-zOC"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoView" destination="G0g-zn-jGZ" id="bU8-j9-NuT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lid-r1-vEj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-319" y="-1576"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Filter" width="24" height="24"/>
         <image name="Flash Off Icon" width="24" height="24"/>
         <image name="Flip" width="24" height="24"/>
+        <image name="save" width="24" height="24"/>
     </resources>
 </document>
