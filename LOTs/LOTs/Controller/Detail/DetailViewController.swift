@@ -267,21 +267,6 @@ class DetailViewController: UIViewController {
         
     }
     
-    // Receive Message
-    func receiveMessage() {
-        
-        let alertController = UIAlertController(title: "Thank you", message: "We will proceed your feedback soon.", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
-            
-        })
-        
-        alertController.addAction(okAction)
-        
-        self.present(alertController, animated: true, completion: nil)
-        
-    }
-    
     func blockUser(_ user: String) {
 
         let alertController = UIAlertController(title: "", message: "Are you sure to block this user, \(user) ?", preferredStyle: .alert)
@@ -290,7 +275,7 @@ class DetailViewController: UIViewController {
         
         let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
             
-            self.receiveMessage()
+            self.blockMessage(user)
             self.blockUserAction()
 
         })
@@ -316,10 +301,38 @@ class DetailViewController: UIViewController {
         
         blockUsers.append(article.user.uid)
         userDefaults.set(blockUsers, forKey: "block")
-//        userDefaults.synchronize()
         
     }
     
+    // Receive Message
+    func receiveMessage() {
+        
+        let alertController = UIAlertController(title: "Thank you", message: "We will proceed your feedback soon.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+            
+        })
+        
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    // Block Message
+    func blockMessage(_ user: String) {
+        
+        let alertController = UIAlertController(title: "", message: "You won't see \(user)'s article from now on.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+            
+        })
+        
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
     
     // like function
     func interstedIn() {

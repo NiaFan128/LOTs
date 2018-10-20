@@ -39,6 +39,8 @@ class LoginViewController: UIViewController {
         
         termsOfServiceLabel.isUserInteractionEnabled = true
         
+        termsOfServiceLabel.attributedText = NSAttributedString(string: "* Check Our EULA Terms *", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(facebookEULA))
         termsOfServiceLabel.addGestureRecognizer(gesture)
         

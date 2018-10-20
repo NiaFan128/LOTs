@@ -23,6 +23,7 @@ class LikeDetailViewController: UIViewController {
     let keychain = KeychainSwift()
     let decoder = JSONDecoder()
     var uid: String = ""
+    let userDefaults = UserDefaults.standard
     
     var fullScreenSize: CGSize!
     let animationView = LOTAnimationView(name: "lunch_time")
@@ -117,6 +118,16 @@ class LikeDetailViewController: UIViewController {
                 let article = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
                 
                 self.articles.append(article)
+                
+            }
+            
+            if let blockUsers = self.userDefaults.array(forKey: "block") {
+                
+                for blockUser in blockUsers {
+                    
+                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
+                    
+                }
                 
             }
             

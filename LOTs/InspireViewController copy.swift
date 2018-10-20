@@ -17,7 +17,8 @@ class InspireViewController: UIViewController {
     
     var fullScreenSize: CGSize!
     var photoWidth: CGFloat!
-    
+    let userDefaults = UserDefaults.standard
+
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
 //    let animationView = LOTAnimationView(name: "animation_construction")
@@ -161,6 +162,16 @@ class InspireViewController: UIViewController {
                 let article = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: true, interestedIn: interestedIn)
                 
                 self.articles.append(article)
+                
+            }
+            
+            if let blockUsers = self.userDefaults.array(forKey: "block") {
+                
+                for blockUser in blockUsers {
+                    
+                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
+                                        
+                }
                 
             }
             

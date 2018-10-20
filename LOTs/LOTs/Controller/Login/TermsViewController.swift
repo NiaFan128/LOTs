@@ -32,7 +32,7 @@ class TermsViewController: UIViewController, WKNavigationDelegate {
         self.view.addSubview(myWebView)
         
         myTextLabel = UILabel(frame: CGRect(x: 0, y: -40, width: fullScreenSize.width, height: 40))
-        myTextLabel.text = "Terms & Conditions"
+        myTextLabel.text = "End-User License Agreement"
         myTextLabel.textAlignment = .center
         myTextLabel.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         self.myWebView.addSubview(myTextLabel)
