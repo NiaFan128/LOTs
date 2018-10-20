@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -504,23 +503,62 @@
                                     <constraint firstAttribute="width" constant="16" id="hD5-cc-s7v"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By proceeding, you agree to our" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKP-FO-fAP">
+                                <rect key="frame" x="107" y="498" width="200" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of Service." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJA-rI-I1I">
+                                <rect key="frame" x="157.5" y="512.5" width="99" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or you can choose Visitor to experience LOTs first." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8I-uq-Auc">
+                                <rect key="frame" x="107" y="542" width="200" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrL-qk-7s4">
+                                <rect key="frame" x="160.5" y="527" width="93" height="1"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="7id-vS-dDy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.82745098039215681" green="0.35294117647058826" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="BrL-qk-7s4" firstAttribute="trailing" secondItem="VJA-rI-I1I" secondAttribute="trailing" constant="-3" id="0bG-eP-g6w"/>
                             <constraint firstItem="bXF-LB-9bO" firstAttribute="top" secondItem="rYQ-TH-ekO" secondAttribute="bottom" constant="40" id="1Ma-o7-uZM"/>
                             <constraint firstItem="UmD-a2-d8q" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="4IN-JP-qmv"/>
+                            <constraint firstItem="l8I-uq-Auc" firstAttribute="trailing" secondItem="XKP-FO-fAP" secondAttribute="trailing" id="4Nk-zr-Z3E"/>
+                            <constraint firstItem="BrL-qk-7s4" firstAttribute="centerX" secondItem="VJA-rI-I1I" secondAttribute="centerX" id="5kS-kk-KKf"/>
                             <constraint firstItem="jVV-7O-FZW" firstAttribute="top" secondItem="UmD-a2-d8q" secondAttribute="bottom" constant="-20" id="8mI-LR-AMj"/>
                             <constraint firstItem="Nyg-Nm-b86" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="Bed-4t-yDj"/>
                             <constraint firstItem="Nyg-Nm-b86" firstAttribute="leading" secondItem="5tG-PU-mF6" secondAttribute="trailing" constant="-26" id="Ebm-dR-AC3"/>
+                            <constraint firstItem="VJA-rI-I1I" firstAttribute="top" secondItem="XKP-FO-fAP" secondAttribute="bottom" id="FbL-AM-tZa"/>
+                            <constraint firstItem="l8I-uq-Auc" firstAttribute="top" secondItem="VJA-rI-I1I" secondAttribute="bottom" constant="15" id="GhD-2x-un2"/>
+                            <constraint firstItem="BrL-qk-7s4" firstAttribute="leading" secondItem="VJA-rI-I1I" secondAttribute="leading" constant="3" id="L32-Ls-URJ"/>
                             <constraint firstItem="UmD-a2-d8q" firstAttribute="top" secondItem="ah9-3z-YcF" secondAttribute="top" constant="80" id="LN0-m0-faj"/>
                             <constraint firstItem="rYQ-TH-ekO" firstAttribute="top" secondItem="Nyg-Nm-b86" secondAttribute="bottom" id="NSy-kx-Iuq"/>
+                            <constraint firstItem="l8I-uq-Auc" firstAttribute="leading" secondItem="XKP-FO-fAP" secondAttribute="leading" id="QJL-u2-uWV"/>
+                            <constraint firstItem="XKP-FO-fAP" firstAttribute="trailing" secondItem="rYQ-TH-ekO" secondAttribute="trailing" id="U9T-u9-qut"/>
                             <constraint firstItem="KnL-Wy-gPN" firstAttribute="centerY" secondItem="MP9-Vo-wBH" secondAttribute="centerY" id="VjT-Hs-jPw"/>
                             <constraint firstItem="bXF-LB-9bO" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="WnC-YK-Itu"/>
+                            <constraint firstItem="XKP-FO-fAP" firstAttribute="leading" secondItem="rYQ-TH-ekO" secondAttribute="leading" id="b8X-Sa-dZx"/>
+                            <constraint firstItem="BrL-qk-7s4" firstAttribute="top" secondItem="VJA-rI-I1I" secondAttribute="bottom" id="bcp-Hu-fjt"/>
                             <constraint firstItem="rYQ-TH-ekO" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="bto-wl-YGW"/>
                             <constraint firstItem="MP9-Vo-wBH" firstAttribute="leading" secondItem="KnL-Wy-gPN" secondAttribute="trailing" constant="-23" id="ck5-Mm-kQc"/>
                             <constraint firstItem="jVV-7O-FZW" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="ejf-Gf-u1k"/>
                             <constraint firstItem="MP9-Vo-wBH" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="fKn-fL-pdO"/>
+                            <constraint firstItem="l8I-uq-Auc" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="hNd-at-SNA"/>
+                            <constraint firstItem="VJA-rI-I1I" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="iPR-NG-k68"/>
                             <constraint firstItem="5tG-PU-mF6" firstAttribute="centerY" secondItem="Nyg-Nm-b86" secondAttribute="centerY" id="lzQ-MP-QEx"/>
+                            <constraint firstItem="XKP-FO-fAP" firstAttribute="top" secondItem="bXF-LB-9bO" secondAttribute="bottom" constant="20" id="sAA-J1-wZa"/>
+                            <constraint firstItem="XKP-FO-fAP" firstAttribute="centerX" secondItem="BZp-op-TYb" secondAttribute="centerX" id="ush-O9-sqa"/>
                             <constraint firstItem="Nyg-Nm-b86" firstAttribute="top" secondItem="MP9-Vo-wBH" secondAttribute="bottom" id="vux-EU-12U"/>
                             <constraint firstItem="MP9-Vo-wBH" firstAttribute="top" secondItem="jVV-7O-FZW" secondAttribute="bottom" constant="40" id="z2b-kk-BkN"/>
                         </constraints>
@@ -529,14 +567,16 @@
                     <connections>
                         <outlet property="facebookImage" destination="KnL-Wy-gPN" id="TeJ-hJ-OAO"/>
                         <outlet property="facebookLoginButton" destination="MP9-Vo-wBH" id="Mq3-2G-Pyb"/>
+                        <outlet property="facebookWarningLabel" destination="XKP-FO-fAP" id="HEa-TE-0pc"/>
                         <outlet property="googleImage" destination="5tG-PU-mF6" id="v0e-zf-XLM"/>
                         <outlet property="googleLoginButton" destination="Nyg-Nm-b86" id="gax-rt-OIR"/>
                         <outlet property="guestModeButton" destination="rYQ-TH-ekO" id="2ON-8W-ZBj"/>
+                        <outlet property="termsOfServiceLabel" destination="VJA-rI-I1I" id="CGU-Tm-Q80"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f35-Ku-rHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2868" y="-376"/>
+            <point key="canvasLocation" x="-2868.115942028986" y="-376.33928571428572"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3bw-dp-vTT">

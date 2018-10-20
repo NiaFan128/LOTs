@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var guestModeButton: UIButton!
     @IBOutlet weak var facebookImage: UIImageView!
     @IBOutlet weak var googleImage: UIImageView!
+    @IBOutlet weak var facebookWarningLabel: UILabel!
+    @IBOutlet weak var termsOfServiceLabel: UILabel!
     
     var ref: DatabaseReference!
     let keychain = KeychainSwift()
@@ -34,6 +36,11 @@ class LoginViewController: UIViewController {
         
         googleLoginButton.isHidden = true
         googleImage.isHidden = true
+        
+        termsOfServiceLabel.isUserInteractionEnabled = true
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(facebookEULA))
+        termsOfServiceLabel.addGestureRecognizer(gesture)
         
         ref = Database.database().reference()
         
@@ -150,6 +157,12 @@ class LoginViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
             
         }
+        
+    }
+    
+    @objc func facebookEULA() {
+        
+        print("EULA")
         
     }
     
