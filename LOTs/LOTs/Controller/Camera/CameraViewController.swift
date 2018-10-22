@@ -20,11 +20,13 @@ class CameraViewController: UIViewController {
     @IBOutlet fileprivate var cameraBGView: UIView!
     @IBOutlet fileprivate var buttonBFView: UIView!
     
+    @IBOutlet fileprivate var capturePhotoImageView: UIImageView!
+    
     ///Allows the user to put the camera in photo mode.
 //    @IBOutlet fileprivate var photoModeButton: UIButton!
     @IBOutlet fileprivate var toggleCameraButton: UIButton!
     @IBOutlet fileprivate var toggleFlashButton: UIButton!
-    
+    @IBOutlet weak var exitButton: UIButton!
     
     ///Allows the user to put the camera in video mode.
 //    @IBOutlet fileprivate var videoModeButton: UIButton!
@@ -33,8 +35,18 @@ class CameraViewController: UIViewController {
 
         super.viewWillAppear(animated)
         
-        UIApplication.shared.isStatusBarHidden = true
+//        UIApplication.shared.isStatusBarHidden = true
+        
+        var statusBarHidden = true
+        
+        var prefersStatusBarHidden: Bool {
+            
+            return statusBarHidden
+        
+        }
 
+        capturePhotoImageView.isHidden = true
+        
     }
     
 //    override var prefersStatusBarHidden: Bool {
@@ -94,13 +106,33 @@ class CameraViewController: UIViewController {
         cameraController.captureImage { (image, error) in
             
             guard let image = image else {
+                
                 print(error ?? "Image capture error")
                 return
+            
             }
             
-            self.performSegue(withIdentifier: "photoEdit", sender: image)
+//            self.capturePhotoImageView.isHidden = false
+//            self.capturePhotoImageView.image = image
+//            self.capturePhotoImageView.animationDuration = 1.0
+//            self.capturePhotoImageView.startAnimating()
             
+        let editViewController = CameraEditViewController.editForCameraPhoto(image)
+
+//        self.present(editViewController, animated: true, completion: nil)
+            
+//            self.presentDetailFromeLeftToRight(editViewController)
+            self.dismissDetailFromeRightToLeft(editViewController)
+            
+//            self.performSegue(withIdentifier: "photoEdit", sender: image)
+
         }
+        
+    }
+    
+    @IBAction func exitButtonAction(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
         
     }
     
@@ -135,8 +167,6 @@ extension CameraViewController {
                     
                 }
                 
-//                try? self.cameraController.displayPreview(on: self.capturePreviewView)
-
                 try? self.cameraController.displayPreview(on: self.capturePreviewView)
                 
             }
@@ -148,7 +178,30 @@ extension CameraViewController {
         
     }
     
+    // 由左到右
+    func presentDetailFromeLeftToRight(_ viewControllerToPresent: UIViewController) {
+        
+        let animation = CATransition()
+        animation.duration = 0.2
+        animation.type = CATransitionType.push
+        animation.subtype = CATransitionSubtype.fromLeft
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        
+        self.view.window?.layer.add(animation, forKey: kCATransition)
+        
+        present(viewControllerToPresent, animated: false, completion: nil)
+        
+    }
     
-    
+    func dismissDetailFromeRightToLeft(_ viewControllerToPresent: UIViewController){
+        let animation = CATransition()
+        animation.duration = 0.3
+        animation.type = CATransitionType.push
+        animation.subtype = CATransitionSubtype.fromRight
+        self.view.window?.layer.add(animation, forKey: kCATransition)
+        
+        present(viewControllerToPresent, animated: false, completion: nil)
+//        dismiss(animated: false, completion: nil)
+    }
     
 }

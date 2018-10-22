@@ -37,6 +37,8 @@ class PostViewController: UIViewController {
     var articleTitle: String?
     var content: String?
     var picture: UIImage?
+    var photo: UIImage?
+    
     var height: CGFloat?
     var width: CGFloat?
     var pictureURL: String?

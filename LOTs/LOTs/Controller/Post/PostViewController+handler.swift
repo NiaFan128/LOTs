@@ -253,4 +253,20 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
     }
     
+    class func editForCameraPhoto(_ photo: UIImage) -> PostViewController {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let editViewController = storyboard.instantiateViewController(withIdentifier: "selectPage") as? PostViewController else {
+            
+            return PostViewController()
+            
+        }
+        
+        editViewController.photo = photo
+        
+        return editViewController
+        
+    }
+    
 }
