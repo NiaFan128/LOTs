@@ -211,7 +211,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
     }
     
-    @objc func handleSelectProfileImageView() {
+    func handleSelectProfileImageView() {
         
         let picker = UIImagePickerController()
         

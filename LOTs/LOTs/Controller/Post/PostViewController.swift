@@ -179,7 +179,8 @@ class PostViewController: UIViewController {
     
     func uploadPicture() {
         
-        articleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        articleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(photoSource)))
+//        articleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
         articleImage.isUserInteractionEnabled = true
             
     }
@@ -198,7 +199,50 @@ class PostViewController: UIViewController {
         self.tableView.reloadData()
         
     }
+    
+    
+    @objc func photoSource() {
+        
+        let alertController = UIAlertController(title: "Upload Image", message: nil, preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Take a Photo", style: .default) { (_) in
+            
+            self.handleCamera()
+            
+        }
+        
+        let libraryAction = UIAlertAction(title: "Select from Camera Roll", style: .default) { (_) in
+            
+            self.handleSelectProfileImageView()
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
 
+        })
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(libraryAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func handleCamera() {
+        
+        let storyboard = UIStoryboard(name: "Camera", bundle: nil)
+        
+        guard let cameraViewController = storyboard.instantiateViewController(withIdentifier: "Camera") as? CameraViewController else {
+            
+            return
+            
+        }
+        
+        present(cameraViewController, animated: true, completion: nil)
+        
+    }
+    
 }
 
 extension PostViewController: UITableViewDataSource {

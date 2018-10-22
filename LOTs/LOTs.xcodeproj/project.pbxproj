@@ -367,9 +367,9 @@
 		2BD07D2F21788C980039DB2F /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				2B116A9E2179657600B3185F /* Camera.storyboard */,
 				2BD07D34217892610039DB2F /* CameraController.swift */,
 				2BD07D3021788D360039DB2F /* CameraViewController.swift */,
-				2B116A9E2179657600B3185F /* Camera.storyboard */,
 				2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */,
 			);
 			path = Camera;

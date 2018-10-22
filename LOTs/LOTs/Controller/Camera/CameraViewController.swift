@@ -130,7 +130,7 @@ class CameraViewController: UIViewController {
         
     }
     
-    @IBAction func exitButtonAction(_ sender: Any) {
+    @IBAction func backAction(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
         

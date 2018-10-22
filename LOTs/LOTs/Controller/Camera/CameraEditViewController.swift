@@ -99,7 +99,6 @@ class CameraEditViewController: UIViewController {
         
         self.view.window?.layer.add(animation, forKey: kCATransition)
         
-//        present(viewControllerToPresent, animated: false, completion: nil)
         dismiss(animated: false, completion: nil)
 
     }
@@ -113,7 +112,7 @@ class CameraEditViewController: UIViewController {
         self.view.window?.layer.add(animation, forKey: kCATransition)
         
         present(viewControllerToPresent, animated: false, completion: nil)
-        //        dismiss(animated: false, completion: nil)
+
     }
     
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eM8-cv-M8u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Camera View Controller-->
         <scene sceneID="3el-9P-eHE">
             <objects>
-                <viewController id="eM8-cv-M8u" customClass="CameraViewController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Camera" id="eM8-cv-M8u" customClass="CameraViewController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hnh-cG-QOZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,21 +30,21 @@
                                         <state key="normal" image="Filter"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJa-mA-vWm">
-                                        <rect key="frame" x="311" y="26" width="44" height="44"/>
+                                        <rect key="frame" x="0.0" y="26" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="1gg-H9-1Rl"/>
                                             <constraint firstAttribute="height" constant="44" id="aTS-11-hmx"/>
                                         </constraints>
-                                        <state key="normal" image="cancel"/>
+                                        <state key="normal" image="back_2"/>
                                         <connections>
-                                            <action selector="exitButtonAction:" destination="eM8-cv-M8u" eventType="touchUpInside" id="uvI-7o-LqX"/>
+                                            <action selector="backAction:" destination="eM8-cv-M8u" eventType="touchUpInside" id="uvI-7o-LqX"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="WJa-mA-vWm" secondAttribute="trailing" constant="20" id="3bp-iI-X59"/>
                                     <constraint firstItem="pvi-ab-srM" firstAttribute="leading" secondItem="MsU-81-1fb" secondAttribute="leading" constant="25" id="htg-Zy-FPJ"/>
+                                    <constraint firstItem="WJa-mA-vWm" firstAttribute="leading" secondItem="MsU-81-1fb" secondAttribute="leading" id="iR5-de-80Z"/>
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fi-H2-fAA">
@@ -234,7 +234,6 @@
         <image name="Flash Off Icon" width="24" height="24"/>
         <image name="Flip" width="24" height="24"/>
         <image name="back_2" width="48" height="48"/>
-        <image name="cancel" width="19" height="19"/>
         <image name="imageDefault" width="224" height="126"/>
         <image name="next" width="48" height="48"/>
         <image name="save" width="24" height="24"/>
