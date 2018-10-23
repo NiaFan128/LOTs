@@ -9,9 +9,16 @@
 import UIKit
 import Photos
 
+protocol SaveCameraPhotoProtocol: AnyObject {
+    
+    func savePhotoImage(_ photo: UIImage)
+    
+}
+
 class CameraViewController: UIViewController {
 
     let cameraController = CameraController()
+    weak var saveDelegate: SaveCameraPhotoProtocol?
     
     @IBOutlet fileprivate var captureButton: UIButton!
     
@@ -31,6 +38,15 @@ class CameraViewController: UIViewController {
     ///Allows the user to put the camera in video mode.
 //    @IBOutlet fileprivate var videoModeButton: UIButton!
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        styleCaptureButton()
+        configureCameraController()
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
 
         super.viewWillAppear(animated)
@@ -49,9 +65,34 @@ class CameraViewController: UIViewController {
         
     }
     
-//    override var prefersStatusBarHidden: Bool {
-//        return true
-//    }
+    func styleCaptureButton() {
+        
+        captureButton.layer.borderColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
+        captureButton.layer.borderWidth = 2
+        
+        buttonBFView.layer.cornerRadius = min(buttonBFView.frame.width, buttonBFView.frame.height) / 2
+        captureButton.layer.cornerRadius = min(captureButton.frame.width, captureButton.frame.height) / 2
+        
+        buttonBFView.layer.borderColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
+        buttonBFView.layer.borderWidth = 2
+        
+    }
+    
+    func configureCameraController() {
+        
+        cameraController.prepare { (error) in
+            
+            if let error = error {
+                
+                print(error)
+                
+            }
+            
+            try? self.cameraController.displayPreview(on: self.capturePreviewView)
+            
+        }
+        
+    }
     
     @IBAction func toggleFlash(_ sender: UIButton) {
     
@@ -112,20 +153,12 @@ class CameraViewController: UIViewController {
             
             }
             
-//            self.capturePhotoImageView.isHidden = false
-//            self.capturePhotoImageView.image = image
-//            self.capturePhotoImageView.animationDuration = 1.0
-//            self.capturePhotoImageView.startAnimating()
-            
-        let editViewController = CameraEditViewController.editForCameraPhoto(image)
+        let cameraEditViewController = CameraEditViewController.editForCameraPhoto(image)
 
-//        self.present(editViewController, animated: true, completion: nil)
+        cameraEditViewController.sendDelegate = self
             
-//            self.presentDetailFromeLeftToRight(editViewController)
-            self.dismissDetailFromeRightToLeft(editViewController)
+        self.dismissDetailFromeRightToLeft(cameraEditViewController)
             
-//            self.performSegue(withIdentifier: "photoEdit", sender: image)
-
         }
         
     }
@@ -139,44 +172,6 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController {
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        func styleCaptureButton() {
-            
-            captureButton.layer.borderColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
-            captureButton.layer.borderWidth = 2
-            
-            buttonBFView.layer.cornerRadius = min(buttonBFView.frame.width, buttonBFView.frame.height) / 2
-            captureButton.layer.cornerRadius = min(captureButton.frame.width, captureButton.frame.height) / 2
-            
-            buttonBFView.layer.borderColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
-            buttonBFView.layer.borderWidth = 2
-            
-        }
-        
-        func configureCameraController() {
-            
-            cameraController.prepare { (error) in
-                
-                if let error = error {
-                    
-                    print(error)
-                    
-                }
-                
-                try? self.cameraController.displayPreview(on: self.capturePreviewView)
-                
-            }
-
-        }
-        
-        styleCaptureButton()
-        configureCameraController()
-        
-    }
     
     // 由左到右
     func presentDetailFromeLeftToRight(_ viewControllerToPresent: UIViewController) {
@@ -202,6 +197,16 @@ extension CameraViewController {
         
         present(viewControllerToPresent, animated: false, completion: nil)
 //        dismiss(animated: false, completion: nil)
+    }
+    
+}
+
+extension CameraViewController: SendCameraPhotoProtocol {
+    
+    func sendPhotoImage(_ photo: UIImage) {
+        
+        saveDelegate?.savePhotoImage(photo)
+        
     }
     
 }

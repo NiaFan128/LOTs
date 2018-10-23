@@ -20,7 +20,6 @@ protocol EditUpdate: AnyObject {
     
 }
 
-
 class PostViewController: UIViewController {
 
     @IBOutlet weak var articleImage: UIImageView!
@@ -29,26 +28,27 @@ class PostViewController: UIViewController {
     @IBOutlet weak var loginView: UIView!
 
     var ref: DatabaseReference!
+    let keychain = KeychainSwift()
+    
     var location: String?
     var cuisine: String?
     var createdTime: Int?
     var instagram: Bool?
+    
     var articleID: String?
     var articleTitle: String?
     var content: String?
     var picture: UIImage?
     var photo: UIImage?
-    
     var height: CGFloat?
     var width: CGFloat?
     var pictureURL: String?
-    let keychain = KeychainSwift()
 
     var editArticle: Article?
     var uid: String?
     let now: Date = Date()
     var flag = true
-    
+        
     weak var delegate: EditUpdate?
 
     override func viewDidLoad() {
@@ -110,7 +110,7 @@ class PostViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         
     }
-    
+        
     func pictureDefault() {
         
         articleImage.image = UIImage(named: "imageDefault")
@@ -180,7 +180,6 @@ class PostViewController: UIViewController {
     func uploadPicture() {
         
         articleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(photoSource)))
-//        articleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
         articleImage.isUserInteractionEnabled = true
             
     }
@@ -213,7 +212,7 @@ class PostViewController: UIViewController {
         
         let libraryAction = UIAlertAction(title: "Select from Camera Roll", style: .default) { (_) in
             
-            self.handleSelectProfileImageView()
+            self.handleSelectImage()
             
         }
         
@@ -238,6 +237,8 @@ class PostViewController: UIViewController {
             return
             
         }
+        
+        cameraViewController.saveDelegate = self
         
         present(cameraViewController, animated: true, completion: nil)
         
@@ -407,4 +408,14 @@ extension PostViewController: UITextViewDelegate {
         
     }
     
+}
+
+extension PostViewController: SaveCameraPhotoProtocol {
+    
+    func savePhotoImage(_ photo: UIImage) {
+        
+        articleImage.image = photo
+        
+    }
+
 }

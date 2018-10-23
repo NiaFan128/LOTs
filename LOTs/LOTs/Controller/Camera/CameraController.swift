@@ -52,7 +52,6 @@ class CameraController: NSObject {
     
 }
 
-
 extension CameraController {
     
     func prepare(completionHandler: @escaping (Error?) -> Void) {

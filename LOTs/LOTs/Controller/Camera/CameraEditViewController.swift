@@ -9,6 +9,12 @@
 import UIKit
 import Photos
 
+protocol SendCameraPhotoProtocol: AnyObject {
+    
+    func sendPhotoImage(_ photo: UIImage)
+    
+}
+
 class CameraEditViewController: UIViewController {
 
     var photo: UIImage?
@@ -18,6 +24,10 @@ class CameraEditViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    
+    var completionHandler: ((_ data: UIImage) -> Void)?
+    
+    weak var sendDelegate: SendCameraPhotoProtocol?
     
     override func viewDidLoad() {
         
@@ -30,13 +40,11 @@ class CameraEditViewController: UIViewController {
         buttonColor(nextButton)
         buttonColor(saveButton)
         
-        // Do any additional setup after loading the view.
     }
     
     func styleCaptureButton() {
 
         saveBGButton.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        saveButton.layer.borderColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
         saveBGButton.layer.borderWidth = 2
         saveBGButton.layer.cornerRadius = min(saveBGButton.frame.width, saveBGButton.frame.height) / 2
         
@@ -66,26 +74,39 @@ class CameraEditViewController: UIViewController {
         
     }
     
-    @IBAction func backToCamera(_ sender: Any) {
+    @IBAction func backToCamera(_ sender: UIButton) {
     
         presentDetailFromeLeftToRight()
         
     }
     
+    
+    @IBAction func saveToPost(_ sender: UIButton) {
+        
+        guard let photo = photo else { return }
+        
+        sendDelegate?.sendPhotoImage(photo)
+        
+        let tabController = self.view.window!.rootViewController as? UITabBarController
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        tabController?.selectedIndex = 2
+
+    }
+    
     class func editForCameraPhoto(_ photo: UIImage) -> CameraEditViewController {
-        
+
         let storyboard = UIStoryboard(name: "Camera", bundle: nil)
-        
+
         guard let editViewController = storyboard.instantiateViewController(withIdentifier: "CameraEdit") as? CameraEditViewController else {
-            
+
             return CameraEditViewController()
-            
+
         }
-        
+
         editViewController.photo = photo
-        
+
         return editViewController
-        
+
     }
     
     // 由左到右

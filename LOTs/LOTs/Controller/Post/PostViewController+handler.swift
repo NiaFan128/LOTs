@@ -205,13 +205,16 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     func alertRemind(status: String) {
         
         let alertController = UIAlertController(title: "Error", message: "Please complete \(status) part!", preferredStyle: .alert)
+        
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
         alertController.addAction(okAction)
+        
         self.present(alertController, animated: true, completion: nil)
         
     }
     
-    func handleSelectProfileImageView() {
+    func handleSelectImage() {
         
         let picker = UIImagePickerController()
         
@@ -250,22 +253,6 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         print("Cancel picker")
         dismiss(animated: true, completion: nil)
-        
-    }
-    
-    class func editForCameraPhoto(_ photo: UIImage) -> PostViewController {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        guard let editViewController = storyboard.instantiateViewController(withIdentifier: "selectPage") as? PostViewController else {
-            
-            return PostViewController()
-            
-        }
-        
-        editViewController.photo = photo
-        
-        return editViewController
         
     }
     
