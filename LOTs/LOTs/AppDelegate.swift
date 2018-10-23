@@ -17,8 +17,6 @@ import KeychainSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-//    static let shared = UIApplication.shared.delegate as? AppDelegate
     
     var window: UIWindow?
 
@@ -29,12 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
 
         window?.tintColor = UIColor.init(red: 211.0/255.0, green: 90.0/255.0, blue: 102.0/255.0, alpha: 1.0)
-        
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        
-//        UINavigationBar.appearance().layer.borderWidth = 0
-//        UINavigationBar.appearance().clipsToBounds = true
         
         UITabBar.appearance().layer.borderWidth = 0
         UITabBar.appearance().clipsToBounds = true

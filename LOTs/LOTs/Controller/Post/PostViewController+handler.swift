@@ -205,13 +205,16 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     func alertRemind(status: String) {
         
         let alertController = UIAlertController(title: "Error", message: "Please complete \(status) part!", preferredStyle: .alert)
+        
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
         alertController.addAction(okAction)
+        
         self.present(alertController, animated: true, completion: nil)
         
     }
     
-    @objc func handleSelectProfileImageView() {
+    func handleSelectImage() {
         
         let picker = UIImagePickerController()
         

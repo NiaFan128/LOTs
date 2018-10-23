@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
             layout.delegate = self
         }
         
-//        userDefaults.removeObject(forKey: "block")
+        userDefaults.removeObject(forKey: "block")
         
     }
     

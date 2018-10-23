@@ -20,7 +20,6 @@ protocol EditUpdate: AnyObject {
     
 }
 
-
 class PostViewController: UIViewController {
 
     @IBOutlet weak var articleImage: UIImageView!
@@ -29,24 +28,27 @@ class PostViewController: UIViewController {
     @IBOutlet weak var loginView: UIView!
 
     var ref: DatabaseReference!
+    let keychain = KeychainSwift()
+    
     var location: String?
     var cuisine: String?
     var createdTime: Int?
     var instagram: Bool?
+    
     var articleID: String?
     var articleTitle: String?
     var content: String?
     var picture: UIImage?
+    var photo: UIImage?
     var height: CGFloat?
     var width: CGFloat?
     var pictureURL: String?
-    let keychain = KeychainSwift()
 
     var editArticle: Article?
     var uid: String?
     let now: Date = Date()
     var flag = true
-    
+        
     weak var delegate: EditUpdate?
 
     override func viewDidLoad() {
@@ -108,7 +110,7 @@ class PostViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         
     }
-    
+        
     func pictureDefault() {
         
         articleImage.image = UIImage(named: "imageDefault")
@@ -177,7 +179,7 @@ class PostViewController: UIViewController {
     
     func uploadPicture() {
         
-        articleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        articleImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(photoSource)))
         articleImage.isUserInteractionEnabled = true
             
     }
@@ -196,7 +198,52 @@ class PostViewController: UIViewController {
         self.tableView.reloadData()
         
     }
+    
+    
+    @objc func photoSource() {
+        
+        let alertController = UIAlertController(title: "Upload Image", message: nil, preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Take a Photo", style: .default) { (_) in
+            
+            self.handleCamera()
+            
+        }
+        
+        let libraryAction = UIAlertAction(title: "Select from Camera Roll", style: .default) { (_) in
+            
+            self.handleSelectImage()
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
 
+        })
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(libraryAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func handleCamera() {
+        
+        let storyboard = UIStoryboard(name: "Camera", bundle: nil)
+        
+        guard let cameraViewController = storyboard.instantiateViewController(withIdentifier: "Camera") as? CameraViewController else {
+            
+            return
+            
+        }
+        
+        cameraViewController.saveDelegate = self
+        
+        present(cameraViewController, animated: true, completion: nil)
+        
+    }
+    
 }
 
 extension PostViewController: UITableViewDataSource {
@@ -361,4 +408,14 @@ extension PostViewController: UITextViewDelegate {
         
     }
     
+}
+
+extension PostViewController: SaveCameraPhotoProtocol {
+    
+    func savePhotoImage(_ photo: UIImage) {
+        
+        articleImage.image = photo
+        
+    }
+
 }
