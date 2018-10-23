@@ -323,7 +323,6 @@ extension PostViewController: UITableViewDataSource {
             
                 cell.titleTextField.text = editArticle?.articleTitle
                 cell.contentTextView.text = editArticle?.content
-//                cell.contentCancelButton.isHidden = false
 
             } else if flag {
                 
@@ -333,7 +332,6 @@ extension PostViewController: UITableViewDataSource {
 
             }
             
-//            cell.contentCancelButton.isHidden = true
             cell.titleTextField.delegate = self
             cell.contentTextView.delegate = self
 

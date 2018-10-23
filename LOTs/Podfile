@@ -22,5 +22,6 @@ target 'LOTs' do
   pod 'lottie-ios'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'YPImagePicker'
   
 end

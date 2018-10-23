@@ -143,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				2B02B91021533F46004FC66E /* LOTsColor.swift */,
+				2BD07D34217892610039DB2F /* CameraController.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -371,7 +372,6 @@
 			isa = PBXGroup;
 			children = (
 				2B116A9E2179657600B3185F /* Camera.storyboard */,
-				2BD07D34217892610039DB2F /* CameraController.swift */,
 				2BD07D3021788D360039DB2F /* CameraViewController.swift */,
 				2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */,
 			);
@@ -521,12 +521,8 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
@@ -551,6 +547,9 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/McPicker/McPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
+				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
+				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
@@ -568,6 +567,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/McPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
