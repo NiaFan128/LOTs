@@ -282,7 +282,7 @@ extension InspireViewController: UICollectionViewDataSource {
             
             let article: Article = articles[indexPath.row]
             
-            let detailViewController = DetailViewController.detailViewControllerForArticle(article)
+            let detailViewController = DetailViewController.detailViewControllerForArticle(article, animation: false)
             navigationController?.pushViewController(detailViewController, animated: true)
             
         }

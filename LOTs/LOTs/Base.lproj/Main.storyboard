@@ -621,6 +621,7 @@
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstItem="2vd-nx-GbU" firstAttribute="leading" secondItem="vp7-gW-iWw" secondAttribute="leading" constant="15" id="KtL-th-eLc"/>
                                         <constraint firstItem="2vd-nx-GbU" firstAttribute="top" secondItem="vp7-gW-iWw" secondAttribute="top" constant="10" id="rbz-J7-J1N"/>

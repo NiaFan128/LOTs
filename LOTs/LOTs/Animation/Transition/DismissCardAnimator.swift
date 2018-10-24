@@ -41,11 +41,12 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
         let ctx = transitionContext
         let container = ctx.containerView
-        let screens: (cardDetail: DetailViewController, home: MainViewController) = (
+        let screens: (cardDetail: DetailViewController, home: UITabBarController) = (
             ctx.viewController(forKey: .from)! as! DetailViewController,
-            ctx.viewController(forKey: .to)! as! MainViewController
+            ctx.viewController(forKey: .to)! as! UITabBarController
         )
         
         let cardDetailView = ctx.view(forKey: .from)!
@@ -70,13 +71,27 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
         // Card fills inside animated container view
         cardDetailView.edges(to: animatedContainerView)
         
-        animatedContainerView.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
-        let animatedContainerTopConstraint = animatedContainerView.topAnchor.constraint(equalTo: container.topAnchor, constant: 0)
+        animatedContainerView.frame = params.fromCardFrame
+        
+        animatedContainerView.centerXAnchor.constraint(equalTo: animatedContainerView.centerXAnchor).isActive = true
+//        animatedContainerView.centerYAnchor.constraint(equalTo: animatedContainerView.centerYAnchor).isActive = true
+        let animatedContainerTopConstraint = animatedContainerView.topAnchor.constraint(equalTo: animatedContainerView.centerYAnchor, constant: 0)
+//        let animatedContainerTrailingConstraint = animatedContainerView.trailingAnchor.constraint(equalTo: animatedContainerView.centerXAnchor, constant: 0)
+//
+//        let animatedContainerCenterXConstraint = animatedContainerView.centerXAnchor.constraint(equalTo: cardDetailView.centerXAnchor)
+//        let animatedContainerCenterYConstraint = animatedContainerView.centerYAnchor.constraint(equalTo: cardDetailView.centerYAnchor)
+        let animatedContainerCenterXConstraint = animatedContainerView.centerXAnchor.constraint(equalTo: cardDetailView.centerXAnchor, constant: self.params.fromCardFrameWithoutTransform.width / 2)
+        let animatedContainerCenterYConstraint = animatedContainerView.centerYAnchor.constraint(equalTo: cardDetailView.centerYAnchor, constant: self.params.fromCardFrameWithoutTransform.height / 2)
+
+
         let animatedContainerWidthConstraint = animatedContainerView.widthAnchor.constraint(equalToConstant: cardDetailView.frame.width)
         let animatedContainerHeightConstraint = animatedContainerView.heightAnchor.constraint(equalToConstant: cardDetailView.frame.height)
         
         NSLayoutConstraint.activate([animatedContainerTopConstraint, animatedContainerWidthConstraint, animatedContainerHeightConstraint])
-        
+
+//        NSLayoutConstraint.activate([animatedContainerCenterXConstraint, animatedContainerCenterYConstraint, animatedContainerWidthConstraint, animatedContainerHeightConstraint])
+//        NSLayoutConstraint.activate([animatedContainerWidthConstraint, animatedContainerHeightConstraint])
+
         // Fix weird top inset
 //        let topTemporaryFix = screens.cardDetail.cardContentView.topAnchor.constraint(equalTo: cardDetailView.topAnchor)
         let topTemporaryFix = screens.cardDetail.tableView.topAnchor.constraint(equalTo: cardDetailView.topAnchor, constant: 0)
@@ -88,26 +103,35 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
 //        let stretchCardToFillBottom = screens.cardDetail.cardContentView.bottomAnchor.constraint(equalTo: cardDetailView.bottomAnchor)
         let stretchCardToFillBottom = screens.cardDetail.tableView.bottomAnchor.constraint(equalTo: cardDetailView.bottomAnchor)
         
-        
         func animateCardViewBackToPlace() {
+            
             stretchCardToFillBottom.isActive = true
 //            screens.cardDetail.isFontStateHighlighted = false
             // Back to identity
             // NOTE: Animated container view in a way, helps us to not messing up `transform` with `AutoLayout` animation.
             cardDetailView.transform = CGAffineTransform.identity
             animatedContainerTopConstraint.constant = self.params.fromCardFrameWithoutTransform.minY
+//            animatedContainerTrailingConstraint.constant = self.params.fromCardFrameWithoutTransform.minX
+//            animatedContainerCenterXConstraint.constant = self.params.fromCardFrameWithoutTransform.width / 2
+//            animatedContainerCenterYConstraint.constant = self.params.fromCardFrameWithoutTransform.height / 2
+            
             animatedContainerWidthConstraint.constant = self.params.fromCardFrameWithoutTransform.width
             animatedContainerHeightConstraint.constant = self.params.fromCardFrameWithoutTransform.height
             container.layoutIfNeeded()
+            
         }
         
         func completeEverything() {
+            
             let success = !ctx.transitionWasCancelled
             animatedContainerView.removeConstraints(animatedContainerView.constraints)
             animatedContainerView.removeFromSuperview()
+            
             if success {
+                
                 cardDetailView.removeFromSuperview()
                 self.params.fromCell.isHidden = false
+                
             } else {
 //                screens.cardDetail.isFontStateHighlighted = true
                 
@@ -123,7 +147,9 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
                 container.addSubview(cardDetailView)
                 cardDetailView.edges(to: container)
             }
+            
             ctx.completeTransition(success)
+        
         }
         
         UIView.animate(withDuration: transitionDuration(using: ctx), delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {

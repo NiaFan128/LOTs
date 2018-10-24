@@ -253,23 +253,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         }()
         
-//        class func detailViewControllerForArticle(_ article: Article) -> DetailViewController {
-//
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//            guard let viewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
-//
-//                return DetailViewController()
-//
-//            }
-//
-//            viewController.article = article
-//
-//            return viewController
-//
-//        }
-                
-        let detailViewController = DetailViewController.detailViewControllerForArticle(article)
+        let detailViewController = DetailViewController.detailViewControllerForArticle(article, animation: true)
 
         let params = CardTransition.Params(fromCardFrame: cardPresentationFrameOnScreen,
                                            fromCardFrameWithoutTransform: cardFrameWithoutTransform,
@@ -320,8 +304,8 @@ extension MainViewController: LayoutDelegate {
     
 }
 
-extension MainViewController: UIViewControllerTransitioningDelegate {
-    
-    
-    
-}
+//extension MainViewController: UIViewControllerTransitioningDelegate {
+//    
+//    
+//    
+//}
