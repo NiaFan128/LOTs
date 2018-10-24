@@ -15,6 +15,27 @@ class MainCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    var disabledHighlightedAnimation = false
+    
+    func resetTransform() {
+        
+        transform = .identity
+    
+    }
+    
+    func freezeAnimations() {
+        
+        disabledHighlightedAnimation = true
+        layer.removeAllAnimations()
+    
+    }
+    
+    func unfreezeAnimations() {
+        
+        disabledHighlightedAnimation = false
+    
+    }
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()

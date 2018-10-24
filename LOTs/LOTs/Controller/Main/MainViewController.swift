@@ -17,6 +17,8 @@ class MainViewController: UIViewController {
 //    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
+    private var transition: CardTransition?
+    
     var fullScreenSize: CGSize!
     var article: Article!
     var articles = [Article]()
@@ -224,9 +226,68 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let article: Article = articles[indexPath.row]
         
+        // Get tapped cell location
+        let cell = collectionView.cellForItem(at: indexPath) as! MainCell
+        
+        // Freeze highlighted state (or else it will bounce back)
+        cell.freezeAnimations()
+        
+        // Get current frame on screen
+        let currentCellFrame = cell.layer.presentation()!.frame
+        
+        // Convert current frame to screen's coordinates
+        let cardPresentationFrameOnScreen = cell.superview!.convert(currentCellFrame, to: nil)
+        
+        // Get card frame without transform in screen's coordinates  (for the dismissing back later to original location)
+        let cardFrameWithoutTransform = { () -> CGRect in
+            
+            let center = cell.center
+            let size = cell.bounds.size
+            let r = CGRect(
+                x: center.x - size.width / 2,
+                y: center.y - size.height / 2,
+                width: size.width,
+                height: size.height
+            )
+            return cell.superview!.convert(r, to: nil)
+        
+        }()
+        
+//        class func detailViewControllerForArticle(_ article: Article) -> DetailViewController {
+//
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//            guard let viewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+//
+//                return DetailViewController()
+//
+//            }
+//
+//            viewController.article = article
+//
+//            return viewController
+//
+//        }
+                
         let detailViewController = DetailViewController.detailViewControllerForArticle(article)
 
-        navigationController?.pushViewController(detailViewController, animated: true)
+        let params = CardTransition.Params(fromCardFrame: cardPresentationFrameOnScreen,
+                                           fromCardFrameWithoutTransform: cardFrameWithoutTransform,
+                                           fromCell: cell)
+        
+        transition = CardTransition(params: params)
+        
+        detailViewController.transitioningDelegate = transition
+//        detailViewController.modalPresentationCapturesStatusBarAppearance = true
+        detailViewController.modalPresentationStyle = .custom
+
+        present(detailViewController, animated: true) {[unowned cell] in
+
+            cell.unfreezeAnimations()
+
+        }
+        
+//        navigationController?.pushViewController(detailViewController, animated: true)
         
     }
     
@@ -256,5 +317,11 @@ extension MainViewController: LayoutDelegate {
         
     }
 
+    
+}
+
+extension MainViewController: UIViewControllerTransitioningDelegate {
+    
+    
     
 }

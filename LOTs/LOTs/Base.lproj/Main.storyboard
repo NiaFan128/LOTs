@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -575,10 +576,10 @@
             </objects>
             <point key="canvasLocation" x="-2868.115942028986" y="-376.33928571428572"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tabbar Controller-->
         <scene sceneID="3bw-dp-vTT">
             <objects>
-                <tabBarController storyboardIdentifier="MainPage" id="C2O-lF-NU2" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainPage" id="C2O-lF-NU2" customClass="UITabbarController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Glt-Sl-8cX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -637,15 +638,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="0Im-OY-qTt" firstAttribute="bottom" secondItem="Ceg-zf-2ua" secondAttribute="bottom" id="1mY-lE-2vH"/>
                             <constraint firstItem="wUi-5x-U2e" firstAttribute="leading" secondItem="Ceg-zf-2ua" secondAttribute="leading" id="24L-eN-YGJ"/>
                             <constraint firstItem="wUi-5x-U2e" firstAttribute="trailing" secondItem="Ceg-zf-2ua" secondAttribute="trailing" id="69j-kV-Yyv"/>
                             <constraint firstItem="luc-PI-wRf" firstAttribute="leading" secondItem="Ceg-zf-2ua" secondAttribute="leading" id="AfL-wG-im5"/>
                             <constraint firstItem="luc-PI-wRf" firstAttribute="trailing" secondItem="Ceg-zf-2ua" secondAttribute="trailing" id="I2E-Uf-biy"/>
                             <constraint firstItem="0Im-OY-qTt" firstAttribute="top" secondItem="Ceg-zf-2ua" secondAttribute="top" id="ITl-JT-J7i"/>
-                            <constraint firstItem="Ceg-zf-2ua" firstAttribute="bottom" secondItem="0Im-OY-qTt" secondAttribute="bottom" id="Oej-f0-Pxt"/>
+                            <constraint firstItem="luc-PI-wRf" firstAttribute="bottom" secondItem="Ceg-zf-2ua" secondAttribute="bottom" id="aD7-dU-WZS"/>
                             <constraint firstItem="Ceg-zf-2ua" firstAttribute="top" secondItem="wUi-5x-U2e" secondAttribute="bottom" id="bfV-je-kOl"/>
                             <constraint firstItem="luc-PI-wRf" firstAttribute="top" secondItem="wUi-5x-U2e" secondAttribute="bottom" id="bwr-un-JHc"/>
-                            <constraint firstItem="Ceg-zf-2ua" firstAttribute="bottom" secondItem="luc-PI-wRf" secondAttribute="bottom" id="h0b-hg-utg"/>
+                            <constraint firstItem="luc-PI-wRf" firstAttribute="bottom" secondItem="Ceg-zf-2ua" secondAttribute="bottom" id="hD3-tm-csi"/>
                             <constraint firstItem="Ceg-zf-2ua" firstAttribute="trailing" secondItem="0Im-OY-qTt" secondAttribute="trailing" id="ojN-x5-2wX"/>
                             <constraint firstItem="0Im-OY-qTt" firstAttribute="leading" secondItem="Ceg-zf-2ua" secondAttribute="leading" id="txQ-qB-4Pn"/>
                             <constraint firstItem="wUi-5x-U2e" firstAttribute="top" secondItem="WKH-59-8IB" secondAttribute="top" id="yJi-q1-fOR"/>
