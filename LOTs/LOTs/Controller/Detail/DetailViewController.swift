@@ -16,7 +16,6 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var animationBGView: UIView!
-//    @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
     var fullScreenSize: CGSize!
     var article: Article!
@@ -33,8 +32,6 @@ class DetailViewController: UIViewController {
     let dispatchGroup = DispatchGroup()
     let userDefaults = UserDefaults.standard
     
-//    var initialTouchPoint: CGPoint = CGPoint(x: 0, y: 0)
-
     var draggingDownToDismiss = false
     
     final class DismissalPanGesture: UIPanGestureRecognizer {}

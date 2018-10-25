@@ -71,36 +71,40 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
         // Card fills inside animated container view
         cardDetailView.edges(to: animatedContainerView)
         
-        animatedContainerView.frame = params.fromCardFrame
+        container.frame = params.fromCardFrame
         
-        animatedContainerView.centerXAnchor.constraint(equalTo: animatedContainerView.centerXAnchor).isActive = true
-//        animatedContainerView.centerYAnchor.constraint(equalTo: animatedContainerView.centerYAnchor).isActive = true
-        let animatedContainerTopConstraint = animatedContainerView.topAnchor.constraint(equalTo: animatedContainerView.centerYAnchor, constant: 0)
-//        let animatedContainerTrailingConstraint = animatedContainerView.trailingAnchor.constraint(equalTo: animatedContainerView.centerXAnchor, constant: 0)
-//
-//        let animatedContainerCenterXConstraint = animatedContainerView.centerXAnchor.constraint(equalTo: cardDetailView.centerXAnchor)
-//        let animatedContainerCenterYConstraint = animatedContainerView.centerYAnchor.constraint(equalTo: cardDetailView.centerYAnchor)
-        let animatedContainerCenterXConstraint = animatedContainerView.centerXAnchor.constraint(equalTo: cardDetailView.centerXAnchor, constant: self.params.fromCardFrameWithoutTransform.width / 2)
-        let animatedContainerCenterYConstraint = animatedContainerView.centerYAnchor.constraint(equalTo: cardDetailView.centerYAnchor, constant: self.params.fromCardFrameWithoutTransform.height / 2)
-
-
+//        let animatedContainerTopConstraint = animatedContainerView.topAnchor.constraint(equalTo: animatedContainerView.centerYAnchor, constant: 0)
+//        let animatedContainerLeadingConstraint = animatedContainerView.leadingAnchor.constraint(equalTo: animatedContainerView.centerXAnchor, constant: 0)
+//        let animatedContainerWidthConstraint = animatedContainerView.widthAnchor.constraint(equalToConstant: cardDetailView.frame.width)
+//        let animatedContainerHeightConstraint = animatedContainerView.heightAnchor.constraint(equalToConstant: cardDetailView.frame.height)
+        
+//        animatedContainerView.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+//        animatedContainerView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+//        let animatedContainerTopConstraint = animatedContainerView.topAnchor.constraint(equalTo: container.topAnchor, constant: 0)
+//        let animatedContainerLeadingConstraint = animatedContainerView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 0)
+        
+        let animatedContainerCenterXConstraint = animatedContainerView.centerXAnchor.constraint(equalTo: container.centerXAnchor, constant: 0)
+        let animatedContainerCenterYConstraint = animatedContainerView.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: 0)
         let animatedContainerWidthConstraint = animatedContainerView.widthAnchor.constraint(equalToConstant: cardDetailView.frame.width)
         let animatedContainerHeightConstraint = animatedContainerView.heightAnchor.constraint(equalToConstant: cardDetailView.frame.height)
+//
+//        NSLayoutConstraint.activate([animatedContainerTopConstraint,
+//                                     animatedContainerLeadingConstraint,
+//                                     animatedContainerWidthConstraint,
+//                                     animatedContainerHeightConstraint])
+
+        NSLayoutConstraint.activate([animatedContainerCenterXConstraint,
+                                     animatedContainerCenterYConstraint,
+                                     animatedContainerWidthConstraint,
+                                     animatedContainerHeightConstraint])
         
-        NSLayoutConstraint.activate([animatedContainerTopConstraint, animatedContainerWidthConstraint, animatedContainerHeightConstraint])
-
-//        NSLayoutConstraint.activate([animatedContainerCenterXConstraint, animatedContainerCenterYConstraint, animatedContainerWidthConstraint, animatedContainerHeightConstraint])
-//        NSLayoutConstraint.activate([animatedContainerWidthConstraint, animatedContainerHeightConstraint])
-
         // Fix weird top inset
-//        let topTemporaryFix = screens.cardDetail.cardContentView.topAnchor.constraint(equalTo: cardDetailView.topAnchor)
         let topTemporaryFix = screens.cardDetail.tableView.topAnchor.constraint(equalTo: cardDetailView.topAnchor, constant: 0)
         topTemporaryFix.isActive = GlobalConstants.isEnabledWeirdTopInsetsFix
         
         container.layoutIfNeeded()
         
         // Force card filling bottom
-//        let stretchCardToFillBottom = screens.cardDetail.cardContentView.bottomAnchor.constraint(equalTo: cardDetailView.bottomAnchor)
         let stretchCardToFillBottom = screens.cardDetail.tableView.bottomAnchor.constraint(equalTo: cardDetailView.bottomAnchor)
         
         func animateCardViewBackToPlace() {
@@ -110,11 +114,10 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
             // Back to identity
             // NOTE: Animated container view in a way, helps us to not messing up `transform` with `AutoLayout` animation.
             cardDetailView.transform = CGAffineTransform.identity
-            animatedContainerTopConstraint.constant = self.params.fromCardFrameWithoutTransform.minY
-//            animatedContainerTrailingConstraint.constant = self.params.fromCardFrameWithoutTransform.minX
-//            animatedContainerCenterXConstraint.constant = self.params.fromCardFrameWithoutTransform.width / 2
-//            animatedContainerCenterYConstraint.constant = self.params.fromCardFrameWithoutTransform.height / 2
-            
+//            animatedContainerTopConstraint.constant = self.params.fromCardFrameWithoutTransform.minY
+//            animatedContainerLeadingConstraint.constant = self.params.fromCardFrameWithoutTransform.minX
+//            animatedContainerCenterXConstraint.constant = self.params.fromCardFrameWithoutTransform.midX
+//            animatedContainerCenterYConstraint.constant = self.params.fromCardFrameWithoutTransform.midY
             animatedContainerWidthConstraint.constant = self.params.fromCardFrameWithoutTransform.width
             animatedContainerHeightConstraint.constant = self.params.fromCardFrameWithoutTransform.height
             container.layoutIfNeeded()

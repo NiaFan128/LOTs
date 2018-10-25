@@ -18,6 +18,14 @@ extension GlobalConstants {
         case fromCenter
     }
     
+    enum CardHorizontalExpandingStyle {
+        /// Expanding card pinning at the top of animatingContainerView
+        case fromLeading
+        
+        /// Expanding card pinning at the center of animatingContainerView
+        case fromCenter
+    }
+    
 }
 
 enum GlobalConstants {
@@ -28,6 +36,7 @@ enum GlobalConstants {
     static let dismissalAnimationDuration = 1.6
     
     static let cardVerticalExpandingStyle: CardVerticalExpandingStyle = .fromTop
+    static let cardHorizontalExpandingStyle: CardHorizontalExpandingStyle = .fromLeading
     
     /// Without this, there'll be weird offset (probably from scrollView) that obscures the card content view of the cardDetailView.
     static let isEnabledWeirdTopInsetsFix = true

@@ -17,6 +17,17 @@ class MainCell: UICollectionViewCell {
     
     var disabledHighlightedAnimation = false
     
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
+        containerView.corner()
+        profileImageView.cornerBorder()
+        titleLabel.titleShadow()
+        
+    }
+    
+    
     func resetTransform() {
         
         transform = .identity
@@ -33,16 +44,6 @@ class MainCell: UICollectionViewCell {
     func unfreezeAnimations() {
         
         disabledHighlightedAnimation = false
-    
-    }
-    
-    override func awakeFromNib() {
-        
-        super.awakeFromNib()
-        
-        containerView.corner()
-        profileImageView.cornerBorder()
-        titleLabel.titleShadow()
     
     }
     
