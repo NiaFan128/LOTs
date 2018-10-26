@@ -19,7 +19,7 @@
 		2B2AF6A8217092B0002A2748 /* profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2AF6A7217092B0002A2748 /* profile.json */; };
 		2B2AF6AA2170950C002A2748 /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2AF6A92170950C002A2748 /* list.json */; };
 		2B2AF6AC2170C4A7002A2748 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2AF6AB2170C4A6002A2748 /* user.json */; };
-		2B42E712215CDCF500BB0F86 /* InspireViewController copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E711215CDCF500BB0F86 /* InspireViewController copy.swift */; };
+		2B2BE9F221831A2200AE2532 /* InspireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2BE9F121831A2200AE2532 /* InspireViewController.swift */; };
 		2B42E715215CDF3500BB0F86 /* TypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E713215CDF3500BB0F86 /* TypeCollectionViewCell.swift */; };
 		2B42E716215CDF3500BB0F86 /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */; };
 		2B42E718215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E717215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift */; };
@@ -84,7 +84,7 @@
 		2B2AF6A7217092B0002A2748 /* profile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profile.json; sourceTree = "<group>"; };
 		2B2AF6A92170950C002A2748 /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = list.json; path = ../../../../../../../Downloads/list.json; sourceTree = "<group>"; };
 		2B2AF6AB2170C4A6002A2748 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = ../../../../../../../Downloads/user.json; sourceTree = "<group>"; };
-		2B42E711215CDCF500BB0F86 /* InspireViewController copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InspireViewController copy.swift"; sourceTree = "<group>"; };
+		2B2BE9F121831A2200AE2532 /* InspireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InspireViewController.swift; path = LOTs/Controller/Inspire/InspireViewController.swift; sourceTree = "<group>"; };
 		2B42E713215CDF3500BB0F86 /* TypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		2B42E717215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspireCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		2B42E710215CDCD000BB0F86 /* Inspire */ = {
 			isa = PBXGroup;
 			children = (
-				2B42E711215CDCF500BB0F86 /* InspireViewController copy.swift */,
+				2B2BE9F121831A2200AE2532 /* InspireViewController.swift */,
 			);
 			name = Inspire;
 			path = ../..;
@@ -657,11 +657,11 @@
 				2BD2495D2180286400538307 /* PresentCardAnimator.swift in Sources */,
 				2B83038721524275006E2522 /* MainLayout.swift in Sources */,
 				2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */,
-				2B42E712215CDCF500BB0F86 /* InspireViewController copy.swift in Sources */,
 				2BD77FE02174716400C378F7 /* UserViewController.swift in Sources */,
 				2BE27F0C215C8369005387A4 /* DetailBTableViewCell.swift in Sources */,
 				2BE27EF8215BAC5A005387A4 /* LikeDetailViewController.swift in Sources */,
 				2BE27F02215BD475005387A4 /* ProfileCollectionViewCell.swift in Sources */,
+				2B2BE9F221831A2200AE2532 /* InspireViewController.swift in Sources */,
 				2BE27F08215C8357005387A4 /* DetailATableViewCell.swift in Sources */,
 				2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */,
 				2B8303852152295F006E2522 /* MainCell.swift in Sources */,
