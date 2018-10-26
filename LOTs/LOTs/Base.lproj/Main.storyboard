@@ -143,6 +143,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="articleImage" destination="Wem-T0-DLQ" id="PdF-o1-NlK"/>
+                        <outlet property="doneBarButton" destination="tbI-vD-dA8" id="Dav-cm-7JJ"/>
                         <outlet property="loginView" destination="DYf-ml-BqD" id="ZFE-5L-KJ9"/>
                         <outlet property="profileImage" destination="2GQ-M2-b3H" id="waB-Fa-Pxf"/>
                         <outlet property="tableView" destination="jQd-Sg-nJb" id="WjW-GS-1vq"/>

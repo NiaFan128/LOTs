@@ -26,7 +26,8 @@ class PostViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loginView: UIView!
-
+    @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
     var ref: DatabaseReference!
     let keychain = KeychainSwift()
     

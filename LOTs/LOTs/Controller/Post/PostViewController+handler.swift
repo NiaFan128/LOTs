@@ -47,6 +47,8 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
             return
         }
         
+        doneBarButton.isEnabled = false
+        
         // UUID
         let fileName = UUID().uuidString
         
@@ -140,6 +142,8 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         guard articleID != nil else {
             return
         }
+        
+        doneBarButton.isEnabled = false
         
         // UUID
         let fileName = UUID().uuidString

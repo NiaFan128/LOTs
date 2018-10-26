@@ -108,9 +108,7 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
             
             stretchCardToFillBottom.isActive = true
             // Back to identity
-            // NOTE: Animated container view in a way, helps us to not messing up `transform` with `AutoLayout` animation.
-//            cardDetailView.alpha = 0.0
-            
+            // NOTE: Animated container view in a way, helps us to not messing up `transform` with `AutoLayout` animation.            
             cardDetailView.transform = CGAffineTransform.identity
             self.params.fromCell.isHidden = false
 //            self.params.fromCell.fadeIn()

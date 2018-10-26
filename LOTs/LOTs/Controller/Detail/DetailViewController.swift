@@ -200,6 +200,7 @@ class DetailViewController: UIViewController {
             editViewController.hidesBottomBarWhenPushed = true
             
             editViewController.delegate = self
+//            editViewController.navigationController?.isNavigationBarHidden = false
             
             self.show(editViewController, sender: nil)
             
