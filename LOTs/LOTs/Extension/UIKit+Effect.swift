@@ -77,4 +77,49 @@ extension UIView {
     
     }
     
+    enum AnimationKeyPath: String {
+        
+        case opacity = "opacity"
+    
+    }
+    
+    func flash(animation: AnimationKeyPath ,withDuration duration: TimeInterval = 0.5, repeatCount: Float = 5){
+        
+        let flash = CABasicAnimation(keyPath: AnimationKeyPath.opacity.rawValue)
+        flash.duration = duration
+        flash.fromValue = 1 // alpha
+        flash.toValue = 0 // alpha
+        flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        flash.autoreverses = true
+        flash.repeatCount = repeatCount
+        
+        layer.add(flash, forKey: nil)
+        
+    }
+    
+    func fadeTo(_ alpha: CGFloat, duration: TimeInterval? = 0.3) {
+        
+        DispatchQueue.main.async {
+        
+            UIView.animate(withDuration: duration != nil ? duration! : 0.5) {
+                self.alpha = alpha
+            
+            }
+        
+        }
+    
+    }
+    
+    func fadeIn(_ duration: TimeInterval? = 1.0) {
+        
+        fadeTo(1.0, duration: duration)
+    
+    }
+    
+    func fadeOut(_ duration: TimeInterval? = 0.6) {
+    
+        fadeTo(0.0, duration: duration)
+    
+    }
+    
 }

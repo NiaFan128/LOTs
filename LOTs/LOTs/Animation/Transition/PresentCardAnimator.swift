@@ -158,7 +158,6 @@ final class PresentCardTransitionDriver {
 
         }()
         
-        
         animatedContainerVerticalConstraint.isActive = true
         animatedContainerHorizontalConstraint.isActive = true
         
@@ -197,11 +196,6 @@ final class PresentCardTransitionDriver {
                 }
             }()
         
-//            let cardConstraints = [
-//                verticalAnchor,
-//                cardDetailView.centerXAnchor.constraint(equalTo: animatedContainerView.centerXAnchor),
-//                ]
-
             let cardConstraints = [
                 verticalAnchor,
                 horizontalAnchor
@@ -223,9 +217,8 @@ final class PresentCardTransitionDriver {
         params.fromCell.isHidden = true
         params.fromCell.resetTransform()
         
-//        let topTemporaryFix = screens.cardDetail.cardContentView.topAnchor.constraint(equalTo: cardDetailView.topAnchor, constant: 0)
-        
-        let topTemporaryFix = screens.cardDetail.tableView.topAnchor.constraint(equalTo: cardDetailView.topAnchor, constant: 0)
+        let topTemporaryFix = screens.cardDetail.statusbarView.topAnchor.constraint(equalTo: cardDetailView.topAnchor, constant: 0)
+
         topTemporaryFix.isActive = GlobalConstants.isEnabledWeirdTopInsetsFix
         
         container.layoutIfNeeded()
@@ -265,7 +258,7 @@ final class PresentCardTransitionDriver {
             cardDetailView.removeConstraints([topTemporaryFix, cardWidthConstraint, cardHeightConstraint])
             
             // Keep -1 to be consistent with the weird bug above.
-            cardDetailView.edges(to: container, top: -1)
+            cardDetailView.edges(to: container, top: 0)
             
             // No longer need the bottom constraint that pins bottom of card content to its root.
 //            screens.cardDetail.cardBottomToRootBottomConstraint.isActive = false
@@ -283,9 +276,13 @@ final class PresentCardTransitionDriver {
             
             // Linear animation for expansion
             let cardExpanding = UIViewPropertyAnimator(duration: baseAnimator.duration * 0.6, curve: .linear) {
+                
                 animateCardDetailViewSizing()
+            
             }
+            
             cardExpanding.startAnimation()
+        
         }
         
         baseAnimator.addCompletion { (_) in

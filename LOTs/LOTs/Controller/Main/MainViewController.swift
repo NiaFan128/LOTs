@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-                
+        
 //        searchBar.backgroundImage = UIImage()
         ref = Database.database().reference()
         fullScreenSize = UIScreen.main.bounds.size

@@ -33,7 +33,7 @@ enum GlobalConstants {
     static let cardHighlightedFactor: CGFloat = 0.96
     static let statusBarAnimationDuration: TimeInterval = 0.4
     static let cardCornerRadius: CGFloat = 16
-    static let dismissalAnimationDuration = 1.6
+    static let dismissalAnimationDuration = 0.8
     
     static let cardVerticalExpandingStyle: CardVerticalExpandingStyle = .fromTop
     static let cardHorizontalExpandingStyle: CardHorizontalExpandingStyle = .fromLeading

@@ -657,6 +657,7 @@
                     </view>
                     <connections>
                         <outlet property="animationBGView" destination="luc-PI-wRf" id="3ik-GL-mlG"/>
+                        <outlet property="statusbarView" destination="wUi-5x-U2e" id="jdF-mg-6BP"/>
                         <outlet property="tableView" destination="0Im-OY-qTt" id="dit-6y-bYE"/>
                     </connections>
                 </viewController>

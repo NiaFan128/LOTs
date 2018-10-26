@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var animationBGView: UIView!
+    @IBOutlet weak var statusbarView: UIView!
     
     var fullScreenSize: CGSize!
     var article: Article!
@@ -89,56 +90,23 @@ class DetailViewController: UIViewController {
         dismissalScreenEdgePanGesture.delegate = self
         
         dismissalPanGesture.require(toFail: dismissalScreenEdgePanGesture)
-        loadViewIfNeeded()
+        statusbarView.isHidden = false
         
+        loadViewIfNeeded()
+    
         tableView.addGestureRecognizer(dismissalPanGesture)
         tableView.addGestureRecognizer(dismissalScreenEdgePanGesture)
         
-//        tableView.addGestureRecognizer(panGestureRecognizer)
-
-//        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
-//        view.addGestureRecognizer(panGestureRecognizer!)
-        
     }
-    
-    
-//    @IBAction func panGestureRecognizerHandler(_ sender: UIPanGestureRecognizer) {
-//
-//        let touchPoint = sender.location(in: self.view?.window)
-//
-//        if sender.state == UIGestureRecognizer.State.began {
-//
-//            initialTouchPoint = touchPoint
-//
-//        } else if sender.state == UIGestureRecognizer.State.changed {
-//
-//            if touchPoint.y - initialTouchPoint.y > 0 {
-//
-//                self.view.frame = CGRect(x: 0, y: touchPoint.y - initialTouchPoint.y, width: self.view.frame.size.width, height: self.view.frame.size.height)
-//
-//            }
-//        } else if sender.state == UIGestureRecognizer.State.ended || sender.state == UIGestureRecognizer.State.cancelled {
-//
-//            if touchPoint.y - initialTouchPoint.y > 100 {
-//
-//                self.dismiss(animated: true, completion: nil)
-//
-//            } else {
-//
-//                UIView.animate(withDuration: 0.3, animations: {
-//
-//                    self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
-//
-//                })
-//            }
-//        }
-//
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
     
         self.navigationController?.isNavigationBarHidden = true
-    
+        
+        var prefersStatusBarHidden: Bool {
+            return false
+        }
+        
         readInterestedIn()
         
     }
@@ -283,7 +251,6 @@ class DetailViewController: UIViewController {
             
         })
         
-        
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         
@@ -329,8 +296,6 @@ class DetailViewController: UIViewController {
 
         let alertController = UIAlertController(title: "", message: "Do you think it is \(message)? \n We will proceed accordingly soon! ", preferredStyle: .alert)
         
-//        let alertController = UIAlertController(title: "Report", message: "Do you think it is \(message)? \n We will proceed accordingly soon! ", preferredStyle: .alert)
-        
         let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
             
             self.receiveMessage()
@@ -351,8 +316,6 @@ class DetailViewController: UIViewController {
     func blockUser(_ user: String) {
 
         let alertController = UIAlertController(title: "", message: "Are you sure to block this user, \(user) ?", preferredStyle: .alert)
-
-//        let alertController = UIAlertController(title: "Block", message: "Are you sure to block this user, \(user) ?", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
             
@@ -665,7 +628,6 @@ extension DetailViewController: UITableViewDataSource {
         
     }
     
-    
 }
 
 extension DetailViewController: UITableViewDelegate {
@@ -733,8 +695,6 @@ extension DetailViewController: UIGestureRecognizerDelegate {
     
     func didSuccessfullyDragDownToDismiss() {
         
-//        cardViewModel = unhighlightedCardViewModel
-//        dismiss(animated: true)
         self.dismiss(animated: true, completion: nil)
     
     }
@@ -864,37 +824,6 @@ extension DetailViewController: UIGestureRecognizerDelegate {
         }
     
     }
-    
-//    override func viewWillLayoutSubviews() {
-//
-//        super.viewWillLayoutSubviews()
-//
-//        scrollView.scrollIndicatorInsets = .init(top: cardContentView.bounds.height, left: 0, bottom: 0, right: 0)
-//
-//        if GlobalConstants.isEnabledTopSafeAreaInsetsFixOnCardDetailViewController {
-//
-//            self.additionalSafeAreaInsets = .init(top: max(-view.safeAreaInsets.top,0), left: 0, bottom: 0, right: 0)
-//
-//        }
-//
-//    }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if draggingDownToDismiss || (scrollView.isTracking && scrollView.contentOffset.y < 0) {
-//            draggingDownToDismiss = true
-//            scrollView.contentOffset = .zero
-//        }
-//
-//        scrollView.showsVerticalScrollIndicator = !draggingDownToDismiss
-//    }
-    
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        // Without this, when user drag down and lift the finger fast at the top, there'll be some scrolling going on.
-//        // This check prevents that.
-//        if velocity.y > 0 && scrollView.contentOffset.y <= 0 {
-//            scrollView.contentOffset = .zero
-//        }
-//    }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         

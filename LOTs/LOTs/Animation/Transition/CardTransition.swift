@@ -33,6 +33,7 @@ final class CardTransition: NSObject, UIViewControllerTransitioningDelegate {
             fromCardFrame: self.params.fromCardFrame,
             fromCell: self.params.fromCell
         )
+        
         return PresentCardAnimator(params: params)
     
     }

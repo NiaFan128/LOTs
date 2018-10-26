@@ -260,6 +260,8 @@ extension InspireViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == self.typeCollectionView {
+        
+            collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             
                 switch indexPath.item {
                     
