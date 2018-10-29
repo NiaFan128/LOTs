@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
 
         window?.tintColor = UIColor.init(red: 211.0/255.0, green: 90.0/255.0, blue: 102.0/255.0, alpha: 1.0)
+        window?.backgroundColor = .white
         
         UITabBar.appearance().layer.borderWidth = 0
         UITabBar.appearance().clipsToBounds = true
@@ -40,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let keychain: KeychainSwift = KeychainSwift()
         
-        if keychain.get("uid") as? String == nil {
+        if keychain.get("uid") == nil {
             
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let navo = storyboard.instantiateViewController(withIdentifier: "Login")

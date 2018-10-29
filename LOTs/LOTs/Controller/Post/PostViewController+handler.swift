@@ -202,6 +202,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     
                     self.delegate?.readUpdateData()
                     self.doneBarButton.isEnabled = true
+                    self.cleanData()
                     self.navigationController?.popViewController(animated: true)
                     
                 })

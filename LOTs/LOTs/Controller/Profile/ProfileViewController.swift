@@ -275,7 +275,6 @@ extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let article: Article = articles[indexPath.row]
-        
         let detailViewController = DetailViewController.detailViewControllerForArticle(article, animation: false)
         navigationController?.pushViewController(detailViewController, animated: true)
         

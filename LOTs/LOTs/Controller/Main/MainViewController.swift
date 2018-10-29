@@ -36,13 +36,11 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
-//        searchBar.backgroundImage = UIImage()
         ref = Database.database().reference()
         fullScreenSize = UIScreen.main.bounds.size
         
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
-//        collectiomainCollectionViewnView.showsHorizontalScrollIndicator = false
         mainCollectionView.showsVerticalScrollIndicator = false
         
         refreshControl = UIRefreshControl()
@@ -55,10 +53,12 @@ class MainViewController: UIViewController {
         
         // Set the PinterestLayout delegate
         if let layout = mainCollectionView?.collectionViewLayout as? MainLayout {
+            
             layout.delegate = self
+        
         }
         
-        userDefaults.removeObject(forKey: "block")
+//        userDefaults.removeObject(forKey: "block")
         
     }
     
@@ -114,6 +114,8 @@ class MainViewController: UIViewController {
         
         ref.child("posts").queryOrdered(byChild: "createdTime").observe(.childAdded) { (snapshot) in
             
+            print(snapshot)
+            
             guard let value = snapshot.value as? NSDictionary else { return }
             
             guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
@@ -133,7 +135,12 @@ class MainViewController: UIViewController {
                     
                 }
                 
-                self.articles.insert(articleData, at: 0)
+                // Would like to know why ????
+                if articleData.articleID != self.articles.first?.articleID {
+                    
+                    self.articles.insert(articleData, at: 0)
+                
+                }
                 
             } catch {
                 

@@ -99,8 +99,6 @@ class LoginViewController: UIViewController {
                     
                     if let info = result as? [String: Any] {
                         
-                        print("info: \(info)")
-                        
                         let fbName = info["name"] as? String
                         let fbEmail = info["email"] as? String
                         let fbPhoto = info["picture"] as? [String: Any]
@@ -163,9 +161,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func facebookEULA() {
-        
-        print("EULA")
-    
+            
         let webVC = TermsViewController()
         
         self.show(webVC, sender: nil)

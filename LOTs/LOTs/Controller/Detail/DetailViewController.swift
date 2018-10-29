@@ -73,6 +73,8 @@ class DetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        view.backgroundColor = .white
+        
         uid = self.keychain.get("uid")
         
         self.navigationController?.isNavigationBarHidden = true
@@ -224,8 +226,6 @@ class DetailViewController: UIViewController {
         
         let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { (_) in
             
-            print("delete \(articleID)")
-            
             self.deleteAlertRemind(articleID)
             
         })
@@ -281,23 +281,17 @@ class DetailViewController: UIViewController {
         
         let spamAction = UIAlertAction(title: "It's spam", style: .destructive, handler: { (_) in
             
-            print("It's spam.")
-            
             self.reportConfirmation("spam")
             
         })
         
         let inappropriateAction = UIAlertAction(title: "It's inappropriate", style: .destructive, handler: { (_) in
             
-            print("It's inappropriate.")
-            
             self.reportConfirmation("inappropriate")
             
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            
-            print("cancel")
             
         })
 
@@ -406,7 +400,7 @@ class DetailViewController: UIViewController {
             
         } else {
             
-            guard let uid = self.keychain.get("uid") as? String else { return }
+            guard let uid = self.keychain.get("uid") else { return }
             guard let location = article.location else { return }
             let articleID = article.articleID
             
@@ -457,9 +451,7 @@ class DetailViewController: UIViewController {
                 
                 guard let value = snapshot.value as? NSDictionary else { return }
                 
-                guard let thisArticleID = value["\(articleID)"] as? Bool else {
-                    return
-                }
+                guard let thisArticleID = value["\(articleID)"] as? Bool else { return }
                 
                 if thisArticleID == true {
                     
@@ -535,23 +527,22 @@ class DetailViewController: UIViewController {
         })
 
     }
-        
-    // TBC
-    func fetchInterestNumber() {
-        
-        let articleID = self.article.articleID
-//        guard let location = self.article.location else { return }
-
-        ref.child("likes").queryOrderedByValue().queryEqual(toValue: articleID).observe(.value) { (snapshot) in
-            
-            print(snapshot)
-            
-        }
-    
-    }
     
 }
-
+    // TBC
+//    func fetchInterestNumber() {
+//
+//        let articleID = self.article.articleID
+////        guard let location = self.article.location else { return }
+//
+//        ref.child("likes").queryOrderedByValue().queryEqual(toValue: articleID).observe(.value) { (snapshot) in
+//
+//            print(snapshot)
+//
+//        }
+//
+//    }
+    
 extension DetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

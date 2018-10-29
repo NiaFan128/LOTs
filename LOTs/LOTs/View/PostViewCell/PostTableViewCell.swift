@@ -84,7 +84,6 @@ class PostTableViewCell: UITableViewCell {
                             
                             if let date = date {
                                 
-                                print(date)
                                 let dateFormat: DateFormatter = DateFormatter()
                                 dateFormat.dateFormat = "MMMM / dd / yyyy"
                                 self.selectDate = dateFormat.string(from: date)

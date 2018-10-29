@@ -147,6 +147,7 @@ class PostViewController: UIViewController {
         }
 
         view.endEditing(true)
+        
     }
     
     @IBAction func cancelAction(_ sender: Any) {
