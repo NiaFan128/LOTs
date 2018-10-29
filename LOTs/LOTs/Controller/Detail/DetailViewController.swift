@@ -126,16 +126,16 @@ class DetailViewController: UIViewController {
     
     @IBAction func backAction(_ sender: UIButton) {
         
-        if animation == true {
-            
-            self.dismiss(animated: true, completion: nil)
-
-            
-        } else {
-            
+//        if animation == true {
+//
+//            self.dismiss(animated: true, completion: nil)
+//
+//
+//        } else {
+        
             _ = self.navigationController?.popViewController(animated: true)
 
-        }
+//        }
         
     }
     

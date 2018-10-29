@@ -181,7 +181,6 @@
 		2B2AF69921704DE6002A2748 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				2BD2495B2180284100538307 /* Transition */,
 				2B2AF6AB2170C4A6002A2748 /* user.json */,
 				2B2AF69A21704E0A002A2748 /* loading_2.json */,
 				2B2AF6A92170950C002A2748 /* list.json */,
@@ -229,6 +228,7 @@
 				2B86434F2162107900D39812 /* Controller */,
 				2B86434E2162107000D39812 /* View */,
 				2B02B91221533FD0004FC66E /* Support */,
+				2BD2495B2180284100538307 /* Transition */,
 				2B2AF69921704DE6002A2748 /* Animation */,
 				2B8643592162160D00D39812 /* Extension */,
 				2B83036E2151EEEA006E2522 /* Assets.xcassets */,
@@ -250,8 +250,8 @@
 		2B86434D2162104800D39812 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2BBFA63B216310B500A31D58 /* Category.swift */,
 				2BDD665E2155173400E3C74A /* Article.swift */,
+				2BBFA63B216310B500A31D58 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

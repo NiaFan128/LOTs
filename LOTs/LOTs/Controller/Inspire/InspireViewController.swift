@@ -137,42 +137,35 @@ class InspireViewController: UIViewController {
     
     func readEachTypeData(cuisine: String) {
         
-        articles = []
-        
         ref.child("posts").queryOrdered(byChild: "cuisine").queryEqual(toValue: cuisine).observeSingleEvent(of: .value) { (snapshot) in
             
+            self.articles = []
+
             guard let value = snapshot.value as? NSDictionary else { return }
+
+            guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
             
-            for key in value.allKeys {
-                
-                guard let data = value[key] as? NSDictionary else { return }
-                guard let user = data["user"] as? NSDictionary else { return }
-                guard let articleID = data["articleID"] as? String else { return }
-                guard let articleTitle = data["articleTitle"] as? String else { return }
-                guard let articleImage = data["articleImage"] as? String else { return }
-                guard let cuisine = data["cuisine"] as? String else { return }
-                guard let userName = user["name"] as? String else { return }
-                guard let userImage = user["image"] as? String else { return }
-                guard let uid = user["uid"] as? String else { return }
-                guard let location = data["location"] as? String else { return }
-                guard let createdTime = data["createdTime"] as? Int else { return }
-                guard let content = data["content"] as? String else { return }
-                guard let interestedIn = data["interestedIn"] as? Bool else { return }
-                
-                let article = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: true, interestedIn: interestedIn)
-                
-                self.articles.append(article)
-                
-            }
+            do {
             
-            if let blockUsers = self.userDefaults.array(forKey: "block") {
-                
-                for blockUser in blockUsers {
-                    
+                let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
+            
+                if let blockUsers = self.userDefaults.array(forKey: "block") {
+            
+                    for blockUser in blockUsers {
+            
                     self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                                        
+            
+                    }
+            
                 }
-                
+            
+            self.articles.append(articleData)
+            print(articleData)
+            
+            } catch {
+            
+                print(error)
+            
             }
             
             self.showCollectionView.reloadData()
@@ -180,7 +173,55 @@ class InspireViewController: UIViewController {
         }
         
     }
+
+
     
+//    func readEachTypeData(cuisine: String) {
+//
+//        articles = []
+//
+//        ref.child("posts").queryOrdered(byChild: "cuisine").queryEqual(toValue: cuisine).observeSingleEvent(of: .value) { (snapshot) in
+//
+//            guard let value = snapshot.value as? NSDictionary else { return }
+//
+//            for key in value.allKeys {
+//
+//                guard let data = value[key] as? NSDictionary else { return }
+//                guard let user = data["user"] as? NSDictionary else { return }
+//                guard let articleID = data["articleID"] as? String else { return }
+//                guard let articleTitle = data["articleTitle"] as? String else { return }
+//                guard let articleImage = data["articleImage"] as? String else { return }
+//                guard let cuisine = data["cuisine"] as? String else { return }
+//                guard let userName = user["name"] as? String else { return }
+//                guard let userImage = user["image"] as? String else { return }
+//                guard let uid = user["uid"] as? String else { return }
+//                guard let location = data["location"] as? String else { return }
+//                guard let createdTime = data["createdTime"] as? Int else { return }
+//                guard let content = data["content"] as? String else { return }
+//                guard let interestedIn = data["interestedIn"] as? Bool else { return }
+//
+//                let article = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: true, interestedIn: interestedIn)
+//
+//                self.articles.append(article)
+//
+//            }
+//
+//            if let blockUsers = self.userDefaults.array(forKey: "block") {
+//
+//                for blockUser in blockUsers {
+//
+//                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
+//
+//                }
+//
+//            }
+//
+//            self.showCollectionView.reloadData()
+//
+//        }
+//
+//    }
+
 //    func showLine() {
 //
 //        let cell = TypeCollectionViewCell()

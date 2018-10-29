@@ -21,16 +21,3 @@ struct Cuisine: Codable {
     var image: String
     
 }
-
-
-//struct User {
-//    
-//    let name: String
-//    
-//    let email: String
-//    
-//    let image: String
-//    
-//    let uid: String
-//    
-//}
