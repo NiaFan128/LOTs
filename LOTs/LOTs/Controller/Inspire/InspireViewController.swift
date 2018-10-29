@@ -50,6 +50,8 @@ class InspireViewController: UIViewController {
         
         showCollectionView.delegate = self
         showCollectionView.dataSource = self
+        showCollectionView.showsVerticalScrollIndicator = false
+
         
     }
     

@@ -173,7 +173,6 @@ class CameraViewController: UIViewController {
 
 extension CameraViewController {
     
-    // 由左到右
     func presentDetailFromeLeftToRight(_ viewControllerToPresent: UIViewController) {
         
         let animation = CATransition()
@@ -189,6 +188,7 @@ extension CameraViewController {
     }
     
     func dismissDetailFromeRightToLeft(_ viewControllerToPresent: UIViewController){
+        
         let animation = CATransition()
         animation.duration = 0.3
         animation.type = CATransitionType.push
@@ -196,7 +196,7 @@ extension CameraViewController {
         self.view.window?.layer.add(animation, forKey: kCATransition)
         
         present(viewControllerToPresent, animated: false, completion: nil)
-//        dismiss(animated: false, completion: nil)
+
     }
     
 }

@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-struct Article {
+struct Article: Codable {
     
     var articleID: String
     var articleTitle: String
@@ -26,7 +26,7 @@ struct Article {
 
 }
 
-struct User {
+struct User: Codable {
     
     var name: String
     var image: String

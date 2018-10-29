@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     
     var draggingDownToDismiss = false
+    let transition = CATransition()
     
     final class DismissalPanGesture: UIPanGestureRecognizer {}
     final class DismissalScreenEdgePanGesture: UIScreenEdgePanGestureRecognizer {}
@@ -94,8 +95,29 @@ class DetailViewController: UIViewController {
         
         loadViewIfNeeded()
     
-        tableView.addGestureRecognizer(dismissalPanGesture)
-        tableView.addGestureRecognizer(dismissalScreenEdgePanGesture)
+        tableView.showsVerticalScrollIndicator = false
+//        tableView.addGestureRecognizer(dismissalPanGesture)
+//        tableView.addGestureRecognizer(dismissalScreenEdgePanGesture)
+        
+
+        // 向右滑動
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeOut(recognizer:)))
+        swipeLeft.direction = .right
+        
+        // 為視圖加入監聽手勢
+        self.view.addGestureRecognizer(swipeLeft)
+        
+    }
+    
+    @objc func swipeOut(recognizer:UISwipeGestureRecognizer) {
+        
+        transition.duration = 0.6
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+        
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -126,16 +148,16 @@ class DetailViewController: UIViewController {
     
     @IBAction func backAction(_ sender: UIButton) {
         
-        if animation == true {
-            
-            self.dismiss(animated: true, completion: nil)
-
-            
-        } else {
-            
+//        if animation == true {
+//
+//            self.dismiss(animated: true, completion: nil)
+//
+//
+//        } else {
+        
             _ = self.navigationController?.popViewController(animated: true)
 
-        }
+//        }
         
     }
     
@@ -184,7 +206,6 @@ class DetailViewController: UIViewController {
     func editAction() {
         
         let articleID = article.articleID
-        let location = article.location
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -519,7 +540,7 @@ class DetailViewController: UIViewController {
     func fetchInterestNumber() {
         
         let articleID = self.article.articleID
-        guard let location = self.article.location else { return }
+//        guard let location = self.article.location else { return }
 
         ref.child("likes").queryOrderedByValue().queryEqual(toValue: articleID).observe(.value) { (snapshot) in
             

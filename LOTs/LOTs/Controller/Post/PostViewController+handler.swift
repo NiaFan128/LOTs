@@ -80,6 +80,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     
                     guard let postID = self.ref.child("post").childByAutoId().key else { return }
                     guard let uid = self.keychain.get("uid") else { return }
+                    guard let profileURL = self.keychain.get("imageUrl") else { return }
                     
                     self.ref.child("posts/\(postID)").setValue([
                         "articleID": postID,
@@ -95,7 +96,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                         "user":
                             [
                                 "name": Auth.auth().currentUser?.displayName,
-                                "image": Auth.auth().currentUser?.photoURL?.absoluteString,
+                                "image": profileURL,
                                 "uid": uid
                             ]
                         ])
@@ -103,6 +104,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                 
                 self.flag = true
                 self.cleanData()
+                self.doneBarButton.isEnabled = true
                 self.backToMainPage()
                 
             }
@@ -174,6 +176,8 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     self.pictureURL = downloadURL.absoluteString
                     guard let uid = self.keychain.get("uid") else { return }
                     guard let articleID = self.articleID else { return }
+                    guard let profileURL = self.keychain.get("imageUrl") else { return }
+
                     
                     self.ref.child("posts/\(articleID)").updateChildValues([
             
@@ -190,13 +194,14 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                         "user":
                             [
                                 "name": Auth.auth().currentUser?.displayName,
-                                "image": Auth.auth().currentUser?.photoURL?.absoluteString,
+                                "image": profileURL,
                                 "uid": uid
                         ]
                         
                     ])
                     
                     self.delegate?.readUpdateData()
+                    self.doneBarButton.isEnabled = true
                     self.navigationController?.popViewController(animated: true)
                     
                 })
