@@ -21,14 +21,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsU-81-1fb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvi-ab-srM">
-                                        <rect key="frame" x="25" y="455" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="jfz-dO-Veb"/>
-                                            <constraint firstAttribute="height" constant="44" id="sbg-1J-0GU"/>
-                                        </constraints>
-                                        <state key="normal" image="Filter"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJa-mA-vWm">
                                         <rect key="frame" x="0.0" y="26" width="44" height="44"/>
                                         <constraints>
@@ -43,7 +35,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="pvi-ab-srM" firstAttribute="leading" secondItem="MsU-81-1fb" secondAttribute="leading" constant="25" id="htg-Zy-FPJ"/>
                                     <constraint firstItem="WJa-mA-vWm" firstAttribute="leading" secondItem="MsU-81-1fb" secondAttribute="leading" id="iR5-de-80Z"/>
                                 </constraints>
                             </view>
@@ -111,7 +102,6 @@
                             <constraint firstItem="NXd-W3-vGq" firstAttribute="centerX" secondItem="hnh-cG-QOZ" secondAttribute="centerX" id="G8g-ve-0Ax"/>
                             <constraint firstItem="MsU-81-1fb" firstAttribute="leading" secondItem="hnh-cG-QOZ" secondAttribute="leading" id="K45-8t-NE7"/>
                             <constraint firstItem="4Fi-H2-fAA" firstAttribute="leading" secondItem="gc2-hX-zmb" secondAttribute="leading" id="P4I-Wf-7pz"/>
-                            <constraint firstItem="4Fi-H2-fAA" firstAttribute="bottom" secondItem="pvi-ab-srM" secondAttribute="top" constant="-10" id="SVU-nA-SjY"/>
                             <constraint firstItem="MsU-81-1fb" firstAttribute="top" secondItem="gc2-hX-zmb" secondAttribute="top" constant="-20" id="VUD-X8-PFX"/>
                             <constraint firstItem="gc2-hX-zmb" firstAttribute="bottom" secondItem="MsU-81-1fb" secondAttribute="bottom" id="WWS-vD-odl"/>
                             <constraint firstItem="4Fi-H2-fAA" firstAttribute="bottom" secondItem="6KB-DS-iMb" secondAttribute="top" constant="-10" id="YHV-gJ-XfL"/>
@@ -233,7 +223,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Filter" width="24" height="24"/>
         <image name="Flash Off Icon" width="24" height="24"/>
         <image name="Flip" width="24" height="24"/>
         <image name="back_2" width="48" height="48"/>

@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     
     var draggingDownToDismiss = false
+    let transition = CATransition()
     
     final class DismissalPanGesture: UIPanGestureRecognizer {}
     final class DismissalScreenEdgePanGesture: UIScreenEdgePanGestureRecognizer {}
@@ -72,6 +73,8 @@ class DetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        view.backgroundColor = .white
+        
         uid = self.keychain.get("uid")
         
         self.navigationController?.isNavigationBarHidden = true
@@ -94,8 +97,28 @@ class DetailViewController: UIViewController {
         
         loadViewIfNeeded()
     
-        tableView.addGestureRecognizer(dismissalPanGesture)
-        tableView.addGestureRecognizer(dismissalScreenEdgePanGesture)
+        tableView.showsVerticalScrollIndicator = false
+//        tableView.addGestureRecognizer(dismissalPanGesture)
+//        tableView.addGestureRecognizer(dismissalScreenEdgePanGesture)
+        
+        // 向右滑動
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeOut(recognizer:)))
+        swipeLeft.direction = .right
+        
+        // 為視圖加入監聽手勢
+        self.view.addGestureRecognizer(swipeLeft)
+        
+    }
+    
+    @objc func swipeOut(recognizer:UISwipeGestureRecognizer) {
+        
+        transition.duration = 0.6
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+        
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -145,6 +168,11 @@ class DetailViewController: UIViewController {
         let uid = self.keychain.get("uid")
         let userName = article.user.name
         
+        guard uid != nil else {
+            alertRemind()
+            return
+        }
+        
         if userID == uid {
             
             editAction()
@@ -184,7 +212,6 @@ class DetailViewController: UIViewController {
     func editAction() {
         
         let articleID = article.articleID
-        let location = article.location
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -202,8 +229,6 @@ class DetailViewController: UIViewController {
         }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { (_) in
-            
-            print("delete \(articleID)")
             
             self.deleteAlertRemind(articleID)
             
@@ -260,23 +285,17 @@ class DetailViewController: UIViewController {
         
         let spamAction = UIAlertAction(title: "It's spam", style: .destructive, handler: { (_) in
             
-            print("It's spam.")
-            
             self.reportConfirmation("spam")
             
         })
         
         let inappropriateAction = UIAlertAction(title: "It's inappropriate", style: .destructive, handler: { (_) in
             
-            print("It's inappropriate.")
-            
             self.reportConfirmation("inappropriate")
             
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            
-            print("cancel")
             
         })
 
@@ -385,7 +404,7 @@ class DetailViewController: UIViewController {
             
         } else {
             
-            guard let uid = self.keychain.get("uid") as? String else { return }
+            guard let uid = self.keychain.get("uid") else { return }
             guard let location = article.location else { return }
             let articleID = article.articleID
             
@@ -436,9 +455,7 @@ class DetailViewController: UIViewController {
                 
                 guard let value = snapshot.value as? NSDictionary else { return }
                 
-                guard let thisArticleID = value["\(articleID)"] as? Bool else {
-                    return
-                }
+                guard let thisArticleID = value["\(articleID)"] as? Bool else { return }
                 
                 if thisArticleID == true {
                     
@@ -514,23 +531,22 @@ class DetailViewController: UIViewController {
         })
 
     }
-        
-    // TBC
-    func fetchInterestNumber() {
-        
-        let articleID = self.article.articleID
-        guard let location = self.article.location else { return }
-
-        ref.child("likes").queryOrderedByValue().queryEqual(toValue: articleID).observe(.value) { (snapshot) in
-            
-            print(snapshot)
-            
-        }
-    
-    }
     
 }
-
+    // TBC
+//    func fetchInterestNumber() {
+//
+//        let articleID = self.article.articleID
+////        guard let location = self.article.location else { return }
+//
+//        ref.child("likes").queryOrderedByValue().queryEqual(toValue: articleID).observe(.value) { (snapshot) in
+//
+//            print(snapshot)
+//
+//        }
+//
+//    }
+    
 extension DetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -675,13 +691,15 @@ extension DetailViewController: EditUpdate {
     
     func readUpdateData() {
         
+//        self.showLoadingAnimation()
+
         self.reloadUpdateData(article.articleID)
         
         self.article = Article.init(articleID: "", articleTitle: "", articleImage: "", height: 0, width: 0, createdTime: 0, location: "", cuisine: "", content: "", user: User.init(name: "", image: "", uid: ""), instagramPost: false, interestedIn: true)
         
         self.tableView.reloadData()
         
-        self.showLoadingAnimation()
+//        self.showLoadingAnimation()
     
     }
     

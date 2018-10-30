@@ -40,6 +40,7 @@ class MainViewController: UIViewController {
         
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
+        mainCollectionView.showsVerticalScrollIndicator = false
         
         refreshControl = UIRefreshControl()
         mainCollectionView.addSubview(refreshControl)
@@ -51,7 +52,9 @@ class MainViewController: UIViewController {
         
         // Set the PinterestLayout delegate
         if let layout = mainCollectionView?.collectionViewLayout as? MainLayout {
+            
             layout.delegate = self
+        
         }
         
         userDefaults.removeObject(forKey: "block")
@@ -109,37 +112,44 @@ class MainViewController: UIViewController {
         articles = []
         
         ref.child("posts").queryOrdered(byChild: "createdTime").observe(.childAdded) { (snapshot) in
-
+            
+            print(snapshot)
+            
             guard let value = snapshot.value as? NSDictionary else { return }
             
             guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-
+            
             do {
-
+                
                 let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
                 print("articleData", articleData)
-
+                
                 if let blockUsers = self.userDefaults.array(forKey: "block") {
-
+                    
                     for blockUser in blockUsers {
-
+                        
                         self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-
-                        }
-
+                        
+                    }
+                    
                 }
-
-                self.articles.insert(articleData, at: 0)
-
+                
+                // Would like to know why ????
+                if articleData.articleID != self.articles.first?.articleID {
+                    
+                    self.articles.insert(articleData, at: 0)
+                
+                }
+                
             } catch {
-
-              print(error)
-
+                
+                print(error)
+                
             }
-
+            
             self.removeLoadingAnimation()
             self.mainCollectionView.reloadData()
-
+            
         }
 
     }

@@ -24,6 +24,7 @@
 		2B42E716215CDF3500BB0F86 /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */; };
 		2B42E718215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E717215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift */; };
 		2B5699CD2154C04900D122B4 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5699CC2154C04900D122B4 /* iOSDropDown.framework */; };
+		2B614D8D2187198A008E7699 /* done.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B614D8C2187198A008E7699 /* done.json */; };
 		2B63A77A21805AAC00B12C23 /* UITabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B63A77921805AAC00B12C23 /* UITabbarController.swift */; };
 		2B6DD07E217A2DFD0093A073 /* CameraEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */; };
 		2B6DD080217B05F80093A073 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6DD07F217B05F80093A073 /* TermsViewController.swift */; };
@@ -89,6 +90,7 @@
 		2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		2B42E717215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspireCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2B5699CC2154C04900D122B4 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B614D8C2187198A008E7699 /* done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = done.json; sourceTree = "<group>"; };
 		2B63A77921805AAC00B12C23 /* UITabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabbarController.swift; sourceTree = "<group>"; };
 		2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEditViewController.swift; sourceTree = "<group>"; };
 		2B6DD07F217B05F80093A073 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		2B8303842152295F006E2522 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		2B83038621524275006E2522 /* MainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLayout.swift; sourceTree = "<group>"; };
 		2B86435C2162252900D39812 /* UIKit+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Effect.swift"; sourceTree = "<group>"; };
+		2BA718AE21880471004CDBB8 /* LOTs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LOTs.entitlements; sourceTree = "<group>"; };
 		2BBFA63B216310B500A31D58 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2BD07D3021788D360039DB2F /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		2BD07D34217892610039DB2F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
@@ -184,6 +187,7 @@
 				2B2AF6AB2170C4A6002A2748 /* user.json */,
 				2B2AF69A21704E0A002A2748 /* loading_2.json */,
 				2B2AF6A92170950C002A2748 /* list.json */,
+				2B614D8C2187198A008E7699 /* done.json */,
 				2B2AF6A7217092B0002A2748 /* profile.json */,
 				2B2AF6A421707DAE002A2748 /* lunch_time.json */,
 			);
@@ -220,6 +224,7 @@
 		2B8303662151EEE8006E2522 /* LOTs */ = {
 			isa = PBXGroup;
 			children = (
+				2BA718AE21880471004CDBB8 /* LOTs.entitlements */,
 				2B8303672151EEE8006E2522 /* AppDelegate.swift */,
 				2B8303792151F298006E2522 /* NavigationController.swift */,
 				2B63A77921805AAC00B12C23 /* UITabbarController.swift */,
@@ -259,7 +264,6 @@
 		2B86434E2162107000D39812 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2BD77FE12174717300C378F7 /* User */,
 				2B864354216211F200D39812 /* Main */,
 				2B864353216211D700D39812 /* MainCell */,
 				2B8643552162124800D39812 /* Inspire */,
@@ -284,6 +288,7 @@
 				2B83037F21521C51006E2522 /* Main */,
 				2BE27EEE215B76B9005387A4 /* Like */,
 				2B02B9152153420B004FC66E /* Post */,
+				2BD77FE12174717300C378F7 /* User */,
 				2B191DA8215A36FE006A2AC1 /* Login */,
 			);
 			path = Controller;
@@ -498,6 +503,11 @@
 				TargetAttributes = {
 					2B8303632151EEE8006E2522 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -532,6 +542,7 @@
 				2B2AF6AC2170C4A7002A2748 /* user.json in Resources */,
 				2B2AF6AA2170950C002A2748 /* list.json in Resources */,
 				2B42E716215CDF3500BB0F86 /* TypeCollectionViewCell.xib in Resources */,
+				2B614D8D2187198A008E7699 /* done.json in Resources */,
 				2B2AF69B21704E0A002A2748 /* loading_2.json in Resources */,
 				2BE27F11215C8378005387A4 /* DetailCTableViewCell.xib in Resources */,
 				2BE27F09215C8357005387A4 /* DetailATableViewCell.xib in Resources */,
@@ -820,6 +831,7 @@
 			baseConfigurationReference = 2DE5A7C64ED39736B7C8ECA7 /* Pods-LOTs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LOTs/LOTs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JKG9QZ9M65;
 				INFOPLIST_FILE = LOTs/Info.plist;
@@ -840,6 +852,7 @@
 			baseConfigurationReference = 0E6689D9CC16FEA2CE4B93B0 /* Pods-LOTs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LOTs/LOTs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JKG9QZ9M65;
 				INFOPLIST_FILE = LOTs/Info.plist;

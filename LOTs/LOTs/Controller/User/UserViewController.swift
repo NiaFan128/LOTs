@@ -91,9 +91,7 @@ class UserViewController: UIViewController {
                             if error == nil {
                                 
                                 if let info = result as? [String: Any] {
-                                    
-                                    print("info: \(info)")
-                                    
+                                                                        
                                     let fbName = info["name"] as? String
                                     let fbEmail = info["email"] as? String
                                     let fbPhoto = info["picture"] as? [String: Any]
