@@ -101,7 +101,6 @@ class DetailViewController: UIViewController {
 //        tableView.addGestureRecognizer(dismissalPanGesture)
 //        tableView.addGestureRecognizer(dismissalScreenEdgePanGesture)
         
-
         // 向右滑動
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeOut(recognizer:)))
         swipeLeft.direction = .right
@@ -168,6 +167,11 @@ class DetailViewController: UIViewController {
         let userID = article.user.uid
         let uid = self.keychain.get("uid")
         let userName = article.user.name
+        
+        guard uid != nil else {
+            alertRemind()
+            return
+        }
         
         if userID == uid {
             
@@ -687,13 +691,15 @@ extension DetailViewController: EditUpdate {
     
     func readUpdateData() {
         
+        self.showLoadingAnimation()
+
         self.reloadUpdateData(article.articleID)
         
         self.article = Article.init(articleID: "", articleTitle: "", articleImage: "", height: 0, width: 0, createdTime: 0, location: "", cuisine: "", content: "", user: User.init(name: "", image: "", uid: ""), instagramPost: false, interestedIn: true)
         
         self.tableView.reloadData()
         
-        self.showLoadingAnimation()
+//        self.showLoadingAnimation()
     
     }
     

@@ -114,7 +114,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     }
     
     func editAction() {
-                
+        
         // Error Handler
         guard location != nil else {
             alertRemind(status: "location")
@@ -146,6 +146,8 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         }
         
         doneBarButton.isEnabled = false
+        
+        self.showLoadingAnimation()
         
         // UUID
         let fileName = UUID().uuidString
@@ -204,12 +206,12 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     self.doneBarButton.isEnabled = true
                     self.cleanData()
                     self.navigationController?.popViewController(animated: true)
-                    
+
                 })
             }
 
         }
-        
+
     }
     
     func alertRemind(status: String) {
@@ -223,7 +225,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         self.present(alertController, animated: true, completion: nil)
         
     }
-    
+        
     func handleSelectImage() {
         
         let picker = UIImagePickerController()

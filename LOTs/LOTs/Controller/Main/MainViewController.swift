@@ -58,7 +58,7 @@ class MainViewController: UIViewController {
         
         }
         
-//        userDefaults.removeObject(forKey: "block")
+        userDefaults.removeObject(forKey: "block")
         
     }
     

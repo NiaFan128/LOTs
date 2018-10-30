@@ -105,6 +105,7 @@
 		2B8303842152295F006E2522 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		2B83038621524275006E2522 /* MainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLayout.swift; sourceTree = "<group>"; };
 		2B86435C2162252900D39812 /* UIKit+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Effect.swift"; sourceTree = "<group>"; };
+		2BA718AE21880471004CDBB8 /* LOTs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LOTs.entitlements; sourceTree = "<group>"; };
 		2BBFA63B216310B500A31D58 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2BD07D3021788D360039DB2F /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		2BD07D34217892610039DB2F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
@@ -224,6 +225,7 @@
 		2B8303662151EEE8006E2522 /* LOTs */ = {
 			isa = PBXGroup;
 			children = (
+				2BA718AE21880471004CDBB8 /* LOTs.entitlements */,
 				2B8303672151EEE8006E2522 /* AppDelegate.swift */,
 				2B8303792151F298006E2522 /* NavigationController.swift */,
 				2B63A77921805AAC00B12C23 /* UITabbarController.swift */,
@@ -501,6 +503,11 @@
 				TargetAttributes = {
 					2B8303632151EEE8006E2522 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -824,6 +831,7 @@
 			baseConfigurationReference = 2DE5A7C64ED39736B7C8ECA7 /* Pods-LOTs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LOTs/LOTs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JKG9QZ9M65;
 				INFOPLIST_FILE = LOTs/Info.plist;
@@ -844,6 +852,7 @@
 			baseConfigurationReference = 0E6689D9CC16FEA2CE4B93B0 /* Pods-LOTs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LOTs/LOTs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JKG9QZ9M65;
 				INFOPLIST_FILE = LOTs/Info.plist;

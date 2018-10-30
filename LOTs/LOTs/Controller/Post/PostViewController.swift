@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 import Kingfisher
 import KeychainSwift
 import Firebase
@@ -49,9 +50,13 @@ class PostViewController: UIViewController {
     var uid: String?
     let now: Date = Date()
     var flag = true
-        
-    weak var delegate: EditUpdate?
+    
+    var fullScreenSize: CGSize!
+    let animationBGView: UIView = UIView()
+    let animationView = LOTAnimationView(name: "loading_2")
 
+    weak var delegate: EditUpdate?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -59,7 +64,8 @@ class PostViewController: UIViewController {
         pictureDefault()
 
         ref = Database.database().reference()
-        
+        fullScreenSize = UIScreen.main.bounds.size
+    
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PostInfoCell")
         
@@ -74,6 +80,9 @@ class PostViewController: UIViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
+        
+        animationBGView.isHidden = true
+        animationBGView.frame = CGRect(x: 0, y: 0, width: fullScreenSize.width, height: fullScreenSize.height)
         
         uid = self.keychain.get("uid") 
         
@@ -133,17 +142,32 @@ class PostViewController: UIViewController {
         
     }
     
+    // Loading Animation
+    func showLoadingAnimation() {
+        
+        animationBGView.isHidden = false
+        
+        animationView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        animationView.center = CGPoint(x: (view.frame.width * 0.5), y: (view.frame.height * 0.5))
+        animationView.contentMode = .scaleAspectFill
+        
+        animationBGView.addSubview(animationView)
+        
+        animationView.play()
+        animationView.loopAnimation = true
+        
+    }
+    
     // Post Action
     @IBAction func postAction(_ sender: Any) {
         
         if editArticle != nil {
         
-            editAction()
-        
+            self.editAction()
+
         } else {
             
-            handleRegister()
-    
+            self.handleRegister()
         }
 
         view.endEditing(true)
