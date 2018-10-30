@@ -80,6 +80,7 @@ class PostViewController: UIViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
+        view.addSubview(animationBGView)
         
         animationBGView.isHidden = true
         animationBGView.frame = CGRect(x: 0, y: 0, width: fullScreenSize.width, height: fullScreenSize.height)
@@ -146,7 +147,8 @@ class PostViewController: UIViewController {
     func showLoadingAnimation() {
         
         animationBGView.isHidden = false
-        
+        animationBGView.backgroundColor = .white
+        animationBGView.alpha = 0.6
         animationView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         animationView.center = CGPoint(x: (view.frame.width * 0.5), y: (view.frame.height * 0.5))
         animationView.contentMode = .scaleAspectFill
@@ -360,6 +362,8 @@ extension PostViewController: UITableViewDataSource {
             
             cell.titleTextField.delegate = self
             cell.contentTextView.delegate = self
+            
+            cell.selectionStyle = .none
 
             return cell
             

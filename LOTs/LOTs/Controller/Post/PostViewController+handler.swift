@@ -49,6 +49,8 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         doneBarButton.isEnabled = false
         
+        self.showLoadingAnimation()
+        
         // UUID
         let fileName = UUID().uuidString
         
@@ -180,7 +182,6 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     guard let articleID = self.articleID else { return }
                     guard let profileURL = self.keychain.get("imageUrl") else { return }
 
-                    
                     self.ref.child("posts/\(articleID)").updateChildValues([
             
                         "articleID": articleID,
@@ -211,7 +212,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
             }
 
         }
-
+        
     }
     
     func alertRemind(status: String) {

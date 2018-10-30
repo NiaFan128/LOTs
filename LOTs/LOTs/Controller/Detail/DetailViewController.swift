@@ -691,7 +691,7 @@ extension DetailViewController: EditUpdate {
     
     func readUpdateData() {
         
-        self.showLoadingAnimation()
+//        self.showLoadingAnimation()
 
         self.reloadUpdateData(article.articleID)
         

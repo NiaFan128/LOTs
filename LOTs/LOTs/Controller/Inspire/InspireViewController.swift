@@ -36,6 +36,9 @@ class InspireViewController: UIViewController {
         
         fullScreenSize = UIScreen.main.bounds.size
         animationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: fullScreenSize.width, height: 21))
+        
+        let nib = UINib(nibName: "TypeCollectionViewCell", bundle: nil)
+        typeCollectionView.register(nib, forCellWithReuseIdentifier: "TypeCell")
 
         typeCollectionSet()
         
@@ -52,7 +55,6 @@ class InspireViewController: UIViewController {
         showCollectionView.dataSource = self
         showCollectionView.showsVerticalScrollIndicator = false
 
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,9 +93,6 @@ class InspireViewController: UIViewController {
     
     
     func typeCollectionSet() {
-     
-        let nib = UINib(nibName: "TypeCollectionViewCell", bundle: nil)
-        typeCollectionView.register(nib, forCellWithReuseIdentifier: "TypeCell")
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
