@@ -82,8 +82,6 @@ class DetailViewController: UIViewController {
         readInterestedIn()
         animationBGView.isHidden = true
         
-        //        fetchInterestNumber()
-        
         tableView.estimatedRowHeight = 44.0
         
         dismissalPanGesture.addTarget(self, action: #selector(handleDismissalPan(gesture:)))
@@ -169,8 +167,10 @@ class DetailViewController: UIViewController {
         let userName = article.user.name
         
         guard uid != nil else {
-            alertRemind()
+            
+            visitorAlertRemind()
             return
+        
         }
         
         if userID == uid {
@@ -179,31 +179,11 @@ class DetailViewController: UIViewController {
             
         } else {
             
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-            let reportUserAction = UIAlertAction(title: "Block User", style: .destructive) { (_) in
-                
-                self.blockUser(userName)
-                
-            }
-            
-            let reportArticleAction = UIAlertAction(title: "Report Article", style: .destructive) { (_) in
-                
-                self.reportArticle()
-                
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-                
-                print("cancel")
-                
-            })
-            
-            alertController.addAction(reportUserAction)
-            alertController.addAction(reportArticleAction)
-            alertController.addAction(cancelAction)
-            
-            self.present(alertController, animated: true, completion: nil)
+            AlertView.otherSheetAlert(self, title: nil, message: nil, firstHandler: { (_) in
+                                        
+                                        self.blockUser(userName)}, secondHandler: { (_) in
+                                        
+                                        self.reportArticle()})
             
         }
         
@@ -213,38 +193,21 @@ class DetailViewController: UIViewController {
         
         let articleID = article.articleID
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let editAction = UIAlertAction(title: "Edit", style: .default) { (_) in
-            
-            // Convert the data
-            let editViewController = PostViewController.editForArticle(self.article)
-            
-            editViewController.hidesBottomBarWhenPushed = true
-            
-            editViewController.delegate = self
-            
-            self.show(editViewController, sender: nil)
-            
-        }
-        
-        let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: { (_) in
-            
-            self.deleteAlertRemind(articleID)
-            
+        AlertView.editSheetAlert(self, title: nil, message: nil, firstHandler: { (_) in
+                                    
+                                    let editViewController = PostViewController.editForArticle(self.article)
+                                    
+                                    editViewController.hidesBottomBarWhenPushed = true
+                                    
+                                    editViewController.delegate = self
+                                    
+                                    self.show(editViewController, sender: nil)
+        },
+                                 secondHandler: { (_) in
+                                    
+                                    self.deleteAlertRemind(articleID)
+                                    
         })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            
-            print("cancel")
-            
-        })
-        
-        alertController.addAction(editAction)
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
         
     }
     
@@ -253,100 +216,54 @@ class DetailViewController: UIViewController {
         let articleID = article.articleID
         let location = article.location
 
-        let alertController = UIAlertController(title: "Oops!", message: "Are you sure to delete this item ?", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
-            
-            self.ref.child("posts").child(articleID).removeValue()
-            
-            NotificationCenter.default.post(name: Notification.Name("Remove"),
-                                            object: nil,
-                                            userInfo: ["articleID": articleID,
-                                                       "location": location])
-            
-            self.navigationController?.popViewController(animated: true)
-            
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            
-        })
-        
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+        AlertView.interactionAlert(view: self, title: "Oops!",
+                                   message: "Are you sure to delete this item ?") { (_) in
+                                    
+                                    self.ref.child("posts").child(articleID).removeValue()
+                                    
+                                    NotificationCenter.default.post(name: Notification.Name("Remove"),
+                                                                    object: nil,
+                                                                    userInfo: ["articleID": articleID,
+                                                                               "location": location])
+                                    
+                                    self.navigationController?.popViewController(animated: true)
+                                    
+        }
         
     }
     
     func reportArticle() {
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let spamAction = UIAlertAction(title: "It's spam", style: .destructive, handler: { (_) in
-            
-            self.reportConfirmation("spam")
-            
+        AlertView.sheetAlert(view: self, title: nil, message: nil, firstHandler: { (_) in
+                                
+                                self.reportConfirmation("spam")}, secondHandler: { (_) in
+                                
+                                self.reportConfirmation("inappropriate")
+                                
         })
         
-        let inappropriateAction = UIAlertAction(title: "It's inappropriate", style: .destructive, handler: { (_) in
-            
-            self.reportConfirmation("inappropriate")
-            
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            
-        })
-
-        alertController.addAction(spamAction)
-        alertController.addAction(inappropriateAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
-    
     }
     
     func reportConfirmation(_ message: String) {
 
-        let alertController = UIAlertController(title: "", message: "Do you think it is \(message)? \n We will proceed accordingly soon! ", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
-            
-            self.receiveMessage()
-            
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            
-        })
-        
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+        AlertView.interactionAlert(view: self, title: "",
+                                   message: "Do you think it is \(message)? \n We will proceed accordingly soon! ") { (_) in
+                                    
+                                    self.receiveMessage()
+                                    
+        }
         
     }
     
     func blockUser(_ user: String) {
 
-        let alertController = UIAlertController(title: "", message: "Are you sure to block this user, \(user) ?", preferredStyle: .alert)
+        AlertView.interactionAlert(view: self, title: "",
+                                   message: "Are you sure to block this user, \n \(user) ?") { (_) in
+                                    
+                                    self.blockMessage(user)
+                                    self.blockUserAction()
         
-        let okAction = UIAlertAction(title: "Confirm", style: .default, handler: { (_) in
-            
-            self.blockMessage(user)
-            self.blockUserAction()
-
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-            
-        })
-        
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+        }
         
     }
     
@@ -363,44 +280,24 @@ class DetailViewController: UIViewController {
         
     }
     
-    // Receive Message
     func receiveMessage() {
         
-        let alertController = UIAlertController(title: "Thank you", message: "We will proceed your feedback soon.", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
-            
-        })
-        
-        alertController.addAction(okAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+        AlertView.showAlert(view: self, title: "Thank you", message: "We will proceed your feedback soon.")
         
     }
     
-    // Block Message
     func blockMessage(_ user: String) {
         
-        let alertController = UIAlertController(title: "", message: "You won't see \(user)'s article from now on.", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
-            
-        })
-        
-        alertController.addAction(okAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+        AlertView.showAlert(view: self, title: "", message: "You won't see \(user)'s article from now on.")
         
     }
     
     // like function
     func interstedIn() {
         
-//        guard let uid = keychain.get("uid") else { return }
-        
         if uid == nil {
             
-            alertRemind()
+            visitorAlertRemind()
             
         } else {
             
@@ -419,7 +316,7 @@ class DetailViewController: UIViewController {
         
         if uid == nil {
             
-            alertRemind()
+            visitorAlertRemind()
             
         } else {
             
@@ -433,13 +330,9 @@ class DetailViewController: UIViewController {
 
     }
     
-    // Visitor Alert
-    func alertRemind() {
+    func visitorAlertRemind() {
         
-        let alertController = UIAlertController(title: "Oops!", message: "Please login with Facebook \n to explore more features.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+        AlertView.showAlert(view: self, title: "Oops!", message: "Please login with Facebook \n to explore more features.")
         
     }
     
@@ -533,20 +426,7 @@ class DetailViewController: UIViewController {
     }
     
 }
-    // TBC
-//    func fetchInterestNumber() {
-//
-//        let articleID = self.article.articleID
-////        guard let location = self.article.location else { return }
-//
-//        ref.child("likes").queryOrderedByValue().queryEqual(toValue: articleID).observe(.value) { (snapshot) in
-//
-//            print(snapshot)
-//
-//        }
-//
-//    }
-    
+
 extension DetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -658,7 +538,7 @@ extension DetailViewController: LikeButton {
         
         if uid == nil {
             
-            alertRemind()
+            visitorAlertRemind()
             
         } else {
             
@@ -691,158 +571,12 @@ extension DetailViewController: EditUpdate {
     
     func readUpdateData() {
         
-//        self.showLoadingAnimation()
-
         self.reloadUpdateData(article.articleID)
         
         self.article = Article.init(articleID: "", articleTitle: "", articleImage: "", height: 0, width: 0, createdTime: 0, location: "", cuisine: "", content: "", user: User.init(name: "", image: "", uid: ""), instagramPost: false, interestedIn: true)
         
         self.tableView.reloadData()
         
-//        self.showLoadingAnimation()
-    
-    }
-    
-}
-
-extension DetailViewController: UIGestureRecognizerDelegate {
-    
-    func didSuccessfullyDragDownToDismiss() {
-        
-        self.dismiss(animated: true, completion: nil)
-    
-    }
-    
-    func userWillCancelDissmissalByDraggingToTop(velocityY: CGFloat) {}
-    
-    func didCancelDismissalTransition() {
-        
-        // Clean up
-        interactiveStartingPoint = nil
-        dismissalAnimator = nil
-        draggingDownToDismiss = false
-    
-    }
-    
-    // This handles both screen edge and dragdown pan. As screen edge pan is a subclass of pan gesture, this input param works.
-    @objc func handleDismissalPan(gesture: UIPanGestureRecognizer) {
-        
-        let isScreenEdgePan = gesture.isKind(of: DismissalScreenEdgePanGesture.self)
-        let canStartDragDownToDismissPan = !isScreenEdgePan && draggingDownToDismiss
-        
-        // Don't do anything when it's not in the drag down mode
-        if canStartDragDownToDismissPan { return }
-        
-        let targetAnimatedView = gesture.view!
-        let startingPoint: CGPoint
-        
-        if let p = interactiveStartingPoint {
-            
-            startingPoint = p
-        
-        } else {
-        
-            // Initial location
-            startingPoint = gesture.location(in: nil)
-            interactiveStartingPoint = startingPoint
-        
-        }
-        
-        let currentLocation = gesture.location(in: nil)
-        let progress = isScreenEdgePan ? (gesture.translation(in: targetAnimatedView).x / 100) : (currentLocation.y - startingPoint.y) / 100
-        let targetShrinkScale: CGFloat = 0.86
-        let targetCornerRadius: CGFloat = GlobalConstants.cardCornerRadius
-        
-        func createInteractiveDismissalAnimatorIfNeeded() -> UIViewPropertyAnimator {
-            
-            if let animator = dismissalAnimator {
-            
-                return animator
-            
-            } else {
-            
-                let animator = UIViewPropertyAnimator(duration: 0, curve: .linear, animations: {
-                    targetAnimatedView.transform = .init(scaleX: targetShrinkScale, y: targetShrinkScale)
-                    targetAnimatedView.layer.cornerRadius = targetCornerRadius
-                })
-                
-                animator.isReversed = false
-                animator.pauseAnimation()
-                animator.fractionComplete = progress
-                return animator
-            
-            }
-        
-        }
-        
-        switch gesture.state {
-            
-        case .began:
-            dismissalAnimator = createInteractiveDismissalAnimatorIfNeeded()
-            
-        case .changed:
-            dismissalAnimator = createInteractiveDismissalAnimatorIfNeeded()
-            
-            let actualProgress = progress
-            let isDismissalSuccess = actualProgress >= 1.0
-            
-            dismissalAnimator!.fractionComplete = actualProgress
-            
-            if isDismissalSuccess {
-                
-                dismissalAnimator!.stopAnimation(false)
-                dismissalAnimator!.addCompletion { (pos) in
-                    switch pos {
-                    case .end:
-                        self.didSuccessfullyDragDownToDismiss()
-                    default:
-                        fatalError("Must finish dismissal at end!")
-                    }
-                }
-                
-                dismissalAnimator!.finishAnimation(at: .end)
-            
-            }
-            
-        case .ended, .cancelled:
-            
-            if dismissalAnimator == nil {
-            
-                // Gesture's too quick that it doesn't have dismissalAnimator!
-                print("Too quick there's no animator!")
-                didCancelDismissalTransition()
-                return
-            
-            }
-            // NOTE:
-            // If user lift fingers -> ended
-            // If gesture.isEnabled -> cancelled
-            
-            // Ended, Animate back to start
-            dismissalAnimator!.pauseAnimation()
-            dismissalAnimator!.isReversed = true
-            
-            // Disable gesture until reverse closing animation finishes.
-            gesture.isEnabled = false
-            
-            dismissalAnimator!.addCompletion { [unowned self] (pos) in
-                self.didCancelDismissalTransition()
-                gesture.isEnabled = true
-            }
-            
-            dismissalAnimator!.startAnimation()
-        
-        default:
-            fatalError("Impossible gesture state? \(gesture.state.rawValue)")
-        
-        }
-    
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        
-        return true
-    
     }
     
 }

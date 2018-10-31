@@ -66,6 +66,8 @@
 		2BE27F0D215C8369005387A4 /* DetailBTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE27F0B215C8369005387A4 /* DetailBTableViewCell.xib */; };
 		2BE27F10215C8378005387A4 /* DetailCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27F0E215C8378005387A4 /* DetailCTableViewCell.swift */; };
 		2BE27F11215C8378005387A4 /* DetailCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE27F0F215C8378005387A4 /* DetailCTableViewCell.xib */; };
+		2BEC035A21884AB500D3B45A /* UIAlertcontroller+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */; };
+		2BEC035C218868F900D3B45A /* DetailViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC035B218868F900D3B45A /* DetailViewController+Gesture.swift */; };
 		2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */; };
 		2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */; };
 		2CD5213A38080600EEA2E24B /* Pods_LOTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B4ADAFBD9FBB343B63DBD6 /* Pods_LOTs.framework */; };
@@ -135,6 +137,8 @@
 		2BE27F0B215C8369005387A4 /* DetailBTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBTableViewCell.xib; sourceTree = "<group>"; };
 		2BE27F0E215C8378005387A4 /* DetailCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCTableViewCell.swift; sourceTree = "<group>"; };
 		2BE27F0F215C8378005387A4 /* DetailCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCTableViewCell.xib; sourceTree = "<group>"; };
+		2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertcontroller+.swift"; sourceTree = "<group>"; };
+		2BEC035B218868F900D3B45A /* DetailViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController+Gesture.swift"; sourceTree = "<group>"; };
 		2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		2DE5A7C64ED39736B7C8ECA7 /* Pods-LOTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOTs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LOTs/Pods-LOTs.debug.xcconfig"; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				2B86435C2162252900D39812 /* UIKit+Effect.swift */,
+				2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				2BE27F04215C8339005387A4 /* DetailViewController.swift */,
+				2BEC035B218868F900D3B45A /* DetailViewController+Gesture.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -646,12 +652,14 @@
 			files = (
 				2B42E718215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift in Sources */,
 				2B02B91421534202004FC66E /* PostViewController.swift in Sources */,
+				2BEC035C218868F900D3B45A /* DetailViewController+Gesture.swift in Sources */,
 				2BD2496521804C2D00538307 /* CardPresentationController.swift in Sources */,
 				2B83037A2151F298006E2522 /* NavigationController.swift in Sources */,
 				2BE27EFB215BC1EB005387A4 /* ProfileTableViewCell.swift in Sources */,
 				2B6DD080217B05F80093A073 /* TermsViewController.swift in Sources */,
 				2BE27EF5215B9B87005387A4 /* LikeDetailTableViewCell.swift in Sources */,
 				2BD07D35217892610039DB2F /* CameraController.swift in Sources */,
+				2BEC035A21884AB500D3B45A /* UIAlertcontroller+.swift in Sources */,
 				2BDD665F2155173400E3C74A /* Article.swift in Sources */,
 				2B6DD07E217A2DFD0093A073 /* CameraEditViewController.swift in Sources */,
 				2B42E715215CDF3500BB0F86 /* TypeCollectionViewCell.swift in Sources */,

@@ -23,4 +23,10 @@ class TypeCollectionViewCell: UICollectionViewCell {
         
     }
     
+    override func prepareForReuse() {
+        
+        
+        
+    }
+    
 }
