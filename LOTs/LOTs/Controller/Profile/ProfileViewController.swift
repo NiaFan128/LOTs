@@ -19,26 +19,26 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var animationBGView: UIView!
-    
     @IBOutlet weak var loginView: UIView!
     
     var fullScreenSize: CGSize!
     var animationScreenSize: CGSize!
-//    let animationView = LOTAnimationView(name: "profile")
     let animationView = LOTAnimationView(name: "list")
     let userAnimationView = LOTAnimationView(name: "user")
-    
     var animationLabel = UILabel()
     var userAnimationLabel = UILabel()
     
     var article: Article!
     var articles = [Article]()
+    
     var ref: DatabaseReference!
+    let decoder = JSONDecoder()
     let keychain = KeychainSwift()
+    
+    var uid: String?
     var userName: String = ""
     var imageUrl: String = ""
-    var uid: String?
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -112,32 +112,27 @@ class ProfileViewController: UIViewController {
         
         ref.child("posts").queryOrdered(byChild: "user/uid").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
             
-            guard let value = snapshot.value as? NSDictionary else { return }
+            guard let dictionary = snapshot.value as? NSDictionary else { return }
             
-            for key in value.allKeys {
+            for value in dictionary.allValues {
                 
-                guard let data = value[key] as? NSDictionary else { return }
-                guard let user = data["user"] as? NSDictionary else { return }
-                guard let articleID = data["articleID"] as? String else { return }
-                guard let articleTitle = data["articleTitle"] as? String else { return }
-                guard let articleImage = data["articleImage"] as? String else { return }
-                guard let cuisine = data["cuisine"] as? String else { return }
-                guard let userName = user["name"] as? String else { return }
-                guard let userImage = user["image"] as? String else { return }
-                guard let uid = user["uid"] as? String else { return }
-                guard let location = data["location"] as? String else { return }
-                guard let createdTime = data["createdTime"] as? Int else { return }
-                guard let content = data["content"] as? String else { return }
-                guard let interestedIn = data["interestedIn"] as? Bool else { return }
+                guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
                 
-                let article = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
+                do {
+                    
+                    let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
+                    self.articles.append(articleData)
+                    
+                    self.collectionView.reloadData()
+                    self.tableView.reloadData()
+                    
+                } catch {
+                    
+                    print(error)
+                    
+                }
                 
-                self.articles.append(article)
-                                
             }
-            
-            self.collectionView.reloadData()
-            self.tableView.reloadData()
             
         }
         

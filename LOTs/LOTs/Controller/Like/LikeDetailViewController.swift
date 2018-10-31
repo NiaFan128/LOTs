@@ -64,7 +64,6 @@ class LikeDetailViewController: UIViewController {
         
         ref.child("likes/\(uid)").child("\(location)").child(articleID).removeValue()
 
-        
     }
 
     // Retrieve the personal like posts and filter by location
@@ -92,48 +91,42 @@ class LikeDetailViewController: UIViewController {
         
     }
     
-    // Read data according to the articleID
     func readArticleData(_ articleID: String) {
         
         articles = []
         
         ref.child("posts").queryOrderedByKey().queryEqual(toValue: articleID).observeSingleEvent(of: .value) { (snapshot) in
             
-            guard let value = snapshot.value as? NSDictionary else { return }
-
-            for key in value.allKeys {
-                
-                guard let data = value[key] as? NSDictionary else { return }
-                guard let user = data["user"] as? NSDictionary else { return }
-                guard let articleID = data["articleID"] as? String else { return }
-                guard let articleTitle = data["articleTitle"] as? String else { return }
-                guard let articleImage = data["articleImage"] as? String else { return }
-                guard let cuisine = data["cuisine"] as? String else { return }
-                guard let userName = user["name"] as? String else { return }
-                guard let userImage = user["image"] as? String else { return }
-                guard let uid = user["uid"] as? String else { return }
-                guard let location = data["location"] as? String else { return }
-                guard let createdTime = data["createdTime"] as? Int else { return }
-                guard let content = data["content"] as? String else { return }
-                guard let interestedIn = data["interestedIn"] as? Bool else { return }
-                
-                let article = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
-                
-                self.articles.append(article)
-                
-            }
+            guard let dictionary = snapshot.value as? NSDictionary else { return }
             
-            if let blockUsers = self.userDefaults.array(forKey: "block") {
+            for value in dictionary.allValues {
                 
-                for blockUser in blockUsers {
+                guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
+                
+                do {
                     
-                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
+                    let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
+                    
+                    if let blockUsers = self.userDefaults.array(forKey: "block") {
+                        
+                        for blockUser in blockUsers {
+                            
+                            self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
+                            
+                        }
+                        
+                    }
+                    
+                    self.articles.append(articleData)
+                    self.likeDetailTableView.reloadData()
+
+                } catch {
+                    
+                    print(error)
                     
                 }
                 
             }
-            
-            self.likeDetailTableView.reloadData()
             
         }
         
@@ -259,6 +252,5 @@ extension LikeDetailViewController: UITableViewDelegate {
         navigationController?.pushViewController(detailViewController, animated: true)
         
     }
-
 
 }

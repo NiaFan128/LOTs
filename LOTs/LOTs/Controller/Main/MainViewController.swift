@@ -112,9 +112,7 @@ class MainViewController: UIViewController {
         articles = []
         
         ref.child("posts").queryOrdered(byChild: "createdTime").observe(.childAdded) { (snapshot) in
-            
-            print(snapshot)
-            
+                        
             guard let value = snapshot.value as? NSDictionary else { return }
             
             guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
@@ -122,7 +120,6 @@ class MainViewController: UIViewController {
             do {
                 
                 let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-                print("articleData", articleData)
                 
                 if let blockUsers = self.userDefaults.array(forKey: "block") {
                     
@@ -141,14 +138,14 @@ class MainViewController: UIViewController {
                 
                 }
                 
+                self.removeLoadingAnimation()
+                self.mainCollectionView.reloadData()
+                
             } catch {
                 
                 print(error)
                 
             }
-            
-            self.removeLoadingAnimation()
-            self.mainCollectionView.reloadData()
             
         }
 

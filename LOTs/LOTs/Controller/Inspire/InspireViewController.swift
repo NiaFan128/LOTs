@@ -21,14 +21,12 @@ class InspireViewController: UIViewController {
 
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
-//    let animationView = LOTAnimationView(name: "animation_construction")
     let animationView = LOTAnimationView(name: "lunch_time")
     var animationLabel = UILabel()
     
     var cuisines = [Cuisine]()
     var article: Article!
     var articles = [Article]()
-    var hidingLine: Bool = true
     
     override func viewDidLoad() {
         
@@ -48,7 +46,6 @@ class InspireViewController: UIViewController {
         ref = Database.database().reference()
         
         self.readTypeData()
-//        self.showNoDataAnimation()
         self.readEachTypeData(cuisine: "美式料理")
         
         showCollectionView.delegate = self
@@ -96,10 +93,10 @@ class InspireViewController: UIViewController {
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-//        layout.itemSize = CGSize(width: (self.view.frame.size.width - 30) / 2, height: 80)
         layout.minimumLineSpacing = CGFloat(integerLiteral: 10)
         layout.minimumInteritemSpacing = CGFloat(integerLiteral: 10)
         layout.scrollDirection = .horizontal
+        
         typeCollectionView.collectionViewLayout = layout
         typeCollectionView.showsHorizontalScrollIndicator = false
         
@@ -126,11 +123,7 @@ class InspireViewController: UIViewController {
                 
             }
             
-            DispatchQueue.main.async {
-
-                self.typeCollectionView.reloadData()
-            
-            }
+            self.typeCollectionView.reloadData()
             
         }
         
@@ -142,96 +135,40 @@ class InspireViewController: UIViewController {
             
             self.articles = []
 
-            guard let value = snapshot.value as? NSDictionary else { return }
+            guard let dictionary = snapshot.value as? NSDictionary else { return }
 
-            guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-            
-            do {
-            
-                let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-            
-                if let blockUsers = self.userDefaults.array(forKey: "block") {
-            
-                    for blockUser in blockUsers {
-            
-                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-            
+            for value in dictionary.allValues {
+                
+                guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
+                
+                do {
+                    
+                    let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
+                    
+                    if let blockUsers = self.userDefaults.array(forKey: "block") {
+                        
+                        for blockUser in blockUsers {
+                            
+                            self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
+                            
+                        }
+                        
                     }
-            
+                    
+                    self.articles.append(articleData)
+                    self.showCollectionView.reloadData()
+                    
+                } catch {
+                    
+                    print(error)
+                    
                 }
-            
-            self.articles.append(articleData)
-            print(articleData)
-            
-            } catch {
-            
-                print(error)
-            
+                
             }
-            
-            self.showCollectionView.reloadData()
             
         }
         
     }
-
-
-    
-//    func readEachTypeData(cuisine: String) {
-//
-//        articles = []
-//
-//        ref.child("posts").queryOrdered(byChild: "cuisine").queryEqual(toValue: cuisine).observeSingleEvent(of: .value) { (snapshot) in
-//
-//            guard let value = snapshot.value as? NSDictionary else { return }
-//
-//            for key in value.allKeys {
-//
-//                guard let data = value[key] as? NSDictionary else { return }
-//                guard let user = data["user"] as? NSDictionary else { return }
-//                guard let articleID = data["articleID"] as? String else { return }
-//                guard let articleTitle = data["articleTitle"] as? String else { return }
-//                guard let articleImage = data["articleImage"] as? String else { return }
-//                guard let cuisine = data["cuisine"] as? String else { return }
-//                guard let userName = user["name"] as? String else { return }
-//                guard let userImage = user["image"] as? String else { return }
-//                guard let uid = user["uid"] as? String else { return }
-//                guard let location = data["location"] as? String else { return }
-//                guard let createdTime = data["createdTime"] as? Int else { return }
-//                guard let content = data["content"] as? String else { return }
-//                guard let interestedIn = data["interestedIn"] as? Bool else { return }
-//
-//                let article = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: true, interestedIn: interestedIn)
-//
-//                self.articles.append(article)
-//
-//            }
-//
-//            if let blockUsers = self.userDefaults.array(forKey: "block") {
-//
-//                for blockUser in blockUsers {
-//
-//                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-//
-//                }
-//
-//            }
-//
-//            self.showCollectionView.reloadData()
-//
-//        }
-//
-//    }
-
-//    func showLine() {
-//
-//        let cell = TypeCollectionViewCell()
-//        cell.underlineView.isHidden = true
-//
-//        hidingLine = false
-//        cell.underlineView.isHidden = hidingLine
-//
-//    }
     
 }
 
