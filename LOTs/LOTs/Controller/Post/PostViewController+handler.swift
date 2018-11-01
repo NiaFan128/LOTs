@@ -13,45 +13,44 @@ import FirebaseAuth
 import FirebaseStorage
 import KeychainSwift
 
-// Image Upload
-
 extension PostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-// Need the Auth at first
-    
-    func handleRegister() {
+    func postNewArticle() {
         
         // Error Handler
         guard location != nil else {
-            alertRemind(status: "location")
+            alertRemind("location")
             return
         }
         
         guard cuisine != nil else {
-            alertRemind(status: "cuisine")
+            alertRemind("cuisine")
             return
         }
 
         guard createdTime != nil else {
-            alertRemind(status: "time")
+            alertRemind("time")
             return
         }
 
         guard articleTitle != nil else {
-            alertRemind(status: "article title")
+            alertRemind("article title")
             return
         }
 
         guard content != nil else {
-            alertRemind(status: "content")
+            alertRemind("content")
+            return
+        }
+        
+        guard articleImage.image != UIImage(named: "imageDefault") else {
+            alertRemind("image")
             return
         }
         
         doneBarButton.isEnabled = false
-        
         self.showLoadingAnimation()
         
-        // UUID
         let fileName = UUID().uuidString
         
         // Storage
@@ -71,8 +70,6 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     print(error)
                     return
                 }
-                
-                print(metadata)
                 
                 storageRef.downloadURL(completion: { (url, error) in
 
@@ -119,27 +116,27 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         // Error Handler
         guard location != nil else {
-            alertRemind(status: "location")
+            alertRemind("location")
             return
         }
         
         guard cuisine != nil else {
-            alertRemind(status: "cuisine")
+            alertRemind("cuisine")
             return
         }
         
         guard createdTime != nil else {
-            alertRemind(status: "time")
+            alertRemind("time")
             return
         }
         
         guard articleTitle != nil else {
-            alertRemind(status: "article title")
+            alertRemind("article title")
             return
         }
         
         guard content != nil else {
-            alertRemind(status: "content")
+            alertRemind("content")
             return
         }
         
@@ -147,14 +144,17 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
             return
         }
         
+        guard articleImage.image != UIImage(named: "imageDefault") else {
+            alertRemind("image")
+            return
+        }
+        
         doneBarButton.isEnabled = false
         
         self.showLoadingAnimation()
         
-        // UUID
         let fileName = UUID().uuidString
         
-        // Storage
         let storageRef = Storage.storage().reference().child("article_images").child("\(fileName).jpg")
         
         if let articleImage = self.articleImage.image, let uploadData = self.articleImage.image?.jpegData(compressionQuality: 0.5) {
@@ -171,9 +171,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     print(error)
                     return
                 }
-                
-                print(metadata)
-                
+                                
                 storageRef.downloadURL(completion: { (url, error) in
                     
                     guard let downloadURL = url else { return }
@@ -215,15 +213,9 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
     }
     
-    func alertRemind(status: String) {
+    func alertRemind(_ status: String) {
         
-        let alertController = UIAlertController(title: "Error", message: "Please complete \(status) part!", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        
-        alertController.addAction(okAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+        AlertView.showAlert(view: self, title: "Remind", message: "Please complete \(status) part!")
         
     }
         

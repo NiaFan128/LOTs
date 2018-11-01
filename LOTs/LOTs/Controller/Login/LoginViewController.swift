@@ -16,9 +16,9 @@ import KeychainSwift
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var facebookLoginButton: UIButton!
-    @IBOutlet weak var googleLoginButton: UIButton!
     @IBOutlet weak var guestModeButton: UIButton!
+    @IBOutlet weak var googleLoginButton: UIButton!
+    @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var facebookImage: UIImageView!
     @IBOutlet weak var googleImage: UIImageView!
     @IBOutlet weak var facebookWarningLabel: UILabel!

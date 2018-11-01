@@ -15,7 +15,7 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
 
-protocol EditUpdate: AnyObject {
+protocol EditUpdateProtocol: AnyObject {
 
     func readUpdateData()
     
@@ -55,14 +55,15 @@ class PostViewController: UIViewController {
     let animationBGView: UIView = UIView()
     let animationView = LOTAnimationView(name: "loading_2")
 
-    weak var delegate: EditUpdate?
+    weak var delegate: EditUpdateProtocol?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
+        pictureSetUp()
         pictureDefault()
-
+    
         ref = Database.database().reference()
         fullScreenSize = UIScreen.main.bounds.size
     
@@ -72,16 +73,10 @@ class PostViewController: UIViewController {
         let nib2 = UINib(nibName: "ContentTableViewCell", bundle: nil)
         tableView.register(nib2, forCellReuseIdentifier: "ContentCell")
 
-        articleImage.layer.cornerRadius = 8
-        profileImage.cornerBorder()
-
-        let profileUrl = URL(string: Auth.auth().currentUser?.photoURL?.absoluteString ?? "")
-        profileImage.kf.setImage(with: profileUrl)
-
         tableView.dataSource = self
         tableView.delegate = self
+
         view.addSubview(animationBGView)
-        
         animationBGView.isHidden = true
         animationBGView.frame = CGRect(x: 0, y: 0, width: fullScreenSize.width, height: fullScreenSize.height)
         
@@ -92,7 +87,6 @@ class PostViewController: UIViewController {
         if editArticle != nil {
             
             readEditData()
-            
             let url = URL(string: editArticle?.articleImage ?? "")
             articleImage.kf.setImage(with: url)
             
@@ -121,7 +115,17 @@ class PostViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         
     }
+    
+    func pictureSetUp() {
         
+        articleImage.layer.cornerRadius = 8
+        profileImage.cornerBorder()
+        
+        let profileUrl = URL(string: Auth.auth().currentUser?.photoURL?.absoluteString ?? "")
+        profileImage.kf.setImage(with: profileUrl)
+        
+    }
+    
     func pictureDefault() {
         
         articleImage.image = UIImage(named: "imageDefault")
@@ -169,7 +173,7 @@ class PostViewController: UIViewController {
 
         } else {
             
-            self.handleRegister()
+            postNewArticle()
         }
 
         view.endEditing(true)
@@ -230,29 +234,16 @@ class PostViewController: UIViewController {
     
     @objc func photoSource() {
         
-        let alertController = UIAlertController(title: "Upload Image", message: nil, preferredStyle: .actionSheet)
-        
-        let cameraAction = UIAlertAction(title: "Take a Photo", style: .default) { (_) in
-            
-            self.handleCamera()
-            
-        }
-        
-        let libraryAction = UIAlertAction(title: "Select from Camera Roll", style: .default) { (_) in
-            
-            self.handleSelectImage()
-            
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
-
+        AlertView.uploadImage(self, title: "Upload Image", message: nil,
+                              firstHandler: { (_) in
+                                
+                                self.handleCamera()},
+                              
+                              secondHandler: { (_) in
+                                
+                                self.handleSelectImage()
+                                
         })
-        
-        alertController.addAction(cameraAction)
-        alertController.addAction(libraryAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
         
     }
     
@@ -260,11 +251,7 @@ class PostViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Camera", bundle: nil)
         
-        guard let cameraViewController = storyboard.instantiateViewController(withIdentifier: "Camera") as? CameraViewController else {
-            
-            return
-            
-        }
+        guard let cameraViewController = storyboard.instantiateViewController(withIdentifier: "Camera") as? CameraViewController else { return }
         
         cameraViewController.saveDelegate = self
         
@@ -286,12 +273,6 @@ extension PostViewController: UITableViewDataSource {
 
         return 1
 
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-        
-        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -317,21 +298,18 @@ extension PostViewController: UITableViewDataSource {
                 cell.dateCompletion = { (data : Int) -> Void in
                     
                     self.createdTime = data
-                    print("createdTime: \(data)")
                     
                 }
                 
                 cell.locationCompletion = { (data : String) -> Void in
                     
                     self.location = data
-                    print("location: \(data)")
                     
                 }
                 
                 cell.cuisineCompletion = { (data : String) -> Void in
                     
                     self.cuisine = data
-                    print("cuisine: \(data)")
                     
                 }
                 
@@ -404,7 +382,6 @@ extension PostViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         articleTitle = textField.text ?? ""
-        print("article: \(articleTitle)")
         
     }
     
@@ -432,7 +409,6 @@ extension PostViewController: UITextViewDelegate {
         
         content = textView.text ?? ""
         textView.textColor = UIColor.black
-        print("content: \(content)")
         
     }
     

@@ -567,7 +567,7 @@ extension DetailViewController: LikeButton {
     
 }
 
-extension DetailViewController: EditUpdate {
+extension DetailViewController: EditUpdateProtocol {
     
     func readUpdateData() {
         

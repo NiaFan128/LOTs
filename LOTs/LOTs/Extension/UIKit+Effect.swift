@@ -59,6 +59,21 @@ extension UIView {
         self.layer.masksToBounds = true
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 1
+    
+    }
+    
+    func shadowRadius() {
+        
+        self.layer.borderColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
+        self.layer.borderWidth = 1.0
+        self.layer.cornerRadius = 6
+        self.layer.shadowColor = #colorLiteral(red: 0.9019607843, green: 0.631372549, blue: 0.6588235294, alpha: 1)
+        
+        self.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 0.0
+        self.layer.masksToBounds = false
+        
     }
     
 }

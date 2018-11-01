@@ -35,16 +35,7 @@ class UserViewController: UIViewController {
         userIconImage.image = userIconImage.image?.withRenderingMode(.alwaysTemplate)
         userIconImage.tintColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
         
-        // Shadow and Radius
-        loginFacebookButton.layer.borderColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
-        loginFacebookButton.layer.borderWidth = 1.0
-        loginFacebookButton.layer.cornerRadius = 6
-        loginFacebookButton.layer.shadowColor = #colorLiteral(red: 0.9019607843, green: 0.631372549, blue: 0.6588235294, alpha: 1)
-
-        loginFacebookButton.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
-        loginFacebookButton.layer.shadowOpacity = 1.0
-        loginFacebookButton.layer.shadowRadius = 0.0
-        loginFacebookButton.layer.masksToBounds = false
+        loginFacebookButton.shadowRadius()
         
     }
     

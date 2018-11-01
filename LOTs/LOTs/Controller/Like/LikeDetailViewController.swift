@@ -16,18 +16,20 @@ class LikeDetailViewController: UIViewController {
 
     @IBOutlet weak var likeDetailTableView: UITableView!
     
-    var article: Article!
-    var articles = [Article]()
-    var location: String = ""
-    var ref: DatabaseReference!
-    let keychain = KeychainSwift()
-    let decoder = JSONDecoder()
-    var uid: String = ""
-    let userDefaults = UserDefaults.standard
-    
     var fullScreenSize: CGSize!
     let animationView = LOTAnimationView(name: "lunch_time")
     var animationLabel = UILabel()
+    
+    var article: Article!
+    var articles = [Article]()
+    var location: String = ""
+    
+    var ref: DatabaseReference!
+    let keychain = KeychainSwift()
+    let decoder = JSONDecoder()
+    
+    var uid: String = ""
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
 
@@ -46,10 +48,21 @@ class LikeDetailViewController: UIViewController {
         uid = self.keychain.get("uid") ?? ""
 
         self.navigationItem.title = location
-        
         self.likeArticle(location)
         
         NotificationCenter.default.addObserver(self, selector: #selector(removeFromLike(notification:)), name: Notification.Name("Remove"), object: nil)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(true)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
         
     }
     
@@ -130,18 +143,6 @@ class LikeDetailViewController: UIViewController {
             
         }
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(true)
-                
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.navigationController?.isNavigationBarHidden = false
-
     }
     
     class func likeDetailViewControllerFromLocation(_ location: String) -> LikeDetailViewController {

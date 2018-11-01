@@ -95,4 +95,25 @@ class AlertView: NSObject {
         
     }
     
+    // Sheet Action - Image
+    
+    class func uploadImage(_ view: UIViewController, title: String?, message: String?,
+                              firstHandler: ((UIAlertAction) -> Void)?,
+                              secondHandler: ((UIAlertAction) -> Void)?) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let firstAction = UIAlertAction(title: "Take a Photo", style: .default, handler: firstHandler)
+        let secondAction = UIAlertAction(title: "Select from Camera Roll", style: .default, handler: secondHandler)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(firstAction)
+        alert.addAction(secondAction)
+        alert.addAction(cancelAction)
+        
+        view.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
 }
