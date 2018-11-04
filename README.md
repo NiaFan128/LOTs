@@ -2,14 +2,14 @@
 
 <a href="https://itunes.apple.com/us/app/lots/id1439182743?l=zh&ls=1&mt=8"><img src="https://imgurl.org/temp/1811/79e15d026616cee0.png" width="200"></a>
 
-#### Introduction
+### Introduction
 As a foodie, always interested in others' meals and restaurant pocket lists.
 
-#### Outline
+### Outline
 
 
 
-#### Key Features
+### Key Features
 
 * Custom UICollection Layout
 * Animation / Transition
@@ -17,7 +17,7 @@ As a foodie, always interested in others' meals and restaurant pocket lists.
 * Notification Update
 
 
-#### Libraries
+### Libraries
 
 * Crashlytics
 * DatePickerDialog
@@ -31,15 +31,15 @@ As a foodie, always interested in others' meals and restaurant pocket lists.
 * MCPicker
 * SwiftLint
 
-#### Screenshot
+### Screenshot
 
 
-#### Requirement
+### Requirement
 
 * iOS 11.3 +
 * XCode 10.0
 
-#### Version
+### Version
 
 * 1.1 - 2018/11/01
   * Apply camera feature
@@ -49,6 +49,6 @@ As a foodie, always interested in others' meals and restaurant pocket lists.
 * 1.0 - 2018/10/23
   * Released first verision
 
-#### Contacts
+### Contacts
 **Nia Fan**
 niafan0128@gmail.com
