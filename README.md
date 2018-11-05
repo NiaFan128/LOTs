@@ -7,6 +7,7 @@
 As a foodie, is always interested in others' meals and restaurant pocket lists.
 To collect and organize list conveniently, LOTs was born.
 Stands for "Lunch Of Today", aim to inspire users to explore more dining idea.
+![](https://imgurl.org/temp/1811/b6f42b3ce148ad92.png)
 
 ## Outline
 
