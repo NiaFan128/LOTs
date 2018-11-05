@@ -7,6 +7,7 @@
 As a foodie, is always interested in others' meals and restaurant pocket lists.
 To collect and organize list conveniently, LOTs was born.
 Stands for "Lunch Of Today", aim to inspire users to explore more dining idea.
+
 ![](https://imgurl.org/temp/1811/b6f42b3ce148ad92.png)
 
 ## Outline
@@ -21,33 +22,59 @@ Stands for "Lunch Of Today", aim to inspire users to explore more dining idea.
 
 ## Key Features
 
-* Custom UICollection Layout
-  * Pinterest Style
-  * Instagram Style
+<!-- * Custom UICollection Layout
 * Animation / Transition
 * Custom Camera
-* Notification Update
+* Notification Update -->
 
-#### Custom UICollection Layout
+#### Custom UICollectionView Layout
+> CollectionView apply the `Flow` layout as default, customize layout in `Custom` Class.
+Here are key elements to implement the dynamic effect.
 
-  * Pinterest Style: Here are key elements to implement the dynamic effect.
-
-    * `CollectionViewLayout` CollectionView apply the `Flow` layout as default,
-     implement customized layout in `Custom` Class.   
+  * Pinterest Style:
 
     * `LayoutDelegate` Define height and width for photos as a protocol blueprint.
 
-    * `MainLayout` Customize to set up `numberOfColumns`, `cache`, `prepare()`, in this Class.
+    * `MainLayout` Customize to set up `numberOfColumns`, `cache`, `prepare()`
       * `prepare()`:
-       - Cell Frame: Asks the delegate (conform to `LayoutDelegate`) for the width and height of photos to calculate.
-       - Attributes: Create an UICollectionViewLayoutItem with the frame and add to the cache so that speed up loading pictures.
-       - Note: To avoid the conflict of indexPath number, suggest `cache.removeAll()` at the beginning of `prepare()`.
+         * Cell Frame: Asks the delegate (conform to `LayoutDelegate`) for the width and height of photos to calculate.
+         * Attributes: Create an UICollectionView Layout Item with the frame and add to the cache so that speed up loading pictures.
+         * Note: To avoid the conflict of indexPath number, suggest `cache.removeAll()` at the beginning of `prepare()`.
       * `layoutAttributesForElements`: Override this function to loop the cache for items.
 
     * `MainViewController` Extension to conform `LayoutDelegate` to implement function to set the size of Cell according to indexPath.
 
 * Instagram Style:
 
+  As the CollectionView should be set frame individually. To simplfy and reuse the frame structure, calculate the first `6 cells` as a group to storage `InspireSize` in `dictionary` way.
+
+  * `prepare()`
+
+      ```
+      for index in 0 ... 5 {
+
+        var x = CGFloat(index % 3) * (itemSize.width + 10) + 10
+        var y = CGFloat(index / 3) * (itemSize.height + 10) + 10
+
+        switch index {
+
+            case 0:
+            let inspireSize = InspireSize(x: x,
+                                          y: y,
+                                          width: itemSize.width * 2 + 10,
+                                          height: itemSize.height * 2 + 10)
+            dictionary[0] = inspireSize
+            ....
+        }
+
+      }
+      ```
+
+
+
+
+  * `InspireCollectionViewLayout`
+  * `layoutAttributesForElements`
 
 
 
@@ -82,6 +109,9 @@ Stands for "Lunch Of Today", aim to inspire users to explore more dining idea.
 
 * 1.0 - 2018/10/23
   * Released first verision
+
+## Reference
+
 
 ## Contacts
 **Nia Fan**
