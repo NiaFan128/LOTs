@@ -39,9 +39,9 @@ Stands for "Lunch Of Today", aim to inspire users to explore more dining idea.
 
     * `MainLayout` Customize to set up `numberOfColumns`, `cache`, `prepare()`, in this Class.
       * `prepare()`:
-       * Cell Frame: Asks the delegate (conform to `LayoutDelegate`) for the width and height of photos to calculate.
-       * Attributes: Create an UICollectionViewLayoutItem with the frame and add to the cache so that speed up loading pictures.
-       * Note: To avoid the conflict of indexPath number, suggest `cache.removeAll()` at the beginning of `prepare()`.
+       - Cell Frame: Asks the delegate (conform to `LayoutDelegate`) for the width and height of photos to calculate.
+       - Attributes: Create an UICollectionViewLayoutItem with the frame and add to the cache so that speed up loading pictures.
+       - Note: To avoid the conflict of indexPath number, suggest `cache.removeAll()` at the beginning of `prepare()`.
       * `layoutAttributesForElements`: Override this function to loop the cache for items.
 
     * `MainViewController` Extension to conform `LayoutDelegate` to implement function to set the size of Cell according to indexPath.
