@@ -92,9 +92,6 @@ Here are key elements to implement the dynamic effect.
 * MCPicker
 * SwiftLint
 
-## Screenshot
-
-
 ## Requirement
 
 * iOS 11.3 +
