@@ -70,9 +70,6 @@ Here are key elements to implement the dynamic effect.
       }
       ```
 
-
-
-
   * `InspireCollectionViewLayout`
   * `layoutAttributesForElements`
 
