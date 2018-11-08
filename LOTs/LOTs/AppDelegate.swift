@@ -8,12 +8,12 @@
 
 import UIKit
 import Fabric
-import Crashlytics
 import Firebase
-import FBSDKLoginKit
+import Crashlytics
 import FBSDKCoreKit
-import IQKeyboardManagerSwift
+import FBSDKLoginKit
 import KeychainSwift
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

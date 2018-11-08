@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0f-VB-nZn">
                         <rect key="frame" x="0.0" y="0.0" width="141" height="141"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01" translatesAutoresizingMaskIntoConstraints="NO" id="fF9-ds-jfG">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fF9-ds-jfG">
                                 <rect key="frame" x="0.0" y="0.0" width="141" height="141"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fF9-ds-jfG" secondAttribute="height" multiplier="1:1" id="0Gr-li-OcY"/>
@@ -53,7 +53,4 @@
             <point key="canvasLocation" x="210.40000000000001" y="195.6521739130435"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="01" width="225" height="221"/>
-    </resources>
 </document>

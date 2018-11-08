@@ -27,6 +27,7 @@ class LikeDetailViewController: UIViewController {
     var ref: DatabaseReference!
     let keychain = KeychainSwift()
     let decoder = JSONDecoder()
+    let manager = FirebaseManager()
     
     var uid: String = ""
     let userDefaults = UserDefaults.standard
@@ -81,7 +82,7 @@ class LikeDetailViewController: UIViewController {
 
     // Retrieve the personal like posts and filter by location
     func likeArticle(_ location: String) {
-        
+                
         ref.child("likes/\(uid)").queryOrderedByKey().queryEqual(toValue: location).observeSingleEvent(of: .value, with: { (snapshot) in
 
             guard let value = snapshot.value as? NSDictionary else { return }
@@ -107,41 +108,28 @@ class LikeDetailViewController: UIViewController {
     func readArticleData(_ articleID: String) {
         
         articles = []
-        
-        ref.child("posts").queryOrderedByKey().queryEqual(toValue: articleID).observeSingleEvent(of: .value) { (snapshot) in
-            
-            guard let dictionary = snapshot.value as? NSDictionary else { return }
-            
-            for value in dictionary.allValues {
-                
-                guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-                
-                do {
-                    
-                    let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-                    
-                    if let blockUsers = self.userDefaults.array(forKey: "block") {
-                        
-                        for blockUser in blockUsers {
-                            
-                            self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                            
-                        }
-                        
-                    }
-                    
-                    self.articles.append(articleData)
-                    self.likeDetailTableView.reloadData()
 
-                } catch {
-                    
-                    print(error)
-                    
+        manager.getQueryBySingle(path: "posts", toValue: articleID, event: .valueChange, success: { (data) in
+            
+            guard let articleData = data as? Article else { return }
+            
+            if let blockUsers = self.userDefaults.array(forKey: "block") {
+            
+                for blockUser in blockUsers {
+            
+                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
+            
                 }
-                
+            
             }
             
-        }
+            self.articles.append(articleData)
+            self.likeDetailTableView.reloadData()
+
+        }, failure: {(_) in
+            
+            
+            })
         
     }
     

@@ -8,7 +8,6 @@
 
 import UIKit
 import Lottie
-import Firebase
 import Kingfisher
 import KeychainSwift
 
@@ -21,12 +20,11 @@ class MainViewController: UIViewController {
     var fullScreenSize: CGSize!
     var article: Article!
     var articles = [Article]()
+    
     let keychain = KeychainSwift()
-    
+    let manager = FirebaseManager()
+
     var refreshControl: UIRefreshControl!
-    var ref: DatabaseReference!
-    let decoder = JSONDecoder()
-    
     let userDefaults = UserDefaults.standard
 
     let animationView = LOTAnimationView(name: "loading_2")
@@ -35,7 +33,6 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
-        ref = Database.database().reference()
         fullScreenSize = UIScreen.main.bounds.size
         
         mainCollectionView.delegate = self
@@ -50,7 +47,6 @@ class MainViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(loadData(_:)), for: UIControl.Event.valueChanged)
         
-        // Set the PinterestLayout delegate
         if let layout = mainCollectionView?.collectionViewLayout as? MainLayout {
             
             layout.delegate = self
@@ -100,9 +96,6 @@ class MainViewController: UIViewController {
             // Stop animation
             self.refreshControl.endRefreshing()
             
-            // Scroll to the latest
-//            self.mainCollectionView.scrollToItem(at: [0, 0], at: UICollectionView.ScrollPosition.top, animated: true)
-            
         }
         
     }
@@ -111,43 +104,32 @@ class MainViewController: UIViewController {
 
         articles = []
         
-        ref.child("posts").queryOrdered(byChild: "createdTime").observe(.childAdded) { (snapshot) in
-                        
-            guard let value = snapshot.value as? NSDictionary else { return }
+        manager.getQueryOrder(path: "posts", order: "createdTime", event: .childAdded, success: { (data) in
+                                        
+            guard let articleData = data as? Article else { return }
             
-            guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-            
-            do {
-                
-                let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-                
-                if let blockUsers = self.userDefaults.array(forKey: "block") {
-                    
-                    for blockUser in blockUsers {
-                        
-                        self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                        
-                    }
-                    
+            if let blockUsers = self.userDefaults.array(forKey: "block") {
+                                            
+                for blockUser in blockUsers {
+                                            
+                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
+                                            
                 }
+                                            
+            }
+
+            if articleData.articleID != self.articles.first?.articleID {
                 
-                // Would like to know why ????
-                if articleData.articleID != self.articles.first?.articleID {
-                    
-                    self.articles.insert(articleData, at: 0)
-                
-                }
-                
-                self.removeLoadingAnimation()
-                self.mainCollectionView.reloadData()
-                
-            } catch {
-                
-                print(error)
+                self.articles.insert(articleData, at: 0)
                 
             }
+                                        
+            self.removeLoadingAnimation()
+            self.mainCollectionView.reloadData()
             
-        }
+        },failure: { _ in
+            
+        })
 
     }
     
@@ -166,7 +148,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //        collectionView.collectionViewLayout.invalidateLayout()
         
         return articles.count
-        
         
     }
     
@@ -267,6 +248,5 @@ extension MainViewController: LayoutDelegate {
         return 200
         
     }
-
     
 }

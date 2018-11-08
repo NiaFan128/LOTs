@@ -14,6 +14,7 @@
 		2B116A9F2179657600B3185F /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B116A9E2179657600B3185F /* Camera.storyboard */; };
 		2B191DA5215644BA006A2AC1 /* PostViewController+handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B191DA4215644BA006A2AC1 /* PostViewController+handler.swift */; };
 		2B191DA7215A36F9006A2AC1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B191DA6215A36F9006A2AC1 /* LoginViewController.swift */; };
+		2B2779D521943AFA00020C2F /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2779D421943AFA00020C2F /* FirebaseManager.swift */; };
 		2B2AF69B21704E0A002A2748 /* loading_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2AF69A21704E0A002A2748 /* loading_2.json */; };
 		2B2AF6A521707DAF002A2748 /* lunch_time.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2AF6A421707DAE002A2748 /* lunch_time.json */; };
 		2B2AF6A8217092B0002A2748 /* profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2AF6A7217092B0002A2748 /* profile.json */; };
@@ -82,6 +83,7 @@
 		2B116A9E2179657600B3185F /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		2B191DA4215644BA006A2AC1 /* PostViewController+handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostViewController+handler.swift"; sourceTree = "<group>"; };
 		2B191DA6215A36F9006A2AC1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2B2779D421943AFA00020C2F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2B2AF69A21704E0A002A2748 /* loading_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading_2.json; path = ../../../../../../../Downloads/loading_2.json; sourceTree = "<group>"; };
 		2B2AF6A421707DAE002A2748 /* lunch_time.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lunch_time.json; sourceTree = "<group>"; };
 		2B2AF6A7217092B0002A2748 /* profile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profile.json; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			children = (
 				2BDD665E2155173400E3C74A /* Article.swift */,
 				2BBFA63B216310B500A31D58 /* Category.swift */,
+				2B2779D421943AFA00020C2F /* FirebaseManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,7 +287,6 @@
 		2B86434F2162107900D39812 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2BD2495A2180255700538307 /* Animation */,
 				2BD07D2F21788C980039DB2F /* Camera */,
 				2BE27F12215C837E005387A4 /* Detail */,
 				2BE27EFD215BC1F0005387A4 /* Profile */,
@@ -401,13 +403,6 @@
 				2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */,
 			);
 			path = Camera;
-			sourceTree = "<group>";
-		};
-		2BD2495A2180255700538307 /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Animation;
 			sourceTree = "<group>";
 		};
 		2BD2495B2180284100538307 /* Transition */ = {
@@ -680,6 +675,7 @@
 				2BE27F0C215C8369005387A4 /* DetailBTableViewCell.swift in Sources */,
 				2BE27EF8215BAC5A005387A4 /* LikeDetailViewController.swift in Sources */,
 				2BE27F02215BD475005387A4 /* ProfileCollectionViewCell.swift in Sources */,
+				2B2779D521943AFA00020C2F /* FirebaseManager.swift in Sources */,
 				2B2BE9F221831A2200AE2532 /* InspireViewController.swift in Sources */,
 				2BE27F08215C8357005387A4 /* DetailATableViewCell.swift in Sources */,
 				2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */,
