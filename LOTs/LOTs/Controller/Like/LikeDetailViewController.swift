@@ -73,8 +73,6 @@ class LikeDetailViewController: UIViewController {
         guard let data = notification.userInfo as? [String: String] else { return }
         guard let articleID = data["articleID"] else { return }
         guard let location = data["location"] else { return }
-
-        print("articleID: \(articleID), location: \(location)")
         
         ref.child("likes/\(uid)").child("\(location)").child(articleID).removeValue()
 
@@ -82,26 +80,45 @@ class LikeDetailViewController: UIViewController {
 
     // Retrieve the personal like posts and filter by location
     func likeArticle(_ location: String) {
+        
+//        manager.getQueryOrderEqual(path: "likes/\(uid)", order: "", equalTo: location, event: .valueChange, success: { (data) in
+
+        manager.getQueryByType(path: "likes/\(uid)", toValue: location, event: .valueChange, success: { (data) in
+            
+            guard let dictionaryData = data as? NSDictionary else { return }
+            
+            let articleArray = dictionaryData.allKeys
+            
+            for articleID in articleArray {
                 
-        ref.child("likes/\(uid)").queryOrderedByKey().queryEqual(toValue: location).observeSingleEvent(of: .value, with: { (snapshot) in
-
-            guard let value = snapshot.value as? NSDictionary else { return }
-
-            for localValue in value.allValues {
-
-                guard let dictionaryData = localValue as? NSDictionary else { return }
-
-                let articleArray = dictionaryData.allKeys
-
-                for articleID in articleArray {
-                    
-                    self.readArticleData(articleID as! String)
-
-                }
-
+                self.readArticleData(articleID as! String)
+                
             }
-
+            
+        }, failure: { _ in
+            
+            
         })
+        
+//        ref.child("likes/\(uid)").queryOrderedByKey().queryEqual(toValue: location).observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//            guard let value = snapshot.value as? NSDictionary else { return }
+//
+//            for localValue in value.allValues {
+//
+//                guard let dictionaryData = localValue as? NSDictionary else { return }
+//
+//                let articleArray = dictionaryData.allKeys
+//
+//                for articleID in articleArray {
+//
+//                    self.readArticleData(articleID as! String)
+//
+//                }
+//
+//            }
+//
+//        })
         
     }
     

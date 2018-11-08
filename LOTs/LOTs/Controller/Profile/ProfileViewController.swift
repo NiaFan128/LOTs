@@ -8,7 +8,6 @@
 
 import UIKit
 import Lottie
-import Firebase
 import Kingfisher
 import FBSDKLoginKit
 import KeychainSwift
@@ -31,8 +30,7 @@ class ProfileViewController: UIViewController {
     var article: Article!
     var articles = [Article]()
     
-    var ref: DatabaseReference!
-    let decoder = JSONDecoder()
+    let manager = FirebaseManager()
     let keychain = KeychainSwift()
     
     var uid: String?
@@ -56,7 +54,6 @@ class ProfileViewController: UIViewController {
         let nib2 = UINib(nibName: "ProfileCollectionViewCell", bundle: nil)
         collectionView.register(nib2, forCellWithReuseIdentifier: "ProfileBCell")
 
-        ref = Database.database().reference()
         userName = self.keychain.get("name") ?? ""
         imageUrl = self.keychain.get("imageUrl") ?? ""
         uid = self.keychain.get("uid")
@@ -73,7 +70,6 @@ class ProfileViewController: UIViewController {
             loginView.isHidden = false
 
             self.emptyView.isHidden = false
-//            self.showLoginAnimation()
             self.animationBGView.isHidden = true
             
         }
@@ -110,55 +106,22 @@ class ProfileViewController: UIViewController {
     
     func userArticle() {
         
-        ref.child("posts").queryOrdered(byChild: "user/uid").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
+        guard let uid = self.keychain.get("uid") else { return }
+        
+        manager.getQueryOrderEqual(path: "posts", order: "user/uid", equalTo: uid, event: .valueChange, success: { (data) in
             
-            guard let dictionary = snapshot.value as? NSDictionary else { return }
+            guard let articleData = data as? Article else { return }
             
-            for value in dictionary.allValues {
-                
-                guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-                
-                do {
-                    
-                    let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-                    self.articles.append(articleData)
-                    
-                    self.collectionView.reloadData()
-                    self.tableView.reloadData()
-                    
-                } catch {
-                    
-                    print(error)
-                    
-                }
-                
-            }
+            self.articles.append(articleData)
             
-        }
+            self.collectionView.reloadData()
+            self.tableView.reloadData()
+            
+        }, failure: { _ in
+            
+        })
         
     }
-
-//    func showLoginAnimation() {
-//
-//        userAnimationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-//        userAnimationView.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5) - 70)
-//        userAnimationView.contentMode = .scaleAspectFit
-//
-//        emptyView.addSubview(userAnimationView)
-//
-//        userAnimationView.play()
-//        userAnimationView.animationSpeed = 1.5
-//        userAnimationView.loopAnimation = false
-//
-//        userAnimationLabel.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5))
-//        userAnimationLabel.textAlignment = .center
-//        userAnimationLabel.numberOfLines = 0
-//        userAnimationLabel.text = "Please login with Facebook."
-//        userAnimationLabel.textColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
-//
-//        emptyView.addSubview(userAnimationLabel)
-//
-//    }
     
     func showNoDataAnimation() {
 
@@ -188,8 +151,6 @@ class ProfileViewController: UIViewController {
     }
     
     func logoutAlertReminder(_ userName: String) {
-        
-//        let userName = article.user.name
         
         let alertController = UIAlertController(title: "Oops!", message: "Dear \(userName),\n Are you sure to log out? 😢 ", preferredStyle: .alert)
         
