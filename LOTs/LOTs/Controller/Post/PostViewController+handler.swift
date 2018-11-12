@@ -46,7 +46,12 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
             alertRemind(status: "content")
             return
         }
-        
+
+        guard articleImage.image != UIImage(named: "imageDefault") else {
+            alertRemind(status: "image")
+            return
+        }
+
         doneBarButton.isEnabled = false
         
         self.showLoadingAnimation()
@@ -144,6 +149,11 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         }
         
         guard articleID != nil else {
+            return
+        }
+        
+        guard articleImage.image != UIImage(named: "imageDefault") else {
+            alertRemind(status: "image")
             return
         }
         
