@@ -214,6 +214,8 @@ class PostViewController: UIViewController {
     
     func backToMainPage() {
         
+        animationBGView.isHidden = true
+        
         let tabController = self.view.window!.rootViewController as? UITabBarController
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         tabController?.selectedIndex = 0
