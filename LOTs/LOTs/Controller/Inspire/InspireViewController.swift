@@ -51,6 +51,7 @@ class InspireViewController: UIViewController {
         showCollectionView.delegate = self
         showCollectionView.dataSource = self
         showCollectionView.showsVerticalScrollIndicator = false
+        showCollectionView.alwaysBounceVertical = true
 
     }
     
@@ -284,6 +285,7 @@ extension InspireViewController: UICollectionViewDelegate, UICollectionViewDeleg
         }
 
         return CGSize(width: (self.view.frame.size.width - 30) / 2, height: 80)
+    
     }
     
 }

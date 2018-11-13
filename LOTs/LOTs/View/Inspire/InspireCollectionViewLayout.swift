@@ -148,7 +148,16 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
     
     override var collectionViewContentSize : CGSize {
         
-        return CGSize(width: collectionView!.bounds.width, height: (itemSize.height + 10) * CGFloat(ceil(Double(collectionView!.numberOfItems(inSection: 0)) / 2)) + 10)
+        var item = collectionView!.numberOfItems(inSection: 0)
+        
+        if item % 2 == 0 {
+            
+            item += 1
+            
+        }
+        
+        return CGSize(width: collectionView!.bounds.width, height: (itemSize.height + 10) * CGFloat(ceil(Double(item) / 2)) + 10)
+        
         
     }
     

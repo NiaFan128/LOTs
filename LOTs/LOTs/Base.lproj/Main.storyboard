@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Inspire-->
+        <!--Discover-->
         <scene sceneID="wuj-LX-ema">
             <objects>
                 <viewController id="ITF-LT-Jmj" customClass="InspireViewController" customModule="LOTs" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,7 +69,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RTu-xW-1yk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Inspire" id="teU-q7-8C1"/>
+                    <navigationItem key="navigationItem" title="Discover" id="teU-q7-8C1"/>
                     <connections>
                         <outlet property="showCollectionView" destination="d0y-Mp-Wan" id="hZE-tz-TxJ"/>
                         <outlet property="typeCollectionView" destination="H7E-ho-RSF" id="CQm-n2-XYh"/>
