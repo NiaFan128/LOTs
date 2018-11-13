@@ -40,11 +40,6 @@
 		2BBFA63C216310B500A31D58 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBFA63B216310B500A31D58 /* Category.swift */; };
 		2BD07D3221788D360039DB2F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD07D3021788D360039DB2F /* CameraViewController.swift */; };
 		2BD07D35217892610039DB2F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD07D34217892610039DB2F /* CameraController.swift */; };
-		2BD2495D2180286400538307 /* PresentCardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD2495C2180286400538307 /* PresentCardAnimator.swift */; };
-		2BD2495F21803E1800538307 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD2495E21803E1800538307 /* GlobalConstants.swift */; };
-		2BD24961218049DE00538307 /* CardTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD24960218049DE00538307 /* CardTransition.swift */; };
-		2BD2496321804A5100538307 /* DismissCardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD2496221804A5100538307 /* DismissCardAnimator.swift */; };
-		2BD2496521804C2D00538307 /* CardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD2496421804C2D00538307 /* CardPresentationController.swift */; };
 		2BD77FE02174716400C378F7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD77FDF2174716300C378F7 /* UserViewController.swift */; };
 		2BDD665D2155079700E3C74A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BDD665C2155079700E3C74A /* GoogleService-Info.plist */; };
 		2BDD665F2155173400E3C74A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDD665E2155173400E3C74A /* Article.swift */; };
@@ -67,7 +62,6 @@
 		2BE27F10215C8378005387A4 /* DetailCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE27F0E215C8378005387A4 /* DetailCTableViewCell.swift */; };
 		2BE27F11215C8378005387A4 /* DetailCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE27F0F215C8378005387A4 /* DetailCTableViewCell.xib */; };
 		2BEC035A21884AB500D3B45A /* UIAlertcontroller+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */; };
-		2BEC035C218868F900D3B45A /* DetailViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC035B218868F900D3B45A /* DetailViewController+Gesture.swift */; };
 		2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */; };
 		2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */; };
 		2CD5213A38080600EEA2E24B /* Pods_LOTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B4ADAFBD9FBB343B63DBD6 /* Pods_LOTs.framework */; };
@@ -111,11 +105,6 @@
 		2BBFA63B216310B500A31D58 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2BD07D3021788D360039DB2F /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		2BD07D34217892610039DB2F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
-		2BD2495C2180286400538307 /* PresentCardAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCardAnimator.swift; sourceTree = "<group>"; };
-		2BD2495E21803E1800538307 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
-		2BD24960218049DE00538307 /* CardTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransition.swift; sourceTree = "<group>"; };
-		2BD2496221804A5100538307 /* DismissCardAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissCardAnimator.swift; sourceTree = "<group>"; };
-		2BD2496421804C2D00538307 /* CardPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationController.swift; sourceTree = "<group>"; };
 		2BD77FDF2174716300C378F7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		2BDD665C2155079700E3C74A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2BDD665E2155173400E3C74A /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -138,7 +127,6 @@
 		2BE27F0E215C8378005387A4 /* DetailCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCTableViewCell.swift; sourceTree = "<group>"; };
 		2BE27F0F215C8378005387A4 /* DetailCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCTableViewCell.xib; sourceTree = "<group>"; };
 		2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertcontroller+.swift"; sourceTree = "<group>"; };
-		2BEC035B218868F900D3B45A /* DetailViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController+Gesture.swift"; sourceTree = "<group>"; };
 		2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		2DE5A7C64ED39736B7C8ECA7 /* Pods-LOTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOTs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LOTs/Pods-LOTs.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,11 +221,11 @@
 				2B8303792151F298006E2522 /* NavigationController.swift */,
 				2B63A77921805AAC00B12C23 /* UITabbarController.swift */,
 				2B83036B2151EEE8006E2522 /* Main.storyboard */,
+				2B116A9E2179657600B3185F /* Camera.storyboard */,
 				2B86434D2162104800D39812 /* Model */,
 				2B86434F2162107900D39812 /* Controller */,
 				2B86434E2162107000D39812 /* View */,
 				2B02B91221533FD0004FC66E /* Support */,
-				2BD2495B2180284100538307 /* Transition */,
 				2B2AF69921704DE6002A2748 /* Animation */,
 				2B8643592162160D00D39812 /* Extension */,
 				2B83036E2151EEEA006E2522 /* Assets.xcassets */,
@@ -395,23 +383,10 @@
 		2BD07D2F21788C980039DB2F /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				2B116A9E2179657600B3185F /* Camera.storyboard */,
 				2BD07D3021788D360039DB2F /* CameraViewController.swift */,
 				2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */,
 			);
 			path = Camera;
-			sourceTree = "<group>";
-		};
-		2BD2495B2180284100538307 /* Transition */ = {
-			isa = PBXGroup;
-			children = (
-				2BD2495C2180286400538307 /* PresentCardAnimator.swift */,
-				2BD2496221804A5100538307 /* DismissCardAnimator.swift */,
-				2BD2495E21803E1800538307 /* GlobalConstants.swift */,
-				2BD24960218049DE00538307 /* CardTransition.swift */,
-				2BD2496421804C2D00538307 /* CardPresentationController.swift */,
-			);
-			path = Transition;
 			sourceTree = "<group>";
 		};
 		2BD77FE12174717300C378F7 /* User */ = {
@@ -443,7 +418,6 @@
 			isa = PBXGroup;
 			children = (
 				2BE27F04215C8339005387A4 /* DetailViewController.swift */,
-				2BEC035B218868F900D3B45A /* DetailViewController+Gesture.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -644,8 +618,6 @@
 			files = (
 				2B42E718215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift in Sources */,
 				2B02B91421534202004FC66E /* PostViewController.swift in Sources */,
-				2BEC035C218868F900D3B45A /* DetailViewController+Gesture.swift in Sources */,
-				2BD2496521804C2D00538307 /* CardPresentationController.swift in Sources */,
 				2B83037A2151F298006E2522 /* NavigationController.swift in Sources */,
 				2BE27EFB215BC1EB005387A4 /* ProfileTableViewCell.swift in Sources */,
 				2B6DD080217B05F80093A073 /* TermsViewController.swift in Sources */,
@@ -665,7 +637,6 @@
 				2BE27EFF215BC93F005387A4 /* ProfileViewController.swift in Sources */,
 				2BE27EEC215B76B3005387A4 /* LikeCollectionViewCell.swift in Sources */,
 				2B191DA5215644BA006A2AC1 /* PostViewController+handler.swift in Sources */,
-				2BD2495D2180286400538307 /* PresentCardAnimator.swift in Sources */,
 				2B83038721524275006E2522 /* MainLayout.swift in Sources */,
 				2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */,
 				2BD77FE02174716400C378F7 /* UserViewController.swift in Sources */,
@@ -677,12 +648,9 @@
 				2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */,
 				2B8303852152295F006E2522 /* MainCell.swift in Sources */,
 				2B191DA7215A36F9006A2AC1 /* LoginViewController.swift in Sources */,
-				2BD2495F21803E1800538307 /* GlobalConstants.swift in Sources */,
 				2B83037C2152024D006E2522 /* MainViewController.swift in Sources */,
-				2BD2496321804A5100538307 /* DismissCardAnimator.swift in Sources */,
 				2B63A77A21805AAC00B12C23 /* UITabbarController.swift in Sources */,
 				2BE27EF0215B788C005387A4 /* LikeViewController.swift in Sources */,
-				2BD24961218049DE00538307 /* CardTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

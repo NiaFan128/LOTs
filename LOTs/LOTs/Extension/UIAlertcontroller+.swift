@@ -115,5 +115,4 @@ class AlertView: NSObject {
         
     }
     
-    
 }

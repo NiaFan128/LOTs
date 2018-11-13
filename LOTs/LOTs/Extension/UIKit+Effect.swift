@@ -16,7 +16,6 @@ extension UIView {
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 15
         self.layer.shadowOpacity = 1
-//        self.layer.shouldRasterize = true
         self.layer.cornerRadius = 10
         
     }
@@ -80,7 +79,6 @@ extension UIView {
 
 extension UIView {
     
-    /// Constrain 4 edges of `self` to specified `view`.
     func edges(to view: UIView, top: CGFloat = 0, left: CGFloat = 0, bottom: CGFloat = 0, right: CGFloat = 0) {
         
         NSLayoutConstraint.activate([
@@ -102,8 +100,8 @@ extension UIView {
         
         let flash = CABasicAnimation(keyPath: AnimationKeyPath.opacity.rawValue)
         flash.duration = duration
-        flash.fromValue = 1 // alpha
-        flash.toValue = 0 // alpha
+        flash.fromValue = 1
+        flash.toValue = 0 
         flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         flash.autoreverses = true
         flash.repeatCount = repeatCount

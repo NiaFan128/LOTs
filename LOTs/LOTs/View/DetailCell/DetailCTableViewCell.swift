@@ -31,10 +31,6 @@ class DetailCTableViewCell: UITableViewCell {
     
     override func layoutIfNeeded() {
         
-//        let sizeForTextView = contentTextView.sizeThatFits(contentTextView.frame.size)
-//        let height = sizeForTextView.height
-//        print(contentTextView.frame.height)
-//        heightOfTextView.constant = height
         
     }
     

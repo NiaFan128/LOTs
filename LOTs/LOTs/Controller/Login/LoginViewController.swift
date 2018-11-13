@@ -49,12 +49,8 @@ class LoginViewController: UIViewController {
         facebookImage.image = facebookImage.image?.withRenderingMode(.alwaysTemplate)
         facebookImage.tintColor = UIColor.init(red: 250.0/255.0, green: 145.0/255.0, blue: 150.0/255.0, alpha: 1.0)
         
-//        googleImage.image = googleImage.image?.withRenderingMode(.alwaysTemplate)
-//        googleImage.tintColor = UIColor.init(red: 250.0/255.0, green: 145.0/255.0, blue: 150.0/255.0, alpha: 1.0)
-        
     }
     
-    // Facebook Login
     @IBAction func facebookLogin(_ sender: Any) {
         
         let fbLoginManager = FBSDKLoginManager()
@@ -75,8 +71,6 @@ class LoginViewController: UIViewController {
                 return
                 
             } else {
-                
-                // login successful status
                 
                 if let fbAccessToken = result.token.tokenString {
                     
@@ -111,7 +105,6 @@ class LoginViewController: UIViewController {
 
                         Auth.auth().signInAndRetrieveData(with: credential, completion: { (result, error) in
                         
-                            // Successfully Authenticated User
                             guard let uid = Auth.auth().currentUser?.uid else { return }
                             
                             guard let name = fbName,
@@ -120,7 +113,6 @@ class LoginViewController: UIViewController {
                                     return
                             }
                             
-                            // Keychain Set Up
                             guard self.keychain.set(uid, forKey: "uid") else { return }
                             guard self.keychain.set(name, forKey: "name") else { return }
                             guard self.keychain.set(profileImageUrl, forKey: "imageUrl") else { return }
@@ -130,7 +122,6 @@ class LoginViewController: UIViewController {
                                                                                   "email": email,
                                                                                   "profileImageUrl": profileImageUrl])
                             
-                            // Switch the page
                             if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") {
                                 
                                 UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -148,7 +139,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    // Visitor Mode
     @IBAction func visitorLogin(_ sender: Any) {
         
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") {

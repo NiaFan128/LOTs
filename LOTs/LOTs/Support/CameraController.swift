@@ -216,8 +216,6 @@ extension CameraController {
         view.layer.insertSublayer(self.previewLayer!, at: 0)
         
         self.previewLayer?.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-
-        //        self.previewLayer?.frame = view.frame
         
     }
 

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,7 +51,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_2" translatesAutoresizingMaskIntoConstraints="NO" id="B4k-0I-4TM">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B4k-0I-4TM">
                         <rect key="frame" x="40.5" y="32" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="hTx-V3-0hJ"/>
@@ -88,7 +89,4 @@
             <point key="canvasLocation" x="172.80000000000001" y="184.85757121439281"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="profile_2" width="480" height="480"/>
-    </resources>
 </document>

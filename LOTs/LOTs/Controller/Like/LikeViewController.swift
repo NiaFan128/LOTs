@@ -39,7 +39,6 @@ class LikeViewController: UIViewController {
         layout.minimumLineSpacing = 7.5
         layout.minimumInteritemSpacing = 5
         layout.itemSize = CGSize(width: CGFloat((fullScreenSize.width) - 20) / 2, height: CGFloat((fullScreenSize.width) - 20) / 2)
-//        layout.itemSize = CGSize(width: CGFloat((fullScreenSize.width) / 2 - 2.5), height: CGFloat((fullScreenSize.width) / 2 - 2.5))
         
         likeCollectionView.collectionViewLayout = layout
         

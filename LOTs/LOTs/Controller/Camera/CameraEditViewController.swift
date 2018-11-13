@@ -109,7 +109,6 @@ class CameraEditViewController: UIViewController {
 
     }
     
-    // 由左到右
     func presentDetailFromeLeftToRight() {
         
         let animation = CATransition()

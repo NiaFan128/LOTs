@@ -30,13 +30,9 @@ class CameraViewController: UIViewController {
     @IBOutlet fileprivate var capturePhotoImageView: UIImageView!
     
     ///Allows the user to put the camera in photo mode.
-//    @IBOutlet fileprivate var photoModeButton: UIButton!
     @IBOutlet fileprivate var toggleCameraButton: UIButton!
     @IBOutlet fileprivate var toggleFlashButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
-    
-    ///Allows the user to put the camera in video mode.
-//    @IBOutlet fileprivate var videoModeButton: UIButton!
     
     override func viewDidLoad() {
         
@@ -50,9 +46,7 @@ class CameraViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
 
         super.viewWillAppear(animated)
-        
-//        UIApplication.shared.isStatusBarHidden = true
-        
+                
         var statusBarHidden = true
         
         var prefersStatusBarHidden: Bool {

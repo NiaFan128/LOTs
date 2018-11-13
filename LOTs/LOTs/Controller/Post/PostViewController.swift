@@ -147,7 +147,6 @@ class PostViewController: UIViewController {
         
     }
     
-    // Loading Animation
     func showLoadingAnimation() {
         
         animationBGView.isHidden = false
@@ -164,7 +163,6 @@ class PostViewController: UIViewController {
         
     }
     
-    // Post Action
     @IBAction func postAction(_ sender: Any) {
         
         if editArticle != nil {
@@ -400,7 +398,6 @@ extension PostViewController: UITextViewDelegate {
 
         } else {
 
-//            textView.text = ""
             textView.textColor = UIColor.black
 
         }

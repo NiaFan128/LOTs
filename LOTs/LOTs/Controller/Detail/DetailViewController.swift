@@ -36,21 +36,6 @@ class DetailViewController: UIViewController {
     var draggingDownToDismiss = false
     let transition = CATransition()
     
-    final class DismissalPanGesture: UIPanGestureRecognizer {}
-    final class DismissalScreenEdgePanGesture: UIScreenEdgePanGestureRecognizer {}
-    
-    private lazy var dismissalPanGesture: DismissalPanGesture = {
-        let pan = DismissalPanGesture()
-        pan.maximumNumberOfTouches = 1
-        return pan
-    }()
-    
-    private lazy var dismissalScreenEdgePanGesture: DismissalScreenEdgePanGesture = {
-        let pan = DismissalScreenEdgePanGesture()
-        pan.edges = .left
-        return pan
-    }()
-    
     var interactiveStartingPoint: CGPoint?
     var dismissalAnimator: UIViewPropertyAnimator?
 
@@ -84,26 +69,15 @@ class DetailViewController: UIViewController {
         
         tableView.estimatedRowHeight = 44.0
         
-        dismissalPanGesture.addTarget(self, action: #selector(handleDismissalPan(gesture:)))
-        dismissalPanGesture.delegate = self
-        
-        dismissalScreenEdgePanGesture.addTarget(self, action: #selector(handleDismissalPan(gesture:)))
-        dismissalScreenEdgePanGesture.delegate = self
-        
-        dismissalPanGesture.require(toFail: dismissalScreenEdgePanGesture)
         statusbarView.isHidden = false
         
         loadViewIfNeeded()
     
         tableView.showsVerticalScrollIndicator = false
-//        tableView.addGestureRecognizer(dismissalPanGesture)
-//        tableView.addGestureRecognizer(dismissalScreenEdgePanGesture)
         
-        // 向右滑動
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeOut(recognizer:)))
         swipeLeft.direction = .right
         
-        // 為視圖加入監聽手勢
         self.view.addGestureRecognizer(swipeLeft)
         
     }
@@ -147,16 +121,8 @@ class DetailViewController: UIViewController {
     
     @IBAction func backAction(_ sender: UIButton) {
         
-//        if animation == true {
-//
-//            self.dismiss(animated: true, completion: nil)
-//
-//
-//        } else {
-        
-            _ = self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
 
-//        }
         
     }
     
@@ -292,7 +258,6 @@ class DetailViewController: UIViewController {
         
     }
     
-    // like function
     func interstedIn() {
         
         if uid == nil {
@@ -311,7 +276,6 @@ class DetailViewController: UIViewController {
 
     }
     
-    // dislike function
     func notInterstedIn() {
         
         if uid == nil {
@@ -400,7 +364,6 @@ class DetailViewController: UIViewController {
         
     }
     
-    // Loading Animation
     func showLoadingAnimation() {
         
         animationBGView.isHidden = false
@@ -485,7 +448,6 @@ extension DetailViewController: UITableViewDataSource {
             cell.locationLabel.text = article.location
             cell.cuisineLabel.text = article.cuisine
             
-            // like function
             cell.buttonDelegate = self
             
             if interestedIn == true {
@@ -547,14 +509,12 @@ extension DetailViewController: LikeButton {
             
             if notinterestedIn {
                 
-                // not interest
                 button.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
                 button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
                 notInterstedIn()
                 
             } else {
                 
-                // interest
                 button.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
                 button.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
                 interstedIn()

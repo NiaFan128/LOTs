@@ -17,7 +17,6 @@ protocol LogoutButton: AnyObject {
 class ProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImage: UIImageView!
-//    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var postsAmountLabel: UILabel!
@@ -29,9 +28,6 @@ class ProfileTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         profileImage.roundCorner()
-//        editButton.layer.cornerRadius = 6
-//        editButton.layer.borderColor = UIColor.lightGray.cgColor
-//        editButton.layer.borderWidth = 1
         
         logoutButton.setImage(#imageLiteral(resourceName: "exit_1").withRenderingMode(.alwaysTemplate), for: .normal)
         logoutButton.tintColor = #colorLiteral(red: 0.8274509804, green: 0.3529411765, blue: 0.4, alpha: 1)
@@ -45,7 +41,6 @@ class ProfileTableViewCell: UITableViewCell {
         
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
     @IBAction func logOutAction(_ sender: Any) {

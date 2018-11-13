@@ -66,7 +66,6 @@ class LikeDetailViewController: UIViewController {
         
     }
     
-    // Need to fix since didn't receive the notification
     @objc func removeFromLike(notification: Notification) {
         
         guard let data = notification.userInfo as? [String: String] else { return }
@@ -79,7 +78,6 @@ class LikeDetailViewController: UIViewController {
 
     }
 
-    // Retrieve the personal like posts and filter by location
     func likeArticle(_ location: String) {
         
         ref.child("likes/\(uid)").queryOrderedByKey().queryEqual(toValue: location).observeSingleEvent(of: .value, with: { (snapshot) in

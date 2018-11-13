@@ -213,7 +213,6 @@ extension InspireViewController: UICollectionViewDataSource {
             let url = URL(string: cuisine.image)
             cell.typeImage.kf.setImage(with: url)
             cell.typeLabel.text = cuisine.name
-//            cell.underlineView.isHidden = hidingLine
 
             return cell
             

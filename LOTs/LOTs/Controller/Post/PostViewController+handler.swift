@@ -53,7 +53,6 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         let fileName = UUID().uuidString
         
-        // Storage
         let storageRef = Storage.storage().reference().child("article_images").child("\(fileName).jpg")
         
         if let articleImage = self.articleImage.image, let uploadData = self.articleImage.image?.jpegData(compressionQuality: 0.5) {
@@ -114,7 +113,6 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     
     func editAction() {
         
-        // Error Handler
         guard location != nil else {
             alertRemind("location")
             return
