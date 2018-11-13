@@ -15,9 +15,7 @@ import KeychainSwift
 class MainViewController: UIViewController {
 
     @IBOutlet weak var mainCollectionView: UICollectionView!
-    
-    private var transition: CardTransition?
-    
+        
     var fullScreenSize: CGSize!
     var article: Article!
     var articles = [Article]()
