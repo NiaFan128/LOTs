@@ -284,7 +284,6 @@
 		2B86434F2162107900D39812 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2BD2495A2180255700538307 /* Animation */,
 				2BD07D2F21788C980039DB2F /* Camera */,
 				2BE27F12215C837E005387A4 /* Detail */,
 				2BE27EFD215BC1F0005387A4 /* Profile */,
@@ -401,13 +400,6 @@
 				2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */,
 			);
 			path = Camera;
-			sourceTree = "<group>";
-		};
-		2BD2495A2180255700538307 /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Animation;
 			sourceTree = "<group>";
 		};
 		2BD2495B2180284100538307 /* Transition */ = {

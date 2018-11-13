@@ -145,11 +145,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         }
         
         guard articleImage.image != UIImage(named: "imageDefault") else {
-<<<<<<< HEAD
             alertRemind("image")
-=======
-            alertRemind(status: "image")
->>>>>>> hotfix
             return
         }
         
