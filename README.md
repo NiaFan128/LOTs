@@ -6,7 +6,6 @@
 
 As a foodie, is always interested in others' meals and restaurant pocket lists.
 To collect and organize list conveniently, LOTs was born.
-<<<<<<< HEAD
 Stands for "Lunch Of Today", aim to inspire users to explore and discover more dining idea.
 
 ![](https://imgurl.org/temp/1811/ce3b415c34945c0f.png)
