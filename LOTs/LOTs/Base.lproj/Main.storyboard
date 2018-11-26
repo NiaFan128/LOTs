@@ -340,7 +340,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4VN-kB-wz2">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewLayout key="collectionViewLayout" id="jWV-L7-wNn" customClass="MainLayout" customModule="LOTs" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="g9c-2p-ZC3" customClass="MainLayout" customModule="LOTs" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainFoodCell" id="Iaa-2M-BsB" customClass="MainCell" customModule="LOTs" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
