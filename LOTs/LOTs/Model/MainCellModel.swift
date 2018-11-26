@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct MainCellModel {
-
+class CellModel {
+    
     
     
 }
+

@@ -25,6 +25,8 @@ class MainViewController: UIViewController {
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
     
+    let firebaseManager = FirebaseManager()
+    
     let userDefaults = UserDefaults.standard
 
     let animationView = LOTAnimationView(name: "loading_2")
@@ -45,6 +47,16 @@ class MainViewController: UIViewController {
         
         showLoadingAnimation()
         readData()
+        
+        firebaseManager.getNoQuery(path: "posts", event: .childAdded, success: { (data) in
+            
+            print("data:", data)
+            
+        }) { (Error) in
+            
+            print(Error)
+    
+        }
         
         refreshControl.addTarget(self, action: #selector(loadData(_:)), for: UIControl.Event.valueChanged)
         
