@@ -216,18 +216,8 @@ extension LikeDetailViewController: UITableViewDataSource {
         }
 
         let article = articles[indexPath.row]
-        
-        cell.authorLabel.text = article.user.name
-        
-        let userUrl = URL(string: article.user.image)
-        cell.authorImage.kf.setImage(with: userUrl)
-        
-        let articleUrl = URL(string: article.articleImage)
-        cell.articleImage.kf.setImage(with: articleUrl)
-        
-        cell.articleTitleLabel.text = article.articleTitle
-        cell.cuisineLabel.text = article.cuisine
-
+        cell.updateCellInfo(LikeCellModel(article))
+    
         return cell
 
     }

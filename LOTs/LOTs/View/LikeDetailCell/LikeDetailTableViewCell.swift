@@ -32,4 +32,14 @@ class LikeDetailTableViewCell: UITableViewCell {
 
     }
     
+    func updateCellInfo(_ model: LikeCellModel) {
+        
+        self.authorImage.kf.setImage(with: model.userImageUrl)
+        self.articleImage.kf.setImage(with: model.articleImageUrl)
+        self.articleTitleLabel.text = model.articleTitle
+        self.authorLabel.text = model.userName
+        self.cuisineLabel.text = model.cuisine
+        
+    }
+    
 }
