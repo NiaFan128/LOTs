@@ -47,6 +47,8 @@ class MainLayout: UICollectionViewLayout {
     
     override func prepare() {
         
+        super.prepare()
+        
         cache.removeAll()
         
         guard cache.isEmpty == true, let collectionView = collectionView else {
@@ -123,7 +125,6 @@ class MainLayout: UICollectionViewLayout {
         
     }
     
-    // Not sure what stands for
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         
         return cache[indexPath.item]

@@ -25,6 +25,8 @@ class DetailViewController: UIViewController {
     let keychain = KeychainSwift()
     let animationView = LOTAnimationView(name: "loading_2")
     
+    private let dateFormatter = LOTsDateFormatter()
+
     var notinterestedIn = true
     var interestedIn: Bool = false
     var uid: String?
@@ -267,7 +269,7 @@ class DetailViewController: UIViewController {
         } else {
             
             guard let uid = self.keychain.get("uid") else { return }
-            guard let location = article.location else { return }
+            let location = article.location
             let articleID = article.articleID
             
             ref.child("likes/\(uid)").child("\(location)").updateChildValues(["\(articleID)": true])
@@ -285,7 +287,7 @@ class DetailViewController: UIViewController {
         } else {
             
             guard let uid = keychain.get("uid") else { return }
-            guard let location = article.location else { return }
+            let location = article.location
             let articleID = article.articleID
             
             ref.child("likes/\(uid)").child("\(location)").child(articleID).removeValue()
@@ -305,7 +307,7 @@ class DetailViewController: UIViewController {
         DispatchQueue.main.async {
             
             guard let uid = self.keychain.get("uid") else { return }
-            guard let location = self.article.location else { return }
+            let location = self.article.location
             let articleID = self.article.articleID
             
             self.ref.child("likes/\(uid)/\(location)").queryOrderedByKey().observe(.value) { (snapshot) in
@@ -414,18 +416,7 @@ extension DetailViewController: UITableViewDataSource {
                 
             }
             
-            let url = URL(string: article.user.image)
-            cell.profileImage.kf.setImage(with: url)
-            cell.authorLabel.text = article.user.name
-            cell.titleLabel.text = article.articleTitle
-            
-            let timeData = NSDate(timeIntervalSince1970: TimeInterval(article.createdTime ?? 0))
-            let dateFormat: DateFormatter = DateFormatter()
-            dateFormat.dateFormat = "MMMM / dd / yyyy"
-            let stringDate = dateFormat.string(from: timeData as Date)
-            cell.createdTimeLabel.text = stringDate
-            
-            // Edit function
+            cell.updateCellInfo(DetailCellModel(article))
             cell.moreButton.addTarget(self, action: #selector(DetailViewController.moreAction), for: .touchUpInside)
             
             return cell
@@ -440,13 +431,7 @@ extension DetailViewController: UITableViewDataSource {
             }
             
             cell.articleImage.image = nil
-            
-            let articleUrl = URL(string: article.articleImage)
-            cell.articleImage?.kf.indicatorType = .activity
-            cell.articleImage.kf.setImage(with: articleUrl, placeholder: nil)
-            
-            cell.locationLabel.text = article.location
-            cell.cuisineLabel.text = article.cuisine
+            cell.updateCellInfo(DetailCellModel(article))
             
             cell.buttonDelegate = self
             

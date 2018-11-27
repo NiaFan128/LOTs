@@ -52,7 +52,7 @@ class InspireViewController: UIViewController {
         showCollectionView.dataSource = self
         showCollectionView.showsVerticalScrollIndicator = false
         showCollectionView.alwaysBounceVertical = true
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

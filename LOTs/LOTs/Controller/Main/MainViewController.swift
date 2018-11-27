@@ -8,7 +8,6 @@
 
 import UIKit
 import Lottie
-import Firebase
 import Kingfisher
 import KeychainSwift
 
@@ -22,8 +21,8 @@ class MainViewController: UIViewController {
     let keychain = KeychainSwift()
     
     var refreshControl: UIRefreshControl!
-    var ref: DatabaseReference!
-    let decoder = JSONDecoder()
+    
+    let manager = FirebaseManager()
     
     let userDefaults = UserDefaults.standard
 
@@ -33,7 +32,6 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         
-        ref = Database.database().reference()
         fullScreenSize = UIScreen.main.bounds.size
         
         mainCollectionView.delegate = self
@@ -54,7 +52,7 @@ class MainViewController: UIViewController {
         
         }
         
-        userDefaults.removeObject(forKey: "block")
+//        userDefaults.removeObject(forKey: "block")
         
     }
     
@@ -102,44 +100,35 @@ class MainViewController: UIViewController {
 
         articles = []
         
-        ref.child("posts").queryOrdered(byChild: "createdTime").observe(.childAdded) { (snapshot) in
-                        
-            guard let value = snapshot.value as? NSDictionary else { return }
+        manager.getQueryOrder(path: "posts", order: "createdTime", event: .childAdded, success: { (data) in
             
-            guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
+            guard let articleData = data as? Article else { return }
             
-            do {
+            if let blockUsers = self.userDefaults.array(forKey: "block") {
                 
-                let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-                
-                if let blockUsers = self.userDefaults.array(forKey: "block") {
+                for blockUser in blockUsers {
                     
-                    for blockUser in blockUsers {
-                        
-                        self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                        
-                    }
+                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
                     
                 }
-                
-                if articleData.articleID != self.articles.first?.articleID {
-                    
-                    self.articles.insert(articleData, at: 0)
-                
-                }
-                
-                self.removeLoadingAnimation()
-                self.mainCollectionView.reloadData()
-                
-            } catch {
-                
-                print(error)
                 
             }
             
-        }
+            if articleData.articleID != self.articles.first?.articleID {
+                
+                self.articles.insert(articleData, at: 0)
+                
+            }
+            
+            self.removeLoadingAnimation()
+            self.mainCollectionView.reloadData()
+                                
+        }, failure: { _ in
+            
+        })
 
     }
+    
     
 }
 
@@ -155,7 +144,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return articles.count
         
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -163,15 +151,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFoodCell", for: indexPath as IndexPath) as! MainCell
 
         let article = articles[indexPath.row]
-        
-        cell.titleLabel?.text = article.articleTitle
-        
-        let url = URL(string: article.user.image)
-        cell.profileImageView.kf.setImage(with: url)
-        
-        let articleUrl = URL(string: article.articleImage)
-        cell.imageView?.kf.indicatorType = .activity
-        cell.imageView.kf.setImage(with: articleUrl)
+
+        cell.updateCellInfo(MainCellModel(model: article))
         
         return cell
         
@@ -209,6 +190,5 @@ extension MainViewController: LayoutDelegate {
         return 200
         
     }
-
     
 }

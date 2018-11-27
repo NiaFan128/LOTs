@@ -16,9 +16,9 @@ struct Article: Codable {
     var articleImage: String
     var height: CGFloat?
     var width: CGFloat?
-    var createdTime: Int?
-    var location: String?
-    var cuisine: String?
+    var createdTime: Int
+    var location: String
+    var cuisine: String
     var content: String?
     var user: User
     var instagramPost: Bool?

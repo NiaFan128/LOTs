@@ -16,6 +16,8 @@ class DetailATableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     
+    private let dateFormatter = LOTsDateFormatter()
+    
     override func awakeFromNib() {
 
         super.awakeFromNib()
@@ -27,6 +29,15 @@ class DetailATableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func updateCellInfo(_ model: DetailCellModel) {
+        
+        self.authorLabel.text = model.userName
+        self.titleLabel.text = model.articleTitle
+        self.createdTimeLabel.text = model.createdTimeString
+        self.profileImage.kf.setImage(with: model.userImageUrl)
+        
     }
     
 }

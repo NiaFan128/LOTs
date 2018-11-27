@@ -48,4 +48,13 @@ class ProfileTableViewCell: UITableViewCell {
         buttonDelegate?.buttonSelect(self.logoutButton)
         
     }
+    
+    func updateCellInfo(_ model: ProfileCellModel) {
+        
+        self.authorLabel.text = model.userName
+        self.profileImage.kf.setImage(with: model.profileImageUrl)
+        self.postsAmountLabel.text = model.postAmount
+        
+    }
+    
 }

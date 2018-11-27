@@ -16,9 +16,6 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var locationTextField: McTextField!
     @IBOutlet weak var cuisineTextField: McTextField!
-//    @IBOutlet weak var facebookShareButton: UIButton!
-//    @IBOutlet weak var facebookShareImage: UIImageView!
-//    @IBOutlet weak var facebookShareLabel: UILabel!
     @IBOutlet weak var cityTextField: UITextField!
     
     var locationCompletion: ((_ data: String) -> Void)?
@@ -28,8 +25,6 @@ class PostTableViewCell: UITableViewCell {
     var selectLocation: String?
     var selectCuisine: String?
     var selectDate: String?
-    
-//    var firstFlag = true
     
     var upload = true
     
@@ -127,7 +122,6 @@ class PostTableViewCell: UITableViewCell {
         
         let locationInputView = McPicker(data: data)
         
-        // 彈跳起來的上方背景色
         locationInputView.backgroundColor = .gray
         locationInputView.backgroundColorAlpha = 0.25
         locationTextField.inputViewMcPicker = locationInputView
@@ -150,14 +144,12 @@ class PostTableViewCell: UITableViewCell {
         
         locationTextField.cancelHandler = { [weak locationTextField] in
             
-//            locationTextField?.text = "Cancelled."
-            
         }
         
         locationTextField.textFieldWillBeginEditingHandler = { [weak locationTextField] (selections) in
             
             if locationTextField?.text == "" {
-                // Selections always default to the first value per component
+
                 locationTextField?.text = selections[0]
                 
             }
@@ -174,7 +166,6 @@ class PostTableViewCell: UITableViewCell {
         
         let mcInputView = McPicker(data: data)
         
-        // 彈跳起來的上方背景色
         mcInputView.backgroundColor = .gray
         mcInputView.backgroundColorAlpha = 0.25
         cuisineTextField.inputViewMcPicker = mcInputView
@@ -198,14 +189,12 @@ class PostTableViewCell: UITableViewCell {
 
         cuisineTextField.cancelHandler = { [weak cuisineTextField] in
             
-//            cuisineTextField?.text = "Cancelled."
-        
         }
         
         cuisineTextField.textFieldWillBeginEditingHandler = { [weak cuisineTextField] (selections) in
             
             if cuisineTextField?.text == "" {
-                // Selections always default to the first value per component
+
                 cuisineTextField?.text = selections[0]
             
             }
@@ -213,25 +202,6 @@ class PostTableViewCell: UITableViewCell {
         }
         
     }
-    
-//    @IBAction func facebookSelect(_ sender: Any) {
-//        
-//        let switchOn = !upload
-//        upload = switchOn
-//        
-//        if upload {
-//            
-//            facebookShareButton.setImage(#imageLiteral(resourceName: "switch_off").withRenderingMode(.alwaysTemplate), for: .normal)
-//            //            instagramSwitchButton.tintColor = UIColor.lightGray
-//            
-//        } else {
-//            
-//            facebookShareButton.setImage(#imageLiteral(resourceName: "switch_on").withRenderingMode(.alwaysTemplate), for: .normal)
-//            facebookShareButton.tintColor = UIColor.init(red: 211.0/255.0, green: 90.0/255.0, blue: 102.0/255.0, alpha: 1.0)
-//            
-//        }
-//        
-//    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         

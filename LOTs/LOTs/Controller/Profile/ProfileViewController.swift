@@ -64,14 +64,12 @@ class ProfileViewController: UIViewController {
         if uid != nil {
             
             loginView.isHidden = true
-
             emptyView.isHidden = true
             animationBGView.isHidden = false
             
         } else {
             
             loginView.isHidden = false
-
             self.emptyView.isHidden = false
             self.animationBGView.isHidden = true
             
@@ -130,7 +128,7 @@ class ProfileViewController: UIViewController {
                     print(error)
                     
                 }
-                
+
             }
             
         }
@@ -210,15 +208,7 @@ extension ProfileViewController: UITableViewDataSource {
             
         }
         
-        DispatchQueue.main.async {
-            
-            cell.authorLabel.text = self.userName
-            let userUrl = URL(string: self.imageUrl)
-            cell.profileImage.kf.setImage(with: userUrl)
-            cell.postsAmountLabel.text = String(self.articles.count)
-        
-        }
-
+        cell.updateCellInfo(ProfileCellModel(name: userName, image: imageUrl, posts: String(articles.count)))
         cell.buttonDelegate = self
         cell.selectionStyle = .none
 

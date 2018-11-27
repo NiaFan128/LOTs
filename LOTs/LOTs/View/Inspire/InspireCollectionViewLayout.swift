@@ -31,7 +31,7 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
         
         itemSize = CGSize(width: length, height: length)
         
-        var dictionary: [Int: InspireSize] = [:]
+        var dictionary: [Int: InspireSize] = [ : ]
         
         for index in 0 ... 5 {
             
@@ -158,7 +158,6 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
         
         return CGSize(width: collectionView!.bounds.width, height: (itemSize.height + 10) * CGFloat(ceil(Double(item) / 2)) + 10)
         
-        
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -169,9 +168,7 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         
-        if indexPath.row < attributesList.count
-            
-        {
+        if indexPath.row < attributesList.count {
             
             return attributesList[indexPath.row]
             

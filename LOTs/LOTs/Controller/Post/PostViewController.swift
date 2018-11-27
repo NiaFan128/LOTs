@@ -63,7 +63,7 @@ class PostViewController: UIViewController {
 
         pictureSetUp()
         pictureDefault()
-    
+            
         ref = Database.database().reference()
         fullScreenSize = UIScreen.main.bounds.size
     
@@ -295,19 +295,19 @@ extension PostViewController: UITableViewDataSource {
                 
                 cell.setUpValue()
                 
-                cell.dateCompletion = { (data : Int) -> Void in
+                cell.dateCompletion = { (data) in
                     
                     self.createdTime = data
                     
                 }
                 
-                cell.locationCompletion = { (data : String) -> Void in
+                cell.locationCompletion = { (data) in
                     
                     self.location = data
                     
                 }
                 
-                cell.cuisineCompletion = { (data : String) -> Void in
+                cell.cuisineCompletion = { (data) in
                     
                     self.cuisine = data
                     
