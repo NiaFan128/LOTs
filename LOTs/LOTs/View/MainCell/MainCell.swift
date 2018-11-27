@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MainCell: UICollectionViewCell {
     
@@ -14,8 +15,6 @@ class MainCell: UICollectionViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
-    var disabledHighlightedAnimation = false
     
     override func awakeFromNib() {
         
@@ -27,24 +26,17 @@ class MainCell: UICollectionViewCell {
         
     }
     
-    
-    func resetTransform() {
+    func updateCellInfo(_ model: MainCellModel) {
         
-        transform = .identity
+        self.titleLabel.text = model.articleTitle
     
-    }
-    
-    func freezeAnimations() {
+        let url = URL(string: model.profileImage)
+        self.profileImageView.kf.setImage(with: url)
+
+        let articleUrl = URL(string: model.articleImage)
+        self.imageView?.kf.indicatorType = .activity
+        self.imageView.kf.setImage(with: articleUrl)
         
-        disabledHighlightedAnimation = true
-        layer.removeAllAnimations()
-    
-    }
-    
-    func unfreezeAnimations() {
-        
-        disabledHighlightedAnimation = false
-    
     }
     
 }

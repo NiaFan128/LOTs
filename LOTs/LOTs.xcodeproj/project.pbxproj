@@ -65,6 +65,8 @@
 		2BE94F2B21AC2741008BF2CB /* LOTsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE94F2A21AC2741008BF2CB /* LOTsError.swift */; };
 		2BE94F2D21AC27FA008BF2CB /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE94F2C21AC27FA008BF2CB /* FirebaseManager.swift */; };
 		2BE94F2F21AC2C4C008BF2CB /* ArticleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE94F2E21AC2C4C008BF2CB /* ArticleProvider.swift */; };
+		2BE94F3221ACEFBB008BF2CB /* DetailCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE94F3121ACEFBB008BF2CB /* DetailCellModel.swift */; };
+		2BE94F3421ACFAA6008BF2CB /* LOTsDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE94F3321ACFAA6008BF2CB /* LOTsDateFormatter.swift */; };
 		2BEC035A21884AB500D3B45A /* UIAlertcontroller+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */; };
 		2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */; };
 		2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */; };
@@ -134,6 +136,8 @@
 		2BE94F2A21AC2741008BF2CB /* LOTsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOTsError.swift; sourceTree = "<group>"; };
 		2BE94F2C21AC27FA008BF2CB /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2BE94F2E21AC2C4C008BF2CB /* ArticleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleProvider.swift; sourceTree = "<group>"; };
+		2BE94F3121ACEFBB008BF2CB /* DetailCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellModel.swift; sourceTree = "<group>"; };
+		2BE94F3321ACFAA6008BF2CB /* LOTsDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOTsDateFormatter.swift; sourceTree = "<group>"; };
 		2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertcontroller+.swift"; sourceTree = "<group>"; };
 		2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			children = (
 				2B02B91021533F46004FC66E /* LOTsColor.swift */,
 				2BD07D34217892610039DB2F /* CameraController.swift */,
+				2BE94F3321ACFAA6008BF2CB /* LOTsDateFormatter.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -255,10 +260,10 @@
 		2B86434D2162104800D39812 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2BE94F3021ACEF94008BF2CB /* CellModel */,
 				2BDD665E2155173400E3C74A /* Article.swift */,
-				2BE94F2A21AC2741008BF2CB /* LOTsError.swift */,
 				2BBFA63B216310B500A31D58 /* Category.swift */,
-				2BE94F2821ABF145008BF2CB /* MainCellModel.swift */,
+				2BE94F2A21AC2741008BF2CB /* LOTsError.swift */,
 				2BE94F2C21AC27FA008BF2CB /* FirebaseManager.swift */,
 				2BE94F2E21AC2C4C008BF2CB /* ArticleProvider.swift */,
 			);
@@ -432,6 +437,15 @@
 				2BE27F04215C8339005387A4 /* DetailViewController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		2BE94F3021ACEF94008BF2CB /* CellModel */ = {
+			isa = PBXGroup;
+			children = (
+				2BE94F2821ABF145008BF2CB /* MainCellModel.swift */,
+				2BE94F3121ACEFBB008BF2CB /* DetailCellModel.swift */,
+			);
+			path = CellModel;
 			sourceTree = "<group>";
 		};
 		59487238377968153652FD2E /* Frameworks */ = {
@@ -648,12 +662,14 @@
 				2B02B91121533F46004FC66E /* LOTsColor.swift in Sources */,
 				2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */,
 				2BE27EFF215BC93F005387A4 /* ProfileViewController.swift in Sources */,
+				2BE94F3221ACEFBB008BF2CB /* DetailCellModel.swift in Sources */,
 				2BE27EEC215B76B3005387A4 /* LikeCollectionViewCell.swift in Sources */,
 				2B191DA5215644BA006A2AC1 /* PostViewController+handler.swift in Sources */,
 				2B83038721524275006E2522 /* MainLayout.swift in Sources */,
 				2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */,
 				2BD77FE02174716400C378F7 /* UserViewController.swift in Sources */,
 				2BE27F0C215C8369005387A4 /* DetailBTableViewCell.swift in Sources */,
+				2BE94F3421ACFAA6008BF2CB /* LOTsDateFormatter.swift in Sources */,
 				2BE27EF8215BAC5A005387A4 /* LikeDetailViewController.swift in Sources */,
 				2BE27F02215BD475005387A4 /* ProfileCollectionViewCell.swift in Sources */,
 				2BE94F2D21AC27FA008BF2CB /* FirebaseManager.swift in Sources */,

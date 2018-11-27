@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 import KeychainSwift
 
 protocol LikeButton: AnyObject {
@@ -60,6 +61,15 @@ class DetailBTableViewCell: UITableViewCell {
         
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func updateCellInfo(_ model: DetailCellModel) {
+        
+        self.locationLabel.text = model.location
+        self.cuisineLabel.text = model.cuisine
+        self.articleImage?.kf.indicatorType = .activity
+        self.articleImage.kf.setImage(with: model.articleImageUrl, placeholder: nil)
+        
     }
     
 }
