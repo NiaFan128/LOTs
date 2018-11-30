@@ -38,6 +38,7 @@ class ProfileViewController: UIViewController {
     var uid: String?
     var userName: String = ""
     var imageUrl: String = ""
+    let manager = FirebaseManager()
 
     override func viewDidLoad() {
         
@@ -107,31 +108,20 @@ class ProfileViewController: UIViewController {
     
     func userArticle() {
         
-        ref.child("posts").queryOrdered(byChild: "user/uid").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
-            
-            guard let dictionary = snapshot.value as? NSDictionary else { return }
-            
-            for value in dictionary.allValues {
-                
-                guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-                
-                do {
-                    
-                    let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-                    self.articles.append(articleData)
-                    
-                    self.collectionView.reloadData()
-                    self.tableView.reloadData()
-                    
-                } catch {
-                    
-                    print(error)
-                    
-                }
+        guard let uid = self.keychain.get("uid") else { return }
 
-            }
+        manager.getQueryOrderEqual(path: "posts", order: "user/uid", equalTo: uid, event: .valueChange, success: { (data) in
             
-        }
+            guard let articleData = data as? Article else { return }
+            
+            self.articles.append(articleData)
+            
+            self.collectionView.reloadData()
+            self.tableView.reloadData()
+            
+        }, failure: { _ in
+            
+        })
         
     }
     

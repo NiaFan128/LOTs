@@ -22,6 +22,8 @@ class DetailViewController: UIViewController {
     var article: Article!
     var blockUsers: [String] = []
     var ref: DatabaseReference!
+    let manager = FirebaseManager()
+    
     let keychain = KeychainSwift()
     let animationView = LOTAnimationView(name: "loading_2")
     
@@ -335,33 +337,19 @@ class DetailViewController: UIViewController {
     
     func reloadUpdateData(_ articleID: String) {
         
-        self.ref.child("posts").queryOrderedByKey().queryEqual(toValue: articleID).observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                guard let value = snapshot.value as? NSDictionary else { return }
-                guard let data = value[articleID] as? NSDictionary else { return }
-                
-                guard let user = data["user"] as? NSDictionary else { return }
-                guard let userName = user["name"] as? String else { return }
-                guard let userImage = user["image"] as? String else { return }
-                guard let uid = user["uid"] as? String else { return }
-                
-                guard let location = data["location"] as? String else { return }
-                guard let articleTitle = data["articleTitle"] as? String else { return }
-                guard let articleImage = data["articleImage"] as? String else { return }
-                guard let cuisine = data["cuisine"] as? String else { return }
-                guard let createdTime = data["createdTime"] as? Int else { return }
-                guard let content = data["content"] as? String else { return }
-                guard let interestedIn = data["interestedIn"] as? Bool else { return }
-                
-                let updateArticle = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
-                
-                self.article = updateArticle
-                
-                self.tableView.reloadData()
-                
-                self.removeLoadingAnimation()
-                
-            })
+        manager.getQueryBySingle(path: "posts", toValue: articleID, event: .valueChange, success: { (data) in
+            
+            guard let updateArticle = data as? Article else { return }
+
+            self.article = updateArticle
+            
+            self.tableView.reloadData()
+            
+            self.removeLoadingAnimation()
+            
+        }, failure: { _ in
+            
+        })
         
     }
     
