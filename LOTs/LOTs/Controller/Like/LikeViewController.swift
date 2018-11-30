@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import Kingfisher
 import KeychainSwift
 
@@ -17,9 +16,8 @@ class LikeViewController: UIViewController {
     @IBOutlet weak var loginView: UIView!
     
     var fullScreenSize: CGSize!
-    var ref: DatabaseReference!
     var locations = [Location]()
-    let decoder = JSONDecoder()
+    let manager = FirebaseManager()
     
     var articles = [Article]()
     let keychain = KeychainSwift()
@@ -31,21 +29,9 @@ class LikeViewController: UIViewController {
 
         fullScreenSize = UIScreen.main.bounds.size
         
-        ref = Database.database().reference()
-        
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        layout.minimumLineSpacing = 7.5
-        layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: CGFloat((fullScreenSize.width) - 20) / 2, height: CGFloat((fullScreenSize.width) - 20) / 2)
-        
-        likeCollectionView.collectionViewLayout = layout
-        
         let nib = UINib(nibName: "LikeCollectionViewCell", bundle: nil)
         likeCollectionView.register(nib, forCellWithReuseIdentifier: "LikeCell")
 
-        
         likeCollectionView.delegate = self
         likeCollectionView.dataSource = self
 
@@ -64,32 +50,36 @@ class LikeViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
 
-        self.readData()
+        layoutSetUp()
+        readData()
     }
 
+    func layoutSetUp() {
+        
+        let layout = UICollectionViewFlowLayout()
+        
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        layout.minimumLineSpacing = 7.5
+        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize(width: CGFloat((fullScreenSize.width) - 20) / 2, height: CGFloat((fullScreenSize.width) - 20) / 2)
+        
+        likeCollectionView.collectionViewLayout = layout
+
+        
+    }
     
     func readData() {
         
-        ref.child("locations").observe(.childAdded) { (snapshot) in
+        manager.getLocation(path: "locations", event: .childAdded, success: { (data) in
             
-            guard let value = snapshot.value as? NSDictionary else { return }
+            guard let locationData = data as? Location else { return }
             
-            guard let locationJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-            
-            do {
-                
-                let locationData = try self.decoder.decode(Location.self, from: locationJSONData)
-                self.locations.append(locationData)
-                
-            } catch {
-                
-                print(error)
-                
-            }
-            
+            self.locations.append(locationData)
             self.likeCollectionView.reloadData()
-
-        }
+            
+        }, failure: {(_) in
+            
+        })
         
     }
     

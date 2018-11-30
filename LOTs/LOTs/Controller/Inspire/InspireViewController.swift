@@ -20,6 +20,7 @@ class InspireViewController: UIViewController {
     let userDefaults = UserDefaults.standard
 
     var ref: DatabaseReference!
+    let manager = FirebaseManager()
     let decoder = JSONDecoder()
     let animationView = LOTAnimationView(name: "lunch_time")
     var animationLabel = UILabel()
@@ -132,42 +133,29 @@ class InspireViewController: UIViewController {
     
     func readEachTypeData(cuisine: String) {
         
-        ref.child("posts").queryOrdered(byChild: "cuisine").queryEqual(toValue: cuisine).observeSingleEvent(of: .value) { (snapshot) in
+        articles = []
+        
+        manager.getQueryOrderEqual(path: "posts", order: "cuisine", equalTo: cuisine, event: .valueChange, success: { (data) in
             
-            self.articles = []
-
-            guard let dictionary = snapshot.value as? NSDictionary else { return }
-
-            for value in dictionary.allValues {
+            guard let articleData = data as? Article else { return }
+            
+            if let blockUsers = self.userDefaults.array(forKey: "block") {
                 
-                guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-                
-                do {
+                for blockUser in blockUsers {
                     
-                    let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-                    
-                    if let blockUsers = self.userDefaults.array(forKey: "block") {
-                        
-                        for blockUser in blockUsers {
-                            
-                            self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                            
-                        }
-                        
-                    }
-                    
-                    self.articles.append(articleData)
-                    self.showCollectionView.reloadData()
-                    
-                } catch {
-                    
-                    print(error)
+                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
                     
                 }
                 
             }
             
-        }
+            self.articles.append(articleData)
+            self.showCollectionView.reloadData()
+            
+        }, failure: { _ in
+            
+            
+        })
         
     }
     
