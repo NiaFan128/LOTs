@@ -25,7 +25,12 @@ class TypeCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         
+    }
+    
+    func updateCellInfo(_ model: DiscoverCellModel) {
         
+        self.typeImage.kf.setImage(with: model.typeImageUrl)
+        self.typeLabel.text = model.cuisineTitle
         
     }
     

@@ -93,7 +93,7 @@ class InspireViewController: UIViewController {
     func typeCollectionSet() {
         
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.minimumLineSpacing = CGFloat(integerLiteral: 10)
         layout.minimumInteritemSpacing = CGFloat(integerLiteral: 10)
         layout.scrollDirection = .horizontal
@@ -210,10 +210,8 @@ extension InspireViewController: UICollectionViewDataSource {
             }
             
             let cuisine = cuisines[indexPath.row]
-            
-            let url = URL(string: cuisine.image)
-            cell.typeImage.kf.setImage(with: url)
-            cell.typeLabel.text = cuisine.name
+
+            cell.updateCellInfo(DiscoverCellModel(cuisine))
 
             return cell
             
@@ -263,7 +261,7 @@ extension InspireViewController: UICollectionViewDataSource {
             
             let article: Article = articles[indexPath.row]
             
-            let detailViewController = DetailViewController.detailViewControllerForArticle(article, animation: false)
+            let detailViewController = DetailViewController.detailViewControllerForArticle(article)
             navigationController?.pushViewController(detailViewController, animated: true)
             
         }
@@ -284,7 +282,7 @@ extension InspireViewController: UICollectionViewDelegate, UICollectionViewDeleg
             
         }
 
-        return CGSize(width: (self.view.frame.size.width - 30) / 2, height: 80)
+        return CGSize(width: (self.view.frame.size.width - 30) / 2 - 10, height: 75)
     
     }
     

@@ -236,7 +236,7 @@ extension LikeDetailViewController: UITableViewDelegate {
 
         let article: Article = articles[indexPath.row]
         
-        let detailViewController = DetailViewController.detailViewControllerForArticle(article, animation: false)
+        let detailViewController = DetailViewController.detailViewControllerForArticle(article)
 
         navigationController?.pushViewController(detailViewController, animated: true)
         

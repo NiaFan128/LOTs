@@ -31,6 +31,10 @@ class MainCell: UICollectionViewCell {
         self.titleLabel.text = model.articleTitle
     
         let url = URL(string: model.profileImage)
+        
+        print("--------")
+        print("url:", url)
+        
         self.profileImageView.kf.setImage(with: url)
 
         let articleUrl = URL(string: model.articleImage)

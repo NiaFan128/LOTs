@@ -104,7 +104,7 @@ class DetailViewController: UIViewController {
         
     }
     
-    class func detailViewControllerForArticle(_ article: Article, animation: Bool) -> DetailViewController {
+    class func detailViewControllerForArticle(_ article: Article) -> DetailViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -115,7 +115,6 @@ class DetailViewController: UIViewController {
         }
         
         viewController.article = article
-        viewController.animation = animation
                 
         return viewController
         
