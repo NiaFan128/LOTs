@@ -26,7 +26,6 @@ class CameraViewController: UIViewController {
     @IBOutlet fileprivate var capturePreviewView: UIView!
     @IBOutlet fileprivate var cameraBGView: UIView!
     @IBOutlet fileprivate var buttonBFView: UIView!
-    
     @IBOutlet fileprivate var capturePhotoImageView: UIImageView!
     
     ///Allows the user to put the camera in photo mode.

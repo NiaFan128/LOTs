@@ -8,7 +8,6 @@
 
 import UIKit
 import Lottie
-import Firebase
 import Kingfisher
 import KeychainSwift
 
@@ -23,14 +22,11 @@ class LikeDetailViewController: UIViewController {
     var article: Article!
     var articles = [Article]()
     var location: String = ""
-    
-    var ref: DatabaseReference!
-    let keychain = KeychainSwift()
-    let decoder = JSONDecoder()
-    let manager = FirebaseManager()
-    
     var uid: String = ""
-    let userDefaults = UserDefaults.standard
+    
+    let keychain = KeychainSwift()
+    let manager = FirebaseManager()
+    var articleManager: LikeManagerProtocol = ArticleManager()
     
     override func viewDidLoad() {
 
@@ -45,13 +41,10 @@ class LikeDetailViewController: UIViewController {
         likeDetailTableView.delegate = self
         likeDetailTableView.dataSource = self
         
-        ref = Database.database().reference()
         uid = self.keychain.get("uid") ?? ""
 
         self.navigationItem.title = location
         self.likeArticle(location)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(removeFromLike(notification:)), name: Notification.Name("Remove"), object: nil)
         
     }
     
@@ -66,36 +59,24 @@ class LikeDetailViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         
     }
-    
-    @objc func removeFromLike(notification: Notification) {
-        
-        guard let data = notification.userInfo as? [String: String] else { return }
-        guard let articleID = data["articleID"] else { return }
-        guard let location = data["location"] else { return }
-
-        print("articleID: \(articleID), location: \(location)")
-        
-        ref.child("likes/\(uid)").child("\(location)").child(articleID).removeValue()
-
-    }
 
     func likeArticle(_ location: String) {
         
         manager.getQueryByType(path: "likes/\(uid)", toValue: location, event: .valueChange, success: { (data) in
-            
+
             guard let dictionaryData = data as? NSDictionary else { return }
-            
+
             let articleArray = dictionaryData.allKeys
-            
+
             for articleID in articleArray {
-                
+
                 self.readArticleData(articleID as! String)
-                
+
             }
-            
+
         }, failure: { _ in
-            
-            
+
+
         })
         
     }
@@ -104,27 +85,13 @@ class LikeDetailViewController: UIViewController {
         
         articles = []
         
-        manager.getQueryBySingle(path: "posts", toValue: articleID, event: .valueChange, success: { (data) in
+        articleManager.readLikeArticleData(aritcleID: articleID) { (data) in
             
-            guard let articleData = data as? Article else { return }
-            
-            if let blockUsers = self.userDefaults.array(forKey: "block") {
-                
-                for blockUser in blockUsers {
-                    
-                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                    
-                }
-                
-            }
-            
-            self.articles.append(articleData)
+            self.articles.append(data)
+    
             self.likeDetailTableView.reloadData()
             
-        }, failure: {(_) in
-            
-            
-        })
+        }
         
     }
     

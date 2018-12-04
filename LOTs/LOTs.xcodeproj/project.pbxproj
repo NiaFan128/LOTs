@@ -72,7 +72,6 @@
 		2BE94F3621AD1571008BF2CB /* LikeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE94F3521AD1571008BF2CB /* LikeCellModel.swift */; };
 		2BE94F3821AD1B20008BF2CB /* ProfileCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE94F3721AD1B20008BF2CB /* ProfileCellModel.swift */; };
 		2BEC035A21884AB500D3B45A /* UIAlertcontroller+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */; };
-		2BEE9B0321B53EFF0090FAB5 /* BlockUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEE9B0221B53EFF0090FAB5 /* BlockUserManager.swift */; };
 		2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */; };
 		2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */; };
 		2CD5213A38080600EEA2E24B /* Pods_LOTs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B4ADAFBD9FBB343B63DBD6 /* Pods_LOTs.framework */; };
@@ -148,7 +147,6 @@
 		2BE94F3521AD1571008BF2CB /* LikeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCellModel.swift; sourceTree = "<group>"; };
 		2BE94F3721AD1B20008BF2CB /* ProfileCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellModel.swift; sourceTree = "<group>"; };
 		2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertcontroller+.swift"; sourceTree = "<group>"; };
-		2BEE9B0221B53EFF0090FAB5 /* BlockUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserManager.swift; sourceTree = "<group>"; };
 		2BF8957721539A5D0096C7EC /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		2BF8957821539A5D0096C7EC /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		2DE5A7C64ED39736B7C8ECA7 /* Pods-LOTs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LOTs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LOTs/Pods-LOTs.debug.xcconfig"; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 				2BE66F0521B63964003B7248 /* ArticleManager.swift */,
 				2BE94F2C21AC27FA008BF2CB /* FirebaseManager.swift */,
 				2BE94F2E21AC2C4C008BF2CB /* ArticleProvider.swift */,
-				2BEE9B0221B53EFF0090FAB5 /* BlockUserManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -672,7 +669,6 @@
 				2BBFA63C216310B500A31D58 /* Category.swift in Sources */,
 				2BE27F10215C8378005387A4 /* DetailCTableViewCell.swift in Sources */,
 				2BE27F05215C8339005387A4 /* DetailViewController.swift in Sources */,
-				2BEE9B0321B53EFF0090FAB5 /* BlockUserManager.swift in Sources */,
 				2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */,
 				2BD07D3221788D360039DB2F /* CameraViewController.swift in Sources */,
 				2B02B91121533F46004FC66E /* LOTsColor.swift in Sources */,

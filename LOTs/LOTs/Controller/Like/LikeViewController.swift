@@ -18,6 +18,7 @@ class LikeViewController: UIViewController {
     var fullScreenSize: CGSize!
     var locations = [Location]()
     let manager = FirebaseManager()
+    let articleManager: LikeManagerProtocol = ArticleManager()
     
     var articles = [Article]()
     let keychain = KeychainSwift()
@@ -70,16 +71,12 @@ class LikeViewController: UIViewController {
     
     func readData() {
         
-        manager.getLocation(path: "locations", event: .childAdded, success: { (data) in
-            
-            guard let locationData = data as? Location else { return }
+        articleManager.readLocation { (locationData) in
             
             self.locations.append(locationData)
             self.likeCollectionView.reloadData()
             
-        }, failure: {(_) in
-            
-        })
+        }
         
     }
     
@@ -103,9 +100,7 @@ extension LikeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         let location = locations[indexPath.row]
         
-        let url = URL(string: location.image)
-        cell.articleImage.kf.setImage(with: url)
-        cell.areaLabel.text = location.name
+        cell.updateCellInfo(area: location.name, image: location.image)
         
         return cell
         

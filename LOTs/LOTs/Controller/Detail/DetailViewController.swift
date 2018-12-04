@@ -36,12 +36,7 @@ class DetailViewController: UIViewController {
 
     let dispatchGroup = DispatchGroup()
     let userDefaults = UserDefaults.standard
-    
-    var draggingDownToDismiss = false
     let transition = CATransition()
-    
-    var interactiveStartingPoint: CGPoint?
-    var dismissalAnimator: UIViewPropertyAnimator?
 
     override func viewDidLoad() {
         
@@ -66,13 +61,8 @@ class DetailViewController: UIViewController {
         
         uid = self.keychain.get("uid")
         
-        self.navigationController?.isNavigationBarHidden = true
-
         readInterestedIn()
         animationBGView.isHidden = true
-        
-        tableView.estimatedRowHeight = 44.0
-        
         statusbarView.isHidden = false
         
         loadViewIfNeeded()
@@ -395,62 +385,62 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
+        switch indexPath.section {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailACell", for: indexPath) as? DetailATableViewCell else {
+            case 0:
                 
-                return UITableViewCell()
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailACell", for: indexPath) as? DetailATableViewCell else {
+                    
+                    return UITableViewCell()
+                    
+                }
                 
-            }
-            
-            cell.updateCellInfo(DetailCellModel(article))
-            cell.moreButton.addTarget(self, action: #selector(DetailViewController.moreAction), for: .touchUpInside)
-            
-            return cell
-            
-            
-        } else if indexPath.section == 1 {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailBCell", for: indexPath) as? DetailBTableViewCell else {
+                cell.updateCellInfo(DetailCellModel(article))
+                cell.moreButton.addTarget(self, action: #selector(DetailViewController.moreAction), for: .touchUpInside)
                 
-                return UITableViewCell()
+                return cell
+            
+            case 1:
                 
-            }
-            
-            cell.articleImage.image = nil
-            cell.updateCellInfo(DetailCellModel(article))
-            
-            cell.buttonDelegate = self
-            
-            if interestedIn == true {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailBCell", for: indexPath) as? DetailBTableViewCell else {
+                    
+                    return UITableViewCell()
+                    
+                }
                 
-                cell.likeButton.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
-                cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                cell.articleImage.image = nil
+                cell.updateCellInfo(DetailCellModel(article))
+                cell.buttonDelegate = self
                 
-            } else {
+                if interestedIn == true {
+                    
+                    cell.likeButton.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
+                    cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                    
+                } else {
+                    
+                    cell.likeButton.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
+                    cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                    
+                }
                 
-                cell.likeButton.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
-                cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                return cell
+            
+            case 2:
                 
-            }
-            
-            return cell
-            
-        } else if indexPath.section == 2 {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCCell", for: indexPath) as? DetailCTableViewCell else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCCell", for: indexPath) as? DetailCTableViewCell else {
+                    
+                    return UITableViewCell()
+                    
+                }
                 
-                return UITableViewCell()
+                cell.contentTextView.text = article.content
                 
-            }
+                return cell
             
-            cell.contentTextView.text = article.content
-            
-            return cell
+            default: return UITableViewCell()
             
         }
-        
-        return UITableViewCell()
         
     }
     

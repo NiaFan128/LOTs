@@ -18,9 +18,7 @@ class MainViewController: UIViewController {
     var article: Article!
     var articles = [Article]()
     var refreshControl: UIRefreshControl!
-
     let animationView = LOTAnimationView(name: "loading_2")
-    
     var articleManager: MainManagerProtocol = ArticleManager()
 
     override func viewDidLoad() {

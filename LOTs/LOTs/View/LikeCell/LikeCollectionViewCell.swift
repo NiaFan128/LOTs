@@ -21,5 +21,12 @@ class LikeCollectionViewCell: UICollectionViewCell {
         areaLabel.titleShadow()
 
     }
+    
+    func updateCellInfo(area: String, image: String) {
+        
+        areaLabel.text = area
+        articleImage.kf.setImage(with: URL(string: image))
+        
+    }
 
 }

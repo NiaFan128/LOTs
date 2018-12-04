@@ -148,24 +148,26 @@ extension InspireViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == self.typeCollectionView {
-
-            return cuisines.count
-
-        } else {
-
-            if articles.count != 0 {
-
-                self.removeAnimation()
-
-            } else {
-
-                self.showNoDataAnimation()
-
-            }
+        switch collectionView {
             
-            return articles.count
-
+            case showCollectionView:
+            
+                if articles.count != 0 {
+                    
+                    self.removeAnimation()
+                    
+                } else {
+                    
+                    self.showNoDataAnimation()
+                    
+                }
+                
+                return articles.count
+            
+            case typeCollectionView: return cuisines.count
+            
+            default: return 0
+            
         }
         
     }
