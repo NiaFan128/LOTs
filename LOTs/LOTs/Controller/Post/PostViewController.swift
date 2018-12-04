@@ -365,7 +365,7 @@ extension PostViewController: UITableViewDataSource {
                 
             }
             
-            cell.selectionStyle = .none
+//            cell.selectionStyle = .none
             
             return cell
             

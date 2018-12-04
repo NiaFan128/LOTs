@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MainCellModel {
+struct MainCellModel: MainCellModelProtocol {
     
     let articleTitle: String
     let profileImage: String

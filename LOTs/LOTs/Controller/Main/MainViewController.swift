@@ -21,16 +21,18 @@ class MainViewController: UIViewController {
     let keychain = KeychainSwift()
     
     var refreshControl: UIRefreshControl!
-    
-    let manager = FirebaseManager()
-    
-    let userDefaults = UserDefaults.standard
 
     let animationView = LOTAnimationView(name: "loading_2")
     
+    // 為什麼？？
+    var testManager: MainManagerProtocol = FirebaseManager()
+//    var testManager: MainManagerProtocol!
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+//        testManager.delegate = self
         
         fullScreenSize = UIScreen.main.bounds.size
         
@@ -51,8 +53,6 @@ class MainViewController: UIViewController {
             layout.delegate = self
         
         }
-        
-//        userDefaults.removeObject(forKey: "block")
         
     }
     
@@ -100,33 +100,16 @@ class MainViewController: UIViewController {
 
         articles = []
         
-        manager.getQueryOrder(path: "posts", order: "createdTime", event: .childAdded, success: { (data) in
+        testManager.getData { (data) in
             
-            guard let articleData = data as? Article else { return }
+            self.articles.insert(data, at: 0)
             
-            if let blockUsers = self.userDefaults.array(forKey: "block") {
-                
-                for blockUser in blockUsers {
-                    
-                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                    
-                }
-                
-            }
-            
-            if articleData.articleID != self.articles.first?.articleID {
-                
-                self.articles.insert(articleData, at: 0)
-                
-            }
+            self.mainCollectionView.reloadData()
             
             self.removeLoadingAnimation()
-            self.mainCollectionView.reloadData()
-                                
-        }, failure: { _ in
             
-        })
-
+        }
+        
     }
     
     
@@ -192,3 +175,23 @@ extension MainViewController: LayoutDelegate {
     }
     
 }
+
+//extension MainViewController: FirebaseModelProtocol {
+//
+////    func didGetData(_ manager: MainManagerProtocol, data: Article) {
+////
+//////        articles.insert(data, at: 0)
+//////
+//////        mainCollectionView.reloadData()
+//////
+//////        self.removeLoadingAnimation()
+////
+////    }
+////
+////    func didFail(_ manager: MainManagerProtocol, error: Error) {
+////
+////        print(error)
+////
+////    }
+//
+//}

@@ -9,13 +9,26 @@
 import Firebase
 import Foundation
 
+protocol MainManagerProtocol {
+    
+    func getData(completion: @escaping (Article) -> Void)
+    
+}
+
+protocol InspireManagerProtocol {
+
+    func updateData(cuisine: String, completion: @escaping (Article) -> Void)
+
+}
+
 class FirebaseManager {
     
     var ref: DatabaseReference!
     
     private let provider = ArticleProvider()
-    
     private let decoder = JSONDecoder()
+    
+//    weak var delegate: FirebaseModelProtocol?
     
     init() {
         ref = Database.database().reference()
@@ -209,7 +222,6 @@ class FirebaseManager {
         
     }
     
-    
 }
 
 enum FirebaseEventType {
@@ -229,4 +241,76 @@ enum FirebaseEventType {
         }
         
     }
+}
+
+extension FirebaseManager: MainManagerProtocol {
+    
+    func getData(completion: @escaping (Article) -> Void) {
+        
+        self.getQueryOrder(path: "posts", order: "createdTime", event: .childAdded, success: { [weak self] (data) in
+            
+            guard let articleData = data as? Article,
+                let strongSelf = self
+                else { return }
+            
+            if let blockUsers = UserDefaults.standard.array(forKey: "block") {
+                
+                for blockUser in blockUsers {
+                    
+                    let block = blockUser as! String
+                    
+                    if block == articleData.user.uid {
+                        return
+                    }
+                    
+                }
+                
+            }
+            
+            completion(articleData)
+            
+//            self?.delegate?.didGetData(strongSelf, data: articleData)
+            
+            }, failure: { [weak self] error in
+                
+//                guard let strongSelf = self else { return }
+//
+//                self?.delegate?.didFail(strongSelf, error: error)
+        })
+        
+    }
+    
+}
+
+extension FirebaseManager: InspireManagerProtocol {
+    
+    func updateData(cuisine: String, completion: @escaping (Article) -> Void) {
+        
+        self.getQueryOrderEqual(path: "posts", order: "cuisine", equalTo: cuisine, event: .valueChange, success: { [weak self] (data) in
+            
+            guard let articleData = data as? Article else { return }
+            
+            if let blockUsers = UserDefaults.standard.array(forKey: "block") {
+                
+                for blockUser in blockUsers {
+                    
+                    let block = blockUser as! String
+                    
+                    if block == articleData.user.uid {
+                        return
+                    }
+                    
+                }
+                
+            }
+            
+            completion(articleData)
+            
+        }, failure: { _ in
+            
+            
+        })
+        
+    }
+    
 }

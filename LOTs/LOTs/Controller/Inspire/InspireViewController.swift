@@ -28,6 +28,7 @@ class InspireViewController: UIViewController {
     var cuisines = [Cuisine]()
     var article: Article!
     var articles = [Article]()
+    var testManager: InspireManagerProtocol = FirebaseManager()
     
     override func viewDidLoad() {
         
@@ -46,8 +47,8 @@ class InspireViewController: UIViewController {
         
         ref = Database.database().reference()
         
-        self.readTypeData()
-        self.readEachTypeData(cuisine: "美式料理")
+        readTypeData()
+        readEachTypeData(cuisine: "美式料理")
         
         showCollectionView.delegate = self
         showCollectionView.dataSource = self
@@ -135,27 +136,13 @@ class InspireViewController: UIViewController {
         
         articles = []
         
-        manager.getQueryOrderEqual(path: "posts", order: "cuisine", equalTo: cuisine, event: .valueChange, success: { (data) in
+        testManager.updateData(cuisine: cuisine) { (data) in
             
-            guard let articleData = data as? Article else { return }
+            self.articles.append(data)
             
-            if let blockUsers = self.userDefaults.array(forKey: "block") {
-                
-                for blockUser in blockUsers {
-                    
-                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                    
-                }
-                
-            }
-            
-            self.articles.append(articleData)
             self.showCollectionView.reloadData()
             
-        }, failure: { _ in
-            
-            
-        })
+        }
         
     }
     
@@ -189,34 +176,36 @@ extension InspireViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == self.typeCollectionView {
+        switch collectionView {
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeCell", for: indexPath) as? TypeCollectionViewCell else {
+            case typeCollectionView:
                 
-                return UICollectionViewCell()
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeCell", for: indexPath) as? TypeCollectionViewCell else {
+                    
+                    return UICollectionViewCell()
+                    
+                }
                 
-            }
-            
-            let cuisine = cuisines[indexPath.row]
-
-            cell.updateCellInfo(DiscoverCellModel(cuisine))
-
-            return cell
-            
-        } else {
-            
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileBCell", for: indexPath) as? ProfileCollectionViewCell else {
+                let cuisine = cuisines[indexPath.row]
+                cell.updateCellInfo(DiscoverCellModel(cuisine))
                 
-                return UICollectionViewCell()
+                return cell
+            
+            case showCollectionView:
                 
-            }
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileBCell", for: indexPath) as? ProfileCollectionViewCell else {
+                    
+                    return UICollectionViewCell()
+                    
+                }
+                
+                let article = articles[indexPath.row]
+                let url = URL(string: article.articleImage)
+                cell.articleImage.kf.setImage(with: url)
+                
+                return cell
             
-            let article = articles[indexPath.row]
-            
-            let url = URL(string: article.articleImage)
-            cell.articleImage.kf.setImage(with: url)
-            
-            return cell
+            default: return UICollectionViewCell()
             
         }
         

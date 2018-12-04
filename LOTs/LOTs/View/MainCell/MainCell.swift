@@ -9,6 +9,14 @@
 import UIKit
 import Kingfisher
 
+protocol MainCellModelProtocol {
+    
+    var articleTitle: String { get }
+    var profileImage: String { get }
+    var articleImage: String { get }
+    
+}
+
 class MainCell: UICollectionViewCell {
     
     @IBOutlet weak var containerView: UIView!
@@ -26,21 +34,29 @@ class MainCell: UICollectionViewCell {
         
     }
     
-    func updateCellInfo(_ model: MainCellModel) {
+    func updateCellInfo(_ model: MainCellModelProtocol) {
         
         self.titleLabel.text = model.articleTitle
     
         let url = URL(string: model.profileImage)
-        
-        print("--------")
-        print("url:", url)
-        
         self.profileImageView.kf.setImage(with: url)
 
         let articleUrl = URL(string: model.articleImage)
         self.imageView?.kf.indicatorType = .activity
         self.imageView.kf.setImage(with: articleUrl)
         
+    }
+    
+    func updateCell(title: String, imageUrl: String, profileUrl: String) {
+        
+        self.titleLabel.text = title
+        
+        let url = URL(string: profileUrl)
+        self.profileImageView.kf.setImage(with: url)
+        
+        let articleUrl = URL(string: imageUrl)
+        self.imageView?.kf.indicatorType = .activity
+        self.imageView.kf.setImage(with: articleUrl)
     }
     
 }
