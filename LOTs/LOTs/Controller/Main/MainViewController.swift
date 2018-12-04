@@ -9,7 +9,6 @@
 import UIKit
 import Lottie
 import Kingfisher
-import KeychainSwift
 
 class MainViewController: UIViewController {
 
@@ -18,21 +17,15 @@ class MainViewController: UIViewController {
     var fullScreenSize: CGSize!
     var article: Article!
     var articles = [Article]()
-    let keychain = KeychainSwift()
-    
     var refreshControl: UIRefreshControl!
 
     let animationView = LOTAnimationView(name: "loading_2")
     
-    // 為什麼？？
-    var testManager: MainManagerProtocol = FirebaseManager()
-//    var testManager: MainManagerProtocol!
+    var articleManager: MainManagerProtocol = ArticleManager()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-//        testManager.delegate = self
         
         fullScreenSize = UIScreen.main.bounds.size
         
@@ -100,18 +93,17 @@ class MainViewController: UIViewController {
 
         articles = []
         
-        testManager.getData { (data) in
-            
+        articleManager.getData { (data) in
+
             self.articles.insert(data, at: 0)
-            
+
             self.mainCollectionView.reloadData()
-            
+
             self.removeLoadingAnimation()
-            
+
         }
         
     }
-    
     
 }
 
@@ -175,23 +167,3 @@ extension MainViewController: LayoutDelegate {
     }
     
 }
-
-//extension MainViewController: FirebaseModelProtocol {
-//
-////    func didGetData(_ manager: MainManagerProtocol, data: Article) {
-////
-//////        articles.insert(data, at: 0)
-//////
-//////        mainCollectionView.reloadData()
-//////
-//////        self.removeLoadingAnimation()
-////
-////    }
-////
-////    func didFail(_ manager: MainManagerProtocol, error: Error) {
-////
-////        print(error)
-////
-////    }
-//
-//}

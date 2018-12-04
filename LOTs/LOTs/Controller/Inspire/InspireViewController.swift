@@ -16,11 +16,7 @@ class InspireViewController: UIViewController {
     @IBOutlet weak var showCollectionView: UICollectionView!
     
     var fullScreenSize: CGSize!
-    var photoWidth: CGFloat!
-    let userDefaults = UserDefaults.standard
-
     var ref: DatabaseReference!
-    let manager = FirebaseManager()
     let decoder = JSONDecoder()
     let animationView = LOTAnimationView(name: "lunch_time")
     var animationLabel = UILabel()
@@ -28,7 +24,7 @@ class InspireViewController: UIViewController {
     var cuisines = [Cuisine]()
     var article: Article!
     var articles = [Article]()
-    var testManager: InspireManagerProtocol = FirebaseManager()
+    var articleManager: InspireManagerProtocol = ArticleManager()
     
     override func viewDidLoad() {
         
@@ -91,7 +87,6 @@ class InspireViewController: UIViewController {
         
     }
     
-    
     func typeCollectionSet() {
         
         let layout = UICollectionViewFlowLayout()
@@ -105,6 +100,7 @@ class InspireViewController: UIViewController {
         
         typeCollectionView.dataSource = self
         typeCollectionView.delegate = self
+        
     }
     
     func readTypeData() {
@@ -136,7 +132,7 @@ class InspireViewController: UIViewController {
         
         articles = []
         
-        testManager.updateData(cuisine: cuisine) { (data) in
+        articleManager.updateData(cuisine: cuisine) { (data) in
             
             self.articles.append(data)
             
