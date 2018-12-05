@@ -22,6 +22,8 @@ class DetailViewController: UIViewController {
     var article: Article!
     var blockUsers: [String] = []
     var ref: DatabaseReference!
+    let manager = FirebaseManager()
+    
     let keychain = KeychainSwift()
     let animationView = LOTAnimationView(name: "loading_2")
     
@@ -34,12 +36,7 @@ class DetailViewController: UIViewController {
 
     let dispatchGroup = DispatchGroup()
     let userDefaults = UserDefaults.standard
-    
-    var draggingDownToDismiss = false
     let transition = CATransition()
-    
-    var interactiveStartingPoint: CGPoint?
-    var dismissalAnimator: UIViewPropertyAnimator?
 
     override func viewDidLoad() {
         
@@ -64,13 +61,8 @@ class DetailViewController: UIViewController {
         
         uid = self.keychain.get("uid")
         
-        self.navigationController?.isNavigationBarHidden = true
-
         readInterestedIn()
         animationBGView.isHidden = true
-        
-        tableView.estimatedRowHeight = 44.0
-        
         statusbarView.isHidden = false
         
         loadViewIfNeeded()
@@ -104,7 +96,7 @@ class DetailViewController: UIViewController {
         
     }
     
-    class func detailViewControllerForArticle(_ article: Article, animation: Bool) -> DetailViewController {
+    class func detailViewControllerForArticle(_ article: Article) -> DetailViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -115,7 +107,6 @@ class DetailViewController: UIViewController {
         }
         
         viewController.article = article
-        viewController.animation = animation
                 
         return viewController
         
@@ -336,33 +327,19 @@ class DetailViewController: UIViewController {
     
     func reloadUpdateData(_ articleID: String) {
         
-        self.ref.child("posts").queryOrderedByKey().queryEqual(toValue: articleID).observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                guard let value = snapshot.value as? NSDictionary else { return }
-                guard let data = value[articleID] as? NSDictionary else { return }
-                
-                guard let user = data["user"] as? NSDictionary else { return }
-                guard let userName = user["name"] as? String else { return }
-                guard let userImage = user["image"] as? String else { return }
-                guard let uid = user["uid"] as? String else { return }
-                
-                guard let location = data["location"] as? String else { return }
-                guard let articleTitle = data["articleTitle"] as? String else { return }
-                guard let articleImage = data["articleImage"] as? String else { return }
-                guard let cuisine = data["cuisine"] as? String else { return }
-                guard let createdTime = data["createdTime"] as? Int else { return }
-                guard let content = data["content"] as? String else { return }
-                guard let interestedIn = data["interestedIn"] as? Bool else { return }
-                
-                let updateArticle = Article(articleID: articleID, articleTitle: articleTitle, articleImage: articleImage, height: 0, width: 0, createdTime: createdTime, location: location, cuisine: cuisine, content: content, user: User(name: userName, image: userImage, uid: uid), instagramPost: false, interestedIn: interestedIn)
-                
-                self.article = updateArticle
-                
-                self.tableView.reloadData()
-                
-                self.removeLoadingAnimation()
-                
-            })
+        manager.getQueryBySingle(path: "posts", toValue: articleID, event: .valueChange, success: { (data) in
+            
+            guard let updateArticle = data as? Article else { return }
+
+            self.article = updateArticle
+            
+            self.tableView.reloadData()
+            
+            self.removeLoadingAnimation()
+            
+        }, failure: { _ in
+            
+        })
         
     }
     
@@ -408,62 +385,62 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
+        switch indexPath.section {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailACell", for: indexPath) as? DetailATableViewCell else {
+            case 0:
                 
-                return UITableViewCell()
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailACell", for: indexPath) as? DetailATableViewCell else {
+                    
+                    return UITableViewCell()
+                    
+                }
                 
-            }
-            
-            cell.updateCellInfo(DetailCellModel(article))
-            cell.moreButton.addTarget(self, action: #selector(DetailViewController.moreAction), for: .touchUpInside)
-            
-            return cell
-            
-            
-        } else if indexPath.section == 1 {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailBCell", for: indexPath) as? DetailBTableViewCell else {
+                cell.updateCellInfo(DetailCellModel(article))
+                cell.moreButton.addTarget(self, action: #selector(DetailViewController.moreAction), for: .touchUpInside)
                 
-                return UITableViewCell()
+                return cell
+            
+            case 1:
                 
-            }
-            
-            cell.articleImage.image = nil
-            cell.updateCellInfo(DetailCellModel(article))
-            
-            cell.buttonDelegate = self
-            
-            if interestedIn == true {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailBCell", for: indexPath) as? DetailBTableViewCell else {
+                    
+                    return UITableViewCell()
+                    
+                }
                 
-                cell.likeButton.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
-                cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                cell.articleImage.image = nil
+                cell.updateCellInfo(DetailCellModel(article))
+                cell.buttonDelegate = self
                 
-            } else {
+                if interestedIn == true {
+                    
+                    cell.likeButton.setImage(#imageLiteral(resourceName: "like").withRenderingMode(.alwaysTemplate), for: .normal)
+                    cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                    
+                } else {
+                    
+                    cell.likeButton.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
+                    cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                    
+                }
                 
-                cell.likeButton.setImage(#imageLiteral(resourceName: "like_2_w").withRenderingMode(.alwaysTemplate), for: .normal)
-                cell.likeButton.tintColor = #colorLiteral(red: 0.9912616611, green: 0.645644784, blue: 0.6528680921, alpha: 1)
+                return cell
+            
+            case 2:
                 
-            }
-            
-            return cell
-            
-        } else if indexPath.section == 2 {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCCell", for: indexPath) as? DetailCTableViewCell else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCCell", for: indexPath) as? DetailCTableViewCell else {
+                    
+                    return UITableViewCell()
+                    
+                }
                 
-                return UITableViewCell()
+                cell.contentTextView.text = article.content
                 
-            }
+                return cell
             
-            cell.contentTextView.text = article.content
-            
-            return cell
+            default: return UITableViewCell()
             
         }
-        
-        return UITableViewCell()
         
     }
     

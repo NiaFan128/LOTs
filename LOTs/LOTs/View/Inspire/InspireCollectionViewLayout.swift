@@ -110,6 +110,7 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
         }
         
         attributesList = (0 ..< itemNo).map { (i) -> UICollectionViewLayoutAttributes in
+            
             let attributes = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: i, section: 0))
             
             attributes.size = self.itemSize
@@ -136,7 +137,10 @@ class InspireCollectionViewLayout: UICollectionViewLayout {
 
             if let size = inspireSize {
                 
-                attributes.frame = CGRect(x: size.x, y: size.y + (3 * self.itemSize.width + 30) * CGFloat(i / 6), width: size.width, height: size.height)
+                attributes.frame = CGRect(x: size.x,
+                                          y: size.y + (3 * self.itemSize.width + 30) * CGFloat(i / 6),
+                                          width: size.width,
+                                          height: size.height)
                 
             }
             

@@ -8,7 +8,6 @@
 
 import UIKit
 import Lottie
-import Firebase
 import Kingfisher
 import FBSDKLoginKit
 import KeychainSwift
@@ -23,32 +22,31 @@ class ProfileViewController: UIViewController {
     
     var fullScreenSize: CGSize!
     var animationScreenSize: CGSize!
-    let animationView = LOTAnimationView(name: "list")
-    let userAnimationView = LOTAnimationView(name: "user")
     var animationLabel = UILabel()
     var userAnimationLabel = UILabel()
-    
+    let animationView = LOTAnimationView(name: "list")
+    let userAnimationView = LOTAnimationView(name: "user")
+
     var article: Article!
     var articles = [Article]()
-    
-    var ref: DatabaseReference!
-    let decoder = JSONDecoder()
     let keychain = KeychainSwift()
     
     var uid: String?
     var userName: String = ""
     var imageUrl: String = ""
+    var articleManager: ProfileManagerProtocol = ArticleManager()
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
 
         fullScreenSize = UIScreen.main.bounds.size
+        
         animationScreenSize = animationBGView.bounds.size
         animationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: fullScreenSize.width, height: 21))
         userAnimationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: fullScreenSize.width, height: 40))
 
-        self.layoutSetup()
+        layoutSetup()
         
         let nib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ProfileACell")
@@ -56,7 +54,6 @@ class ProfileViewController: UIViewController {
         let nib2 = UINib(nibName: "ProfileCollectionViewCell", bundle: nil)
         collectionView.register(nib2, forCellWithReuseIdentifier: "ProfileBCell")
 
-        ref = Database.database().reference()
         userName = self.keychain.get("name") ?? ""
         imageUrl = self.keychain.get("imageUrl") ?? ""
         uid = self.keychain.get("uid")
@@ -75,7 +72,7 @@ class ProfileViewController: UIViewController {
             
         }
         
-        self.userArticle()
+        userArticle()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -107,29 +104,13 @@ class ProfileViewController: UIViewController {
     
     func userArticle() {
         
-        ref.child("posts").queryOrdered(byChild: "user/uid").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
+        guard let uid = self.keychain.get("uid") else { return }
+        
+        articleManager.getUserData(uid: uid) { (data) in
             
-            guard let dictionary = snapshot.value as? NSDictionary else { return }
-            
-            for value in dictionary.allValues {
-                
-                guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-                
-                do {
-                    
-                    let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-                    self.articles.append(articleData)
-                    
-                    self.collectionView.reloadData()
-                    self.tableView.reloadData()
-                    
-                } catch {
-                    
-                    print(error)
-                    
-                }
-
-            }
+            self.articles.append(data)
+            self.collectionView.reloadData()
+            self.tableView.reloadData()
             
         }
         
@@ -233,7 +214,7 @@ extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let article: Article = articles[indexPath.row]
-        let detailViewController = DetailViewController.detailViewControllerForArticle(article, animation: false)
+        let detailViewController = DetailViewController.detailViewControllerForArticle(article)
         navigationController?.pushViewController(detailViewController, animated: true)
         
     }

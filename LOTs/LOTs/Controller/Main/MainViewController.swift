@@ -9,7 +9,6 @@
 import UIKit
 import Lottie
 import Kingfisher
-import KeychainSwift
 
 class MainViewController: UIViewController {
 
@@ -18,16 +17,10 @@ class MainViewController: UIViewController {
     var fullScreenSize: CGSize!
     var article: Article!
     var articles = [Article]()
-    let keychain = KeychainSwift()
-    
     var refreshControl: UIRefreshControl!
-    
-    let manager = FirebaseManager()
-    
-    let userDefaults = UserDefaults.standard
-
     let animationView = LOTAnimationView(name: "loading_2")
-    
+    var articleManager: MainManagerProtocol = ArticleManager()
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -51,8 +44,6 @@ class MainViewController: UIViewController {
             layout.delegate = self
         
         }
-        
-//        userDefaults.removeObject(forKey: "block")
         
     }
     
@@ -100,35 +91,17 @@ class MainViewController: UIViewController {
 
         articles = []
         
-        manager.getQueryOrder(path: "posts", order: "createdTime", event: .childAdded, success: { (data) in
-            
-            guard let articleData = data as? Article else { return }
-            
-            if let blockUsers = self.userDefaults.array(forKey: "block") {
-                
-                for blockUser in blockUsers {
-                    
-                    self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                    
-                }
-                
-            }
-            
-            if articleData.articleID != self.articles.first?.articleID {
-                
-                self.articles.insert(articleData, at: 0)
-                
-            }
-            
-            self.removeLoadingAnimation()
-            self.mainCollectionView.reloadData()
-                                
-        }, failure: { _ in
-            
-        })
+        articleManager.getData { (data) in
 
+            self.articles.insert(data, at: 0)
+
+            self.mainCollectionView.reloadData()
+
+            self.removeLoadingAnimation()
+
+        }
+        
     }
-    
     
 }
 
@@ -161,8 +134,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let article: Article = articles[indexPath.row]
-        
-        let detailViewController = DetailViewController.detailViewControllerForArticle(article, animation: true)
+        print(indexPath.item)
+        let detailViewController = DetailViewController.detailViewControllerForArticle(article)
         
         navigationController?.pushViewController(detailViewController, animated: true)
         
@@ -173,7 +146,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController: LayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        
+
         if indexPath.item % 3 == 0 {
 
             return 200

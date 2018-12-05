@@ -9,12 +9,30 @@
 import Firebase
 import Foundation
 
+enum FirebaseEventType {
+    
+    case valueChange
+    case childAdded
+    
+    func eventType() -> DataEventType {
+        
+        switch self {
+            
+        case .valueChange:
+            return .value
+            
+        case .childAdded:
+            return .childAdded
+        }
+        
+    }
+}
+
 class FirebaseManager {
     
     var ref: DatabaseReference!
     
     private let provider = ArticleProvider()
-    
     private let decoder = JSONDecoder()
     
     init() {
@@ -209,24 +227,4 @@ class FirebaseManager {
         
     }
     
-    
-}
-
-enum FirebaseEventType {
-    
-    case valueChange
-    case childAdded
-    
-    func eventType() -> DataEventType {
-        
-        switch self {
-            
-        case .valueChange:
-            return .value
-            
-        case .childAdded:
-            return .childAdded
-        }
-        
-    }
 }

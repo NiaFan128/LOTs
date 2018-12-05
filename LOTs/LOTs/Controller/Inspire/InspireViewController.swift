@@ -16,9 +16,6 @@ class InspireViewController: UIViewController {
     @IBOutlet weak var showCollectionView: UICollectionView!
     
     var fullScreenSize: CGSize!
-    var photoWidth: CGFloat!
-    let userDefaults = UserDefaults.standard
-
     var ref: DatabaseReference!
     let decoder = JSONDecoder()
     let animationView = LOTAnimationView(name: "lunch_time")
@@ -27,6 +24,7 @@ class InspireViewController: UIViewController {
     var cuisines = [Cuisine]()
     var article: Article!
     var articles = [Article]()
+    var articleManager: InspireManagerProtocol = ArticleManager()
     
     override func viewDidLoad() {
         
@@ -45,8 +43,8 @@ class InspireViewController: UIViewController {
         
         ref = Database.database().reference()
         
-        self.readTypeData()
-        self.readEachTypeData(cuisine: "美式料理")
+        readTypeData()
+        readEachTypeData(cuisine: "美式料理")
         
         showCollectionView.delegate = self
         showCollectionView.dataSource = self
@@ -89,11 +87,10 @@ class InspireViewController: UIViewController {
         
     }
     
-    
     func typeCollectionSet() {
         
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.minimumLineSpacing = CGFloat(integerLiteral: 10)
         layout.minimumInteritemSpacing = CGFloat(integerLiteral: 10)
         layout.scrollDirection = .horizontal
@@ -103,6 +100,7 @@ class InspireViewController: UIViewController {
         
         typeCollectionView.dataSource = self
         typeCollectionView.delegate = self
+        
     }
     
     func readTypeData() {
@@ -132,40 +130,13 @@ class InspireViewController: UIViewController {
     
     func readEachTypeData(cuisine: String) {
         
-        ref.child("posts").queryOrdered(byChild: "cuisine").queryEqual(toValue: cuisine).observeSingleEvent(of: .value) { (snapshot) in
+        articles = []
+        
+        articleManager.updateData(cuisine: cuisine) { (data) in
             
-            self.articles = []
-
-            guard let dictionary = snapshot.value as? NSDictionary else { return }
-
-            for value in dictionary.allValues {
-                
-                guard let articleJSONData = try? JSONSerialization.data(withJSONObject: value) else { return }
-                
-                do {
-                    
-                    let articleData = try self.decoder.decode(Article.self, from: articleJSONData)
-                    
-                    if let blockUsers = self.userDefaults.array(forKey: "block") {
-                        
-                        for blockUser in blockUsers {
-                            
-                            self.articles = self.articles.filter { $0.user.uid != blockUser as! String }
-                            
-                        }
-                        
-                    }
-                    
-                    self.articles.append(articleData)
-                    self.showCollectionView.reloadData()
-                    
-                } catch {
-                    
-                    print(error)
-                    
-                }
-                
-            }
+            self.articles.append(data)
+            
+            self.showCollectionView.reloadData()
             
         }
         
@@ -177,60 +148,62 @@ extension InspireViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == self.typeCollectionView {
-
-            return cuisines.count
-
-        } else {
-
-            if articles.count != 0 {
-
-                self.removeAnimation()
-
-            } else {
-
-                self.showNoDataAnimation()
-
-            }
+        switch collectionView {
             
-            return articles.count
-
+            case showCollectionView:
+            
+                if articles.count != 0 {
+                    
+                    self.removeAnimation()
+                    
+                } else {
+                    
+                    self.showNoDataAnimation()
+                    
+                }
+                
+                return articles.count
+            
+            case typeCollectionView: return cuisines.count
+            
+            default: return 0
+            
         }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == self.typeCollectionView {
+        switch collectionView {
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeCell", for: indexPath) as? TypeCollectionViewCell else {
+            case typeCollectionView:
                 
-                return UICollectionViewCell()
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeCell", for: indexPath) as? TypeCollectionViewCell else {
+                    
+                    return UICollectionViewCell()
+                    
+                }
                 
-            }
-            
-            let cuisine = cuisines[indexPath.row]
-            
-            let url = URL(string: cuisine.image)
-            cell.typeImage.kf.setImage(with: url)
-            cell.typeLabel.text = cuisine.name
-
-            return cell
-            
-        } else {
-            
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileBCell", for: indexPath) as? ProfileCollectionViewCell else {
+                let cuisine = cuisines[indexPath.row]
+                cell.updateCellInfo(DiscoverCellModel(cuisine))
                 
-                return UICollectionViewCell()
+                return cell
+            
+            case showCollectionView:
                 
-            }
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileBCell", for: indexPath) as? ProfileCollectionViewCell else {
+                    
+                    return UICollectionViewCell()
+                    
+                }
+                
+                let article = articles[indexPath.row]
+                let url = URL(string: article.articleImage)
+                cell.articleImage.kf.setImage(with: url)
+                
+                return cell
             
-            let article = articles[indexPath.row]
-            
-            let url = URL(string: article.articleImage)
-            cell.articleImage.kf.setImage(with: url)
-            
-            return cell
+            default: return UICollectionViewCell()
             
         }
         
@@ -263,7 +236,7 @@ extension InspireViewController: UICollectionViewDataSource {
             
             let article: Article = articles[indexPath.row]
             
-            let detailViewController = DetailViewController.detailViewControllerForArticle(article, animation: false)
+            let detailViewController = DetailViewController.detailViewControllerForArticle(article)
             navigationController?.pushViewController(detailViewController, animated: true)
             
         }
@@ -284,7 +257,7 @@ extension InspireViewController: UICollectionViewDelegate, UICollectionViewDeleg
             
         }
 
-        return CGSize(width: (self.view.frame.size.width - 30) / 2, height: 80)
+        return CGSize(width: (self.view.frame.size.width - 30) / 2 - 10, height: 75)
     
     }
     

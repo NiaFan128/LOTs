@@ -51,8 +51,8 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         doneBarButton.isEnabled = false
         self.showLoadingAnimation()
         
+        // article image
         let fileName = UUID().uuidString
-        
         let storageRef = Storage.storage().reference().child("article_images").child("\(fileName).jpg")
         
         if let articleImage = self.articleImage.image, let uploadData = self.articleImage.image?.jpegData(compressionQuality: 0.5) {
@@ -78,7 +78,6 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     
                     guard let postID = self.ref.child("post").childByAutoId().key else { return }
                     guard let uid = self.keychain.get("uid") else { return }
-                    guard let profileURL = self.keychain.get("imageUrl") else { return }
                     
                     self.ref.child("posts/\(postID)").setValue([
                         "articleID": postID,
@@ -94,7 +93,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                         "user":
                             [
                                 "name": Auth.auth().currentUser?.displayName,
-                                "image": profileURL,
+                                "image": self.profileURL,
                                 "uid": uid
                             ]
                         ])
@@ -176,7 +175,6 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                     self.pictureURL = downloadURL.absoluteString
                     guard let uid = self.keychain.get("uid") else { return }
                     guard let articleID = self.articleID else { return }
-                    guard let profileURL = self.keychain.get("imageUrl") else { return }
 
                     self.ref.child("posts/\(articleID)").updateChildValues([
             
@@ -193,7 +191,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
                         "user":
                             [
                                 "name": Auth.auth().currentUser?.displayName,
-                                "image": profileURL,
+                                "image": self.profileURL,
                                 "uid": uid
                         ]
                         

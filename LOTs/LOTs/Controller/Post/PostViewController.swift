@@ -45,6 +45,8 @@ class PostViewController: UIViewController {
     var height: CGFloat?
     var width: CGFloat?
     var pictureURL: String?
+    
+    var profileURL: String?
 
     var editArticle: Article?
     var uid: String?
@@ -108,6 +110,8 @@ class PostViewController: UIViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         
+        downloadProfile()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,6 +127,52 @@ class PostViewController: UIViewController {
         
         let profileUrl = URL(string: Auth.auth().currentUser?.photoURL?.absoluteString ?? "")
         profileImage.kf.setImage(with: profileUrl)
+        
+    }
+    
+    func downloadProfile() {
+        
+        guard let profileURL = self.keychain.get("imageUrl") else { return }
+        guard let profileImageURL = URL(string: profileURL) else { return }
+        
+        guard let authorFileName = self.keychain.get("uid") else { return }
+        let authorStorage = Storage.storage().reference().child("author_images").child("\(authorFileName).jpg")
+        
+        let task = URLSession.shared.dataTask(with: profileImageURL) { (data, response, error) in
+            
+            if error != nil {
+                
+                print(error?.localizedDescription)
+                
+            } else {
+                
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpg"
+                
+                guard let data = data else { return }
+                
+                authorStorage.putData(data, metadata: metadata, completion: { (metadata, error) in
+                    
+                    if error != nil {
+                        print(error)
+                        return
+                    }
+                    
+                    authorStorage.downloadURL(completion: { (url, error) in
+                        
+                        guard let downloadUrl = url else { return }
+                        self.profileURL = downloadUrl.absoluteString
+                        
+                    })
+                
+                    
+                })
+                
+            }
+            
+        }
+        
+        task.resume()
         
     }
     
