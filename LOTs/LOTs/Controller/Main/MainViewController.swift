@@ -134,7 +134,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let article: Article = articles[indexPath.row]
-        
+        print(indexPath.item)
         let detailViewController = DetailViewController.detailViewControllerForArticle(article)
         
         navigationController?.pushViewController(detailViewController, animated: true)
@@ -146,7 +146,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController: LayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        
+
         if indexPath.item % 3 == 0 {
 
             return 200

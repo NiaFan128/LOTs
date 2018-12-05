@@ -76,7 +76,6 @@ class LikeDetailViewController: UIViewController {
 
         }, failure: { _ in
 
-
         })
         
     }

@@ -24,7 +24,6 @@ protocol InspireManagerProtocol {
 protocol LikeManagerProtocol {
     
     func readLocation(completion: @escaping (Location) -> Void)
-//    func readLikeArticle(location: String, completion: @escaping (String) -> Void)
     func readLikeArticleData(aritcleID: String, completion: @escaping (Article) -> Void)
     
 }
