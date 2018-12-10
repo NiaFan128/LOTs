@@ -309,6 +309,12 @@ class PostViewController: UIViewController {
         
     }
     
+    func postNotificationCenter() {
+        
+        NotificationCenter.default.post(name: .RefreshPage, object: nil)
+        
+    }
+    
 }
 
 extension PostViewController: UITableViewDataSource {

@@ -185,6 +185,8 @@ class DetailViewController: UIViewController {
                                                                     userInfo: ["articleID": articleID,
                                                                                "location": location])
                                     
+                                    NotificationCenter.default.post(name: .RefreshPage, object: nil)
+                                    
                                     self.navigationController?.popViewController(animated: true)
                                     
         }
@@ -236,19 +238,26 @@ class DetailViewController: UIViewController {
         
         blockUsers.append(article.user.uid)
         userDefaults.set(blockUsers, forKey: "block")
-        
+//        NotificationCenter.default.post(name: .RefreshPage, object: nil)
+
     }
     
     func receiveMessage() {
         
-        AlertView.showAlert(view: self, title: "Thank you", message: "We will proceed your feedback soon.")
+        AlertView.showAlert(view: self, title: "Thank you", message: "We will proceed your feedback soon.", handler: nil)
         
     }
     
     func blockMessage(_ user: String) {
         
-        AlertView.showAlert(view: self, title: "", message: "You won't see \(user)'s article from now on.")
-        
+        AlertView.showAlert(view: self, title: "", message: "You won't see \(user)'s article from now on.") { (_) in
+            
+            NotificationCenter.default.post(name: .RefreshPage, object: nil)
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        }
+                
     }
     
     func interstedIn() {
@@ -289,7 +298,7 @@ class DetailViewController: UIViewController {
     
     func visitorAlertRemind() {
         
-        AlertView.showAlert(view: self, title: "Oops!", message: "Please login with Facebook \n to explore more features.")
+        AlertView.showAlert(view: self, title: "Oops!", message: "Please login with Facebook \n to explore more features.", handler: nil)
         
     }
     

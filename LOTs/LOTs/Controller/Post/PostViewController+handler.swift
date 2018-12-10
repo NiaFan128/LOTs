@@ -212,7 +212,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     
     func alertRemind(_ status: String) {
         
-        AlertView.showAlert(view: self, title: "Remind", message: "Please complete \(status) part!")
+        AlertView.showAlert(view: self, title: "Remind", message: "Please complete \(status) part!", handler: nil)
         
     }
         

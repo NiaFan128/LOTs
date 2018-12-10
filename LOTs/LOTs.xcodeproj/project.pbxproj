@@ -28,6 +28,7 @@
 		2B63A77A21805AAC00B12C23 /* UITabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B63A77921805AAC00B12C23 /* UITabbarController.swift */; };
 		2B6DD07E217A2DFD0093A073 /* CameraEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */; };
 		2B6DD080217B05F80093A073 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6DD07F217B05F80093A073 /* TermsViewController.swift */; };
+		2B7FA89921BAAB3600D5B7FF /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7FA89821BAAB3600D5B7FF /* Notification+.swift */; };
 		2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303672151EEE8006E2522 /* AppDelegate.swift */; };
 		2B83036D2151EEE8006E2522 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B83036B2151EEE8006E2522 /* Main.storyboard */; };
 		2B83036F2151EEEA006E2522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B83036E2151EEEA006E2522 /* Assets.xcassets */; };
@@ -35,7 +36,7 @@
 		2B83037A2151F298006E2522 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303792151F298006E2522 /* NavigationController.swift */; };
 		2B83037C2152024D006E2522 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83037B2152024D006E2522 /* MainViewController.swift */; };
 		2B8303852152295F006E2522 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303842152295F006E2522 /* MainCell.swift */; };
-		2B83038721524275006E2522 /* MainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83038621524275006E2522 /* MainLayout.swift */; };
+		2B83038721524275006E2522 /* MainCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83038621524275006E2522 /* MainCollectionLayout.swift */; };
 		2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86435C2162252900D39812 /* UIKit+Effect.swift */; };
 		2B99337721B0D7A1000921F3 /* DiscoverCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B99337621B0D7A1000921F3 /* DiscoverCellModel.swift */; };
 		2BBFA63C216310B500A31D58 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBFA63B216310B500A31D58 /* Category.swift */; };
@@ -100,6 +101,7 @@
 		2B63A77921805AAC00B12C23 /* UITabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabbarController.swift; sourceTree = "<group>"; };
 		2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEditViewController.swift; sourceTree = "<group>"; };
 		2B6DD07F217B05F80093A073 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		2B7FA89821BAAB3600D5B7FF /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		2B8303642151EEE8006E2522 /* LOTs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOTs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8303672151EEE8006E2522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B83036C2151EEE8006E2522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 		2B8303792151F298006E2522 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		2B83037B2152024D006E2522 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2B8303842152295F006E2522 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
-		2B83038621524275006E2522 /* MainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLayout.swift; sourceTree = "<group>"; };
+		2B83038621524275006E2522 /* MainCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionLayout.swift; sourceTree = "<group>"; };
 		2B86435C2162252900D39812 /* UIKit+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Effect.swift"; sourceTree = "<group>"; };
 		2B99337621B0D7A1000921F3 /* DiscoverCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCellModel.swift; sourceTree = "<group>"; };
 		2BA718AE21880471004CDBB8 /* LOTs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LOTs.entitlements; sourceTree = "<group>"; };
@@ -351,7 +353,7 @@
 		2B864354216211F200D39812 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				2B83038621524275006E2522 /* MainLayout.swift */,
+				2B83038621524275006E2522 /* MainCollectionLayout.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -402,6 +404,7 @@
 			children = (
 				2B86435C2162252900D39812 /* UIKit+Effect.swift */,
 				2BEC035921884AB500D3B45A /* UIAlertcontroller+.swift */,
+				2B7FA89821BAAB3600D5B7FF /* Notification+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				2BE27F10215C8378005387A4 /* DetailCTableViewCell.swift in Sources */,
 				2BE27F05215C8339005387A4 /* DetailViewController.swift in Sources */,
 				2BF8957921539A5D0096C7EC /* ContentTableViewCell.swift in Sources */,
+				2B7FA89921BAAB3600D5B7FF /* Notification+.swift in Sources */,
 				2BD07D3221788D360039DB2F /* CameraViewController.swift in Sources */,
 				2B02B91121533F46004FC66E /* LOTsColor.swift in Sources */,
 				2B8303682151EEE8006E2522 /* AppDelegate.swift in Sources */,
@@ -678,7 +682,7 @@
 				2BE66F0621B63964003B7248 /* ArticleManager.swift in Sources */,
 				2BE27EEC215B76B3005387A4 /* LikeCollectionViewCell.swift in Sources */,
 				2B191DA5215644BA006A2AC1 /* PostViewController+handler.swift in Sources */,
-				2B83038721524275006E2522 /* MainLayout.swift in Sources */,
+				2B83038721524275006E2522 /* MainCollectionLayout.swift in Sources */,
 				2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */,
 				2BD77FE02174716400C378F7 /* UserViewController.swift in Sources */,
 				2B99337721B0D7A1000921F3 /* DiscoverCellModel.swift in Sources */,

@@ -39,11 +39,18 @@ class MainViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(loadData(_:)), for: UIControl.Event.valueChanged)
         
-        if let layout = mainCollectionView?.collectionViewLayout as? MainLayout {
+        if let layout = mainCollectionView?.collectionViewLayout as? MainCollectionViewLayout {
             
             layout.delegate = self
         
         }
+        
+        UserDefaults.standard.removeObject(forKey: "block")
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(loadData(_:)),
+                                               name: .RefreshPage,
+                                               object: nil)
         
     }
     
@@ -87,7 +94,7 @@ class MainViewController: UIViewController {
         
     }
    
-    func readData() {
+    @objc func readData() {
 
         articles = []
         
@@ -98,6 +105,8 @@ class MainViewController: UIViewController {
             self.mainCollectionView.reloadData()
 
             self.removeLoadingAnimation()
+            print("----------")
+            print("-----GET DATA-----")
 
         }
         

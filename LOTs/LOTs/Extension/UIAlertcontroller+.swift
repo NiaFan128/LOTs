@@ -12,11 +12,12 @@ import Foundation
 class AlertView: NSObject {
     
     // Only OK
-    class func showAlert(view: UIViewController, title: String, message: String){
+    class func showAlert(view: UIViewController, title: String, message: String,
+                         handler: ((UIAlertAction) -> Void)?){
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: handler))
         
         view.present(alert, animated: true, completion: nil)
     
