@@ -16,7 +16,7 @@ protocol LayoutDelegate: class {
     
 }
 
-class MainCollectionLayout: UICollectionViewLayout {
+class MainCollectionViewLayout: UICollectionViewLayout {
 
     weak var delegate: LayoutDelegate!
     

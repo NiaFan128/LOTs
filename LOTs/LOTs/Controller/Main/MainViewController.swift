@@ -17,8 +17,11 @@ class MainViewController: UIViewController {
     var fullScreenSize: CGSize!
     var article: Article!
     var articles = [Article]()
+    
     var refreshControl: UIRefreshControl!
     let animationView = LOTAnimationView(name: "loading_2")
+    let networkAnimationView = LOTAnimationView(name: "network")
+    
     var articleManager: MainManagerProtocol = ArticleManager()
 
     override func viewDidLoad() {
@@ -34,15 +37,34 @@ class MainViewController: UIViewController {
         refreshControl = UIRefreshControl()
         mainCollectionView.addSubview(refreshControl)
         
-        showLoadingAnimation()
-        readData()
-        
         refreshControl.addTarget(self, action: #selector(loadData(_:)), for: UIControl.Event.valueChanged)
         
-        if let layout = mainCollectionView?.collectionViewLayout as? MainLayout {
+        if let layout = mainCollectionView?.collectionViewLayout as? MainCollectionViewLayout {
             
             layout.delegate = self
         
+        }
+                
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateData(notification:)),
+                                               name: .RefreshPage,
+                                               object: nil)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
+        
+        if Reachability.isConnectedToNetwork() == true {
+            
+            showLoadingAnimation()
+            readData()
+            
+        } else {
+            
+            showNetworkAnimation()
+            
         }
         
     }
@@ -60,6 +82,19 @@ class MainViewController: UIViewController {
         
     }
     
+    func showNetworkAnimation() {
+        
+        networkAnimationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        networkAnimationView.center = CGPoint(x: (fullScreenSize.width * 0.5), y: (fullScreenSize.height * 0.5))
+        networkAnimationView.contentMode = .scaleAspectFill
+        
+        view.addSubview(networkAnimationView)
+        
+        networkAnimationView.play()
+        networkAnimationView.loopAnimation = true
+        
+    }
+    
     func removeLoadingAnimation() {
         
         animationView.layer.opacity = 0.5
@@ -67,9 +102,9 @@ class MainViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    func removeNetworkAnimation() {
         
-        self.navigationController?.isNavigationBarHidden = false
+        networkAnimationView.removeFromSuperview()
         
     }
     
@@ -87,7 +122,7 @@ class MainViewController: UIViewController {
         
     }
    
-    func readData() {
+    @objc func readData() {
 
         articles = []
         
@@ -98,8 +133,16 @@ class MainViewController: UIViewController {
             self.mainCollectionView.reloadData()
 
             self.removeLoadingAnimation()
+            
+            self.removeNetworkAnimation()
 
         }
+        
+    }
+    
+    @objc func updateData(notification: Notification) {
+        
+        readData()
         
     }
     
