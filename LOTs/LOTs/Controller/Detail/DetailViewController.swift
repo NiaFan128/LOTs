@@ -238,7 +238,6 @@ class DetailViewController: UIViewController {
         
         blockUsers.append(article.user.uid)
         userDefaults.set(blockUsers, forKey: "block")
-//        NotificationCenter.default.post(name: .RefreshPage, object: nil)
 
     }
     
@@ -257,7 +256,7 @@ class DetailViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
             
         }
-                
+        
     }
     
     func interstedIn() {

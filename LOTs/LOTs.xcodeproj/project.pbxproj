@@ -24,6 +24,7 @@
 		2B42E716215CDF3500BB0F86 /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */; };
 		2B42E718215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42E717215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift */; };
 		2B5699CD2154C04900D122B4 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5699CC2154C04900D122B4 /* iOSDropDown.framework */; };
+		2B59000021C25DE000708DDE /* LOTsNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B59FFFF21C25DE000708DDE /* LOTsNetwork.swift */; };
 		2B614D8D2187198A008E7699 /* done.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B614D8C2187198A008E7699 /* done.json */; };
 		2B63A77A21805AAC00B12C23 /* UITabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B63A77921805AAC00B12C23 /* UITabbarController.swift */; };
 		2B6DD07E217A2DFD0093A073 /* CameraEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */; };
@@ -38,6 +39,7 @@
 		2B8303852152295F006E2522 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8303842152295F006E2522 /* MainCell.swift */; };
 		2B83038721524275006E2522 /* MainCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B83038621524275006E2522 /* MainCollectionLayout.swift */; };
 		2B86435D2162252900D39812 /* UIKit+Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86435C2162252900D39812 /* UIKit+Effect.swift */; };
+		2B93B76521D370DB00CBEC56 /* network.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B93B76421D370DB00CBEC56 /* network.json */; };
 		2B99337721B0D7A1000921F3 /* DiscoverCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B99337621B0D7A1000921F3 /* DiscoverCellModel.swift */; };
 		2BBFA63C216310B500A31D58 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBFA63B216310B500A31D58 /* Category.swift */; };
 		2BD07D3221788D360039DB2F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD07D3021788D360039DB2F /* CameraViewController.swift */; };
@@ -97,6 +99,7 @@
 		2B42E714215CDF3500BB0F86 /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		2B42E717215E4CAB00BB0F86 /* InspireCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspireCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2B5699CC2154C04900D122B4 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B59FFFF21C25DE000708DDE /* LOTsNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOTsNetwork.swift; sourceTree = "<group>"; };
 		2B614D8C2187198A008E7699 /* done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = done.json; sourceTree = "<group>"; };
 		2B63A77921805AAC00B12C23 /* UITabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabbarController.swift; sourceTree = "<group>"; };
 		2B6DD07D217A2DFD0093A073 /* CameraEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEditViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 		2B8303842152295F006E2522 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		2B83038621524275006E2522 /* MainCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionLayout.swift; sourceTree = "<group>"; };
 		2B86435C2162252900D39812 /* UIKit+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Effect.swift"; sourceTree = "<group>"; };
+		2B93B76421D370DB00CBEC56 /* network.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = network.json; sourceTree = "<group>"; };
 		2B99337621B0D7A1000921F3 /* DiscoverCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCellModel.swift; sourceTree = "<group>"; };
 		2BA718AE21880471004CDBB8 /* LOTs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LOTs.entitlements; sourceTree = "<group>"; };
 		2BBFA63B216310B500A31D58 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -172,8 +176,9 @@
 			isa = PBXGroup;
 			children = (
 				2B02B91021533F46004FC66E /* LOTsColor.swift */,
-				2BD07D34217892610039DB2F /* CameraController.swift */,
+				2B59FFFF21C25DE000708DDE /* LOTsNetwork.swift */,
 				2BE94F3321ACFAA6008BF2CB /* LOTsDateFormatter.swift */,
+				2BD07D34217892610039DB2F /* CameraController.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 		2B2AF69921704DE6002A2748 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				2B93B76421D370DB00CBEC56 /* network.json */,
 				2B2AF6AB2170C4A6002A2748 /* user.json */,
 				2B2AF69A21704E0A002A2748 /* loading_2.json */,
 				2B2AF6A92170950C002A2748 /* list.json */,
@@ -560,6 +566,7 @@
 				2BE27F11215C8378005387A4 /* DetailCTableViewCell.xib in Resources */,
 				2BE27F09215C8357005387A4 /* DetailATableViewCell.xib in Resources */,
 				2BE27EF6215B9B87005387A4 /* LikeDetailTableViewCell.xib in Resources */,
+				2B93B76521D370DB00CBEC56 /* network.json in Resources */,
 				2BE27EED215B76B3005387A4 /* LikeCollectionViewCell.xib in Resources */,
 				2B2AF6A521707DAF002A2748 /* lunch_time.json in Resources */,
 				2BF8957A21539A5D0096C7EC /* ContentTableViewCell.xib in Resources */,
@@ -697,6 +704,7 @@
 				2BE27F08215C8357005387A4 /* DetailATableViewCell.swift in Sources */,
 				2B02B9182153485B004FC66E /* PostTableViewCell.swift in Sources */,
 				2B8303852152295F006E2522 /* MainCell.swift in Sources */,
+				2B59000021C25DE000708DDE /* LOTsNetwork.swift in Sources */,
 				2B191DA7215A36F9006A2AC1 /* LoginViewController.swift in Sources */,
 				2BE94F2921ABF145008BF2CB /* MainCellModel.swift in Sources */,
 				2BE94F2F21AC2C4C008BF2CB /* ArticleProvider.swift in Sources */,
